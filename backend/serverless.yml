@@ -1,0 +1,41 @@
+service: learning-tracker-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-south-1  # Mumbai region for India
+  memorySize: 256
+  timeout: 30
+  environment:
+    NODE_ENV: production
+
+functions:
+  api:
+    handler: dist/index.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 5000
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - 'node_modules/express/**'
+    - 'node_modules/cors/**'
+    - 'node_modules/serverless-http/**'
+    - 'dist/**'
+    - 'progress.json'
+    - 'notes.json'
