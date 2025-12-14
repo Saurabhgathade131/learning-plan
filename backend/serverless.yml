@@ -31,11 +31,17 @@ custom:
     httpPort: 5000
 
 package:
+  individually: false
   patterns:
-    - '!node_modules/**'
-    - 'node_modules/express/**'
-    - 'node_modules/cors/**'
-    - 'node_modules/serverless-http/**'
+    - '!node_modules/.cache/**'
+    - '!node_modules/serverless/**'
+    - '!node_modules/serverless-offline/**'
+    - '!node_modules/typescript/**'
+    - '!node_modules/ts-node/**'
+    - '!node_modules/@types/**'
+    - '!node_modules/nodemon/**'
+    - '!src/**'
     - 'dist/**'
+    - 'node_modules/**'
     - 'progress.json'
     - 'notes.json'

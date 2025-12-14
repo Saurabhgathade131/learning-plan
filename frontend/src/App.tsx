@@ -9,7 +9,9 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const API_URL = import.meta.env.DEV ? 'http://localhost:5000/api' : '/api';
+const API_URL = import.meta.env.DEV
+  ? 'http://localhost:5000/api'
+  : 'https://fhlu3kouw5.execute-api.ap-south-1.amazonaws.com/dev/api';
 
 interface NoteData {
   note: string;
