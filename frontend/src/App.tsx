@@ -3,7 +3,7 @@ import type { LearningPlan, Phase, Progress, Topic, TopicResource } from './type
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network } from 'lucide-react';
+import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -28,14 +28,16 @@ const planIcons: Record<string, React.ReactNode> = {
   brain: <Brain className="w-5 h-5" />,
   server: <Server className="w-5 h-5" />,
   bot: <Bot className="w-5 h-5" />,
-  gateway: <Network className="w-5 h-5" />
+  gateway: <Network className="w-5 h-5" />,
+  layers: <Layers className="w-5 h-5" />
 };
 
 const colorClasses: Record<string, { bg: string; border: string; text: string; ring: string }> = {
   purple: { bg: 'bg-purple-500', border: 'border-purple-500', text: 'text-purple-500', ring: 'ring-purple-500/30' },
   blue: { bg: 'bg-blue-500', border: 'border-blue-500', text: 'text-blue-500', ring: 'ring-blue-500/30' },
   emerald: { bg: 'bg-emerald-500', border: 'border-emerald-500', text: 'text-emerald-500', ring: 'ring-emerald-500/30' },
-  amber: { bg: 'bg-amber-500', border: 'border-amber-500', text: 'text-amber-500', ring: 'ring-amber-500/30' }
+  amber: { bg: 'bg-amber-500', border: 'border-amber-500', text: 'text-amber-500', ring: 'ring-amber-500/30' },
+  rose: { bg: 'bg-rose-500', border: 'border-rose-500', text: 'text-rose-500', ring: 'ring-rose-500/30' }
 };
 
 const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
