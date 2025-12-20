@@ -1146,6 +1146,361 @@ const apiGatewayPlan = [
         ]
     }
 ];
+// ===== PLAN 5: 7-LAYER SYSTEM DESIGN STACK =====
+const systemDesignStackPlan = [
+    {
+        id: "sd-p1",
+        title: "Layer 1: Network & Infrastructure",
+        weeks: "Weeks 1-2",
+        modules: [
+            {
+                id: "sd-m1.1",
+                title: "The Foundation Everything Sits On",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("DNS Routing & Request Resolution", [
+                        vid("DNS Explained in 100 Seconds", "https://www.youtube.com/watch?v=72snZctFFtA", "Fireship"),
+                        vid("How DNS Works - Complete Guide", "https://www.youtube.com/watch?v=mpQZVYPuDGU", "Hussein Nasser"),
+                        doc("AWS Route 53 Guide", "https://docs.aws.amazon.com/Route53/"),
+                        art("How DNS Works", "https://howdns.works/", "DNSimple")
+                    ]),
+                    topic("CDN for Global Distribution", [
+                        vid("CDN Explained", "https://www.youtube.com/watch?v=RI9np1LWzqw", "Hussein Nasser"),
+                        vid("CloudFront Deep Dive", "https://www.youtube.com/watch?v=AT-nHW3_SVI", "Be A Better Dev"),
+                        doc("Cloudflare CDN", "https://developers.cloudflare.com/cache/"),
+                        art("CDN Best Practices", "https://web.dev/articles/content-delivery-networks", "web.dev")
+                    ]),
+                    topic("Load Balancers & Traffic Direction", [
+                        vid("Load Balancing Algorithms", "https://www.youtube.com/watch?v=sCR3SAVdyCc", "Hussein Nasser"),
+                        vid("Layer 4 vs Layer 7 Load Balancers", "https://www.youtube.com/watch?v=aKMLgFVxZYk", "Hussein Nasser"),
+                        doc("NGINX Load Balancing", "https://docs.nginx.com/nginx/admin-guide/load-balancer/"),
+                        art("Load Balancing Concepts", "https://www.nginx.com/resources/glossary/load-balancing/", "NGINX")
+                    ]),
+                    topic("Cloud Provider Choices (AWS, GCP, Azure)", [
+                        vid("AWS vs Azure vs GCP", "https://www.youtube.com/watch?v=n24OBVGHufQ", "Fireship"),
+                        vid("AWS Fundamentals", "https://www.youtube.com/watch?v=ulprqHHWlng", "freeCodeCamp"),
+                        doc("AWS Well-Architected Framework", "https://aws.amazon.com/architecture/well-architected/"),
+                        art("Choosing a Cloud Provider", "https://cloud.google.com/docs/compare", "Google Cloud")
+                    ]),
+                    topic("VPC & Network Security", [
+                        vid("AWS VPC Tutorial", "https://www.youtube.com/watch?v=2doSoMN2xvI", "TechWorld with Nana"),
+                        doc("AWS VPC Documentation", "https://docs.aws.amazon.com/vpc/"),
+                        art("VPC Best Practices", "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-best-practices.html", "AWS")
+                    ])
+                ],
+                project: {
+                    title: "Multi-Region Infrastructure Setup",
+                    description: ["Setup DNS routing with Route 53", "Configure CDN with CloudFront", "Implement load balancer with health checks"],
+                    outcomes: ["Understand network fundamentals", "Configure production infrastructure"]
+                }
+            }
+        ]
+    },
+    {
+        id: "sd-p2",
+        title: "Layer 2: Data Storage & Management",
+        weeks: "Weeks 3-4",
+        modules: [
+            {
+                id: "sd-m2.1",
+                title: "Where Your Data Lives Matters",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("Redis for Caching", [
+                        vid("Redis Crash Course", "https://www.youtube.com/watch?v=ONSD-tOpnp0", "Hussein Nasser"),
+                        vid("Redis Caching Patterns", "https://www.youtube.com/watch?v=oaJq1mQ3dFI", "Be A Better Dev"),
+                        doc("Redis Documentation", "https://redis.io/docs/"),
+                        art("Caching Strategies", "https://aws.amazon.com/caching/best-practices/", "AWS")
+                    ]),
+                    topic("NoSQL for Flexibility", [
+                        vid("MongoDB in 100 Seconds", "https://www.youtube.com/watch?v=-bt_y4Loofg", "Fireship"),
+                        vid("DynamoDB Deep Dive", "https://www.youtube.com/watch?v=2k2GINpO308", "Be A Better Dev"),
+                        doc("MongoDB Documentation", "https://www.mongodb.com/docs/"),
+                        art("When to Use NoSQL", "https://www.mongodb.com/nosql-explained", "MongoDB")
+                    ]),
+                    topic("Blob Storage for Files", [
+                        vid("S3 Deep Dive", "https://www.youtube.com/watch?v=tfU0JEZjcsg", "Be A Better Dev"),
+                        vid("Object Storage Explained", "https://www.youtube.com/watch?v=5Vt0GHRfS-8", "IBM Technology"),
+                        doc("AWS S3 Documentation", "https://docs.aws.amazon.com/s3/"),
+                        art("Blob Storage Best Practices", "https://cloud.google.com/storage/docs/best-practices", "Google Cloud")
+                    ]),
+                    topic("Data Lakes for Analytics", [
+                        vid("Data Lake Explained", "https://www.youtube.com/watch?v=zlBZrG8dDMM", "IBM Technology"),
+                        vid("AWS Data Lake Architecture", "https://www.youtube.com/watch?v=V_WcXs-TMDs", "AWS"),
+                        doc("Data Lake on AWS", "https://aws.amazon.com/solutions/implementations/data-lake-solution/"),
+                        art("Data Lake vs Data Warehouse", "https://www.databricks.com/glossary/data-lake", "Databricks")
+                    ]),
+                    topic("SQL Databases for Transactions", [
+                        vid("PostgreSQL Tutorial", "https://www.youtube.com/watch?v=qw--VYLpxG4", "freeCodeCamp"),
+                        vid("SQL Indexing Deep Dive", "https://www.youtube.com/watch?v=clrtT_4WBAw", "Hussein Nasser"),
+                        doc("PostgreSQL Documentation", "https://www.postgresql.org/docs/"),
+                        art("ACID Properties", "https://www.postgresql.org/docs/current/transaction-iso.html", "PostgreSQL")
+                    ]),
+                    topic("Database Sharding & Replication", [
+                        vid("Database Sharding", "https://www.youtube.com/watch?v=5faMjKuq9Js", "Hussein Nasser"),
+                        vid("Database Replication", "https://www.youtube.com/watch?v=bI8Ry6GhMSE", "Hussein Nasser"),
+                        art("Sharding Strategies", "https://www.digitalocean.com/community/tutorials/understanding-database-sharding", "DigitalOcean")
+                    ])
+                ],
+                project: {
+                    title: "Multi-Tier Data Architecture",
+                    description: ["Design caching layer with Redis", "Implement SQL + NoSQL hybrid", "Setup S3 for file storage"],
+                    outcomes: ["Choose right storage for use cases", "Understand data trade-offs"]
+                }
+            }
+        ]
+    },
+    {
+        id: "sd-p3",
+        title: "Layer 3: Compute & Scaling",
+        weeks: "Weeks 5-6",
+        modules: [
+            {
+                id: "sd-m3.1",
+                title: "The Processing Backbone",
+                weeks: "Week 5-6",
+                topics: [
+                    topic("Microservices for Modularity", [
+                        vid("Microservices Explained", "https://www.youtube.com/watch?v=j3XufmvEMiM", "IBM Technology"),
+                        vid("Microservices Architecture", "https://www.youtube.com/watch?v=CdBtNQZH8a4", "TechWorld with Nana"),
+                        doc("Microservices.io", "https://microservices.io/"),
+                        art("Microservices Best Practices", "https://martinfowler.com/articles/microservices.html", "Martin Fowler")
+                    ]),
+                    topic("Auto-scaling for Demand Spikes", [
+                        vid("Auto Scaling Deep Dive", "https://www.youtube.com/watch?v=a4SicVoqKRU", "Be A Better Dev"),
+                        vid("AWS Auto Scaling", "https://www.youtube.com/watch?v=4EOaAkY4pNE", "AWS"),
+                        doc("AWS Auto Scaling", "https://docs.aws.amazon.com/autoscaling/"),
+                        art("Scaling Strategies", "https://aws.amazon.com/blogs/architecture/scaling-up-to-your-first-10-million-users/", "AWS")
+                    ]),
+                    topic("Containers with Docker", [
+                        vid("Docker in 100 Seconds", "https://www.youtube.com/watch?v=Gjnup-PuquQ", "Fireship"),
+                        vid("Docker Deep Dive", "https://www.youtube.com/watch?v=8vmKtS8W7IQ", "TechWorld with Nana"),
+                        doc("Docker Documentation", "https://docs.docker.com/"),
+                        art("Docker Best Practices", "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/", "Docker")
+                    ]),
+                    topic("Kubernetes Orchestration", [
+                        vid("Kubernetes in 100 Seconds", "https://www.youtube.com/watch?v=PziYflu8cB8", "Fireship"),
+                        vid("Kubernetes Course", "https://www.youtube.com/watch?v=X48VuDVv0do", "TechWorld with Nana"),
+                        doc("Kubernetes Documentation", "https://kubernetes.io/docs/"),
+                        art("K8s Best Practices", "https://kubernetes.io/docs/concepts/configuration/overview/", "Kubernetes")
+                    ]),
+                    topic("Serverless Functions for Event-Driven Work", [
+                        vid("Serverless in 100 Seconds", "https://www.youtube.com/watch?v=W_VV2Fx32_Y", "Fireship"),
+                        vid("AWS Lambda Deep Dive", "https://www.youtube.com/watch?v=eOBq__h4OJ4", "Be A Better Dev"),
+                        doc("AWS Lambda", "https://docs.aws.amazon.com/lambda/"),
+                        art("When to Use Serverless", "https://aws.amazon.com/lambda/faqs/", "AWS")
+                    ]),
+                    topic("Horizontal vs Vertical Scaling", [
+                        vid("Scaling Explained", "https://www.youtube.com/watch?v=sCR3SAVdyCc", "Hussein Nasser"),
+                        art("Scaling Strategies", "https://www.digitalocean.com/community/tutorials/understanding-the-differences-between-vertical-and-horizontal-scaling", "DigitalOcean")
+                    ])
+                ],
+                project: {
+                    title: "Scalable Compute Platform",
+                    description: ["Containerize app with Docker", "Deploy on Kubernetes", "Implement auto-scaling policies"],
+                    outcomes: ["Master container orchestration", "Optimize AWS costs"]
+                }
+            }
+        ]
+    },
+    {
+        id: "sd-p4",
+        title: "Layer 4: Communication",
+        weeks: "Weeks 7-8",
+        modules: [
+            {
+                id: "sd-m4.1",
+                title: "Services Need to Talk",
+                weeks: "Week 7-8",
+                topics: [
+                    topic("gRPC for Performance", [
+                        vid("gRPC Crash Course", "https://www.youtube.com/watch?v=Yw4rkaTc0f8", "Hussein Nasser"),
+                        vid("gRPC vs REST", "https://www.youtube.com/watch?v=gnchfOojMk4", "IBM Technology"),
+                        doc("gRPC Documentation", "https://grpc.io/docs/"),
+                        art("When to Use gRPC", "https://grpc.io/docs/what-is-grpc/introduction/", "gRPC")
+                    ]),
+                    topic("REST APIs for Simplicity", [
+                        vid("REST API Best Practices", "https://www.youtube.com/watch?v=SLwpqD8n3d0", "Traversy Media"),
+                        doc("RESTful API Design", "https://restfulapi.net/"),
+                        art("REST API Guidelines", "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design", "Microsoft")
+                    ]),
+                    topic("Message Queues for Async Work", [
+                        vid("Message Queues Explained", "https://www.youtube.com/watch?v=O1PgqUqZKTA", "Hussein Nasser"),
+                        vid("RabbitMQ Tutorial", "https://www.youtube.com/watch?v=deG25y_r6OY", "Hussein Nasser"),
+                        vid("Kafka Architecture", "https://www.youtube.com/watch?v=Ch5VhJzaoaI", "Hussein Nasser"),
+                        doc("RabbitMQ Documentation", "https://www.rabbitmq.com/docs"),
+                        doc("Kafka Documentation", "https://kafka.apache.org/documentation/")
+                    ]),
+                    topic("Service Meshes for Complex Orchestration", [
+                        vid("Istio Explained", "https://www.youtube.com/watch?v=16fgzklcF7Y", "TechWorld with Nana"),
+                        vid("Service Mesh 101", "https://www.youtube.com/watch?v=vh1YtWjfcyk", "IBM Technology"),
+                        doc("Istio Documentation", "https://istio.io/latest/docs/"),
+                        art("Service Mesh Benefits", "https://www.redhat.com/en/topics/microservices/what-is-a-service-mesh", "Red Hat")
+                    ]),
+                    topic("WebSockets for Real-time", [
+                        vid("WebSockets Explained", "https://www.youtube.com/watch?v=1BfCnjr_Vjg", "Fireship"),
+                        vid("WebSockets vs HTTP", "https://www.youtube.com/watch?v=xTR5OflgwgU", "Hussein Nasser"),
+                        doc("WebSocket API", "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API")
+                    ]),
+                    topic("GraphQL for Flexible Queries", [
+                        vid("GraphQL in 100 Seconds", "https://www.youtube.com/watch?v=eIQh02xuVw4", "Fireship"),
+                        doc("GraphQL Documentation", "https://graphql.org/learn/"),
+                        art("When to Use GraphQL", "https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/", "Apollo")
+                    ])
+                ],
+                project: {
+                    title: "Multi-Protocol Communication System",
+                    description: ["Implement gRPC between services", "Add message queue for async", "Setup service mesh with Istio"],
+                    outcomes: ["Avoid distributed monoliths", "Choose right protocol for use case"]
+                }
+            }
+        ]
+    },
+    {
+        id: "sd-p5",
+        title: "Layer 5: Application Logic",
+        weeks: "Weeks 9-10",
+        modules: [
+            {
+                id: "sd-m5.1",
+                title: "Your Actual Business Logic",
+                weeks: "Week 9-10",
+                topics: [
+                    topic("Microservices for Scale", [
+                        vid("Decomposing Monolith", "https://www.youtube.com/watch?v=UzEW0X8a010", "GOTO Conferences"),
+                        art("Microservices Patterns", "https://microservices.io/patterns/index.html", "Chris Richardson")
+                    ]),
+                    topic("API Gateways for Management", [
+                        vid("API Gateway Pattern", "https://www.youtube.com/watch?v=6ULyxuHKxg8", "Hussein Nasser"),
+                        doc("Kong Gateway", "https://docs.konghq.com/"),
+                        art("API Gateway Benefits", "https://aws.amazon.com/api-gateway/", "AWS")
+                    ]),
+                    topic("Domain-Driven Design for Clarity", [
+                        vid("DDD Explained", "https://www.youtube.com/watch?v=pMuiVlnGqjk", "Amithabh Shah"),
+                        vid("Bounded Contexts", "https://www.youtube.com/watch?v=am-HkyENxeI", "CodeOpinion"),
+                        art("DDD Reference", "https://martinfowler.com/bliki/DomainDrivenDesign.html", "Martin Fowler")
+                    ]),
+                    topic("Middleware for Cross-Cutting Concerns", [
+                        vid("Middleware Pattern", "https://www.youtube.com/watch?v=lY6icfhap2o", "Web Dev Simplified"),
+                        art("Cross-Cutting Concerns", "https://www.patterns.dev/posts/middleware-pattern", "patterns.dev")
+                    ]),
+                    topic("Event Sourcing & CQRS", [
+                        vid("Event Sourcing Explained", "https://www.youtube.com/watch?v=STKCRSUsyP0", "CodeOpinion"),
+                        vid("CQRS Pattern", "https://www.youtube.com/watch?v=DQ3D_mplIgY", "CodeOpinion"),
+                        art("Event Sourcing", "https://martinfowler.com/eaaDev/EventSourcing.html", "Martin Fowler")
+                    ]),
+                    topic("Saga Pattern for Distributed Transactions", [
+                        vid("Saga Pattern Explained", "https://www.youtube.com/watch?v=xDuwrtwYHu8", "Hussein Nasser"),
+                        art("Saga Pattern", "https://microservices.io/patterns/data/saga.html", "Chris Richardson")
+                    ])
+                ],
+                project: {
+                    title: "DDD-Based Microservice",
+                    description: ["Design bounded contexts", "Implement API gateway", "Apply CQRS pattern"],
+                    outcomes: ["Understand business logic design", "Master enterprise patterns"]
+                }
+            }
+        ]
+    },
+    {
+        id: "sd-p6",
+        title: "Layer 6: Observability & Reliability",
+        weeks: "Weeks 11-12",
+        modules: [
+            {
+                id: "sd-m6.1",
+                title: "You Can't Fix What You Can't See",
+                weeks: "Week 11-12",
+                topics: [
+                    topic("Logging with ELK Stack", [
+                        vid("ELK Stack Tutorial", "https://www.youtube.com/watch?v=ZP0NmfyfsoM", "TechWorld with Nana"),
+                        vid("Elasticsearch Explained", "https://www.youtube.com/watch?v=1EnvkPf7t6Y", "IBM Technology"),
+                        doc("Elasticsearch Guide", "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html"),
+                        art("Logging Best Practices", "https://www.datadoghq.com/blog/log-management-best-practices/", "Datadog")
+                    ]),
+                    topic("Tracing for Request Flows", [
+                        vid("Distributed Tracing", "https://www.youtube.com/watch?v=idDu_jXqf4E", "Hussein Nasser"),
+                        vid("Jaeger Explained", "https://www.youtube.com/watch?v=UNqilb9_zwY", "CNCF"),
+                        doc("Jaeger Documentation", "https://www.jaegertracing.io/docs/"),
+                        doc("OpenTelemetry", "https://opentelemetry.io/docs/")
+                    ]),
+                    topic("Chaos Testing for Resilience", [
+                        vid("Chaos Engineering", "https://www.youtube.com/watch?v=MhdW_EGycmw", "Fireship"),
+                        vid("Chaos Monkey", "https://www.youtube.com/watch?v=7sQiIR9qCdA", "Netflix"),
+                        art("Chaos Engineering Principles", "https://principlesofchaos.org/", "Chaos Community")
+                    ]),
+                    topic("Monitoring with Prometheus", [
+                        vid("Prometheus Tutorial", "https://www.youtube.com/watch?v=h4Sl21AKiDg", "TechWorld with Nana"),
+                        vid("Grafana Dashboards", "https://www.youtube.com/watch?v=lILY8eSspEo", "TechWorld with Nana"),
+                        doc("Prometheus Documentation", "https://prometheus.io/docs/"),
+                        doc("Grafana Documentation", "https://grafana.com/docs/")
+                    ]),
+                    topic("SLOs, SLIs, SLAs", [
+                        vid("SLOs Explained", "https://www.youtube.com/watch?v=tEylFyxbDLE", "Google Cloud"),
+                        doc("Google SRE Book", "https://sre.google/sre-book/table-of-contents/"),
+                        art("Defining SLOs", "https://cloud.google.com/blog/products/gcp/sre-fundamentals-slis-slas-and-slos", "Google Cloud")
+                    ]),
+                    topic("Incident Management", [
+                        vid("Incident Response", "https://www.youtube.com/watch?v=r1yNZ_BrHfY", "Google Cloud"),
+                        art("On-Call Best Practices", "https://increment.com/on-call/", "Increment")
+                    ])
+                ],
+                project: {
+                    title: "Full Observability Stack",
+                    description: ["Setup ELK for logging", "Implement Prometheus + Grafana", "Configure distributed tracing"],
+                    outcomes: ["Debug production issues", "Implement SRE best practices"]
+                }
+            }
+        ]
+    },
+    {
+        id: "sd-p7",
+        title: "Layer 7: AI-Powered Optimization",
+        weeks: "Weeks 13-14",
+        modules: [
+            {
+                id: "sd-m7.1",
+                title: "The Future is Here",
+                weeks: "Week 13-14",
+                topics: [
+                    topic("Anomaly Detection", [
+                        vid("ML for Anomaly Detection", "https://www.youtube.com/watch?v=VClXOFVGmIQ", "StatQuest"),
+                        art("AWS Anomaly Detection", "https://aws.amazon.com/blogs/aws/amazon-cloudwatch-anomaly-detection/", "AWS"),
+                        doc("Datadog Anomaly Detection", "https://docs.datadoghq.com/monitors/types/anomaly/")
+                    ]),
+                    topic("Intelligent Routing Optimization", [
+                        vid("Traffic Management with AI", "https://www.youtube.com/watch?v=QLC5ij_8Cek", "Google Cloud"),
+                        art("AI-Driven Load Balancing", "https://cloud.google.com/load-balancing/docs/backend-services", "Google Cloud")
+                    ]),
+                    topic("Intelligent Autoscaling", [
+                        vid("Predictive Scaling", "https://www.youtube.com/watch?v=uxuyPru3_Lc", "AWS"),
+                        doc("AWS Predictive Scaling", "https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html"),
+                        art("ML-Based Scaling", "https://cloud.google.com/blog/products/ai-machine-learning/using-ml-to-better-predict-scaling-needs", "Google Cloud")
+                    ]),
+                    topic("Predictive Load Balancing", [
+                        vid("Predictive Infrastructure", "https://www.youtube.com/watch?v=a4SicVoqKRU", "AWS"),
+                        art("ML in Load Balancing", "https://www.nginx.com/blog/", "NGINX")
+                    ]),
+                    topic("AIOps for Self-Healing Systems", [
+                        vid("AIOps Explained", "https://www.youtube.com/watch?v=e4VB17ot-D0", "IBM Technology"),
+                        vid("Self-Healing Infrastructure", "https://www.youtube.com/watch?v=5lTTVGIZ-HE", "CNCF"),
+                        art("AIOps Guide", "https://www.ibm.com/topics/aiops", "IBM"),
+                        doc("Kubernetes Self-Healing", "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/")
+                    ]),
+                    topic("Cost Optimization with ML", [
+                        vid("AWS Cost Optimization", "https://www.youtube.com/watch?v=8TlukLu11Yo", "AWS"),
+                        art("FinOps with AI", "https://www.finops.org/", "FinOps Foundation")
+                    ])
+                ],
+                project: {
+                    title: "AI-Enhanced Infrastructure",
+                    description: ["Implement anomaly detection", "Setup predictive autoscaling", "Build self-healing workflows"],
+                    outcomes: ["Outperform competitors 3x", "Master next-gen infrastructure"]
+                }
+            }
+        ]
+    }
+];
 // ===== EXPORT ALL PLANS =====
 exports.allLearningPlans = [
     {
@@ -1179,6 +1534,14 @@ exports.allLearningPlans = [
         icon: "gateway",
         color: "amber",
         phases: apiGatewayPlan
+    },
+    {
+        id: "systemdesign",
+        name: "7-Layer System Design Stack",
+        description: "Master the 7 layers that differentiate interview success: Infrastructure → AI Optimization",
+        icon: "layers",
+        color: "rose",
+        phases: systemDesignStackPlan
     }
 ];
 // Keep backward compatibility
