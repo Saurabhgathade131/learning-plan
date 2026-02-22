@@ -66,6 +66,9 @@ exports.DOCS = {
     gPipePaper: { title: "GPipe Paper", url: "https://arxiv.org/abs/1811.06965" },
     zeROPaper: { title: "ZeRO Paper", url: "https://arxiv.org/abs/1910.02054" },
     fsdpBlog: { title: "PyTorch FSDP Blog", url: "https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/" },
+    msAgentFramework: { title: "Microsoft Agent Framework SDK", url: "https://github.com/microsoft/agent-framework" },
+    msExtensionsAI: { title: "Microsoft.Extensions.AI Docs", url: "https://learn.microsoft.com/en-us/dotnet/ai/extensions" },
+    azureAIFoundry: { title: "Azure AI Foundry Agents", url: "https://azure.microsoft.com/en-us/products/ai-foundry" },
 };
 exports.BLOGS = {
     martinfowler: { title: "Martin Fowler", url: "https://martinfowler.com/" },

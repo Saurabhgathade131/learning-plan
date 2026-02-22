@@ -2360,6 +2360,97 @@ const parallelism5DPlan: Phase[] = [
     }
 ];
 
+// ===== PLAN 8: MICROSOFT AI AGENT ARCHITECT (.NET) =====
+const microsoftAgentPlan: Phase[] = [
+    {
+        id: "ms-agent-p1",
+        title: "1-Week Build: UI Explorer AI Agent",
+        weeks: "Week 1",
+        modules: [
+            {
+                id: "ms-agent-m1.1",
+                title: "Day 1-2: .NET 9 & SDK Foundation",
+                weeks: "Day 1-2",
+                topics: [
+                    topic(".NET 9 & Agent SDK Setup", [
+                        doc("Microsoft Agent Framework SDK", "https://github.com/microsoft/agent-framework"),
+                        doc("Microsoft.Extensions.AI Docs", "https://learn.microsoft.com/en-us/dotnet/ai/extensions"),
+                        vid("Microsoft Agent Framework Intro", "https://www.youtube.com/watch?v=R-SjL6m-S-M", "Microsoft")
+                    ]),
+                    topic("Multimodal Vision Integration", [
+                        doc("GPT-4V with .NET AI", "https://learn.microsoft.com/en-us/dotnet/ai/get-started-multimodal"),
+                        vid("Vision Agents in .NET", "https://www.youtube.com/watch?v=DWUdGhRrv2c", "Vizuara AI")
+                    ])
+                ],
+                project: {
+                    title: "Vision-First UI Describer",
+                    description: ["Initialize .NET 9 console app with Agent SDK", "Integrate Playwright for live browser screenshotting", "Build an agent that describes UI layout from pixels"],
+                    outcomes: ["Master .NET AI Hub patterns", "Perceive UI without DOM reliance"]
+                }
+            },
+            {
+                id: "ms-agent-m1.2",
+                title: "Day 3-4: A11y Parsing & Action Tools",
+                weeks: "Day 3-4",
+                topics: [
+                    topic("Semantic DOM: Accessibility Tree", [
+                        art("Perceiving the Web via A11y", "https://developer.mozilla.org/en-US/docs/Learn/Accessibility/What_is_accessibility"),
+                        doc("Playwright A11y Snapshot API", "https://playwright.dev/docs/api/class-accessibility")
+                    ]),
+                    topic("Defining Agentic Web Tools", [
+                        doc("Agent Tool Calling in .NET", "https://learn.microsoft.com/en-us/dotnet/ai/agents/tools"),
+                        art("Reliable Web Interaction Logic", "https://playwright.dev/docs/actionability")
+                    ])
+                ],
+                project: {
+                    title: "Semantic UI Interaction Hub",
+                    description: ["Extract Accessibility Tree to reduce token noise", "Map DOM elements to semantic roles (Button, Search, Nav)", "Implement 'Safe-Click' and 'Intelligent-Type' tools"],
+                    outcomes: ["Drastically reduce LLM context costs", "Build robust action handlers"]
+                }
+            },
+            {
+                id: "ms-agent-m1.3",
+                title: "Day 5-6: Planning & Observability",
+                weeks: "Day 5-6",
+                topics: [
+                    topic("Graph-Based Planning Orchestration", [
+                        doc("AgentGroupChat in .NET", "https://learn.microsoft.com/en-us/dotnet/ai/agents/orchestration"),
+                        vid("Multi-Agent Planning Loops", "https://www.youtube.com/watch?v=FthNMHAet3E", "Yannic Kilcher")
+                    ]),
+                    topic("Telemetry & Azure AI Foundry", [
+                        doc("Azure AI Foundry Agents", "https://azure.microsoft.com/en-us/products/ai-foundry"),
+                        doc("OpenTelemetry for AI Agents", "https://learn.microsoft.com/en-us/dotnet/ai/observability")
+                    ])
+                ],
+                project: {
+                    title: "Self-Correcting Explorer",
+                    description: ["Implement a Plan-Act-Verify loop", "Handle 'Auth Redirects' and 'Popups' as edge cases", "Integrate OpenTelemetry for reasoning traces"],
+                    outcomes: ["Handle complex state changes", "Debug agent reasoning in production"]
+                }
+            },
+            {
+                id: "ms-agent-m1.4",
+                title: "Day 7: Capstone - The Autonomous Shopper",
+                weeks: "Day 7",
+                topics: [
+                    topic("Complex Multi-Step Workflows", [
+                        art("Automating E-commerce with Agents", "https://github.com/microsoft/agent-framework/tree/main/examples"),
+                        vid("Agentic Workflow Patterns", "https://www.youtube.com/watch?v=kCc8FmEb1nY", "Andrej Karpathy")
+                    ]),
+                    topic("Edge Case: Human-in-the-Loop", [
+                        doc("Agent Collaboration Patterns", "https://learn.microsoft.com/en-us/dotnet/ai/agents/patterns")
+                    ])
+                ],
+                project: {
+                    title: "Autonomous Checkout Agent",
+                    description: ["Automate a full multi-step checkout flow on a demo site", "Handle CAPTCHAs via Human-in-the-loop triggers", "Generate a detailed session report with screenshots"],
+                    outcomes: ["Industrial-grade UI Agent Architect", "Master complex enterprise workflows"]
+                }
+            }
+        ]
+    }
+];
+
 // ===== EXPORT ALL PLANS =====
 export const allLearningPlans: LearningPlan[] = [
     {
@@ -2417,6 +2508,14 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "cpu",
         color: "orange",
         phases: parallelism5DPlan
+    },
+    {
+        id: "ms-agent",
+        name: "Microsoft AI Agent Architect",
+        description: "Build UI Explorer Agents using the new Microsoft Agent Framework (.NET 9)",
+        icon: "sparkles",
+        color: "lime",
+        phases: microsoftAgentPlan
     }
 ];
 
