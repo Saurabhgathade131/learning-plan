@@ -5,7 +5,7 @@ export interface Project {
 }
 
 export interface TopicResource {
-    type: 'video' | 'doc' | 'article' | 'playlist' | 'channel';
+    type: 'video' | 'doc' | 'article' | 'playlist' | 'channel' | 'course';
     title: string;
     url: string;
     duration?: string;
@@ -50,6 +50,7 @@ const doc = (title: string, url: string): TopicResource => ({ type: 'doc', title
 const art = (title: string, url: string, author?: string): TopicResource => ({ type: 'article', title, url, author });
 const playlist = (title: string, url: string, author: string): TopicResource => ({ type: 'playlist', title, url, author });
 const channel = (name: string, url: string): TopicResource => ({ type: 'channel', title: name, url });
+const course = (title: string, url: string, author?: string): TopicResource => ({ type: 'course', title, url, author });
 
 // Backward compatible helper
 const t = (name: string, videoUrl?: string, docUrl?: string): Topic => ({
@@ -2129,6 +2130,236 @@ const aiEngineerRoadmapPlan: Phase[] = [
     }
 ];
 
+// ===== PLAN 7: ULTIMATE 5D PARALLELISM LEARNING PLAN =====
+const parallelism5DPlan: Phase[] = [
+    {
+        id: "5dp-p1",
+        title: "Phase 1: GPU & Memory Mastery",
+        weeks: "Month 1",
+        modules: [
+            {
+                id: "5dp-m1.1",
+                title: "Anatomy of a GPU & Low-Level Foundations",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("CPU vs. GPU Architecture", [
+                        doc("Volta Architecture Whitepaper", "https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf"),
+                        art("The CUDA Programming Model", "https://developer.nvidia.com/blog/cuda-refresher-cuda-programming-model/"),
+                        vid("Anatomy of a GPU", "https://www.youtube.com/watch?v=7Mre8H91bBA", "Vizuara AI")
+                    ]),
+                    topic("The CUDA Execution Model", [
+                        vid("CUDA C/C++ Basics", "https://www.youtube.com/playlist?list=PLxNPSjHT5qvtYRVdIE1yETCGcqJQncYGL", "CoffeeBeforeArch"),
+                        art("Warp Divergence & Scheduling", "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"),
+                        course("CUDA Programming Masterclass", "https://www.udemy.com/course/cuda-programming-masterclass/")
+                    ]),
+                    topic("GPU Memory Hierarchy", [
+                        art("Memory Coalescing Explained", "https://developer.nvidia.com/blog/how-access-global-memory-efficiently-cuda-c-kernels/"),
+                        vid("Shared Memory in CUDA", "https://www.youtube.com/watch?v=0wV3pGvNlO0", "Tech With Tim")
+                    ]),
+                    topic("Writing the First Kernel", [
+                        art("OpenAI Triton Language", "https://triton-lang.org/main/index.html"),
+                        vid("Custom GEMM in CUDA", "https://www.youtube.com/watch?v=2T9pPInUuM4", "CoffeeBeforeArch")
+                    ])
+                ],
+                project: {
+                    title: "Hardware-Aware GEMM Kernel",
+                    description: ["Write a raw Matrix Multiplication kernel", "Optimize using Shared Memory and L1 cache", "Bypass PyTorch abstractions"],
+                    outcomes: ["Understand SMs & Tensor Cores", "Eliminate memory bottlenecks"]
+                }
+            },
+            {
+                id: "5dp-m1.2",
+                title: "PyTorch Internals & The Memory Wall",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("The Training Loop Deconstructed", [
+                        vid("PyTorch Autograd (Micrograd)", "https://www.youtube.com/watch?v=MswxTl-EQcs", "Andrej Karpathy"),
+                        art("Autograd Reverse-mode BP", "https://pytorch.org/docs/stable/notes/autograd.html")
+                    ]),
+                    topic("Anatomy of GPU Memory", [
+                        art("Deep Learning Go Brrrr", "https://horace.io/brrr_intro.html", "Horace He"),
+                        doc("Sublinear Memory Cost Paper", "https://arxiv.org/abs/1604.06174")
+                    ]),
+                    topic("Memory Optimization: Checkpointing & Precision", [
+                        vid("Mixed Precision Training", "https://www.youtube.com/watch?v=6id88qHh-u0", "Patrick Loeber"),
+                        course("PyTorch for Deep Learning", "https://www.udemy.com/course/pytorch-for-deep-learning/")
+                    ])
+                ],
+                project: {
+                    title: "Memory Profiler & Checkpointer",
+                    description: ["Calculate byte-size of Params vs Gradients vs Activations", "Implement manual Activation Checkpointing", "Train OOM-sized model on 1 GPU"],
+                    outcomes: ["Predict OOM before training", "Master trade-offs (compute for memory)"]
+                }
+            }
+        ]
+    },
+    {
+        id: "5dp-p2",
+        title: "Phase 2: 1D & 2D Parallelism (Data & Tensor)",
+        weeks: "Month 2",
+        modules: [
+            {
+                id: "5dp-m2.1",
+                title: "Network Topology & 1D (Data) Parallelism",
+                weeks: "Week 5-6",
+                topics: [
+                    topic("GPU Communication (NCCL)", [
+                        art("Ring All-Reduce Visualization", "https://andrew.gibiansky.com/blog/machine-learning/baidu-allreduce/"),
+                        doc("PyTorch Distributed Paper", "https://arxiv.org/abs/2006.15704")
+                    ]),
+                    topic("DDP: Multi-Process Training", [
+                        vid("PyTorch DDP Tutorial", "https://www.youtube.com/watch?v=KaAJA7XJpsE", "PyTorch"),
+                        doc("DistributedDataParallel Design", "https://pytorch.org/docs/stable/notes/ddp.html")
+                    ]),
+                    topic("NCCL Primitives & Overlap", [
+                        vid("Collective Communication Basics", "https://www.youtube.com/watch?v=KaAJA7XJpsE", "PyTorch"),
+                        course("Distributed DL with PyTorch", "https://www.coursera.org/learn/advanced-deployment-scenarios-pytorch")
+                    ])
+                ],
+                project: {
+                    title: "Multi-Process Distributed Trainer",
+                    description: ["Write a DDP script handling 8 GPUs", "Diagram NVLink vs PCIe data flow", "Measure scaling efficiency"],
+                    outcomes: ["Spawn independent card processes", "Discard DataParallel indefinitely"]
+                }
+            },
+            {
+                id: "5dp-m2.2",
+                title: "Tensor/Model Parallelism (2D)",
+                weeks: "Week 7-8",
+                topics: [
+                    topic("Megatron-LM & Vertical Slicing", [
+                        doc("Megatron-LM Architecture Paper", "https://arxiv.org/abs/1909.08053"),
+                        vid("Megatron-LM Explained", "https://www.youtube.com/watch?v=R_7iPZfQ1Lw", "Yannic Kilcher")
+                    ]),
+                    topic("Row & Column Parallelism", [
+                        art("HuggingFace Tensor Parallelism", "https://huggingface.co/docs/transformers/v4.15.0/en/parallel_computations"),
+                        vid("Slicing Attention Matrices", "https://www.youtube.com/watch?v=DWUdGhRrv2c", "Vizuara AI")
+                    ]),
+                    topic("Parallelizing Transformers", [
+                        doc("NCCL Backend Config", "https://pytorch.org/docs/stable/distributed.html"),
+                        course("NVIDIA DLI: Multi-GPU Training", "https://courses.nvidia.com/courses/course-v1:DLI+S-FX-04+V1/")
+                    ])
+                ],
+                project: {
+                    title: "Megatron-Style Attention Writer",
+                    description: ["Rewrite nn.Linear for Column Parallelism", "Implement Row Parallelism sum-reduction", "Shard a massive 7B transformer manually"],
+                    outcomes: ["Shard individual matrices mathematically", "Eliminate idle GPU time"]
+                }
+            }
+        ]
+    },
+    {
+        id: "5dp-p3",
+        title: "Phase 3: Deep Optimization (3D & 4D)",
+        weeks: "Month 3",
+        modules: [
+            {
+                id: "5dp-m3.1",
+                title: "Pipeline Parallelism (3D)",
+                weeks: "Week 9-10",
+                topics: [
+                    topic("Inter-NodeRDMA & Infiniband", [
+                        doc("GPipe Staging Paper", "https://arxiv.org/abs/1811.06965"),
+                        art("Remote Direct Memory Access (RDMA)", "https://www.ibm.com/docs/en/aix/7.2?topic=protocol-remote-direct-memory-access")
+                    ]),
+                    topic("GPipe vs 1F1B Scheduling", [
+                        art("DeepSpeed Pipeline Schedules", "https://www.deepspeed.ai/tutorials/pipeline/"),
+                        vid("Stanford Pipeline Lecture", "https://www.youtube.com/watch?v=b0E-xG1t-p4", "Stanford CS25")
+                    ]),
+                    topic("Managing the Pipeline Bubble", [
+                        art("Stochastic Rounding & Gradients", "https://arxiv.org/abs/1412.7024"),
+                        course("Advanced DL with DeepSpeed", "https://www.udemy.com/topic/deep-learning/")
+                    ])
+                ],
+                project: {
+                    title: "Pipeline Scheduler Implementation",
+                    description: ["Design a 1F1B micro-batch schedule", "Calculate bubble % overhead", "Tune batch size to minimize idle time"],
+                    outcomes: ["Shard layer-by-layer across nodes", "Maximize inter-node throughput"]
+                }
+            },
+            {
+                id: "5dp-m3.2",
+                title: "ZeRO / FSDP (4D Parallelism)",
+                weeks: "Week 11-12",
+                topics: [
+                    topic("ZeRO Optimization Stages", [
+                        doc("ZeRO Trillion Param Paper", "https://arxiv.org/abs/1910.02054"),
+                        vid("Visualizing ZeRO Framework", "https://www.youtube.com/watch?v=AWe8_t_H2i8", "Explain AI")
+                    ]),
+                    topic("Fully Sharded Data Parallel (FSDP)", [
+                        art("PyTorch FSDP Blog", "https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/"),
+                        playlist("ZeRO & FSDP Deep Dive", "https://www.youtube.com/playlist?list=PL_X9T8S_A6Wv8Y3k_X75mS-dY94Vp8d6m", "Vizuara AI")
+                    ]),
+                    topic("Overlapping All-Gather/Reduce-Scatter", [
+                        art("DeepSpeed Communication Optimization", "https://www.deepspeed.ai/tutorials/zero/"),
+                        course("LLM Engineering & Deployment", "https://www.udemy.com/course/large-language-models/")
+                    ])
+                ],
+                project: {
+                    title: "Native PyTorch FSDP Wrapper",
+                    description: ["Implement Stage 1, 2, and 3 sharding", "Monitor memory savings with FSDP", "Overlap fetch-weights with compute"],
+                    outcomes: ["Zero memory redundancy", "Train trillion-param models economically"]
+                }
+            }
+        ]
+    },
+    {
+        id: "5dp-p4",
+        title: "Phase 4: Advanced Dimensions & Mastery",
+        weeks: "Month 4-6",
+        modules: [
+            {
+                id: "5dp-m4.1",
+                title: "Sequence, Context & Expert Parallelism",
+                weeks: "4 Weeks",
+                topics: [
+                    topic("Sequence Parallelism (SP)", [
+                        doc("Reducing Activation Recomputation", "https://arxiv.org/abs/2205.05198"),
+                        art("Token-Dimension Sharding", "https://github.com/NVIDIA/Megatron-LM")
+                    ]),
+                    topic("Context Parallelism & Ring Attention", [
+                        doc("Ring Attention Paper", "https://arxiv.org/abs/2310.01889"),
+                        vid("FlashAttention How it Works", "https://www.youtube.com/watch?v=FthNMHAet3E", "Yannic Kilcher")
+                    ]),
+                    topic("Expert Parallelism & MoE", [
+                        art("Mixture of Experts Explained", "https://huggingface.co/blog/moe"),
+                        doc("All-to-All Communication Primitive", "https://pytorch.org/docs/stable/distributed.html")
+                    ])
+                ],
+                project: {
+                    title: "MoE Router Logic & Ring Attention",
+                    description: ["Define sparse MoE token-routing logic", "Simulate Ring Attention communication", "Implement sequence-length sharding"],
+                    outcomes: ["Handle infinite context windows", "Manage sparse scaling natively"]
+                }
+            },
+            {
+                id: "5dp-m4.2",
+                title: "Capstone: GPT-2 Distributed From Scratch",
+                weeks: "4-8 Weeks",
+                topics: [
+                    topic("GPT-2 Architecture (Karpathy style)", [
+                        vid("Build GPT from Scratch", "https://www.youtube.com/watch?v=kCc8FmEb1nY", "Andrej Karpathy"),
+                        doc("Original GPT-2 Paper", "https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf")
+                    ]),
+                    topic("Applying the 5 Dimensions", [
+                        art("The Annotated Transformer", "https://nlp.seas.harvard.edu/2018/04/03/attention.html"),
+                        vid("Distributed GPT Training", "https://www.youtube.com/watch?v=KaAJA7XJpsE", "PyTorch")
+                    ]),
+                    topic("Measuring Scaling Efficiency", [
+                        art("Model FLOPs Utilization (MFU)", "https://arxiv.org/abs/2211.05102"),
+                        course("Vizuara: 5D Parallelism Bootcamp", "https://5d-parallelism.vizuara.ai/")
+                    ])
+                ],
+                project: {
+                    title: "Ultimate 5D Parallel Training Script",
+                    description: ["Build GPT-2 with RoPE and Self-Attention", "Parallelize across 8 GPUs using 5D dimensions", "Log MFU and tokens/sec on Rank 0"],
+                    outcomes: ["Industrial-grade LLM engineer", "Linear scaling verification"]
+                }
+            }
+        ]
+    }
+];
+
 // ===== EXPORT ALL PLANS =====
 export const allLearningPlans: LearningPlan[] = [
     {
@@ -2178,6 +2409,14 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "rocket",
         color: "cyan",
         phases: aiEngineerRoadmapPlan
+    },
+    {
+        id: "parallelism-5d",
+        name: "Ultimate 5D Parallelism",
+        description: "Distributed LLM training from scratch: GPU Hardware → Data → Tensor → Pipeline → ZeRO → 5D",
+        icon: "cpu",
+        color: "orange",
+        phases: parallelism5DPlan
     }
 ];
 

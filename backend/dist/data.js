@@ -9,6 +9,7 @@ const doc = (title, url) => ({ type: 'doc', title, url });
 const art = (title, url, author) => ({ type: 'article', title, url, author });
 const playlist = (title, url, author) => ({ type: 'playlist', title, url, author });
 const channel = (name, url) => ({ type: 'channel', title: name, url });
+const course = (title, url, author) => ({ type: 'course', title, url, author });
 // Backward compatible helper
 const t = (name, videoUrl, docUrl) => ({
     name,
@@ -1501,6 +1502,814 @@ const systemDesignStackPlan = [
         ]
     }
 ];
+// ===== PLAN 6: 12-MONTH AI ENGINEER $200K ROADMAP =====
+const aiEngineerRoadmapPlan = [
+    {
+        id: "air-p1",
+        title: "Phase 1: Python & API Foundations",
+        weeks: "Month 1–2",
+        modules: [
+            {
+                id: "air-m1.1",
+                title: "Advanced Python Mastery",
+                weeks: "Month 1",
+                topics: [
+                    topic("Async/Await & Asyncio", [
+                        playlist("Python Async Full Course", "https://www.youtube.com/playlist?list=PLhTjy8cBISEqkN-5Ku_kXG4QW33sxQo0t", "Tech With Tim"),
+                        vid("Async/Await in Python", "https://www.youtube.com/watch?v=2IW-ZEui4h4", "Tech With Tim"),
+                        doc("Python asyncio Docs", "https://docs.python.org/3/library/asyncio.html"),
+                        art("Real Python - Async IO", "https://realpython.com/async-io-python/", "Real Python")
+                    ]),
+                    topic("Decorators & Metaclasses", [
+                        vid("Python Decorators in 15 Minutes", "https://www.youtube.com/watch?v=r7Dtus7N4pI", "Tech With Tim"),
+                        vid("Decorators - Full Tutorial", "https://www.youtube.com/watch?v=FsAPt_9Bf3U", "Corey Schafer"),
+                        doc("Python Decorator Guide", "https://docs.python.org/3/glossary.html#term-decorator"),
+                        art("Primer on Decorators", "https://realpython.com/primer-on-python-decorators/", "Real Python")
+                    ]),
+                    topic("Generators & Iterators", [
+                        vid("Python Generators Explained", "https://www.youtube.com/watch?v=bD05uGo_sVI", "Corey Schafer"),
+                        vid("Generators & Iterators", "https://www.youtube.com/watch?v=u3T7hmLthUU", "Tech With Tim"),
+                        doc("Python Generators", "https://docs.python.org/3/howto/functional.html#generators")
+                    ]),
+                    topic("Type Hints & Pydantic", [
+                        vid("Python Type Hints Full Course", "https://www.youtube.com/watch?v=dgBCEB2jVU0", "ArjanCodes"),
+                        vid("Pydantic V2 Tutorial", "https://www.youtube.com/watch?v=502XOB0u8OY", "ArjanCodes"),
+                        doc("Pydantic Documentation", "https://docs.pydantic.dev/latest/")
+                    ]),
+                    topic("Python Package Management (Poetry/uv)", [
+                        vid("Poetry Tutorial", "https://www.youtube.com/watch?v=0f3moPe_bhk", "ArjanCodes"),
+                        doc("Poetry Docs", "https://python-poetry.org/docs/"),
+                        art("Python Packaging Guide", "https://packaging.python.org/en/latest/", "PyPA")
+                    ]),
+                    topic("Testing with Pytest", [
+                        vid("Pytest Full Course", "https://www.youtube.com/watch?v=cHYq1MRoyI0", "freeCodeCamp"),
+                        doc("Pytest Documentation", "https://docs.pytest.org/en/stable/")
+                    ])
+                ],
+                project: {
+                    title: "Async Data Pipeline CLI",
+                    description: ["Build async web scraper with aiohttp", "Implement decorator-based retry logic", "Use generators for streaming large datasets", "Package with Poetry, test with Pytest"],
+                    outcomes: ["Advanced Python patterns", "Production-quality code"]
+                }
+            },
+            {
+                id: "air-m1.2",
+                title: "Pandas & Data Manipulation",
+                weeks: "Month 1 (Week 3–4)",
+                topics: [
+                    topic("Pandas Core Operations", [
+                        playlist("Pandas Complete Tutorial", "https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS", "Corey Schafer"),
+                        vid("Pandas in 1 Hour", "https://www.youtube.com/watch?v=vmEHCJofslg", "Programming with Mosh"),
+                        doc("Pandas User Guide", "https://pandas.pydata.org/docs/user_guide/index.html")
+                    ]),
+                    topic("Data Cleaning & Transformation", [
+                        vid("Data Cleaning with Pandas", "https://www.youtube.com/watch?v=bDhvCp3_lYw", "Alex The Analyst"),
+                        art("Pandas Data Cleaning", "https://realpython.com/python-data-cleaning-numpy-pandas/", "Real Python")
+                    ]),
+                    topic("Advanced Groupby & Merging", [
+                        vid("Pandas GroupBy Explained", "https://www.youtube.com/watch?v=qy0fDqoMJx8", "Corey Schafer"),
+                        doc("Pandas Merging Guide", "https://pandas.pydata.org/docs/user_guide/merging.html")
+                    ]),
+                    topic("NumPy Fundamentals", [
+                        vid("NumPy Full Course", "https://www.youtube.com/watch?v=QUT1VHiLmmI", "freeCodeCamp"),
+                        doc("NumPy User Guide", "https://numpy.org/doc/stable/user/index.html")
+                    ])
+                ],
+                project: {
+                    title: "Data Analysis Report Generator",
+                    description: ["Analyze real-world dataset (Kaggle)", "Build automated EDA pipeline", "Generate PDF reports with matplotlib", "Handle missing data and outliers"],
+                    outcomes: ["Data manipulation mastery", "Analysis pipeline skills"]
+                }
+            },
+            {
+                id: "air-m1.3",
+                title: "FastAPI & REST API Design",
+                weeks: "Month 2",
+                topics: [
+                    topic("FastAPI Fundamentals", [
+                        playlist("FastAPI Full Course 2024", "https://www.youtube.com/playlist?list=PLqAmigZvYxIL9dnYeZEhMoHcoP4zop8-p", "Bitfumes"),
+                        vid("FastAPI Complete Tutorial", "https://www.youtube.com/watch?v=7t2alSnE2-I", "Akamai Developer"),
+                        doc("FastAPI Official Tutorial", "https://fastapi.tiangolo.com/tutorial/")
+                    ]),
+                    topic("Pydantic Models & Validation", [
+                        vid("Pydantic V2 for FastAPI", "https://www.youtube.com/watch?v=502XOB0u8OY", "ArjanCodes"),
+                        doc("FastAPI Request Body", "https://fastapi.tiangolo.com/tutorial/body/")
+                    ]),
+                    topic("Authentication with JWT", [
+                        vid("FastAPI JWT Auth", "https://www.youtube.com/watch?v=5GxQ1rLTwaU", "Ssali Jonathan"),
+                        doc("FastAPI Security", "https://fastapi.tiangolo.com/tutorial/security/")
+                    ]),
+                    topic("SQLAlchemy ORM & Alembic Migrations", [
+                        vid("SQLAlchemy Full Course", "https://www.youtube.com/watch?v=AKQ3XEDI9Mw", "freeCodeCamp"),
+                        doc("SQLAlchemy ORM Tutorial", "https://docs.sqlalchemy.org/en/20/orm/quickstart.html")
+                    ]),
+                    topic("PostgreSQL Integration", [
+                        vid("PostgreSQL Full Course", "https://www.youtube.com/watch?v=qw--VYLpxG4", "freeCodeCamp"),
+                        doc("PostgreSQL Docs", "https://www.postgresql.org/docs/")
+                    ]),
+                    topic("API Documentation (OpenAPI/Swagger)", [
+                        vid("FastAPI Auto Docs", "https://www.youtube.com/watch?v=tLKKmouUams", "Patrick Loeber"),
+                        doc("FastAPI OpenAPI Docs", "https://fastapi.tiangolo.com/tutorial/metadata/")
+                    ])
+                ],
+                project: {
+                    title: "FastAPI CRUD API with Auth",
+                    description: ["Full CRUD REST API with FastAPI", "JWT authentication & authorization", "PostgreSQL with SQLAlchemy ORM", "Deploy on Railway/Render with automated testing"],
+                    outcomes: ["Production API development", "Database integration", "Deployment skills"]
+                }
+            }
+        ]
+    },
+    {
+        id: "air-p2",
+        title: "Phase 2: Practical Deep Learning",
+        weeks: "Month 3",
+        modules: [
+            {
+                id: "air-m2.1",
+                title: "PyTorch Fundamentals",
+                weeks: "Month 3 (Week 1–2)",
+                topics: [
+                    topic("Tensors & Autograd", [
+                        playlist("Complete ML Playlist (Vijayraja)", "https://www.youtube.com/playlist?list=PLZru3N79Wp1B5_5eWd7yv28K6K0z0_U5x", "Vizuara AI"),
+                        playlist("PyTorch for Deep Learning", "https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4", "Patrick Loeber"),
+                        vid("PyTorch in 100 Seconds", "https://www.youtube.com/watch?v=ORMx45xqWkA", "Fireship"),
+                        doc("PyTorch Tutorials", "https://pytorch.org/tutorials/")
+                    ]),
+                    topic("Building Neural Networks", [
+                        vid("Neural Networks from Scratch", "https://www.youtube.com/watch?v=VMj-3S1tku0", "Andrej Karpathy"),
+                        vid("PyTorch Neural Network Tutorial", "https://www.youtube.com/watch?v=c36lUUr864M", "Patrick Loeber"),
+                        doc("PyTorch nn Module", "https://pytorch.org/docs/stable/nn.html")
+                    ]),
+                    topic("Training Loops & Optimization", [
+                        vid("Training Loop Explained", "https://www.youtube.com/watch?v=WvoLTXIjBYU", "Andrej Karpathy"),
+                        vid("Optimizers Explained", "https://www.youtube.com/watch?v=mdKjMPmcWjY", "StatQuest"),
+                        doc("PyTorch Optimizers", "https://pytorch.org/docs/stable/optim.html")
+                    ]),
+                    topic("Data Loading & Preprocessing", [
+                        vid("PyTorch DataLoader", "https://www.youtube.com/watch?v=PXOzkkB5eH0", "Patrick Loeber"),
+                        doc("PyTorch Data Utils", "https://pytorch.org/docs/stable/data.html")
+                    ]),
+                    topic("GPU Acceleration & Mixed Precision", [
+                        vid("PyTorch GPU Training", "https://www.youtube.com/watch?v=V_xro1bcAuA", "Aladdin Persson"),
+                        doc("CUDA Semantics", "https://pytorch.org/docs/stable/notes/cuda.html")
+                    ])
+                ],
+                project: {
+                    title: "Image Classifier from Scratch",
+                    description: ["Build CNN for CIFAR-10 classification", "Implement training/validation loop", "Use data augmentation techniques", "Achieve >90% accuracy"],
+                    outcomes: ["PyTorch mastery", "Deep learning fundamentals"]
+                }
+            },
+            {
+                id: "air-m2.2",
+                title: "Hugging Face Transformers & Fine-Tuning",
+                weeks: "Month 3 (Week 3–4)",
+                topics: [
+                    topic("Hugging Face Transformers Library", [
+                        playlist("Complete NLP Playlist (Vijayraja)", "https://www.youtube.com/playlist?list=PLZru3N79Wp1AsG_S9ySjO2P8370uGv_L7", "Vizuara AI"),
+                        playlist("Hugging Face Course", "https://www.youtube.com/playlist?list=PLo2EIpI_JMQvWfQndUesu0nPBAtZ9gP1o", "Hugging Face"),
+                        vid("Hugging Face in 15 Minutes", "https://www.youtube.com/watch?v=QEaBAZQCtwE", "AssemblyAI"),
+                        doc("HuggingFace Course", "https://huggingface.co/learn/nlp-course/chapter1/1")
+                    ]),
+                    topic("Transfer Learning Concepts", [
+                        vid("Transfer Learning Explained", "https://www.youtube.com/watch?v=yofjFQddwHE", "StatQuest"),
+                        art("Transfer Learning Guide", "https://huggingface.co/docs/transformers/training", "Hugging Face")
+                    ]),
+                    topic("Fine-Tuning BERT / DistilBERT", [
+                        vid("Fine-Tune BERT for Sentiment Analysis", "https://www.youtube.com/watch?v=GSt00_-0ncQ", "Venelin Valkov"),
+                        vid("Hugging Face Fine-Tuning Tutorial", "https://www.youtube.com/watch?v=iY2AZYdZAr0", "James Briggs"),
+                        doc("HuggingFace Trainer", "https://huggingface.co/docs/transformers/main_classes/trainer")
+                    ]),
+                    topic("Model Evaluation Metrics", [
+                        vid("Precision, Recall, F1 Explained", "https://www.youtube.com/watch?v=jJ7ff7Gcq34", "StatQuest"),
+                        vid("Confusion Matrix", "https://www.youtube.com/watch?v=Kdsp6soqA7o", "StatQuest"),
+                        doc("HuggingFace Evaluate", "https://huggingface.co/docs/evaluate/index")
+                    ]),
+                    topic("Model Hub & Sharing", [
+                        vid("Push Model to Hub", "https://www.youtube.com/watch?v=Z1-XMy-GNLQ", "Hugging Face"),
+                        doc("Model Hub Guide", "https://huggingface.co/docs/hub/models")
+                    ])
+                ],
+                project: {
+                    title: "Sentiment Analysis API",
+                    description: ["Fine-tune DistilBERT on IMDb reviews", "Achieve >92% accuracy", "Deploy as FastAPI with inference <200ms", "Push model to HuggingFace Hub"],
+                    outcomes: ["Transfer learning mastery", "Model deployment skills"]
+                }
+            }
+        ]
+    },
+    {
+        id: "air-p3",
+        title: "Phase 3: RAG Systems (The Money-Maker)",
+        weeks: "Month 4",
+        modules: [
+            {
+                id: "air-m3.1",
+                title: "LangChain & LlamaIndex Frameworks",
+                weeks: "Month 4 (Week 1–2)",
+                topics: [
+                    topic("LangChain Core Concepts", [
+                        playlist("LangChain Full Course", "https://www.youtube.com/playlist?list=PLqAmigZvYxILVLf4e6r2dcq-S3WJ1mUfY", "Krish Naik"),
+                        vid("LangChain Crash Course", "https://www.youtube.com/watch?v=lG7Uxts9SXs", "Tech With Tim"),
+                        doc("LangChain Docs", "https://python.langchain.com/docs/get_started/introduction")
+                    ]),
+                    topic("LlamaIndex for Data Frameworks", [
+                        vid("LlamaIndex Full Tutorial", "https://www.youtube.com/watch?v=cNMYeW2mpBs", "freeCodeCamp"),
+                        doc("LlamaIndex Docs", "https://docs.llamaindex.ai/en/stable/")
+                    ]),
+                    topic("Chains, Agents & Tools", [
+                        vid("LangChain Agents Explained", "https://www.youtube.com/watch?v=jSP-gSEyVeI", "James Briggs"),
+                        vid("Building Agents with LangChain", "https://www.youtube.com/watch?v=DWUdGhRrv2c", "Sam Witteveen"),
+                        doc("LangChain Agents", "https://python.langchain.com/docs/modules/agents/")
+                    ]),
+                    topic("Prompt Templates & Output Parsers", [
+                        vid("Prompt Engineering with LangChain", "https://www.youtube.com/watch?v=RflBcK0oDH0", "Patrick Loeber"),
+                        doc("LangChain Prompt Templates", "https://python.langchain.com/docs/modules/model_io/prompts/")
+                    ])
+                ],
+                project: {
+                    title: "Multi-Source Q&A Chatbot",
+                    description: ["Build chatbot using LangChain", "Connect multiple data sources", "Implement conversation memory", "Add streaming responses"],
+                    outcomes: ["LangChain/LlamaIndex proficiency", "Agent development"]
+                }
+            },
+            {
+                id: "air-m3.2",
+                title: "Vector Databases & RAG Architecture",
+                weeks: "Month 4 (Week 3–4)",
+                topics: [
+                    topic("Embedding Models & Semantic Search", [
+                        vid("Word Embeddings Explained", "https://www.youtube.com/watch?v=5MaWmXwxFNQ", "StatQuest"),
+                        vid("OpenAI Embeddings Tutorial", "https://www.youtube.com/watch?v=ySus5ZS0b94", "James Briggs"),
+                        doc("OpenAI Embeddings", "https://platform.openai.com/docs/guides/embeddings")
+                    ]),
+                    topic("Vector DBs: Pinecone, ChromaDB, FAISS", [
+                        vid("ChromaDB Tutorial", "https://www.youtube.com/watch?v=3yPBVii7lzI", "pixegami"),
+                        vid("Pinecone + LangChain", "https://www.youtube.com/watch?v=LhnCsygAvzY", "James Briggs"),
+                        doc("Pinecone Learning Center", "https://www.pinecone.io/learn/"),
+                        doc("ChromaDB Docs", "https://docs.trychroma.com/")
+                    ]),
+                    topic("Document Chunking Strategies", [
+                        vid("RAG Chunking Strategies", "https://www.youtube.com/watch?v=8OJC21T2SL4", "Greg Kamradt"),
+                        art("Chunking Best Practices", "https://www.pinecone.io/learn/chunking-strategies/", "Pinecone")
+                    ]),
+                    topic("RAG Pipeline: End-to-End", [
+                        playlist("RAG - GenAI Playlist (Vijayraja)", "https://www.youtube.com/playlist?list=PLZru3N79Wp1D_3Y4uXk3O6y0PjS6j1o5I", "Vizuara AI"),
+                        vid("Complete RAG Tutorial 2026", "https://www.youtube.com/watch?v=tcqEUSNCn8I", "freeCodeCamp"),
+                        vid("RAG from Scratch", "https://www.youtube.com/watch?v=sVcwVQRHIc8", "LangChain"),
+                        doc("LangChain RAG Guide", "https://python.langchain.com/docs/use_cases/question_answering/")
+                    ]),
+                    topic("Advanced RAG: Reranking & Hybrid Search", [
+                        channel("Vizuara AI (Vijayraja)", "https://www.youtube.com/@VizuaraAI"),
+                        vid("Advanced RAG Techniques", "https://www.youtube.com/watch?v=T-D1OfcDW1M", "LangChain"),
+                        vid("Reranking for Better RAG", "https://www.youtube.com/watch?v=9VgLi3wHNM0", "James Briggs"),
+                        art("Hybrid Search Guide", "https://www.pinecone.io/learn/hybrid-search-intro/", "Pinecone")
+                    ]),
+                    topic("Conversation Memory & Source Citations", [
+                        vid("Memory in LangChain", "https://www.youtube.com/watch?v=kn7Yg3Ohsuw", "Sam Witteveen"),
+                        doc("LangChain Memory", "https://python.langchain.com/docs/modules/memory/")
+                    ])
+                ],
+                project: {
+                    title: "RAG-Powered PDF Knowledge Base",
+                    description: ["Build RAG chatbot for PDF documents", "Use ChromaDB/Pinecone for vectors", "Add conversation memory & citations", "Implement hybrid search with reranking"],
+                    outcomes: ["Production RAG systems", "Vector DB mastery", "High-demand skill achieved"]
+                }
+            }
+        ]
+    },
+    {
+        id: "air-p4",
+        title: "Phase 4: Production & MLOps",
+        weeks: "Month 5",
+        modules: [
+            {
+                id: "air-m4.1",
+                title: "Docker & Containerization",
+                weeks: "Month 5 (Week 1–2)",
+                topics: [
+                    topic("Docker Fundamentals", [
+                        vid("Docker in 100 Seconds", "https://www.youtube.com/watch?v=Gjnup-PuquQ", "Fireship"),
+                        playlist("Docker Full Course", "https://www.youtube.com/playlist?list=PLy7NrYWoggjzfAHlUusx2wuDwfCrmJYcs", "TechWorld with Nana"),
+                        doc("Docker Official Docs", "https://docs.docker.com/get-started/")
+                    ]),
+                    topic("Multi-stage Builds & Optimization", [
+                        vid("Docker Best Practices", "https://www.youtube.com/watch?v=8vmKtS8W7IQ", "TechWorld with Nana"),
+                        vid("Multi-stage Docker Builds", "https://www.youtube.com/watch?v=zpkqNPwEzac", "DevOps Directive"),
+                        art("Dockerfile Best Practices", "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/", "Docker")
+                    ]),
+                    topic("Docker Compose for ML Services", [
+                        vid("Docker Compose Tutorial", "https://www.youtube.com/watch?v=HG6yIjZapSA", "TechWorld with Nana"),
+                        doc("Docker Compose Docs", "https://docs.docker.com/compose/")
+                    ]),
+                    topic("Deploying ML Models with Docker", [
+                        vid("Deploy ML Models with FastAPI & Docker", "https://www.youtube.com/watch?v=h5wLuVDr0oc", "Patrick Loeber"),
+                        art("ML Docker Guide", "https://aws.amazon.com/blogs/machine-learning/deploy-deep-learning-models-on-amazon-ecs/", "AWS")
+                    ])
+                ],
+                project: {
+                    title: "Dockerized RAG Application",
+                    description: ["Dockerize the RAG app from Month 4", "Multi-stage builds for optimization", "Docker Compose with vector DB + API", "Health checks and resource limits"],
+                    outcomes: ["Container mastery", "ML deployment skills"]
+                }
+            },
+            {
+                id: "air-m4.2",
+                title: "CI/CD & MLflow",
+                weeks: "Month 5 (Week 2–3)",
+                topics: [
+                    topic("GitHub Actions for CI/CD", [
+                        playlist("GitHub Actions Full Course", "https://www.youtube.com/playlist?list=PLArH6NjfKsUhvGHrpag7SuPumMzQRhUKY", "TechWorld with Nana"),
+                        vid("GitHub Actions Tutorial", "https://www.youtube.com/watch?v=R8_veQiYBjI", "TechWorld with Nana"),
+                        doc("GitHub Actions Docs", "https://docs.github.com/en/actions")
+                    ]),
+                    topic("Automated Testing in CI", [
+                        vid("CI/CD for ML Projects", "https://www.youtube.com/watch?v=9BgIDqAzfuA", "MLOps Community"),
+                        art("Testing ML Pipelines", "https://madewithml.com/courses/mlops/testing/", "Made With ML")
+                    ]),
+                    topic("MLflow Experiment Tracking", [
+                        vid("MLflow Tutorial", "https://www.youtube.com/watch?v=ksYIVDue8ak", "Krish Naik"),
+                        vid("MLflow Complete Guide", "https://www.youtube.com/watch?v=x3cxvsUFVZA", "freeCodeCamp"),
+                        doc("MLflow Documentation", "https://mlflow.org/docs/latest/index.html")
+                    ]),
+                    topic("Model Registry & Versioning", [
+                        vid("MLflow Model Registry", "https://www.youtube.com/watch?v=E6J86PlYBHk", "Databricks"),
+                        doc("MLflow Model Registry", "https://mlflow.org/docs/latest/model-registry.html")
+                    ]),
+                    topic("Model Monitoring & Observability", [
+                        vid("ML Monitoring Explained", "https://www.youtube.com/watch?v=fZj6UOb1lXE", "Evidently AI"),
+                        doc("Evidently AI Docs", "https://docs.evidentlyai.com/")
+                    ])
+                ],
+                project: {
+                    title: "ML CI/CD Pipeline",
+                    description: ["Setup GitHub Actions for testing & deployment", "Add MLflow for experiment tracking", "Implement model versioning & registry", "Create monitoring dashboard"],
+                    outcomes: ["MLOps pipeline mastery", "Production ML workflows"]
+                }
+            },
+            {
+                id: "air-m4.3",
+                title: "Cloud Deployment (AWS/GCP)",
+                weeks: "Month 5 (Week 4)",
+                topics: [
+                    topic("AWS EC2 & ECS Deployment", [
+                        vid("Deploy to AWS EC2", "https://www.youtube.com/watch?v=8TlukLu11Yo", "TechWorld with Nana"),
+                        vid("AWS ECS Tutorial", "https://www.youtube.com/watch?v=AYAh6YDXuho", "Be A Better Dev"),
+                        doc("AWS ECS Docs", "https://docs.aws.amazon.com/ecs/")
+                    ]),
+                    topic("AWS Lambda for Serverless ML", [
+                        vid("AWS Lambda Tutorial", "https://www.youtube.com/watch?v=eOBq__h4OJ4", "Be A Better Dev"),
+                        doc("Lambda Docs", "https://docs.aws.amazon.com/lambda/")
+                    ]),
+                    topic("Load Balancing & Auto-scaling", [
+                        vid("AWS ALB Tutorial", "https://www.youtube.com/watch?v=sCR3SAVdyCc", "Hussein Nasser"),
+                        doc("AWS ELB Docs", "https://docs.aws.amazon.com/elasticloadbalancing/")
+                    ]),
+                    topic("GCP Vertex AI (Alternative)", [
+                        vid("Google Cloud AI Platform", "https://www.youtube.com/watch?v=6s9YbGcoYV4", "Google Cloud"),
+                        doc("Vertex AI Docs", "https://cloud.google.com/vertex-ai/docs")
+                    ])
+                ],
+                project: {
+                    title: "Cloud-Deployed ML Platform",
+                    description: ["Deploy RAG app on AWS EC2/ECS", "Add load balancing & monitoring", "Configure auto-scaling policies", "Setup CloudWatch alerts"],
+                    outcomes: ["Cloud deployment expertise", "Production infrastructure"]
+                }
+            }
+        ]
+    },
+    {
+        id: "air-p5",
+        title: "Phase 5: Portfolio & Job Hunt",
+        weeks: "Month 6",
+        modules: [
+            {
+                id: "air-m5.1",
+                title: "Portfolio Projects & GitHub",
+                weeks: "Month 6 (Week 1–2)",
+                topics: [
+                    topic("End-to-End RAG with Custom UI (Streamlit/Gradio)", [
+                        vid("Streamlit Full Course", "https://www.youtube.com/watch?v=JoFGrSRj4X4", "freeCodeCamp"),
+                        vid("Gradio Tutorial", "https://www.youtube.com/watch?v=44vi31hehw4", "1littlecoder"),
+                        doc("Streamlit Docs", "https://docs.streamlit.io/"),
+                        doc("Gradio Docs", "https://www.gradio.app/docs/")
+                    ]),
+                    topic("ML Model Serving with A/B Testing", [
+                        vid("A/B Testing for ML Models", "https://www.youtube.com/watch?v=Jl0gBNn4U7w", "MLOps Community"),
+                        art("ML A/B Testing Guide", "https://madewithml.com/courses/mlops/testing/#ab-tests", "Made With ML")
+                    ]),
+                    topic("AI Agent for Business Workflow Automation", [
+                        vid("Build AI Agents", "https://www.youtube.com/watch?v=Eug2clsLtFs", "AI Jason"),
+                        vid("LangGraph Agent Tutorial", "https://www.youtube.com/watch?v=Tdn9GZ4yF6g", "LangChain"),
+                        doc("LangGraph Docs", "https://langchain-ai.github.io/langgraph/")
+                    ]),
+                    topic("GitHub README & Documentation", [
+                        vid("GitHub Profile README", "https://www.youtube.com/watch?v=KhGWbt1dAKQ", "codeSTACKr"),
+                        art("Awesome README Guide", "https://github.com/matiassingers/awesome-readme", "GitHub Community")
+                    ]),
+                    topic("Quantifying Project Impact", [
+                        vid("How to Write a Technical Resume", "https://www.youtube.com/watch?v=aKjsy-b00QM", "TechLead"),
+                        art("STAR Method for Engineers", "https://www.levels.fyi/blog/applying-star-framework.html", "levels.fyi")
+                    ])
+                ],
+                project: {
+                    title: "3 Polished Portfolio Projects",
+                    description: ["End-to-end RAG system with Streamlit UI", "ML model serving platform with A/B testing", "AI agent for real business workflow", "Quantify: latency, accuracy, throughput metrics"],
+                    outcomes: ["Interview-ready portfolio", "Demonstrated business impact"]
+                }
+            },
+            {
+                id: "air-m5.2",
+                title: "Resume, Blog & Job Applications",
+                weeks: "Month 6 (Week 3–4)",
+                topics: [
+                    topic("ATS-Friendly Resume Optimization", [
+                        vid("Tech Resume Tips", "https://www.youtube.com/watch?v=J-4Fv8nq1iA", "Jeff Su"),
+                        art("ATS Resume Guide", "https://www.jobscan.co/blog/ats-resume-guide/", "Jobscan")
+                    ]),
+                    topic("Technical Blog Writing (Dev.to/Hashnode)", [
+                        vid("Start a Dev Blog", "https://www.youtube.com/watch?v=qjsPHGMfzaA", "Traversy Media"),
+                        art("Technical Writing Guide", "https://developers.google.com/tech-writing", "Google")
+                    ]),
+                    topic("Portfolio Website", [
+                        vid("Portfolio Website Tutorial", "https://www.youtube.com/watch?v=0YFrGy_mzjY", "Traversy Media"),
+                        art("Portfolio Best Practices", "https://www.freecodecamp.org/news/how-to-build-a-developer-portfolio-website/", "freeCodeCamp")
+                    ]),
+                    topic("LinkedIn Optimization for AI Roles", [
+                        vid("LinkedIn for Developers", "https://www.youtube.com/watch?v=SG5Sb5WTV_g", "Joshua Fluke"),
+                        art("LinkedIn Tips for Engineers", "https://www.linkedin.com/pulse/optimize-linkedin-profile-2024-jeff-su/", "Jeff Su")
+                    ]),
+                    topic("Job Search Strategy (20+ apps/week)", [
+                        vid("Job Search Strategy 2026", "https://www.youtube.com/watch?v=rEaS8nkJbOA", "Josh Talks"),
+                        channel("AI Engineer Job Boards", "https://www.youtube.com/@AIEngineerJobs")
+                    ])
+                ],
+                project: {
+                    title: "Complete Job Application Package",
+                    description: ["Optimized ATS resume with metrics", "Portfolio website with 3 projects", "2+ technical blog posts published", "Apply to 20+ AI engineer roles per week"],
+                    outcomes: ["Job-ready package", "Professional presence"]
+                }
+            }
+        ]
+    },
+    {
+        id: "air-p6",
+        title: "Phase 6: Elite FAANG & Interview Prep",
+        weeks: "Month 7–12",
+        modules: [
+            {
+                id: "air-m6.1",
+                title: "ML System Design Interviews",
+                weeks: "Month 7–8",
+                topics: [
+                    topic("ML System Design Framework", [
+                        vid("ML System Design Interview", "https://www.youtube.com/watch?v=pYs1lNd-XbI", "Stanford MLSys"),
+                        vid("Designing ML Systems", "https://www.youtube.com/watch?v=C9ABKzpwCHA", "ByteByteGo"),
+                        art("ML System Design Primer", "https://github.com/chiphuyen/machine-learning-systems-design", "Chip Huyen")
+                    ]),
+                    topic("Design a Recommendation System", [
+                        vid("Recommendation System Design", "https://www.youtube.com/watch?v=BXcQUgCyplQ", "ByteByteGo"),
+                        art("Netflix Recommendations", "https://netflixtechblog.com/", "Netflix Tech Blog")
+                    ]),
+                    topic("Design a Search Engine", [
+                        vid("How Google Search Works", "https://www.youtube.com/watch?v=0eKVizvYSUQ", "Google"),
+                        vid("Semantic Search System Design", "https://www.youtube.com/watch?v=dRUIGgNBvVk", "James Briggs")
+                    ]),
+                    topic("Design an LLM-based Chatbot System", [
+                        vid("ChatGPT System Design", "https://www.youtube.com/watch?v=DjuXACWYkkU", "ByteByteGo"),
+                        art("LLM System Design", "https://huyenchip.com/2024/03/14/ai-oss.html", "Chip Huyen")
+                    ]),
+                    topic("Design an AI Content Moderation System", [
+                        vid("Content Moderation ML", "https://www.youtube.com/watch?v=VClXOFVGmIQ", "Google"),
+                        art("AI Safety Systems", "https://openai.com/research/", "OpenAI")
+                    ]),
+                    topic("Design a Real-time Fraud Detection System", [
+                        vid("Fraud Detection with ML", "https://www.youtube.com/watch?v=olfaBgJrUBI", "ByteByteGo"),
+                        art("Real-time ML Inference", "https://aws.amazon.com/blogs/machine-learning/", "AWS ML Blog")
+                    ])
+                ],
+                project: {
+                    title: "ML System Design Portfolio",
+                    description: ["10+ ML system design documents", "Trade-off analysis for each system", "Architecture diagrams with data flow", "Practice mock interviews"],
+                    outcomes: ["FAANG-level system design", "Interview mastery"]
+                }
+            },
+            {
+                id: "air-m6.2",
+                title: "Advanced LLM Fine-Tuning & AI Agents",
+                weeks: "Month 9–10",
+                topics: [
+                    topic("LoRA & QLoRA Fine-Tuning", [
+                        vid("LoRA Explained", "https://www.youtube.com/watch?v=YVU5wAA6Txo", "Weights & Biases"),
+                        vid("QLoRA Tutorial", "https://www.youtube.com/watch?v=XpoKB3usmKc", "Trelis Research"),
+                        doc("PEFT Library", "https://huggingface.co/docs/peft/index")
+                    ]),
+                    topic("Dataset Preparation for Fine-Tuning", [
+                        vid("Create Fine-Tuning Datasets", "https://www.youtube.com/watch?v=hRm9gU7Mz_M", "Trelis Research"),
+                        art("Data Quality for LLMs", "https://huggingface.co/docs/datasets/", "Hugging Face")
+                    ]),
+                    topic("RLHF & DPO Training", [
+                        vid("RLHF Explained", "https://www.youtube.com/watch?v=2MBJOuVq380", "Hugging Face"),
+                        vid("DPO Training Tutorial", "https://www.youtube.com/watch?v=NRVaNfAmb1Q", "Trelis Research"),
+                        doc("TRL Library", "https://huggingface.co/docs/trl/index")
+                    ]),
+                    topic("AI Agents with LangGraph", [
+                        vid("LangGraph Full Course", "https://www.youtube.com/watch?v=Tdn9GZ4yF6g", "LangChain"),
+                        vid("Multi-Agent Systems", "https://www.youtube.com/watch?v=MxRn2N2DXvs", "AI Jason"),
+                        doc("LangGraph Documentation", "https://langchain-ai.github.io/langgraph/")
+                    ]),
+                    topic("CrewAI & AutoGen Frameworks", [
+                        vid("CrewAI Tutorial", "https://www.youtube.com/watch?v=sPzc6hMg7So", "Matt Williams"),
+                        vid("AutoGen Multi-Agent", "https://www.youtube.com/watch?v=vU2S6dVf79M", "Microsoft"),
+                        doc("CrewAI Docs", "https://docs.crewai.com/"),
+                        doc("AutoGen Docs", "https://microsoft.github.io/autogen/")
+                    ]),
+                    topic("Model Quantization & Inference Optimization", [
+                        vid("Quantization Explained", "https://www.youtube.com/watch?v=ZKgCppMstSA", "Trelis Research"),
+                        vid("vLLM for Fast Inference", "https://www.youtube.com/watch?v=K4A0v1DpRiE", "AI Anytime"),
+                        doc("vLLM Docs", "https://docs.vllm.ai/en/latest/")
+                    ])
+                ],
+                project: {
+                    title: "Custom Fine-Tuned AI Agent",
+                    description: ["Fine-tune LLM with LoRA/QLoRA", "Build multi-agent system with LangGraph", "Implement A/B testing between models", "Deploy optimized model with vLLM"],
+                    outcomes: ["Advanced AI engineering", "Model optimization expertise"]
+                }
+            },
+            {
+                id: "air-m6.3",
+                title: "FAANG Coding & Behavioral Prep",
+                weeks: "Month 11–12",
+                topics: [
+                    topic("LeetCode: Arrays, Strings & HashMap", [
+                        playlist("NeetCode 150", "https://www.youtube.com/playlist?list=PLot-Xpze53ldVwtstag2TL4HQhAnC8ATf", "NeetCode"),
+                        vid("LeetCode Patterns Explained", "https://www.youtube.com/watch?v=DjYZk8nrXVY", "NeetCode"),
+                        doc("LeetCode Patterns", "https://seanprashad.com/leetcode-patterns/")
+                    ]),
+                    topic("LeetCode: Trees, Graphs & DP", [
+                        playlist("Dynamic Programming Playlist", "https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_yhUmAgcehydjFTBIv3", "NeetCode"),
+                        vid("DP for Beginners", "https://www.youtube.com/watch?v=oBt53YbR9Kk", "freeCodeCamp")
+                    ]),
+                    topic("ML-Specific Coding Problems", [
+                        vid("ML Coding Interview", "https://www.youtube.com/watch?v=bGDe0_xfD0I", "Weights & Biases"),
+                        art("ML Interview Questions", "https://github.com/alirezadir/Machine-Learning-Interviews", "GitHub Community")
+                    ]),
+                    topic("Behavioral Interview (STAR Method)", [
+                        vid("FAANG Behavioral Interview", "https://www.youtube.com/watch?v=PJKYqLP6MRE", "Jeff Su"),
+                        vid("Amazon Leadership Principles", "https://www.youtube.com/watch?v=CpcxVE5JIX4", "Dan Croitor"),
+                        art("Behavioral Interview Guide", "https://www.levels.fyi/blog/applying-star-framework.html", "levels.fyi")
+                    ]),
+                    topic("System Design Mock Interviews", [
+                        channel("ByteByteGo", "https://www.youtube.com/@ByteByteGo"),
+                        channel("NeetCode", "https://www.youtube.com/@NeetCode"),
+                        vid("System Design Interview Tips", "https://www.youtube.com/watch?v=F-4yyjhkn7s", "Exponent"),
+                        art("System Design Primer", "https://github.com/donnemartin/system-design-primer", "GitHub Community")
+                    ]),
+                    topic("Salary Negotiation & Offer Comparison", [
+                        vid("How to Negotiate Salary", "https://www.youtube.com/watch?v=u9BoG1n1948", "Josh Fluke"),
+                        vid("Negotiating Tech Offers", "https://www.youtube.com/watch?v=fyn0CKPuPlA", "Rahul Pandey"),
+                        art("Salary Negotiation Guide", "https://www.levels.fyi/blog/salary-negotiation-tips.html", "levels.fyi")
+                    ])
+                ],
+                project: {
+                    title: "FAANG Interview Readiness",
+                    description: ["Solve 200+ LeetCode problems (NeetCode 150 + ML-specific)", "Complete 10 mock system design interviews", "Practice 20+ behavioral scenarios (STAR)", "Negotiate and compare $200K+ offers"],
+                    outcomes: ["FAANG interview ready", "Land $200K+ AI Engineer role"]
+                }
+            }
+        ]
+    }
+];
+// ===== PLAN 7: ULTIMATE 5D PARALLELISM LEARNING PLAN =====
+const parallelism5DPlan = [
+    {
+        id: "5dp-p1",
+        title: "Phase 1: GPU & Memory Mastery",
+        weeks: "Month 1",
+        modules: [
+            {
+                id: "5dp-m1.1",
+                title: "Anatomy of a GPU & Low-Level Foundations",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("CPU vs. GPU Architecture", [
+                        doc("Volta Architecture Whitepaper", "https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf"),
+                        art("The CUDA Programming Model", "https://developer.nvidia.com/blog/cuda-refresher-cuda-programming-model/"),
+                        vid("Anatomy of a GPU", "https://www.youtube.com/watch?v=7Mre8H91bBA", "Vizuara AI")
+                    ]),
+                    topic("The CUDA Execution Model", [
+                        vid("CUDA C/C++ Basics", "https://www.youtube.com/playlist?list=PLxNPSjHT5qvtYRVdIE1yETCGcqJQncYGL", "CoffeeBeforeArch"),
+                        art("Warp Divergence & Scheduling", "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"),
+                        course("CUDA Programming Masterclass", "https://www.udemy.com/course/cuda-programming-masterclass/")
+                    ]),
+                    topic("GPU Memory Hierarchy", [
+                        art("Memory Coalescing Explained", "https://developer.nvidia.com/blog/how-access-global-memory-efficiently-cuda-c-kernels/"),
+                        vid("Shared Memory in CUDA", "https://www.youtube.com/watch?v=0wV3pGvNlO0", "Tech With Tim")
+                    ]),
+                    topic("Writing the First Kernel", [
+                        art("OpenAI Triton Language", "https://triton-lang.org/main/index.html"),
+                        vid("Custom GEMM in CUDA", "https://www.youtube.com/watch?v=2T9pPInUuM4", "CoffeeBeforeArch")
+                    ])
+                ],
+                project: {
+                    title: "Hardware-Aware GEMM Kernel",
+                    description: ["Write a raw Matrix Multiplication kernel", "Optimize using Shared Memory and L1 cache", "Bypass PyTorch abstractions"],
+                    outcomes: ["Understand SMs & Tensor Cores", "Eliminate memory bottlenecks"]
+                }
+            },
+            {
+                id: "5dp-m1.2",
+                title: "PyTorch Internals & The Memory Wall",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("The Training Loop Deconstructed", [
+                        vid("PyTorch Autograd (Micrograd)", "https://www.youtube.com/watch?v=MswxTl-EQcs", "Andrej Karpathy"),
+                        art("Autograd Reverse-mode BP", "https://pytorch.org/docs/stable/notes/autograd.html")
+                    ]),
+                    topic("Anatomy of GPU Memory", [
+                        art("Deep Learning Go Brrrr", "https://horace.io/brrr_intro.html", "Horace He"),
+                        doc("Sublinear Memory Cost Paper", "https://arxiv.org/abs/1604.06174")
+                    ]),
+                    topic("Memory Optimization: Checkpointing & Precision", [
+                        vid("Mixed Precision Training", "https://www.youtube.com/watch?v=6id88qHh-u0", "Patrick Loeber"),
+                        course("PyTorch for Deep Learning", "https://www.udemy.com/course/pytorch-for-deep-learning/")
+                    ])
+                ],
+                project: {
+                    title: "Memory Profiler & Checkpointer",
+                    description: ["Calculate byte-size of Params vs Gradients vs Activations", "Implement manual Activation Checkpointing", "Train OOM-sized model on 1 GPU"],
+                    outcomes: ["Predict OOM before training", "Master trade-offs (compute for memory)"]
+                }
+            }
+        ]
+    },
+    {
+        id: "5dp-p2",
+        title: "Phase 2: 1D & 2D Parallelism (Data & Tensor)",
+        weeks: "Month 2",
+        modules: [
+            {
+                id: "5dp-m2.1",
+                title: "Network Topology & 1D (Data) Parallelism",
+                weeks: "Week 5-6",
+                topics: [
+                    topic("GPU Communication (NCCL)", [
+                        art("Ring All-Reduce Visualization", "https://andrew.gibiansky.com/blog/machine-learning/baidu-allreduce/"),
+                        doc("PyTorch Distributed Paper", "https://arxiv.org/abs/2006.15704")
+                    ]),
+                    topic("DDP: Multi-Process Training", [
+                        vid("PyTorch DDP Tutorial", "https://www.youtube.com/watch?v=KaAJA7XJpsE", "PyTorch"),
+                        doc("DistributedDataParallel Design", "https://pytorch.org/docs/stable/notes/ddp.html")
+                    ]),
+                    topic("NCCL Primitives & Overlap", [
+                        vid("Collective Communication Basics", "https://www.youtube.com/watch?v=KaAJA7XJpsE", "PyTorch"),
+                        course("Distributed DL with PyTorch", "https://www.coursera.org/learn/advanced-deployment-scenarios-pytorch")
+                    ])
+                ],
+                project: {
+                    title: "Multi-Process Distributed Trainer",
+                    description: ["Write a DDP script handling 8 GPUs", "Diagram NVLink vs PCIe data flow", "Measure scaling efficiency"],
+                    outcomes: ["Spawn independent card processes", "Discard DataParallel indefinitely"]
+                }
+            },
+            {
+                id: "5dp-m2.2",
+                title: "Tensor/Model Parallelism (2D)",
+                weeks: "Week 7-8",
+                topics: [
+                    topic("Megatron-LM & Vertical Slicing", [
+                        doc("Megatron-LM Architecture Paper", "https://arxiv.org/abs/1909.08053"),
+                        vid("Megatron-LM Explained", "https://www.youtube.com/watch?v=R_7iPZfQ1Lw", "Yannic Kilcher")
+                    ]),
+                    topic("Row & Column Parallelism", [
+                        art("HuggingFace Tensor Parallelism", "https://huggingface.co/docs/transformers/v4.15.0/en/parallel_computations"),
+                        vid("Slicing Attention Matrices", "https://www.youtube.com/watch?v=DWUdGhRrv2c", "Vizuara AI")
+                    ]),
+                    topic("Parallelizing Transformers", [
+                        doc("NCCL Backend Config", "https://pytorch.org/docs/stable/distributed.html"),
+                        course("NVIDIA DLI: Multi-GPU Training", "https://courses.nvidia.com/courses/course-v1:DLI+S-FX-04+V1/")
+                    ])
+                ],
+                project: {
+                    title: "Megatron-Style Attention Writer",
+                    description: ["Rewrite nn.Linear for Column Parallelism", "Implement Row Parallelism sum-reduction", "Shard a massive 7B transformer manually"],
+                    outcomes: ["Shard individual matrices mathematically", "Eliminate idle GPU time"]
+                }
+            }
+        ]
+    },
+    {
+        id: "5dp-p3",
+        title: "Phase 3: Deep Optimization (3D & 4D)",
+        weeks: "Month 3",
+        modules: [
+            {
+                id: "5dp-m3.1",
+                title: "Pipeline Parallelism (3D)",
+                weeks: "Week 9-10",
+                topics: [
+                    topic("Inter-NodeRDMA & Infiniband", [
+                        doc("GPipe Staging Paper", "https://arxiv.org/abs/1811.06965"),
+                        art("Remote Direct Memory Access (RDMA)", "https://www.ibm.com/docs/en/aix/7.2?topic=protocol-remote-direct-memory-access")
+                    ]),
+                    topic("GPipe vs 1F1B Scheduling", [
+                        art("DeepSpeed Pipeline Schedules", "https://www.deepspeed.ai/tutorials/pipeline/"),
+                        vid("Stanford Pipeline Lecture", "https://www.youtube.com/watch?v=b0E-xG1t-p4", "Stanford CS25")
+                    ]),
+                    topic("Managing the Pipeline Bubble", [
+                        art("Stochastic Rounding & Gradients", "https://arxiv.org/abs/1412.7024"),
+                        course("Advanced DL with DeepSpeed", "https://www.udemy.com/topic/deep-learning/")
+                    ])
+                ],
+                project: {
+                    title: "Pipeline Scheduler Implementation",
+                    description: ["Design a 1F1B micro-batch schedule", "Calculate bubble % overhead", "Tune batch size to minimize idle time"],
+                    outcomes: ["Shard layer-by-layer across nodes", "Maximize inter-node throughput"]
+                }
+            },
+            {
+                id: "5dp-m3.2",
+                title: "ZeRO / FSDP (4D Parallelism)",
+                weeks: "Week 11-12",
+                topics: [
+                    topic("ZeRO Optimization Stages", [
+                        doc("ZeRO Trillion Param Paper", "https://arxiv.org/abs/1910.02054"),
+                        vid("Visualizing ZeRO Framework", "https://www.youtube.com/watch?v=AWe8_t_H2i8", "Explain AI")
+                    ]),
+                    topic("Fully Sharded Data Parallel (FSDP)", [
+                        art("PyTorch FSDP Blog", "https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/"),
+                        playlist("ZeRO & FSDP Deep Dive", "https://www.youtube.com/playlist?list=PL_X9T8S_A6Wv8Y3k_X75mS-dY94Vp8d6m", "Vizuara AI")
+                    ]),
+                    topic("Overlapping All-Gather/Reduce-Scatter", [
+                        art("DeepSpeed Communication Optimization", "https://www.deepspeed.ai/tutorials/zero/"),
+                        course("LLM Engineering & Deployment", "https://www.udemy.com/course/large-language-models/")
+                    ])
+                ],
+                project: {
+                    title: "Native PyTorch FSDP Wrapper",
+                    description: ["Implement Stage 1, 2, and 3 sharding", "Monitor memory savings with FSDP", "Overlap fetch-weights with compute"],
+                    outcomes: ["Zero memory redundancy", "Train trillion-param models economically"]
+                }
+            }
+        ]
+    },
+    {
+        id: "5dp-p4",
+        title: "Phase 4: Advanced Dimensions & Mastery",
+        weeks: "Month 4-6",
+        modules: [
+            {
+                id: "5dp-m4.1",
+                title: "Sequence, Context & Expert Parallelism",
+                weeks: "4 Weeks",
+                topics: [
+                    topic("Sequence Parallelism (SP)", [
+                        doc("Reducing Activation Recomputation", "https://arxiv.org/abs/2205.05198"),
+                        art("Token-Dimension Sharding", "https://github.com/NVIDIA/Megatron-LM")
+                    ]),
+                    topic("Context Parallelism & Ring Attention", [
+                        doc("Ring Attention Paper", "https://arxiv.org/abs/2310.01889"),
+                        vid("FlashAttention How it Works", "https://www.youtube.com/watch?v=FthNMHAet3E", "Yannic Kilcher")
+                    ]),
+                    topic("Expert Parallelism & MoE", [
+                        art("Mixture of Experts Explained", "https://huggingface.co/blog/moe"),
+                        doc("All-to-All Communication Primitive", "https://pytorch.org/docs/stable/distributed.html")
+                    ])
+                ],
+                project: {
+                    title: "MoE Router Logic & Ring Attention",
+                    description: ["Define sparse MoE token-routing logic", "Simulate Ring Attention communication", "Implement sequence-length sharding"],
+                    outcomes: ["Handle infinite context windows", "Manage sparse scaling natively"]
+                }
+            },
+            {
+                id: "5dp-m4.2",
+                title: "Capstone: GPT-2 Distributed From Scratch",
+                weeks: "4-8 Weeks",
+                topics: [
+                    topic("GPT-2 Architecture (Karpathy style)", [
+                        vid("Build GPT from Scratch", "https://www.youtube.com/watch?v=kCc8FmEb1nY", "Andrej Karpathy"),
+                        doc("Original GPT-2 Paper", "https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf")
+                    ]),
+                    topic("Applying the 5 Dimensions", [
+                        art("The Annotated Transformer", "https://nlp.seas.harvard.edu/2018/04/03/attention.html"),
+                        vid("Distributed GPT Training", "https://www.youtube.com/watch?v=KaAJA7XJpsE", "PyTorch")
+                    ]),
+                    topic("Measuring Scaling Efficiency", [
+                        art("Model FLOPs Utilization (MFU)", "https://arxiv.org/abs/2211.05102"),
+                        course("Vizuara: 5D Parallelism Bootcamp", "https://5d-parallelism.vizuara.ai/")
+                    ])
+                ],
+                project: {
+                    title: "Ultimate 5D Parallel Training Script",
+                    description: ["Build GPT-2 with RoPE and Self-Attention", "Parallelize across 8 GPUs using 5D dimensions", "Log MFU and tokens/sec on Rank 0"],
+                    outcomes: ["Industrial-grade LLM engineer", "Linear scaling verification"]
+                }
+            }
+        ]
+    }
+];
 // ===== EXPORT ALL PLANS =====
 exports.allLearningPlans = [
     {
@@ -1542,6 +2351,22 @@ exports.allLearningPlans = [
         icon: "layers",
         color: "rose",
         phases: systemDesignStackPlan
+    },
+    {
+        id: "ai-roadmap",
+        name: "AI Engineer $200K Roadmap",
+        description: "12-month elite path: Python → Deep Learning → RAG → MLOps → FAANG",
+        icon: "rocket",
+        color: "cyan",
+        phases: aiEngineerRoadmapPlan
+    },
+    {
+        id: "parallelism-5d",
+        name: "Ultimate 5D Parallelism",
+        description: "Distributed LLM training from scratch: GPU Hardware → Data → Tensor → Pipeline → ZeRO → 5D",
+        icon: "cpu",
+        color: "orange",
+        phases: parallelism5DPlan
     }
 ];
 // Keep backward compatibility

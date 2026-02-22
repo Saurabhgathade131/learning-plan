@@ -24,6 +24,7 @@ exports.YOUTUBE_CHANNELS = {
     twoMinutePapers: { name: "Two Minute Papers", url: "https://www.youtube.com/@TwoMinutePapers" },
     yannicKilcher: { name: "Yannic Kilcher", url: "https://www.youtube.com/@YannicKilcher" },
     samWitteveen: { name: "Sam Witteveen", url: "https://www.youtube.com/@samwitteveenai" },
+    vizuaraAI: { name: "Vizuara AI (Vijayraja)", url: "https://www.youtube.com/@VizuaraAI" },
 };
 exports.PLAYLISTS = {
     // JavaScript/Node.js
@@ -33,6 +34,10 @@ exports.PLAYLISTS = {
     systemDesignPrimer: { title: "System Design Primer", url: "https://www.youtube.com/playlist?list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX", author: "Gaurav Sen" },
     // Python/ML
     pythonForEverybody: { title: "Python for Everybody", url: "https://www.youtube.com/playlist?list=PLlRFEj9H3Oj7Bp8-DfGpfAfDBiblRfl5p", author: "FreeCodeCamp" },
+    completeML: { title: "Complete Machine Learning", url: "https://www.youtube.com/playlist?list=PLZru3N79Wp1B5_5eWd7yv28K6K0z0_U5x", author: "Vizuara AI" },
+    // NLP/RAG
+    completeNLP: { title: "Complete NLP", url: "https://www.youtube.com/playlist?list=PLZru3N79Wp1AsG_S9ySjO2P8370uGv_L7", author: "Vizuara AI" },
+    ragPlaylist: { title: "RAG - GenAI", url: "https://www.youtube.com/playlist?list=PLZru3N79Wp1D_3Y4uXk3O6y0PjS6j1o5I", author: "Vizuara AI" },
     // LangChain/AI
     langchainTutorials: { title: "LangChain Tutorials", url: "https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5", author: "Sam Witteveen" },
 };
@@ -56,6 +61,11 @@ exports.DOCS = {
     rabbitmq: { title: "RabbitMQ Docs", url: "https://www.rabbitmq.com/docs" },
     pytorch: { title: "PyTorch Docs", url: "https://pytorch.org/docs/" },
     huggingface: { title: "HuggingFace Docs", url: "https://huggingface.co/docs" },
+    voltaWhitepaper: { title: "Volta Architecture Whitepaper", url: "https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf" },
+    megatronLM: { title: "Megatron-LM Paper", url: "https://arxiv.org/abs/1909.08053" },
+    gPipePaper: { title: "GPipe Paper", url: "https://arxiv.org/abs/1811.06965" },
+    zeROPaper: { title: "ZeRO Paper", url: "https://arxiv.org/abs/1910.02054" },
+    fsdpBlog: { title: "PyTorch FSDP Blog", url: "https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/" },
 };
 exports.BLOGS = {
     martinfowler: { title: "Martin Fowler", url: "https://martinfowler.com/" },

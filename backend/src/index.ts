@@ -11,8 +11,18 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-const PROGRESS_FILE = path.join(__dirname, '../progress.json');
-const NOTES_FILE = path.join(__dirname, '../notes.json');
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+const IS_LAMBDA = !!process.env.LAMBDA_TASK_ROOT;
+
+const getStoragePath = (filename: string) => {
+    if (IS_LAMBDA) {
+        return path.join('/tmp', filename);
+    }
+    return path.join(__dirname, '..', filename);
+};
+
+const PROGRESS_FILE = getStoragePath('progress.json');
+const NOTES_FILE = getStoragePath('notes.json');
 
 // Helper to read progress
 const readProgress = () => {

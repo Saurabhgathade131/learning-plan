@@ -15,8 +15,16 @@ exports.app = app;
 const PORT = 5000;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-const PROGRESS_FILE = path_1.default.join(__dirname, '../progress.json');
-const NOTES_FILE = path_1.default.join(__dirname, '../notes.json');
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+const IS_LAMBDA = !!process.env.LAMBDA_TASK_ROOT;
+const getStoragePath = (filename) => {
+    if (IS_LAMBDA) {
+        return path_1.default.join('/tmp', filename);
+    }
+    return path_1.default.join(__dirname, '..', filename);
+};
+const PROGRESS_FILE = getStoragePath('progress.json');
+const NOTES_FILE = getStoragePath('notes.json');
 // Helper to read progress
 const readProgress = () => {
     if (!fs_1.default.existsSync(PROGRESS_FILE)) {

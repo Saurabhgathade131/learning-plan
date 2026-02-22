@@ -3,7 +3,7 @@ import type { LearningPlan, Phase, Progress, Topic, TopicResource } from './type
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket } from 'lucide-react';
+import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket, Cpu } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,7 +30,8 @@ const planIcons: Record<string, React.ReactNode> = {
   bot: <Bot className="w-5 h-5" />,
   gateway: <Network className="w-5 h-5" />,
   layers: <Layers className="w-5 h-5" />,
-  rocket: <Rocket className="w-5 h-5" />
+  rocket: <Rocket className="w-5 h-5" />,
+  cpu: <Cpu className="w-5 h-5" />
 };
 
 const colorClasses: Record<string, { bg: string; border: string; text: string; ring: string }> = {
@@ -39,7 +40,8 @@ const colorClasses: Record<string, { bg: string; border: string; text: string; r
   emerald: { bg: 'bg-emerald-500', border: 'border-emerald-500', text: 'text-emerald-500', ring: 'ring-emerald-500/30' },
   amber: { bg: 'bg-amber-500', border: 'border-amber-500', text: 'text-amber-500', ring: 'ring-amber-500/30' },
   rose: { bg: 'bg-rose-500', border: 'border-rose-500', text: 'text-rose-500', ring: 'ring-rose-500/30' },
-  cyan: { bg: 'bg-cyan-500', border: 'border-cyan-500', text: 'text-cyan-500', ring: 'ring-cyan-500/30' }
+  cyan: { bg: 'bg-cyan-500', border: 'border-cyan-500', text: 'text-cyan-500', ring: 'ring-cyan-500/30' },
+  orange: { bg: 'bg-orange-500', border: 'border-orange-500', text: 'text-orange-500', ring: 'ring-orange-500/30' }
 };
 
 const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
@@ -50,6 +52,7 @@ const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
       case 'article': return <BookMarked className="w-3 h-3" />;
       case 'playlist': return <Youtube className="w-3 h-3" />;
       case 'channel': return <Youtube className="w-3 h-3" />;
+      case 'course': return <BookOpen className="w-3 h-3" />;
       default: return <ExternalLink className="w-3 h-3" />;
     }
   };
@@ -61,6 +64,7 @@ const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
       case 'article': return "bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900/30 text-purple-700 dark:text-purple-400";
       case 'playlist': return "bg-orange-50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-900/30 text-orange-700 dark:text-orange-400";
       case 'channel': return "bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-900/30 text-pink-700 dark:text-pink-400";
+      case 'course': return "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900/30 text-amber-700 dark:text-amber-400";
       default: return "bg-slate-50 dark:bg-slate-950/20 border-slate-200 dark:border-slate-900/30 text-slate-700 dark:text-slate-400";
     }
   };

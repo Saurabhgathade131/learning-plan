@@ -68,6 +68,11 @@ export const DOCS = {
     rabbitmq: { title: "RabbitMQ Docs", url: "https://www.rabbitmq.com/docs" },
     pytorch: { title: "PyTorch Docs", url: "https://pytorch.org/docs/" },
     huggingface: { title: "HuggingFace Docs", url: "https://huggingface.co/docs" },
+    voltaWhitepaper: { title: "Volta Architecture Whitepaper", url: "https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf" },
+    megatronLM: { title: "Megatron-LM Paper", url: "https://arxiv.org/abs/1909.08053" },
+    gPipePaper: { title: "GPipe Paper", url: "https://arxiv.org/abs/1811.06965" },
+    zeROPaper: { title: "ZeRO Paper", url: "https://arxiv.org/abs/1910.02054" },
+    fsdpBlog: { title: "PyTorch FSDP Blog", url: "https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/" },
 };
 
 export const BLOGS = {

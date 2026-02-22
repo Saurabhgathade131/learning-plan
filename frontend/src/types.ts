@@ -5,7 +5,7 @@ export interface Project {
 }
 
 export interface TopicResource {
-    type: 'video' | 'doc' | 'article' | 'playlist' | 'channel';
+    type: 'video' | 'doc' | 'article' | 'playlist' | 'channel' | 'course';
     title: string;
     url: string;
     duration?: string;
