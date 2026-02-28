@@ -2451,6 +2451,195 @@ const microsoftAgentPlan: Phase[] = [
     }
 ];
 
+// ===== PLAN 9: PYTHON FULL STACK + AI (HINDI) =====
+const pythonHindiPlan: Phase[] = [
+    {
+        id: "py-hindi-p1",
+        title: "Phase 1: Zero to Coder (Python Basics)",
+        weeks: "Months 1-2",
+        modules: [
+            {
+                id: "py-hindi-m1.1",
+                title: "Core CS, OS & Git Foundations",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("How Computers & OS Work", [
+                        vid("OS Basics Hindi", "https://www.youtube.com/watch?v=RoXJVebh--Y", "Apna College")
+                    ]),
+                    topic("Git & GitHub Mastery", [
+                        vid("Git Tutorial Hindi", "https://www.youtube.com/watch?v=gwWKnnCMQ5c", "CodeWithHarry")
+                    ])
+                ],
+                project: {
+                    title: "Terminal Profile Setup",
+                    description: ["Setup VS Code and Git", "Create a GitHub repository with a custom README", "Push your first set of commits"],
+                    outcomes: ["Comfort with CLI", "Understanding version control"]
+                }
+            },
+            {
+                id: "py-hindi-m1.2",
+                title: "Python 100 Days of Code (Part 1)",
+                weeks: "Week 3-6",
+                topics: [
+                    topic("Python Basics (Variables, Loops, Funcs)", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry")
+                    ]),
+                    topic("Object Oriented Programming (OOP)", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry")
+                    ])
+                ],
+                project: {
+                    title: "CLI To-Do App & KBC Game",
+                    description: ["Build a basic game like Kaun Banega Crorepati", "Implement File I/O for To-Do list"],
+                    outcomes: ["Strong Python Fundamentals", "Basic Logic Building"]
+                }
+            }
+        ]
+    },
+    {
+        id: "py-hindi-p2",
+        title: "Phase 2: Data & Web Basics",
+        weeks: "Month 3",
+        modules: [
+            {
+                id: "py-hindi-m2.1",
+                title: "Web Development Basics (HTML/CSS)",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("HTML & CSS Mastery", [
+                        playlist("Web Development Course (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzj2Mdn", "CodeWithHarry")
+                    ])
+                ],
+                project: {
+                    title: "Personal Portfolio Website",
+                    description: ["Build a responsive portfolio using HTML/CSS", "Host it via GitHub Pages"],
+                    outcomes: ["Understanding Web Architecture", "Frontend Basics"]
+                }
+            },
+            {
+                id: "py-hindi-m2.2",
+                title: "Databases (SQL & MongoDB)",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("Relational DB & SQL", [
+                        vid("Complete SQL Tutorial (Hindi)", "https://www.youtube.com/watch?v=BpHX1tWFIGI", "Apna College")
+                    ]),
+                    topic("NoSQL MongoDB", [
+                        vid("MongoDB Tutorial (Hindi)", "https://www.youtube.com/watch?v=J6mD5TZI3Es", "CodeWithHarry")
+                    ])
+                ],
+                project: {
+                    title: "Store Inventory Schema",
+                    description: ["Design a schema for a store", "Write CRUD queries in SQL and MongoDB"],
+                    outcomes: ["Database Design", "Data querying mastery"]
+                }
+            }
+        ]
+    },
+    {
+        id: "py-hindi-p3",
+        title: "Phase 3: Full Stack Backend",
+        weeks: "Months 4-5",
+        modules: [
+            {
+                id: "py-hindi-m3.1",
+                title: "Modern APIs with FastAPI",
+                weeks: "Weeks 1-3",
+                topics: [
+                    topic("REST APIs with FastAPI", [
+                        playlist("FastAPI Tutorial (Hindi)", "https://www.youtube.com/playlist?list=PLwGdqUZWnOp2Z3eFOg4hwxaMAZqcPXYXm", "Thapa Technical")
+                    ])
+                ],
+                project: {
+                    title: "Task Management API",
+                    description: ["Build a RESTful API using FastAPI and SQLAlchemy", "Implement JWT Authentication"],
+                    outcomes: ["Backend API mastery", "Modern Python async web frameworks"]
+                }
+            },
+            {
+                id: "py-hindi-m3.2",
+                title: "Full Stack Web with Django",
+                weeks: "Weeks 4-8",
+                topics: [
+                    topic("Django Framework Basics", [
+                        playlist("Django Tutorials (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9", "CodeWithHarry")
+                    ])
+                ],
+                project: {
+                    title: "Blogging Platform (iCoder)",
+                    description: ["Build a full-stack blog using Django templates", "Integrate user auth, admin panel, and SQLite/PostgreSQL"],
+                    outcomes: ["Full Stack MVC Architecture", "Complete web app deployment"]
+                }
+            }
+        ]
+    },
+    {
+        id: "py-hindi-p4",
+        title: "Phase 4: AI & Machine Learning",
+        weeks: "Months 6-7",
+        modules: [
+            {
+                id: "py-hindi-m4.1",
+                title: "Data Science (NumPy, Pandas, EDA)",
+                weeks: "Week 1-3",
+                topics: [
+                    topic("Python for Data Science", [
+                        vid("Pandas & NumPy Hindi", "https://www.youtube.com/watch?v=x9iEwvNOH_0", "CampusX")
+                    ])
+                ],
+                project: {
+                    title: "Data Analysis Dashboard",
+                    description: ["Analyze a Kaggle dataset using Pandas", "Visualize data dynamically"],
+                    outcomes: ["Data Manipulation", "EDA proficiency"]
+                }
+            },
+            {
+                id: "py-hindi-m4.2",
+                title: "Machine & Deep Learning",
+                weeks: "Week 4-8",
+                topics: [
+                    topic("Machine Learning (Scikit-Learn)", [
+                        playlist("Machine Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfVYEziXDEB-xW0-6X2s-K", "Krish Naik")
+                    ]),
+                    topic("Deep Learning Basics", [
+                        playlist("Deep Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRui", "Krish Naik")
+                    ])
+                ],
+                project: {
+                    title: "House Price & Image Classifier",
+                    description: ["Build a regression model for prices", "Build a CNN for image classification using PyTorch/TF"],
+                    outcomes: ["AI Model Training", "Predictive modeling"]
+                }
+            }
+        ]
+    },
+    {
+        id: "py-hindi-p5",
+        title: "Phase 5: GenAI Capstone",
+        weeks: "Month 8",
+        modules: [
+            {
+                id: "py-hindi-m5.1",
+                title: "Generative AI & LLMs",
+                weeks: "Week 1-4",
+                topics: [
+                    topic("Prompt Engineering & Open Source LLMs", [
+                        playlist("Generative AI (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", "Krish Naik")
+                    ]),
+                    topic("RAG and LangChain", [
+                        playlist("Generative AI (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", "Krish Naik")
+                    ])
+                ],
+                project: {
+                    title: "Full Stack PDF Chatbot",
+                    description: ["Combine FastAPI or Django backend with React or basic HTML frontend", "Integrate LangChain and vector databases for PDF Q&A"],
+                    outcomes: ["End-to-end AI application", "Deployment ready portfolio piece"]
+                }
+            }
+        ]
+    }
+];
+
 // ===== EXPORT ALL PLANS =====
 export const allLearningPlans: LearningPlan[] = [
     {
@@ -2516,6 +2705,14 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "sparkles",
         color: "lime",
         phases: microsoftAgentPlan
+    },
+    {
+        id: "python-hindi",
+        name: "Python Full Stack + AI",
+        description: "Zero to Pro: Complete Python, Web Backend, and AI path for beginners (Hindi Focus)",
+        icon: "code",
+        color: "yellow",
+        phases: pythonHindiPlan
     }
 ];
 

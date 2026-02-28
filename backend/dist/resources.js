@@ -9,6 +9,10 @@ exports.YOUTUBE_CHANNELS = {
     piyushGarg: { name: "Piyush Garg", url: "https://www.youtube.com/@paborusyushgargteach" },
     codeWithHarry: { name: "CodeWithHarry", url: "https://www.youtube.com/@CodeWithHarry" },
     telusko: { name: "Telusko", url: "https://www.youtube.com/@Telusko" },
+    shraddhaDidi: { name: "Shraddha Didi (Apna College)", url: "https://www.youtube.com/@ApnaCollegeOfficial" },
+    krishNaik: { name: "Krish Naik (Hindi)", url: "https://www.youtube.com/@krishnaik06" },
+    campusX: { name: "CampusX", url: "https://www.youtube.com/@campusx-official" },
+    thapaTechnical: { name: "Thapa Technical", url: "https://www.youtube.com/@ThapaTechnical" },
     // International Creators
     traversyMedia: { name: "Traversy Media", url: "https://www.youtube.com/@TraversyMedia" },
     fireship: { name: "Fireship", url: "https://www.youtube.com/@Fireship" },
@@ -40,6 +44,14 @@ exports.PLAYLISTS = {
     ragPlaylist: { title: "RAG - GenAI", url: "https://www.youtube.com/playlist?list=PLZru3N79Wp1D_3Y4uXk3O6y0PjS6j1o5I", author: "Vizuara AI" },
     // LangChain/AI
     langchainTutorials: { title: "LangChain Tutorials", url: "https://www.youtube.com/playlist?list=PLqZXAkvF1bPNQER9mLmDbntNfSpzdDIU5", author: "Sam Witteveen" },
+    // Python & Full Stack (Hindi)
+    pythonHarry: { title: "100 Days of Code: Python (Hindi)", url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", author: "CodeWithHarry" },
+    webDevHarry: { title: "Web Development Course (Hindi)", url: "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzj2Mdn", author: "CodeWithHarry" },
+    fastapiThapa: { title: "FastAPI Tutorial (Hindi)", url: "https://www.youtube.com/playlist?list=PLwGdqUZWnOp2Z3eFOg4hwxaMAZqcPXYXm", author: "Thapa Technical" },
+    djangoHarry: { title: "Django Tutorials (Hindi)", url: "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9", author: "CodeWithHarry" },
+    mlKrishNaik: { title: "Machine Learning (Hindi)", url: "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfVYEziXDEB-xW0-6X2s-K", author: "Krish Naik" },
+    dlKrishNaik: { title: "Deep Learning (Hindi)", url: "https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRui", author: "Krish Naik" },
+    genaiKrishNaik: { title: "Generative AI (Hindi)", url: "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", author: "Krish Naik" },
 };
 exports.DOCS = {
     nodejs: { title: "Node.js Docs", url: "https://nodejs.org/docs/" },

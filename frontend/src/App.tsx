@@ -32,7 +32,8 @@ const planIcons: Record<string, React.ReactNode> = {
   layers: <Layers className="w-5 h-5" />,
   rocket: <Rocket className="w-5 h-5" />,
   cpu: <Cpu className="w-5 h-5" />,
-  sparkles: <Sparkles className="w-5 h-5" />
+  sparkles: <Sparkles className="w-5 h-5" />,
+  code: <Code className="w-5 h-5" />
 };
 
 const colorClasses: Record<string, { bg: string; border: string; text: string; ring: string }> = {
@@ -43,7 +44,8 @@ const colorClasses: Record<string, { bg: string; border: string; text: string; r
   rose: { bg: 'bg-rose-500', border: 'border-rose-500', text: 'text-rose-500', ring: 'ring-rose-500/30' },
   cyan: { bg: 'bg-cyan-500', border: 'border-cyan-500', text: 'text-cyan-500', ring: 'ring-cyan-500/30' },
   orange: { bg: 'bg-orange-500', border: 'border-orange-500', text: 'text-orange-500', ring: 'ring-orange-500/30' },
-  lime: { bg: 'bg-lime-500', border: 'border-lime-500', text: 'text-lime-500', ring: 'ring-lime-500/30' }
+  lime: { bg: 'bg-lime-500', border: 'border-lime-500', text: 'text-lime-500', ring: 'ring-lime-500/30' },
+  yellow: { bg: 'bg-yellow-500', border: 'border-yellow-500', text: 'text-yellow-600 dark:text-yellow-500', ring: 'ring-yellow-500/30' }
 };
 
 const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
