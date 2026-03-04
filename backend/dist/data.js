@@ -2871,6 +2871,665 @@ const pythonHindiPlan = [
         ]
     }
 ];
+// ===== PLAN 10: DSA ZERO TO PRO — ALL BIG TECH / HFT / CP =====
+const dsaProPlan = [
+    {
+        id: "dsa-p1",
+        title: "Phase 1: Foundations — Math, Complexity & Core Structures",
+        weeks: "Weeks 1-3",
+        modules: [
+            {
+                id: "dsa-m1.1",
+                title: "Complexity Analysis & Problem-Solving Mindset",
+                weeks: "Week 1",
+                topics: [
+                    topic("Big-O, Big-Theta, Big-Omega: Time & Space Complexity", [
+                        vid("Big O Notation Deep Dive", "https://www.youtube.com/watch?v=v4cd1O4zkGw", "CS Dojo"),
+                        art("Big-O Cheat Sheet", "https://www.bigocheatsheet.com/"),
+                        art("MIT 6.006: Intro to Algorithms (Recitation Notes)", "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/")
+                    ]),
+                    topic("Amortized Analysis: dynamic arrays, hash tables", [
+                        art("Amortized Analysis Explained", "https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/")
+                    ]),
+                    topic("Recursion & Recurrence Relations: T(n) = aT(n/b) + f(n), Master Theorem", [
+                        vid("Recursion Masterclass", "https://www.youtube.com/watch?v=IJDJ0kBx2LM", "Abdul Bari"),
+                        art("Master Theorem Explained", "https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)")
+                    ]),
+                    topic("Problem Decomposition Framework: Brute → Optimize → Code", [
+                        art("How to Approach Any Coding Problem", "https://leetcode.com/discuss/general-discussion/64609/tips-for-interview-preparation")
+                    ]),
+                    topic("Essential Math: Modular Arithmetic, GCD/LCM, Primes, Combinatorics, Probability", [
+                        vid("Math for Competitive Programming", "https://www.youtube.com/watch?v=XR4zGKszfH8", "Errichto"),
+                        art("Number Theory for Competitive Programming", "https://cp-algorithms.com/algebra/euclid-algorithm.html")
+                    ])
+                ],
+                project: {
+                    title: "Complexity Audit Repository",
+                    description: ["Analyze and document Big-O for 20 code snippets", "Implement 5 recursive functions with recurrence analysis", "Solve 10 LeetCode problems with explicit complexity write-ups"],
+                    outcomes: ["Strong analytical foundation", "Interview-ready complexity communication"]
+                }
+            },
+            {
+                id: "dsa-m1.2",
+                title: "Core Data Structures: Arrays, Strings, Linked Lists, Stacks, Queues",
+                weeks: "Week 2-3",
+                topics: [
+                    topic("Arrays: static/dynamic, prefix sums, difference arrays, sliding window foundation", [
+                        vid("Arrays Must-Know Tricks", "https://www.youtube.com/watch?v=RBSGKlAvoiM", "NeetCode"),
+                        art("Prefix Sum Patterns", "https://leetcode.com/discuss/study-guide/563022/prefix-sum-problems")
+                    ]),
+                    topic("Strings: ASCII, Unicode, anagram detection, KMP, Rabin-Karp, Z-algorithm", [
+                        vid("String Matching Algorithms", "https://www.youtube.com/watch?v=V5-7GzOfADQ", "Abdul Bari"),
+                        art("KMP Algorithm Explained", "https://cp-algorithms.com/string/kmp.html")
+                    ]),
+                    topic("Linked Lists: singly/doubly, cycle detection (Floyd's), reverse, merge sort on LL", [
+                        vid("Linked List Interview Questions", "https://www.youtube.com/watch?v=Hj_rA0dhr2I", "TechLead"),
+                        art("Floyd's Cycle Detection", "https://www.geeksforgeeks.org/floyds-cycle-finding-algorithm/")
+                    ]),
+                    topic("Stacks: monotonic stack, next greater element, histogram patterns", [
+                        vid("Monotonic Stack Patterns", "https://www.youtube.com/watch?v=zx5Sw9130L0", "NeetCode"),
+                        art("Leetcode Monotonic Stack Problems", "https://leetcode.com/discuss/study-guide/2347639/A-comprehensive-guide-and-template-for-monotonic-stack-based-problems")
+                    ]),
+                    topic("Queues & Deques: BFS foundation, sliding window maximum, priority queues", [
+                        vid("Deque & Sliding Window Max", "https://www.youtube.com/watch?v=DfljaUwZsOk", "NeetCode"),
+                        art("Priority Queue Patterns", "https://leetcode.com/discuss/general-discussion/1113630/")
+                    ]),
+                    topic("Hashing: HashMap, HashSet, collision resolution, frequency maps, two-sum family", [
+                        vid("Hashing Interview Patterns", "https://www.youtube.com/watch?v=KyUTuwz_b7Q", "NeetCode"),
+                        art("Hashing Techniques Guide", "https://www.geeksforgeeks.org/hashing-data-structure/")
+                    ])
+                ],
+                project: {
+                    title: "Core DS Implementation in Python/C++",
+                    description: ["Implement LinkedList, Stack, Queue, HashMap from scratch", "Solve 30 LeetCode Easy/Medium using only core structures", "Solve: Two Sum, Best Time to Buy Stock, Valid Parentheses, LRU Cache"],
+                    outcomes: ["Deep understanding of DS internals", "HFT-relevant memory-efficient implementations"]
+                }
+            }
+        ]
+    },
+    {
+        id: "dsa-p2",
+        title: "Phase 2: Essential Patterns — Searching, Sorting & Two Pointers",
+        weeks: "Weeks 4-6",
+        modules: [
+            {
+                id: "dsa-m2.1",
+                title: "Sorting Algorithms — From Theory to Custom Comparators",
+                weeks: "Week 4",
+                topics: [
+                    topic("Comparison Sorts: Merge Sort, Quick Sort (3-way, Dutch flag), Heap Sort", [
+                        vid("Sorting Algorithms Masterclass", "https://www.youtube.com/watch?v=RfXt_qHDEPw", "Abdul Bari"),
+                        art("Sorting Algorithms Visualized", "https://visualgo.net/en/sorting")
+                    ]),
+                    topic("Non-Comparison Sorts: Counting Sort, Radix Sort, Bucket Sort", [
+                        art("Counting Sort & Radix Sort (GeeksForGeeks)", "https://www.geeksforgeeks.org/counting-sort/")
+                    ]),
+                    topic("Custom Comparators & Sorting by Multiple Keys", [
+                        art("Python Custom Sort Guide", "https://docs.python.org/3/howto/sorting.html")
+                    ]),
+                    topic("Interview Sorting Problems: Sort Colors, Merge Intervals, Largest Number", [
+                        vid("Sorting Interview Questions", "https://www.youtube.com/watch?v=aw_08iTRl5k", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "Sort Everything Challenge",
+                    description: ["Implement 6 sorting algorithms from scratch", "Benchmark: Insertion Sort vs Merge Sort vs Quick Sort on 10K elements", "Solve 15 LeetCode sorting problems including Sort Colors and Merge Intervals"],
+                    outcomes: ["Deep algorithmic thinking", "HFT-relevant performance benchmarking"]
+                }
+            },
+            {
+                id: "dsa-m2.2",
+                title: "Binary Search — All Variants & Patterns",
+                weeks: "Week 5",
+                topics: [
+                    topic("Classical Binary Search: left/right boundary, overflow prevention", [
+                        vid("Binary Search Patterns", "https://www.youtube.com/watch?v=jf1baieXkSQ", "NeetCode"),
+                        art("Binary Search Templates (LeetCode Guide)", "https://leetcode.com/discuss/general-discussion/786126/Python-Powerful-Ultimate-Binary-Search-Template.-Solved-many-problems")
+                    ]),
+                    topic("Binary Search on Answer: find minimum in rotated array, sqrt(x), ship packages", [
+                        vid("Binary Search on Answer", "https://www.youtube.com/watch?v=GU7DpgHINWQ", "Errichto"),
+                        art("Search on Answer Pattern", "https://cp-algorithms.com/num_methods/binary_search.html")
+                    ]),
+                    topic("Rotated Sorted Arrays, Peak Finding, 2D Matrix Search", [
+                        vid("Rotated Array Problems", "https://www.youtube.com/watch?v=U8XENwh8Oy8", "NeetCode")
+                    ]),
+                    topic("Advanced BS: Kth Smallest in Sorted Matrix, Median of Two Sorted Arrays", [
+                        vid("Median of Two Sorted Arrays", "https://www.youtube.com/watch?v=q6IEA26hvXc", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "Binary Search Problem Set (25 Problems)",
+                    description: ["Solve 25 Binary Search tagged LeetCode problems", "Implement all 3 templates (exact match, left boundary, right boundary)", "Implement binary search in 2D matrix"],
+                    outcomes: ["Master all binary search variants used in FAANG", "Pattern recognition for 'minimize the maximum' problems"]
+                }
+            },
+            {
+                id: "dsa-m2.3",
+                title: "Two Pointers, Sliding Window & Prefix Sums",
+                weeks: "Week 6",
+                topics: [
+                    topic("Two Pointers: opposite ends, same direction, fast-slow (Floyd's)", [
+                        vid("Two Pointer Masterclass", "https://www.youtube.com/watch?v=On3r4I1p4f0", "NeetCode"),
+                        art("Two Pointer Problems Guide", "https://leetcode.com/discuss/study-guide/1688903/Solved-all-two-pointers-problems-in-100-days")
+                    ]),
+                    topic("Sliding Window: fixed size, variable size, minimum/maximum window substring", [
+                        vid("Sliding Window Patterns", "https://www.youtube.com/watch?v=MK-NZ4hN7rs", "NeetCode"),
+                        art("Sliding Window Template", "https://leetcode.com/discuss/general-discussion/657507/Sliding-Window-for-Beginners-Problems-Template-and-Code")
+                    ]),
+                    topic("Prefix Sums: subarray sum equals K, range queries, 2D prefix sums", [
+                        art("Prefix Sum Problems (LeetCode)", "https://leetcode.com/tag/prefix-sum/")
+                    ]),
+                    topic("Kadane's Algorithm: Maximum Subarray, Maximum Circular Subarray", [
+                        vid("Kadane Algorithm Deep Dive", "https://www.youtube.com/watch?v=5WZl3MMT0Eg", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "Window & Pointer Pattern Drills",
+                    description: ["Solve 20 Sliding Window problems", "Implement 2D prefix sum matrix", "Solve: Minimum Window Substring, Trapping Rain Water, Container with Most Water"],
+                    outcomes: ["Master O(n) solutions for O(n²) naive approaches", "Critical for HFT latency-sensitive code"]
+                }
+            }
+        ]
+    },
+    {
+        id: "dsa-p3",
+        title: "Phase 3: Tree & Graph Algorithms",
+        weeks: "Weeks 7-10",
+        modules: [
+            {
+                id: "dsa-m3.1",
+                title: "Binary Trees & BSTs — All Traversals & Classic Problems",
+                weeks: "Week 7",
+                topics: [
+                    topic("Tree Traversals: DFS (pre/in/post), BFS (level order), Morris Traversal", [
+                        vid("Tree Traversal Patterns", "https://www.youtube.com/watch?v=WLvU5EQVZqY", "NeetCode"),
+                        art("Morris Traversal Explained", "https://www.geeksforgeeks.org/morris-traversal-for-preorder/")
+                    ]),
+                    topic("BST: search, insert, delete, validation, kth smallest/largest", [
+                        vid("BST Operations", "https://www.youtube.com/watch?v=BvHiGFEemgs", "NeetCode")
+                    ]),
+                    topic("Tree Properties: height, diameter, balanced check, lowest common ancestor", [
+                        vid("LCA Algorithm Deep Dive", "https://www.youtube.com/watch?v=yi0FhRqDJfo", "NeetCode")
+                    ]),
+                    topic("Tree DP: max path sum, binary tree cameras, house robber on tree", [
+                        vid("Tree Dynamic Programming", "https://www.youtube.com/watch?v=T5B4ADI-7vw", "NeetCode")
+                    ]),
+                    topic("Balanced BSTs: AVL rotations, Red-Black trees (concepts for interviews)", [
+                        art("AVL Tree Rotations", "https://www.geeksforgeeks.org/avl-tree-set-1-insertion/")
+                    ])
+                ],
+                project: {
+                    title: "Tree Problem Sprint (30 Problems)",
+                    description: ["Solve LeetCode Top 30 binary tree problems", "Implement iterative DFS with stack for all 3 traversals", "Solve: Serialize/Deserialize BTree, Max Path Sum, Binary Tree Cameras"],
+                    outcomes: ["Core FAANG tree interview pattern mastery"]
+                }
+            },
+            {
+                id: "dsa-m3.2",
+                title: "Heaps, Priority Queues & Top-K Problems",
+                weeks: "Week 8",
+                topics: [
+                    topic("Min/Max Heap: insert, delete, heapify, heap sort", [
+                        vid("Heap Data Structure", "https://www.youtube.com/watch?v=HqPJF2L5h9U", "NeetCode"),
+                        art("Binary Heap (GeeksForGeeks)", "https://www.geeksforgeeks.org/binary-heap/")
+                    ]),
+                    topic("Top-K Patterns: Kth Largest, K Closest Points, Top K Frequent Words", [
+                        vid("Top K Elements Pattern", "https://www.youtube.com/watch?v=YjAvf-UbZr0", "NeetCode"),
+                        art("Heap Problems Pattern", "https://leetcode.com/discuss/general-discussion/1127340/")
+                    ]),
+                    topic("Two Heaps Pattern: Median from Data Stream, Sliding Window Median", [
+                        vid("Two Heaps Pattern", "https://www.youtube.com/watch?v=itmhHWaHupI", "NeetCode")
+                    ]),
+                    topic("Merge K Sorted Lists/Arrays: heap-based O(N log K) approach", [
+                        vid("Merge K Sorted Lists", "https://www.youtube.com/watch?v=q5a5OiGbT6Q", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "Heap & Priority Queue Drills",
+                    description: ["Implement MinHeap from scratch in Python and C++", "Solve: Kth Largest in Stream, Median from Data Stream, Task Scheduler", "Build a real-time leaderboard using heaps"],
+                    outcomes: ["HFT-critical: efficient priority queue operations", "O(N log K) pattern for large dataset problems"]
+                }
+            },
+            {
+                id: "dsa-m3.3",
+                title: "Graph Algorithms — BFS/DFS to Advanced",
+                weeks: "Week 9-10",
+                topics: [
+                    topic("Graph Representations: adjacency list, matrix, edge list", [
+                        vid("Graph Representations", "https://www.youtube.com/watch?v=EgI5nU9etnU", "NeetCode")
+                    ]),
+                    topic("BFS: shortest path in unweighted, Multi-source BFS, 0-1 BFS", [
+                        vid("BFS Graph Patterns", "https://www.youtube.com/watch?v=oDqjPvD1e6A", "NeetCode"),
+                        art("BFS vs DFS When to Use", "https://www.geeksforgeeks.org/difference-between-bfs-and-dfs/")
+                    ]),
+                    topic("DFS: connected components, cycle detection, flood fill, islands problems", [
+                        vid("DFS Graph Masterclass", "https://www.youtube.com/watch?v=Ope7BxTvFRg", "NeetCode")
+                    ]),
+                    topic("Topological Sort: Kahn's Algorithm (BFS), DFS-based for DAGs, Course Schedule", [
+                        vid("Topological Sort Explained", "https://www.youtube.com/watch?v=eL-KzMXSXXI", "NeetCode"),
+                        art("Kahn's Algorithm", "https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/")
+                    ]),
+                    topic("Union-Find / Disjoint Set (DSU): path compression, union by rank, dynamic connectivity", [
+                        vid("Union Find Deep Dive", "https://www.youtube.com/watch?v=ayW5B2W9hfo", "NeetCode"),
+                        art("DSU Tutorial (CP Algorithms)", "https://cp-algorithms.com/data_structures/disjoint_set_union.html")
+                    ]),
+                    topic("Shortest Paths: Dijkstra (heap-optimized), Bellman-Ford, SPFA, Floyd-Warshall", [
+                        vid("Dijkstra's Algorithm", "https://www.youtube.com/watch?v=XB4MIexjvY0", "NeetCode"),
+                        art("Dijkstra vs Bellman-Ford vs Floyd-Warshall", "https://cp-algorithms.com/graph/dijkstra.html")
+                    ]),
+                    topic("Minimum Spanning Tree: Kruskal's (DSU), Prim's Algorithm", [
+                        art("MST Algorithms (CP Algorithms)", "https://cp-algorithms.com/graph/mst_kruskal.html")
+                    ]),
+                    topic("Advanced: Bridges, Articulation Points, SCC (Tarjan's/Kosaraju's)", [
+                        art("Tarjan's Algorithm (CP Algorithms)", "https://cp-algorithms.com/graph/bridge-searching.html")
+                    ])
+                ],
+                project: {
+                    title: "Graph Problem Intensive (40 Problems)",
+                    description: ["Solve LeetCode Top 40 graph problems", "Implement Dijkstra, Union-Find, Topological Sort from scratch", "Solve: Word Ladder, Network Delay Time, Number of Islands, Alien Dictionary"],
+                    outcomes: ["Graph mastery for SDE, DevOps (network topology), and AI (knowledge graphs)"]
+                }
+            }
+        ]
+    },
+    {
+        id: "dsa-p4",
+        title: "Phase 4: Dynamic Programming — All Patterns",
+        weeks: "Weeks 11-14",
+        modules: [
+            {
+                id: "dsa-m4.1",
+                title: "DP Foundations: Memoization to Tabulation",
+                weeks: "Week 11",
+                topics: [
+                    topic("DP Thinking: identify overlapping subproblems, optimal substructure", [
+                        vid("How to Think in DP", "https://www.youtube.com/watch?v=oBt53YbR9Kk", "NeetCode"),
+                        art("DP Patterns Guide (LeetCode)", "https://leetcode.com/discuss/general-discussion/458695/Dynamic-Programming-Patterns")
+                    ]),
+                    topic("Fibonacci Family: Climbing Stairs, House Robber, Jump Game variants", [
+                        vid("1D DP Patterns", "https://www.youtube.com/watch?v=Y0lT9Fck7qI", "NeetCode")
+                    ]),
+                    topic("Grid DP: Unique Paths, Min Path Sum, Dungeon Game", [
+                        vid("Grid DP Problems", "https://www.youtube.com/watch?v=IlEsdxuD4lY", "NeetCode")
+                    ]),
+                    topic("Space Optimization: O(n) → O(1) DP with rolling array technique", [
+                        art("DP Space Optimization Techniques", "https://www.geeksforgeeks.org/space-optimization-using-dp/")
+                    ])
+                ],
+                project: {
+                    title: "DP Foundations Sprint (25 Problems)",
+                    description: ["Solve all classic 1D and 2D DP problems on LeetCode", "Implement both top-down and bottom-up for each", "Optimize space for each solution"],
+                    outcomes: ["Solid DP fundamentals for all tech interviews"]
+                }
+            },
+            {
+                id: "dsa-m4.2",
+                title: "Sequence & String DP",
+                weeks: "Week 12",
+                topics: [
+                    topic("LCS Family: Longest Common Subsequence, Longest Common Substring, Edit Distance", [
+                        vid("LCS & Edit Distance", "https://www.youtube.com/watch?v=Ua0GhsJSlWM", "NeetCode"),
+                        art("Edit Distance Explained", "https://www.geeksforgeeks.org/edit-distance-dp-5/")
+                    ]),
+                    topic("LIS Family: Longest Increasing Subsequence (O(n log n) with patience sort)", [
+                        vid("LIS O(n log n) Technique", "https://www.youtube.com/watch?v=cjWnW0hdF1Y", "NeetCode"),
+                        art("LIS with Binary Search (CP Algorithms)", "https://cp-algorithms.com/sequences/longest_increasing_subsequence.html")
+                    ]),
+                    topic("Palindrome DP: Longest Palindromic Subsequence, Minimum Cuts", [
+                        vid("Palindrome DP Problems", "https://www.youtube.com/watch?v=ZnzvU03HtYk", "NeetCode")
+                    ]),
+                    topic("String DP: Regular Expression Matching, Wildcard Matching, Word Break", [
+                        vid("Regex DP Problems", "https://www.youtube.com/watch?v=HAA8mgxlov8", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "String DP Deep Dive (20 Problems)",
+                    description: ["Solve all LCS/LIS/Palindrome family problems", "Implement LIS in O(n log n)", "Solve: Edit Distance, Regular Expression Matching, Distinct Subsequences"],
+                    outcomes: ["Essential for NLP/AI (string alignment), FAANG interviews"]
+                }
+            },
+            {
+                id: "dsa-m4.3",
+                title: "Knapsack, Partition & Interval DP",
+                weeks: "Week 13",
+                topics: [
+                    topic("0/1 Knapsack & Variants: subset sum, partition equal subset", [
+                        vid("Knapsack DP Patterns", "https://www.youtube.com/watch?v=nLmhmB6NzcM", "NeetCode"),
+                        art("Knapsack Variants Guide", "https://leetcode.com/discuss/general-discussion/1000004/0-1-Knapsack-template-problems")
+                    ]),
+                    topic("Unbounded Knapsack: Coin Change, Rod Cutting, Perfect Squares", [
+                        vid("Unbounded Knapsack Problems", "https://www.youtube.com/watch?v=H9bfqozjoqs", "NeetCode")
+                    ]),
+                    topic("Interval DP: Matrix Chain Multiplication, Burst Balloons, Merge Stones", [
+                        vid("Interval DP Deep Dive", "https://www.youtube.com/watch?v=Uz1M7fQJbQs", "Errichto"),
+                        art("Interval DP Pattern", "https://leetcode.com/discuss/general-discussion/907993/interval-dp-one-framework-to-solve-them-all/")
+                    ]),
+                    topic("Tree DP: Binary Tree Maximum Path Sum, House Robber III", [
+                        vid("Tree DP Patterns", "https://www.youtube.com/watch?v=nHR8ytpzz7c", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "Knapsack & Interval DP Problems (20)",
+                    description: ["Solve all Knapsack variants on LeetCode", "Implement Matrix Chain Multiplication", "Solve: Burst Balloons, Strange Printer, Minimum Cost to Cut Stick"],
+                    outcomes: ["Advanced DP patterns for FAANG hard problems"]
+                }
+            },
+            {
+                id: "dsa-m4.4",
+                title: "Bitmask DP, Game Theory & State Machine DP",
+                weeks: "Week 14",
+                topics: [
+                    topic("Bitmask DP: Travelling Salesman Problem, Shortest Path Visiting All Nodes", [
+                        vid("Bitmask DP Explained", "https://www.youtube.com/watch?v=cY4HiiFHO1o", "Errichto"),
+                        art("Bitmask DP Tutorial (CP Algorithms)", "https://cp-algorithms.com/algebra/all-submasks.html")
+                    ]),
+                    topic("Game Theory DP: Nim, Stone Game, Predict the Winner", [
+                        vid("Game Theory DP", "https://www.youtube.com/watch?v=WfdCBb_E9RM", "NeetCode")
+                    ]),
+                    topic("State Machine DP: Buy/Sell Stock (all 6 variants), Best Time with Cooldown", [
+                        vid("Stock Problem State Machine", "https://www.youtube.com/watch?v=oDhu5uGq_ic", "NeetCode")
+                    ]),
+                    topic("Digit DP: count numbers with specific digit constraints", [
+                        art("Digit DP Tutorial (CP Algorithms)", "https://codeforces.com/blog/entry/53960")
+                    ])
+                ],
+                project: {
+                    title: "Advanced DP Mastery Set",
+                    description: ["Implement TSP with bitmask DP", "Solve all 6 Buy/Sell Stock variants", "Solve: Shortest Path Visiting All Nodes, Predict the Winner"],
+                    outcomes: ["Top 1% DP problem-solving ability", "Required for competitive programming and FAANG hard rounds"]
+                }
+            }
+        ]
+    },
+    {
+        id: "dsa-p5",
+        title: "Phase 5: Advanced Patterns — Tries, Segment Trees & Advanced Graphs",
+        weeks: "Weeks 15-17",
+        modules: [
+            {
+                id: "dsa-m5.1",
+                title: "Tries & Advanced String Algorithms",
+                weeks: "Week 15",
+                topics: [
+                    topic("Trie (Prefix Tree): insert, search, startsWith, delete, compressed trie", [
+                        vid("Trie Data Structure", "https://www.youtube.com/watch?v=oobqoCJlHA0", "NeetCode"),
+                        art("Trie Problems (CP Algorithms)", "https://cp-algorithms.com/string/aho_corasick.html")
+                    ]),
+                    topic("Aho-Corasick Automaton: multi-pattern matching", [
+                        art("Aho-Corasick Algorithm", "https://cp-algorithms.com/string/aho_corasick.html")
+                    ]),
+                    topic("Suffix Arrays & Suffix Trees: LCP array, longest repeated substring", [
+                        art("Suffix Array (CP Algorithms)", "https://cp-algorithms.com/string/suffix-array.html"),
+                        vid("Suffix Array Explained", "https://www.youtube.com/watch?v=zqKlL3ZpTqs", "William Fiset")
+                    ]),
+                    topic("Rolling Hash: Rabin-Karp, polynomial hashing for string comparison", [
+                        art("Rabin-Karp Hashing", "https://cp-algorithms.com/string/rabin-karp.html")
+                    ])
+                ],
+                project: {
+                    title: "Search Autocomplete & Plagiarism Detector",
+                    description: ["Implement full-feature Trie with delete", "Build autocomplete system using Trie (Design Search Autocomplete)", "Solve: Word Search II, Maximum XOR, Concatenated Words"],
+                    outcomes: ["Trie mastery for SDE/AI (search engines, NLP tokenization)"]
+                }
+            },
+            {
+                id: "dsa-m5.2",
+                title: "Segment Trees, BITs & Range Query Structures",
+                weeks: "Week 16",
+                topics: [
+                    topic("Binary Indexed Tree (Fenwick Tree): point update, prefix query, 2D BIT", [
+                        vid("Fenwick Tree Tutorial", "https://www.youtube.com/watch?v=uSFzHCZ4E-8", "William Fiset"),
+                        art("BIT Explained (CP Algorithms)", "https://cp-algorithms.com/data_structures/fenwick.html")
+                    ]),
+                    topic("Segment Tree: range sum, range min/max, lazy propagation for range updates", [
+                        vid("Segment Tree Deep Dive", "https://www.youtube.com/watch?v=ZBHKZF5w4YU", "William Fiset"),
+                        art("Segment Tree (CP Algorithms)", "https://cp-algorithms.com/data_structures/segment_tree.html")
+                    ]),
+                    topic("Sparse Table: O(1) range minimum query (static arrays)", [
+                        art("Sparse Table (CP Algorithms)", "https://cp-algorithms.com/data_structures/sparse-table.html")
+                    ]),
+                    topic("Order Statistics Tree / Policy-Based DS in C++", [
+                        art("Order Statistics Tree in C++", "https://codeforces.com/blog/entry/11080")
+                    ])
+                ],
+                project: {
+                    title: "Range Query System",
+                    description: ["Implement Segment Tree with lazy propagation", "Implement Fenwick Tree for point update & range sum", "Solve: Count of Range Sum, Range Sum Query 2D Mutable"],
+                    outcomes: ["HFT-critical: O(log n) range queries for financial data processing"]
+                }
+            },
+            {
+                id: "dsa-m5.3",
+                title: "Advanced Graph: Network Flow, SCC & Heavy-Light Decomposition",
+                weeks: "Week 17",
+                topics: [
+                    topic("Network Flow: Ford-Fulkerson, Edmonds-Karp, Max Bipartite Matching", [
+                        vid("Network Flow Tutorial", "https://www.youtube.com/watch?v=LdOnanfc5TM", "William Fiset"),
+                        art("Max Flow (CP Algorithms)", "https://cp-algorithms.com/graph/edmonds_karp.html")
+                    ]),
+                    topic("Strongly Connected Components: Tarjan's & Kosaraju's Algorithms", [
+                        art("SCC Algorithms (CP Algorithms)", "https://cp-algorithms.com/graph/strongly-connected-components.html")
+                    ]),
+                    topic("Heavy-Light Decomposition: path queries on trees", [
+                        art("HLD Tutorial (CP Algorithms)", "https://cp-algorithms.com/graph/hld.html")
+                    ]),
+                    topic("Centroid Decomposition: tree problems with divide & conquer", [
+                        art("Centroid Decomposition (Codeforces)", "https://codeforces.com/blog/entry/81707")
+                    ])
+                ],
+                project: {
+                    title: "Advanced Graph Problems (15)",
+                    description: ["Implement Max Bipartite Matching", "Solve: Critical Connections in a Network, Find Eventual Safe States", "Build a network flow solution for task assignment problem"],
+                    outcomes: ["Advanced graph mastery for competitive programming, DevOps (network optimization)"]
+                }
+            }
+        ]
+    },
+    {
+        id: "dsa-p6",
+        title: "Phase 6: Profile-Specific Tracks",
+        weeks: "Weeks 18-20",
+        modules: [
+            {
+                id: "dsa-m6.1",
+                title: "🏦 HFT / Quant Developer Track",
+                weeks: "Week 18",
+                topics: [
+                    topic("Low-Latency DS: Lock-free queues, ring buffers, cache-line friendly layouts", [
+                        art("Lock-Free Ring Buffer", "https://www.dpdk.org/blog/2016/09/06/packet-capture-buffering/"),
+                        art("Cache Oblivious Algorithms", "https://en.wikipedia.org/wiki/Cache-oblivious_algorithm")
+                    ]),
+                    topic("C++ STL Internals: deque vs vector vs list, custom allocators, move semantics", [
+                        art("C++ STL Complexity Guide", "https://en.cppreference.com/w/cpp/container")
+                    ]),
+                    topic("Order Book Implementation: Red-Black Tree / Sorted Map for bid/ask sides", [
+                        art("Order Book Algorithms", "https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/")
+                    ]),
+                    topic("Mathematical Algorithms: FFT, Convolution, Matrix Exponentiation for quantitative problems", [
+                        art("FFT (CP Algorithms)", "https://cp-algorithms.com/algebra/fft.html"),
+                        art("Matrix Exponentiation", "https://cp-algorithms.com/algebra/matrix-exp.html")
+                    ]),
+                    topic("Competitive Math: Number Theory (Sieve, Euler's Totient, CRT), Modular Inverse", [
+                        art("Number Theory (CP Algorithms)", "https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html")
+                    ])
+                ],
+                project: {
+                    title: "Limit Order Book Simulator",
+                    description: ["Implement a simplified limit order book in C++", "Use a sorted map (Red-Black Tree backed) for O(log n) order add/cancel", "Process 1 million orders and benchmark latency percentiles"],
+                    outcomes: ["HFT-job-ready: demonstrate low-latency DS knowledge", "Quantitative coding proficiency"]
+                }
+            },
+            {
+                id: "dsa-m6.2",
+                title: "🤖 AI / ML Engineer Track",
+                weeks: "Week 19",
+                topics: [
+                    topic("Graph Algorithms for AI: PageRank, Personalized Recommendations (GraphSage)", [
+                        art("PageRank Algorithm", "https://en.wikipedia.org/wiki/PageRank"),
+                        art("Graph Neural Networks Overview", "https://distill.pub/2021/gnn-intro/")
+                    ]),
+                    topic("Numerical Algorithms: Gradient Descent (vectorized), Newton's Method", [
+                        art("Numerical Methods for ML", "https://www.deeplearningbook.org/contents/numerical.html")
+                    ]),
+                    topic("Geometric Algorithms: KD-Trees for nearest neighbor search, Ball Trees", [
+                        art("KD-Tree Explained", "https://en.wikipedia.org/wiki/K-d_tree")
+                    ]),
+                    topic("Randomized Algorithms & Approximation: Bloom Filters, Count-Min Sketch, HyperLogLog", [
+                        art("Probabilistic DS (Real Python)", "https://realpython.com/bloom-filters/"),
+                        art("Count-Min Sketch", "https://florian.github.io/count-min-sketch/")
+                    ]),
+                    topic("Parallel CS: parallel prefix sums, parallel sorting (CUDA-relevant)", [
+                        art("Parallel Algorithms for GPU", "https://developer.nvidia.com/blog/faster-parallel-reductions-kepler/")
+                    ])
+                ],
+                project: {
+                    title: "Approximate Nearest Neighbor Search Engine",
+                    description: ["Implement a KD-Tree for nearest neighbor search", "Compare vs brute force on 100K embeddings", "Implement a Bloom Filter for deduplication of training data"],
+                    outcomes: ["AI interview-ready", "Foundation for vector DB internals (Pinecone, FAISS)"]
+                }
+            },
+            {
+                id: "dsa-m6.3",
+                title: "🏗️ DevOps / Platform Engineer Track",
+                weeks: "Week 19",
+                topics: [
+                    topic("DS for Systems: Skip Lists (Redis), LSM Trees (RocksDB), B+Trees (PostgreSQL)", [
+                        art("Skip Lists (Redis Internals)", "https://en.wikipedia.org/wiki/Skip_list"),
+                        art("LSM Tree Explained", "https://www.scylladb.com/glossary/log-structured-merge-tree/")
+                    ]),
+                    topic("Consistent Hashing for distributed caches and load balancers", [
+                        art("Consistent Hashing (Tom White)", "https://www.toptal.com/big-data/consistent-hashing")
+                    ]),
+                    topic("Bloom Filters for cache invalidation, Count-Min Sketch for rate limiting", [
+                        art("Bloom Filters in Production", "https://llimllib.github.io/bloomfilter-tutorial/")
+                    ]),
+                    topic("Graph-based scheduling: Workflow DAGs (like Airflow scheduling algorithms)", [
+                        art("Topological Sort in Job Scheduling", "https://www.geeksforgeeks.org/topological-sorting/")
+                    ])
+                ],
+                project: {
+                    title: "Distributed Rate Limiter",
+                    description: ["Implement token bucket + sliding window rate limiter", "Use Count-Min Sketch for approximate rate tracking at scale", "Implement consistent hashing for distributing requests across nodes"],
+                    outcomes: ["Platform engineering fundamentals", "DevOps-relevant DS for infrastructure work"]
+                }
+            },
+            {
+                id: "dsa-m6.4",
+                title: "🏆 Competitive Programming Track",
+                weeks: "Week 20",
+                topics: [
+                    topic("CP Mindset: virtual contests, upsolving, reading editorials", [
+                        vid("How to Get Better at Competitive Programming", "https://www.youtube.com/watch?v=bVKHRtafgPc", "Errichto"),
+                        art("Codeforces Problem Rating System", "https://codeforces.com/blog/entry/62389")
+                    ]),
+                    topic("Greedy Algorithms & Exchange Arguments: Activity Selection, Huffman Coding", [
+                        vid("Greedy Algorithm Proofs", "https://www.youtube.com/watch?v=HzeK7g8cD0Y", "Errichto"),
+                        art("Greedy Algorithms (CP Algorithms)", "https://cp-algorithms.com/")
+                    ]),
+                    topic("Divide & Conquer: Closest Pair of Points, Karatsuba Multiplication", [
+                        art("Closest Pair of Points", "https://cp-algorithms.com/geometry/nearest_points.html")
+                    ]),
+                    topic("Geometry Algorithms: Convex Hull (Graham Scan/Jarvis March), Line Intersection", [
+                        art("Computational Geometry (CP Algorithms)", "https://cp-algorithms.com/geometry/")
+                    ]),
+                    topic("Math: Inclusion-Exclusion Principle, Catalan Numbers, Burnside's Lemma", [
+                        art("Combinatorics (CP Algorithms)", "https://cp-algorithms.com/combinatorics/")
+                    ])
+                ],
+                project: {
+                    title: "Codeforces Rating Push (Div. 2 to Div. 1)",
+                    description: ["Complete 30 Codeforces Div. 2 contests virtually", "Reach Codeforces Expert rating (1600+)", "Solve at least 200 problems from Codeforces problem set"],
+                    outcomes: ["Competitive programming credentials", "Algorithmic thinking for hardest tech interviews"]
+                }
+            }
+        ]
+    },
+    {
+        id: "dsa-p7",
+        title: "Phase 7: Big Tech Interview Final Prep",
+        weeks: "Weeks 21-24",
+        modules: [
+            {
+                id: "dsa-m7.1",
+                title: "FAANG-Specific Problem Patterns",
+                weeks: "Week 21-22",
+                topics: [
+                    topic("Meta Facebook Patterns: BFS shortest path, Graph DFS, 2-pointer, DP on strings", [
+                        art("Meta Coding Interview Prep", "https://leetcode.com/company/facebook/")
+                    ]),
+                    topic("Google Patterns: Combinatorial search + pruning, graph algorithms, DP on trees", [
+                        art("Google Interview Prep Guide", "https://leetcode.com/company/google/"),
+                        art("Google SWE Interview Handbook", "https://google.github.io/eng-practices/")
+                    ]),
+                    topic("Amazon Patterns: DP, heap, sorting, OOP leadership principles alignment", [
+                        art("Amazon Coding Interview Prep", "https://leetcode.com/company/amazon/")
+                    ]),
+                    topic("Microsoft Patterns: Tree traversals, string manipulation, graph BFS", [
+                        art("Microsoft Interview Questions", "https://leetcode.com/company/microsoft/")
+                    ]),
+                    topic("Apple / Netflix Patterns: System design + DS combined questions", [
+                        art("Apple Interview Questions", "https://leetcode.com/company/apple/")
+                    ]),
+                    topic("NeetCode 150 — The Gold Standard Interview Problem Set", [
+                        art("NeetCode 150 Roadmap", "https://neetcode.io/roadmap"),
+                        vid("NeetCode 150 Full Playlist", "https://www.youtube.com/watch?v=jgQjes7MgTM", "NeetCode")
+                    ])
+                ],
+                project: {
+                    title: "Company-Specific Mock Interviews",
+                    description: ["Complete all NeetCode 150 problems", "Do 5 mock interviews (Pramp, Interviewing.io)", "Solve the top 30 problems for Meta, Google, Amazon each"],
+                    outcomes: ["FAANG interview-ready", "100+ hours of deliberate practice"]
+                }
+            },
+            {
+                id: "dsa-m7.2",
+                title: "System Design for Coding Interviews",
+                weeks: "Week 23",
+                topics: [
+                    topic("DS + System Design Combo: design Twitter, YouTube, Uber with DS focus", [
+                        art("System Design Primer", "https://github.com/donnemartin/system-design-primer"),
+                        vid("System Design Interview Course", "https://www.youtube.com/watch?v=i53Gi_K3o7I", "ByteByteGo")
+                    ]),
+                    topic("DS for Scale: consistent hashing, bloom filters, skip lists, LSM trees", [
+                        vid("DS Used in Real Systems", "https://www.youtube.com/watch?v=H5JiIPilxIo", "ByteByteGo")
+                    ]),
+                    topic("Concurrency & Locking: mutex, semaphore, lock-free DS (CAS)", [
+                        art("Concurrency Patterns", "https://jopdev.com/posts/concurrency-patterns/")
+                    ])
+                ],
+                project: {
+                    title: "Design a Rate Limiter & In-Memory Cache",
+                    description: ["Design and implement an LRU Cache from scratch", "Design a rate limiter supporting 5 algorithms (token bucket, fixed window, etc.)", "Write a technical blog post explaining your design decisions"],
+                    outcomes: ["Demonstrates depth expected at senior SDE level"]
+                }
+            },
+            {
+                id: "dsa-m7.3",
+                title: "Interview Execution & Final Mile",
+                weeks: "Week 24",
+                topics: [
+                    topic("Mock Interview Etiquette: think aloud, clarify constraints, test edge cases", [
+                        art("How to Communicate in a Coding Interview", "https://www.techinterviewhandbook.org/coding-interview-techniques/")
+                    ]),
+                    topic("Time Management in Interviews: 5-min plan, 20-min code, 5-min test strategy", [
+                        art("Tech Interview Handbook", "https://www.techinterviewhandbook.org/")
+                    ]),
+                    topic("Edge Cases: empty inputs, single element, overflow, negative numbers", [
+                        art("Edge Cases to Always Check", "https://www.techinterviewhandbook.org/coding-interview-cheatsheet/")
+                    ]),
+                    topic("Negotiation & Offer Evaluation: BATNA, competing offers, stock vs salary", [
+                        art("Levels.fyi Offer Comparison", "https://www.levels.fyi/")
+                    ])
+                ],
+                project: {
+                    title: "Final Interview Simulation Week",
+                    description: ["5 full mock interviews on Pramp / Interviewing.io", "Solve 10 new unseen problems under timed conditions", "Record yourself coding and review for communication gaps"],
+                    outcomes: ["Peak interview readiness", "Prepared for all 30+ min coding rounds at FAANG/HFT/Startups"]
+                }
+            }
+        ]
+    }
+];
 // ===== EXPORT ALL PLANS =====
 exports.allLearningPlans = [
     {
@@ -2944,6 +3603,14 @@ exports.allLearningPlans = [
         icon: "code",
         color: "yellow",
         phases: pythonHindiPlan
+    },
+    {
+        id: "dsa-pro",
+        name: "DSA Zero to Pro",
+        description: "Zero to Expert: All patterns, all Big Tech profiles — SDE, HFT, AI, DevOps & Competitive Programming",
+        icon: "trophy",
+        color: "indigo",
+        phases: dsaProPlan
     }
 ];
 // Keep backward compatibility

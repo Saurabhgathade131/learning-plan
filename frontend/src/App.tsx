@@ -3,7 +3,7 @@ import type { LearningPlan, Phase, Progress, Topic, TopicResource } from './type
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket, Cpu, Sparkles } from 'lucide-react';
+import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket, Cpu, Sparkles, Trophy } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -33,7 +33,8 @@ const planIcons: Record<string, React.ReactNode> = {
   rocket: <Rocket className="w-5 h-5" />,
   cpu: <Cpu className="w-5 h-5" />,
   sparkles: <Sparkles className="w-5 h-5" />,
-  code: <Code className="w-5 h-5" />
+  code: <Code className="w-5 h-5" />,
+  trophy: <Trophy className="w-5 h-5" />
 };
 
 const colorClasses: Record<string, { bg: string; border: string; text: string; ring: string }> = {
@@ -45,7 +46,8 @@ const colorClasses: Record<string, { bg: string; border: string; text: string; r
   cyan: { bg: 'bg-cyan-500', border: 'border-cyan-500', text: 'text-cyan-500', ring: 'ring-cyan-500/30' },
   orange: { bg: 'bg-orange-500', border: 'border-orange-500', text: 'text-orange-500', ring: 'ring-orange-500/30' },
   lime: { bg: 'bg-lime-500', border: 'border-lime-500', text: 'text-lime-500', ring: 'ring-lime-500/30' },
-  yellow: { bg: 'bg-yellow-500', border: 'border-yellow-500', text: 'text-yellow-600 dark:text-yellow-500', ring: 'ring-yellow-500/30' }
+  yellow: { bg: 'bg-yellow-500', border: 'border-yellow-500', text: 'text-yellow-600 dark:text-yellow-500', ring: 'ring-yellow-500/30' },
+  indigo: { bg: 'bg-indigo-500', border: 'border-indigo-500', text: 'text-indigo-500', ring: 'ring-indigo-500/30' }
 };
 
 const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
