@@ -2451,189 +2451,472 @@ const microsoftAgentPlan: Phase[] = [
     }
 ];
 
-// ===== PLAN 9: PYTHON FULL STACK + AI (HINDI) =====
+// ===== PLAN 9: PYTHON FULL STACK + AI (HINDI) — JOB-READY =====
 const pythonHindiPlan: Phase[] = [
     {
         id: "py-hindi-p1",
-        title: "Phase 1: Zero to Coder (Python Basics)",
-        weeks: "Months 1-2",
+        title: "Phase 1: Zero to Coder — CS Foundations & Python",
+        weeks: "Months 1-2 (8 Weeks)",
         modules: [
             {
                 id: "py-hindi-m1.1",
-                title: "Core CS, OS & Git Foundations",
-                weeks: "Week 1-2",
+                title: "Computer Science & OS Foundations",
+                weeks: "Week 1",
                 topics: [
-                    topic("How Computers & OS Work", [
-                        vid("OS Basics Hindi", "https://www.youtube.com/watch?v=RoXJVebh--Y", "Apna College")
+                    topic("How Computers Work (Hardware → Software)", [
+                        vid("How Computers Work (Hindi)", "https://www.youtube.com/watch?v=RoXJVebh--Y", "Apna College"),
+                        art("CS50 Binary & Hardware Notes", "https://cs50.harvard.edu/x/2024/notes/0/")
                     ]),
-                    topic("Git & GitHub Mastery", [
-                        vid("Git Tutorial Hindi", "https://www.youtube.com/watch?v=gwWKnnCMQ5c", "CodeWithHarry")
+                    topic("Operating System Fundamentals", [
+                        vid("OS Concepts: Process, Threads, Memory", "https://www.youtube.com/watch?v=26QPDBe-NB8", "Apna College"),
+                        art("Operating System Concepts (GeeksForGeeks)", "https://www.geeksforgeeks.org/operating-systems/")
+                    ]),
+                    topic("CLI & Terminal Mastery", [
+                        vid("Linux Command Line (Hindi)", "https://www.youtube.com/watch?v=Wbz_r2t7xtg", "CodeWithHarry"),
+                        doc("Linux Command Line Cheatsheet", "https://cheatography.com/davechild/cheat-sheets/linux-command-line/")
+                    ]),
+                    topic("Computer Networking Basics (HTTP, DNS, IPs)", [
+                        vid("Computer Networks Crash Course (Hindi)", "https://www.youtube.com/watch?v=IPvYjXCsTg8", "Apna College"),
+                        art("How the Web Works (MDN)", "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works")
                     ])
                 ],
                 project: {
-                    title: "Terminal Profile Setup",
-                    description: ["Setup VS Code and Git", "Create a GitHub repository with a custom README", "Push your first set of commits"],
-                    outcomes: ["Comfort with CLI", "Understanding version control"]
+                    title: "Dev Environment Setup",
+                    description: ["Install Ubuntu/WSL on Windows", "Learn 30 essential terminal commands", "Configure .bashrc with custom aliases"],
+                    outcomes: ["Comfortable with CLI", "Understand how OS schedules programs"]
                 }
             },
             {
                 id: "py-hindi-m1.2",
-                title: "Python 100 Days of Code (Part 1)",
-                weeks: "Week 3-6",
+                title: "Git & GitHub for Developers",
+                weeks: "Week 2",
                 topics: [
-                    topic("Python Basics (Variables, Loops, Funcs)", [
-                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry")
+                    topic("Git Basics: init, add, commit, log, diff", [
+                        vid("Git & GitHub Full Course (Hindi)", "https://www.youtube.com/watch?v=gwWKnnCMQ5c", "CodeWithHarry"),
+                        doc("Git Official Docs", "https://git-scm.com/doc")
                     ]),
-                    topic("Object Oriented Programming (OOP)", [
-                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry")
+                    topic("Branching Strategies: merge, rebase, conflict resolution", [
+                        vid("Git Branching (Hindi)", "https://www.youtube.com/watch?v=vwj89i2FmG0", "Thapa Technical"),
+                        art("Atlassian Git Branching Guide", "https://www.atlassian.com/git/tutorials/using-branches")
+                    ]),
+                    topic("GitHub: PRs, Issues, GitHub Actions CI/CD", [
+                        vid("GitHub Workflow Tutorial (Hindi)", "https://www.youtube.com/watch?v=RGOj5yH7evk", "freeCodeCamp"),
+                        doc("GitHub Actions Docs", "https://docs.github.com/en/actions")
+                    ]),
+                    topic("Open Source: Fork, Clone, Contributing via PRs", [
+                        art("How to Contribute to Open Source", "https://opensource.guide/how-to-contribute/")
                     ])
                 ],
                 project: {
-                    title: "CLI To-Do App & KBC Game",
-                    description: ["Build a basic game like Kaun Banega Crorepati", "Implement File I/O for To-Do list"],
-                    outcomes: ["Strong Python Fundamentals", "Basic Logic Building"]
+                    title: "My First Open Source Contribution",
+                    description: ["Fork any beginner-friendly repo on GitHub", "Fix a bug or add a feature", "Submit a Pull Request following the contribution guide"],
+                    outcomes: ["Industry-standard Git workflow", "GitHub profile building begins"]
+                }
+            },
+            {
+                id: "py-hindi-m1.3",
+                title: "Python Programming: Core Fundamentals",
+                weeks: "Week 3-5",
+                topics: [
+                    topic("Variables, Data Types, Type Casting", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry"),
+                        doc("Python Official Docs", "https://docs.python.org/3/")
+                    ]),
+                    topic("Control Flow: if/elif/else, match-case", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry")
+                    ]),
+                    topic("Loops: for, while, break, continue, enumerate", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry")
+                    ]),
+                    topic("Functions: args, kwargs, default args, lambda, closures", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry"),
+                        art("Python Functions Deep Dive", "https://realpython.com/defining-your-own-python-function/")
+                    ]),
+                    topic("Data Structures: List, Tuple, Set, Dict, Comprehensions", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry"),
+                        art("Python Data Structures (Real Python)", "https://realpython.com/python-data-structures/")
+                    ]),
+                    topic("File I/O: read, write, with statement, CSV, JSON", [
+                        vid("File Handling in Python (Hindi)", "https://www.youtube.com/watch?v=E_Tz8X1oiM4", "CodeWithHarry")
+                    ]),
+                    topic("Error Handling: try/except/finally, custom exceptions", [
+                        art("Python Exception Handling", "https://realpython.com/python-exceptions/")
+                    ]),
+                    topic("Modules, Packages, pip, virtual environments (venv)", [
+                        vid("Python Modules & venv (Hindi)", "https://www.youtube.com/watch?v=cY56C2aS3h4", "CodeWithHarry")
+                    ])
+                ],
+                project: {
+                    title: "CLI Expense Tracker",
+                    description: ["Track income/expenses with categories", "Save/load data to a JSON file", "Show weekly summary reports in the terminal"],
+                    outcomes: ["Solid Python fundamentals", "Build logic for real-world automation"]
+                }
+            },
+            {
+                id: "py-hindi-m1.4",
+                title: "Object Oriented Programming (OOP)",
+                weeks: "Week 6-8",
+                topics: [
+                    topic("Classes & Objects: __init__, self, instance vs class vars", [
+                        playlist("100 Days of Code: Python (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "CodeWithHarry"),
+                        art("Python OOP (Real Python)", "https://realpython.com/python3-object-oriented-programming/")
+                    ]),
+                    topic("Inheritance, Polymorphism, Encapsulation, Abstraction", [
+                        vid("OOP in Python (Hindi)", "https://www.youtube.com/watch?v=qiSCMNBIP2g", "Apna College"),
+                        art("4 Pillars of OOP", "https://www.geeksforgeeks.org/object-oriented-programming-in-python-set-1-class-and-its-members/")
+                    ]),
+                    topic("Magic/Dunder Methods: __str__, __repr__, __len__, __eq__", [
+                        art("Python Dunder Methods Guide", "https://realpython.com/python-magic-methods/")
+                    ]),
+                    topic("Decorators & Property: @staticmethod, @classmethod, @property", [
+                        art("Python Decorators Explained", "https://realpython.com/primer-on-python-decorators/")
+                    ]),
+                    topic("Advanced Python: Generators, Iterators, Context Managers", [
+                        art("Python Generators & Iterators", "https://realpython.com/introduction-to-python-generators/")
+                    ])
+                ],
+                project: {
+                    title: "Library Management System (OOP)",
+                    description: ["Model Book, Member, Library classes with full OOP principles", "Add borrow/return logic with inheritance", "Persist data to JSON file"],
+                    outcomes: ["Job-interview-ready OOP skills", "Understand class design patterns"]
                 }
             }
         ]
     },
     {
         id: "py-hindi-p2",
-        title: "Phase 2: Data & Web Basics",
-        weeks: "Month 3",
+        title: "Phase 2: Web Foundations & Databases",
+        weeks: "Month 3 (4 Weeks)",
         modules: [
             {
                 id: "py-hindi-m2.1",
-                title: "Web Development Basics (HTML/CSS)",
+                title: "Web Front-End: HTML5 & CSS3",
                 weeks: "Week 1-2",
                 topics: [
-                    topic("HTML & CSS Mastery", [
-                        playlist("Web Development Course (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzj2Mdn", "CodeWithHarry")
+                    topic("HTML5: Semantic Elements, Forms, Tables, Media", [
+                        playlist("Web Development Course (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzj2Mdn", "CodeWithHarry"),
+                        doc("HTML MDN Reference", "https://developer.mozilla.org/en-US/docs/Web/HTML")
+                    ]),
+                    topic("CSS3: Box Model, Flexbox, CSS Grid", [
+                        playlist("Web Development Course (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9agiCUZYRsvtGTXdxkzj2Mdn", "CodeWithHarry"),
+                        art("CSS Flexbox Complete Guide (CSS-Tricks)", "https://css-tricks.com/snippets/css/a-guide-to-flexbox/")
+                    ]),
+                    topic("Responsive Design: Media Queries, Mobile-First", [
+                        art("Responsive Web Design (MDN)", "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"),
+                        vid("Responsive Design Tutorial (Hindi)", "https://www.youtube.com/watch?v=VsNAuGkCpQU", "CodeWithHarry")
+                    ]),
+                    topic("JavaScript Basics for Backend Devs (DOM, Events, Fetch API)", [
+                        vid("JavaScript Crash Course (Hindi)", "https://www.youtube.com/watch?v=hKB-YGF14SY", "CodeWithHarry"),
+                        doc("JavaScript MDN", "https://developer.mozilla.org/en-US/docs/Web/JavaScript")
+                    ]),
+                    topic("Bootstrap 5: Grid, Components, Utilities", [
+                        vid("Bootstrap 5 Tutorial (Hindi)", "https://www.youtube.com/watch?v=vpAJ0s5S2t0", "CodeWithHarry"),
+                        doc("Bootstrap 5 Official Docs", "https://getbootstrap.com/docs/5.3/")
                     ])
                 ],
                 project: {
-                    title: "Personal Portfolio Website",
-                    description: ["Build a responsive portfolio using HTML/CSS", "Host it via GitHub Pages"],
-                    outcomes: ["Understanding Web Architecture", "Frontend Basics"]
+                    title: "Developer Portfolio Website",
+                    description: ["Build a fully responsive portfolio page with HTML/CSS", "Include About, Skills, Projects, and Contact sections", "Host live on GitHub Pages"],
+                    outcomes: ["Understand web layout systems", "Live online portfolio for job applications"]
                 }
             },
             {
                 id: "py-hindi-m2.2",
-                title: "Databases (SQL & MongoDB)",
-                weeks: "Week 3-4",
+                title: "Relational Databases & SQL (PostgreSQL)",
+                weeks: "Week 3",
                 topics: [
-                    topic("Relational DB & SQL", [
-                        vid("Complete SQL Tutorial (Hindi)", "https://www.youtube.com/watch?v=BpHX1tWFIGI", "Apna College")
+                    topic("RDBMS Concepts: Tables, Keys, Relationships, Normalization", [
+                        vid("Complete SQL Tutorial (Hindi)", "https://www.youtube.com/watch?v=BpHX1tWFIGI", "Apna College"),
+                        doc("PostgreSQL Tutorial", "https://www.postgresql.org/docs/current/tutorial.html")
                     ]),
-                    topic("NoSQL MongoDB", [
-                        vid("MongoDB Tutorial (Hindi)", "https://www.youtube.com/watch?v=J6mD5TZI3Es", "CodeWithHarry")
+                    topic("CRUD Operations: SELECT, INSERT, UPDATE, DELETE", [
+                        vid("SQL CRUD Queries (Hindi)", "https://www.youtube.com/watch?v=B4sda0gPoqw", "Apna College")
+                    ]),
+                    topic("Advanced SQL: JOINs, Subqueries, Aggregates, Window Functions", [
+                        art("SQL Advanced Concepts (Mode Analytics)", "https://mode.com/sql-tutorial/sql-window-functions/")
+                    ]),
+                    topic("Indexing, Query Optimization, EXPLAIN ANALYZE", [
+                        art("PostgreSQL Indexing Best Practices", "https://use-the-index-luke.com/")
+                    ]),
+                    topic("Transactions, ACID Properties, Isolation Levels", [
+                        art("Understanding ACID Transactions", "https://www.postgresql.org/docs/current/tutorial-transactions.html")
                     ])
                 ],
                 project: {
-                    title: "Store Inventory Schema",
-                    description: ["Design a schema for a store", "Write CRUD queries in SQL and MongoDB"],
-                    outcomes: ["Database Design", "Data querying mastery"]
+                    title: "Student Result Database",
+                    description: ["Design a normalized schema with Students, Courses, Marks tables", "Write complex JOINs and aggregate queries", "Create indexes and measure query performance"],
+                    outcomes: ["Solid SQL for backend interviews", "Database design skills"]
+                }
+            },
+            {
+                id: "py-hindi-m2.3",
+                title: "NoSQL with MongoDB & Redis",
+                weeks: "Week 4",
+                topics: [
+                    topic("MongoDB: Documents, Collections, BSON, CRUD", [
+                        vid("MongoDB Tutorial (Hindi)", "https://www.youtube.com/watch?v=J6mD5TZI3Es", "CodeWithHarry"),
+                        doc("MongoDB Official Docs", "https://www.mongodb.com/docs/manual/")
+                    ]),
+                    topic("Aggregation Pipeline: $match, $group, $lookup, $project", [
+                        art("MongoDB Aggregation Guide", "https://www.mongodb.com/docs/manual/aggregation/")
+                    ]),
+                    topic("Redis Basics: Key-Value Store, Caching, TTL, Pub/Sub", [
+                        vid("Redis Tutorial (Hindi)", "https://www.youtube.com/watch?v=Vx2zPMPvmug", "CodeWithHarry"),
+                        doc("Redis Official Docs", "https://redis.io/docs/")
+                    ]),
+                    topic("SQL vs NoSQL: When to use which?", [
+                        art("SQL vs NoSQL Explained", "https://www.mongodb.com/nosql-explained/nosql-vs-sql")
+                    ])
+                ],
+                project: {
+                    title: "Blog Aggregator with MongoDB + Redis Cache",
+                    description: ["Store blog posts and user data in MongoDB", "Cache frequently-read posts in Redis with TTL", "Compare performance with and without cache"],
+                    outcomes: ["Flexible NoSQL schema design", "Caching patterns for production apps"]
                 }
             }
         ]
     },
     {
         id: "py-hindi-p3",
-        title: "Phase 3: Full Stack Backend",
-        weeks: "Months 4-5",
+        title: "Phase 3: Full Stack Backend Engineering",
+        weeks: "Months 4-5 (8 Weeks)",
         modules: [
             {
                 id: "py-hindi-m3.1",
-                title: "Modern APIs with FastAPI",
-                weeks: "Weeks 1-3",
+                title: "Modern APIs with FastAPI & Python Async",
+                weeks: "Week 1-4",
                 topics: [
-                    topic("REST APIs with FastAPI", [
-                        playlist("FastAPI Tutorial (Hindi)", "https://www.youtube.com/playlist?list=PLwGdqUZWnOp2Z3eFOg4hwxaMAZqcPXYXm", "Thapa Technical")
+                    topic("Python Async/Await: asyncio, event loop, coroutines", [
+                        art("Python asyncio Guide", "https://realpython.com/async-io-python/"),
+                        vid("AsyncIO in Python (Hindi)", "https://www.youtube.com/watch?v=6RbJYN7SoRs", "Krish Naik")
+                    ]),
+                    topic("FastAPI Fundamentals: Path params, Query params, Request body, Pydantic", [
+                        playlist("FastAPI Tutorial (Hindi)", "https://www.youtube.com/playlist?list=PLwGdqUZWnOp2Z3eFOg4hwxaMAZqcPXYXm", "Thapa Technical"),
+                        doc("FastAPI Official Docs", "https://fastapi.tiangolo.com/")
+                    ]),
+                    topic("Database Integration: SQLAlchemy ORM with PostgreSQL", [
+                        art("FastAPI + SQLAlchemy Guide", "https://fastapi.tiangolo.com/tutorial/sql-databases/")
+                    ]),
+                    topic("Authentication & Security: JWT, OAuth2, Password Hashing", [
+                        art("FastAPI Security Tutorial (JWT)", "https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/")
+                    ]),
+                    topic("API Versioning, Middleware, CORS, Error Handling", [
+                        doc("FastAPI Middleware Docs", "https://fastapi.tiangolo.com/tutorial/middleware/")
+                    ]),
+                    topic("API Testing with Pytest and TestClient", [
+                        art("Testing FastAPI Apps", "https://fastapi.tiangolo.com/tutorial/testing/"),
+                        art("Pytest Tutorial", "https://realpython.com/pytest-python-testing/")
+                    ]),
+                    topic("Containerization: Docker + Docker Compose basics", [
+                        vid("Docker Tutorial (Hindi)", "https://www.youtube.com/watch?v=17Bl31rlnRM", "TechWorld with Nana"),
+                        doc("Docker Official Docs", "https://docs.docker.com/")
                     ])
                 ],
                 project: {
-                    title: "Task Management API",
-                    description: ["Build a RESTful API using FastAPI and SQLAlchemy", "Implement JWT Authentication"],
-                    outcomes: ["Backend API mastery", "Modern Python async web frameworks"]
+                    title: "E-commerce REST API",
+                    description: ["Build a full product catalog and cart API with FastAPI", "Implement JWT auth with role-based access (user vs admin)", "Write unit tests with Pytest", "Containerize with Docker"],
+                    outcomes: ["Industry-grade async API development", "Portfolio-worthy backend project"]
                 }
             },
             {
                 id: "py-hindi-m3.2",
                 title: "Full Stack Web with Django",
-                weeks: "Weeks 4-8",
+                weeks: "Week 5-8",
                 topics: [
-                    topic("Django Framework Basics", [
-                        playlist("Django Tutorials (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9", "CodeWithHarry")
+                    topic("Django Project Structure: MVT Architecture, urls.py, views.py, models.py", [
+                        playlist("Django Tutorials (Hindi)", "https://www.youtube.com/playlist?list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9", "CodeWithHarry"),
+                        doc("Django Official Docs", "https://docs.djangoproject.com/en/4.2/")
+                    ]),
+                    topic("Django ORM: QuerySets, Migrations, Model relationships", [
+                        art("Django ORM Deep Dive", "https://docs.djangoproject.com/en/4.2/topics/db/queries/")
+                    ]),
+                    topic("Django Forms, Templates, Jinja2, Template Tags", [
+                        art("Django Template Language", "https://docs.djangoproject.com/en/4.2/topics/templates/")
+                    ]),
+                    topic("Django Auth: User model, Login/Logout, Permissions", [
+                        art("Django Authentication System", "https://docs.djangoproject.com/en/4.2/topics/auth/")
+                    ]),
+                    topic("Django REST Framework (DRF): Serializers, ViewSets, Routers", [
+                        vid("Django REST Framework (Hindi)", "https://www.youtube.com/watch?v=TmsD8QOptUM", "Krish Naik"),
+                        doc("DRF Official Docs", "https://www.django-rest-framework.org/")
+                    ]),
+                    topic("Deployment: Gunicorn + Nginx on DigitalOcean/Railway", [
+                        art("Deploy Django on DigitalOcean", "https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-gunicorn-and-nginx")
                     ])
                 ],
                 project: {
-                    title: "Blogging Platform (iCoder)",
-                    description: ["Build a full-stack blog using Django templates", "Integrate user auth, admin panel, and SQLite/PostgreSQL"],
-                    outcomes: ["Full Stack MVC Architecture", "Complete web app deployment"]
+                    title: "Full Stack Blog + Job Board",
+                    description: ["Build a full job listing site using Django", "Add user registration/login and profiles", "Build an admin panel to manage listings", "Deploy to Railway.app with PostgreSQL"],
+                    outcomes: ["Production-deployed full stack Python app", "Deployable job application portfolio project"]
                 }
             }
         ]
     },
     {
         id: "py-hindi-p4",
-        title: "Phase 4: AI & Machine Learning",
-        weeks: "Months 6-7",
+        title: "Phase 4: AI, Data Science & Machine Learning",
+        weeks: "Months 6-7 (8 Weeks)",
         modules: [
             {
                 id: "py-hindi-m4.1",
-                title: "Data Science (NumPy, Pandas, EDA)",
-                weeks: "Week 1-3",
+                title: "Data Science: NumPy, Pandas & Visualization",
+                weeks: "Week 1-2",
                 topics: [
-                    topic("Python for Data Science", [
-                        vid("Pandas & NumPy Hindi", "https://www.youtube.com/watch?v=x9iEwvNOH_0", "CampusX")
+                    topic("NumPy: Arrays, Broadcasting, Vectorized Operations", [
+                        vid("NumPy Full Tutorial (Hindi)", "https://www.youtube.com/watch?v=x9iEwvNOH_0", "CampusX"),
+                        doc("NumPy Docs", "https://numpy.org/doc/stable/")
+                    ]),
+                    topic("Pandas: Series, DataFrame, Groupby, Merge, Pivot Tables", [
+                        vid("Pandas Tutorial (Hindi)", "https://www.youtube.com/watch?v=e60ItwlZTKM", "CampusX"),
+                        art("Pandas Cheatsheet", "https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf")
+                    ]),
+                    topic("Data Cleaning: handling nulls, outliers, duplicates, encoding", [
+                        art("Data Cleaning Guide (Kaggle)", "https://www.kaggle.com/learn/data-cleaning")
+                    ]),
+                    topic("Visualization: Matplotlib, Seaborn, Plotly for EDA", [
+                        vid("Data Visualization (Hindi)", "https://www.youtube.com/watch?v=6GUZXDef2U0", "CampusX"),
+                        doc("Seaborn Docs", "https://seaborn.pydata.org/tutorial.html")
+                    ]),
+                    topic("Feature Engineering: encoding, scaling, feature selection", [
+                        art("Feature Engineering for ML", "https://www.kaggle.com/learn/feature-engineering")
                     ])
                 ],
                 project: {
-                    title: "Data Analysis Dashboard",
-                    description: ["Analyze a Kaggle dataset using Pandas", "Visualize data dynamically"],
-                    outcomes: ["Data Manipulation", "EDA proficiency"]
+                    title: "IPL Dataset EDA Dashboard",
+                    description: ["Analyze 10+ years of IPL data using Pandas", "Build beautiful plots with Seaborn/Plotly", "Identify top performers, team stats, win patterns"],
+                    outcomes: ["Real-world data analysis skills", "Kaggle-ready EDA notebook"]
                 }
             },
             {
                 id: "py-hindi-m4.2",
-                title: "Machine & Deep Learning",
-                weeks: "Week 4-8",
+                title: "Machine Learning with Scikit-Learn",
+                weeks: "Week 3-5",
                 topics: [
-                    topic("Machine Learning (Scikit-Learn)", [
+                    topic("ML Fundamentals: Supervised vs Unsupervised, Bias-Variance Tradeoff", [
+                        playlist("Machine Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfVYEziXDEB-xW0-6X2s-K", "Krish Naik"),
+                        art("ML Concepts Glossary", "https://developers.google.com/machine-learning/glossary")
+                    ]),
+                    topic("Regression: Linear, Polynomial, Ridge, Lasso", [
                         playlist("Machine Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfVYEziXDEB-xW0-6X2s-K", "Krish Naik")
                     ]),
-                    topic("Deep Learning Basics", [
-                        playlist("Deep Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRui", "Krish Naik")
+                    topic("Classification: Logistic Regression, SVM, Decision Trees, Random Forest", [
+                        playlist("Machine Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfVYEziXDEB-xW0-6X2s-K", "Krish Naik")
+                    ]),
+                    topic("Model Evaluation: confusion matrix, precision, recall, F1, ROC-AUC", [
+                        art("ML Metrics Explained", "https://scikit-learn.org/stable/modules/model_evaluation.html")
+                    ]),
+                    topic("Cross-Validation, Hyperparameter Tuning: GridSearchCV, RandomSearchCV", [
+                        art("Scikit-Learn Cross Validation Guide", "https://scikit-learn.org/stable/modules/cross_validation.html")
+                    ]),
+                    topic("Clustering: K-Means, DBSCAN, PCA Dimensionality Reduction", [
+                        art("Unsupervised Learning Guide (Scikit-Learn)", "https://scikit-learn.org/stable/unsupervised_learning.html")
                     ])
                 ],
                 project: {
-                    title: "House Price & Image Classifier",
-                    description: ["Build a regression model for prices", "Build a CNN for image classification using PyTorch/TF"],
-                    outcomes: ["AI Model Training", "Predictive modeling"]
+                    title: "Credit Card Fraud Detection",
+                    description: ["Use a real Kaggle fraud dataset", "Train multiple classifiers and compare metrics", "Handle class imbalance with SMOTE", "Expose model as FastAPI endpoint"],
+                    outcomes: ["Real production ML pipeline", "Demonstrates ML + API integration"]
+                }
+            },
+            {
+                id: "py-hindi-m4.3",
+                title: "Deep Learning with PyTorch",
+                weeks: "Week 6-8",
+                topics: [
+                    topic("Neural Network Fundamentals: neurons, layers, activation functions", [
+                        playlist("Deep Learning (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU70ZGsckrMdr0FteeRui", "Krish Naik"),
+                        art("Neural Networks from Scratch", "https://nnfs.io/")
+                    ]),
+                    topic("Backpropagation & Gradient Descent: chain rule, optimizers (SGD, Adam)", [
+                        vid("Backprop Visually Explained", "https://www.youtube.com/watch?v=Ilg3gGewQ5U", "3Blue1Brown")
+                    ]),
+                    topic("PyTorch: Tensors, Autograd, Datasets, DataLoaders, Custom Models", [
+                        doc("PyTorch Docs", "https://pytorch.org/tutorials/beginner/basics/intro.html"),
+                        vid("PyTorch Full Crash Course", "https://www.youtube.com/watch?v=c36lUUr864M", "Patrick Loeber")
+                    ]),
+                    topic("CNNs for Image Classification: Conv2D, MaxPool, BatchNorm, Dropout", [
+                        art("CNN Architecture Explained", "https://cs231n.github.io/convolutional-networks/")
+                    ]),
+                    topic("Transfer Learning: ResNet, EfficientNet, fine-tuning pre-trained models", [
+                        art("Transfer Learning with PyTorch", "https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html")
+                    ]),
+                    topic("Model Saving, ONNX Export, TorchScript for Deployment", [
+                        doc("PyTorch Model Save/Load", "https://pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html")
+                    ])
+                ],
+                project: {
+                    title: "AI Plant Disease Detector",
+                    description: ["Train a CNN on the PlantVillage dataset", "Achieve >95% accuracy with transfer learning", "Deploy as a FastAPI endpoint with image upload"],
+                    outcomes: ["Deep learning project for resume", "Full cycle: Data → Train → Deploy"]
                 }
             }
         ]
     },
     {
         id: "py-hindi-p5",
-        title: "Phase 5: GenAI Capstone",
-        weeks: "Month 8",
+        title: "Phase 5: Generative AI & Job Readiness",
+        weeks: "Month 8 (4 Weeks)",
         modules: [
             {
                 id: "py-hindi-m5.1",
-                title: "Generative AI & LLMs",
-                weeks: "Week 1-4",
+                title: "Generative AI, LLMs & LangChain",
+                weeks: "Week 1-3",
                 topics: [
-                    topic("Prompt Engineering & Open Source LLMs", [
-                        playlist("Generative AI (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", "Krish Naik")
+                    topic("How LLMs Work: Transformers, Attention, Tokenization", [
+                        vid("Transformers Explained Visually", "https://www.youtube.com/watch?v=4Bdc55j80l8", "Andrej Karpathy"),
+                        art("Illustrated Transformer (Jay Alammar)", "https://jalammar.github.io/illustrated-transformer/")
                     ]),
-                    topic("RAG and LangChain", [
-                        playlist("Generative AI (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", "Krish Naik")
+                    topic("Prompt Engineering: Zero-shot, Few-shot, Chain-of-Thought, ReAct", [
+                        playlist("Generative AI (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", "Krish Naik"),
+                        art("OpenAI Prompt Engineering Guide", "https://platform.openai.com/docs/guides/prompt-engineering")
+                    ]),
+                    topic("LangChain: Chains, Memory, Tools, Agents", [
+                        playlist("Generative AI (Hindi)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNxBw-H6q192jX8D-lSxyF0", "Krish Naik"),
+                        doc("LangChain Python Docs", "https://python.langchain.com/docs/")
+                    ]),
+                    topic("RAG: Vector DBs (ChromaDB, FAISS), Embeddings, Semantic Search", [
+                        art("Build a RAG System (LangChain)", "https://python.langchain.com/docs/how_to/"),
+                        vid("RAG from Scratch (Hindi)", "https://www.youtube.com/watch?v=fuMKrKRqluA", "Krish Naik")
+                    ]),
+                    topic("Fine-Tuning: LoRA, QLoRA with HuggingFace + Transformers", [
+                        doc("HuggingFace PEFT Library", "https://huggingface.co/docs/peft"),
+                        art("Fine-Tuning LLMs with LoRA", "https://huggingface.co/blog/lora")
+                    ]),
+                    topic("Deployment: Hugging Face Spaces, Streamlit, Gradio for demos", [
+                        art("Deploy ML Apps with Gradio", "https://www.gradio.app/guides/quickstart"),
+                        art("Streamlit Tutorial", "https://docs.streamlit.io/")
                     ])
                 ],
                 project: {
-                    title: "Full Stack PDF Chatbot",
-                    description: ["Combine FastAPI or Django backend with React or basic HTML frontend", "Integrate LangChain and vector databases for PDF Q&A"],
-                    outcomes: ["End-to-end AI application", "Deployment ready portfolio piece"]
+                    title: "Full Stack PDF Chatbot (GenAI Capstone)",
+                    description: ["Build a full-stack chatbot that answers questions about uploaded PDFs", "Backend: FastAPI + LangChain + ChromaDB for RAG", "Frontend: Streamlit or simple HTML/JS chat UI", "Deploy on Hugging Face Spaces or Railway"],
+                    outcomes: ["End-to-end GenAI application", "Production-ready AI portfolio piece"]
+                }
+            },
+            {
+                id: "py-hindi-m5.2",
+                title: "Job Readiness & Interview Preparation",
+                weeks: "Week 4",
+                topics: [
+                    topic("DSA for Interviews: Arrays, Strings, Linked Lists, Trees, Graphs", [
+                        vid("DSA in Python (Hindi)", "https://www.youtube.com/watch?v=mpBXmAfmW0E", "Apna College"),
+                        art("LeetCode Patterns", "https://seanprashad.com/leetcode-patterns/")
+                    ]),
+                    topic("System Design Basics: scalability, load balancing, caching, DB sharding", [
+                        vid("System Design (Hindi)", "https://www.youtube.com/watch?v=SqcXvc3ZmRU", "Gaurav Sen"),
+                        art("System Design Primer", "https://github.com/donnemartin/system-design-primer")
+                    ]),
+                    topic("Resume & LinkedIn: ATS optimization, projects highlight, action verbs", [
+                        art("Google Resume Tips", "https://careersonair.withgoogle.com/events/resume-tips")
+                    ]),
+                    topic("Behavioral Interviews: STAR method, common questions", [
+                        art("STAR Method Guide", "https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique")
+                    ])
+                ],
+                project: {
+                    title: "Job Application Master Bundle",
+                    description: ["Polish GitHub profile with README banners and pinned repos", "Write ATS-optimized resume with all projects", "Do 50 LeetCode easy + 20 medium problems", "Apply to 30 companies with tailored cover letters"],
+                    outcomes: ["Ready to crack 3-12 LPA software developer job interviews", "Fully prepared portfolio"]
                 }
             }
         ]

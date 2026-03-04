@@ -179,7 +179,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/learning-tracker-api/dev/1772271201185-2026-02-28T09:33:21.185Z/learning-tracker-api.zip"
+                "S3Key": "serverless/learning-tracker-api/dev/1772643527991-2026-03-04T16:58:47.991Z/learning-tracker-api.zip"
               },
               "Handler": "dist/index.handler",
               "Runtime": "nodejs18.x",
@@ -202,14 +202,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionlhZzJiBNnoUZMkAkUoEF7TqxUxtkDKGgHd7nKNZosxU": {
+          "ApiLambdaVersionDslanx0WCGOdTQDr5yDU5aLed3sdKlFGNSAT4ysc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "KRYwCuXOOUBv/Qbyrh83rMYqCIXHZ0Aj7s5aDc+9zB0="
+              "CodeSha256": "NlknC4GBGIVR9HvMEzjD2zGOGzdFBtjNtXAcNzI1HZo="
             }
           },
           "ApiGatewayRestApi": {
@@ -427,7 +427,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1772271192108": {
+          "ApiGatewayDeployment1772643515617": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -492,7 +492,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionlhZzJiBNnoUZMkAkUoEF7TqxUxtkDKGgHd7nKNZosxU"
+              "Ref": "ApiLambdaVersionDslanx0WCGOdTQDr5yDU5aLed3sdKlFGNSAT4ysc"
             },
             "Export": {
               "Name": "sls-learning-tracker-api-dev-ApiLambdaFunctionQualifiedArn"
@@ -678,7 +678,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersionlhZzJiBNnoUZMkAkUoEF7TqxUxtkDKGgHd7nKNZosxU"
+        "versionLogicalId": "ApiLambdaVersionDslanx0WCGOdTQDr5yDU5aLed3sdKlFGNSAT4ysc"
       }
     },
     "configValidationMode": "warn",
@@ -715,7 +715,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/learning-tracker-api/dev/code-artifacts",
         "artifact": "C:\\Users\\prach\\OneDrive\\Desktop\\Learning plan\\tracker\\backend\\.serverless\\learning-tracker-api.zip",
-        "artifactDirectoryName": "serverless/learning-tracker-api/dev/1772271201185-2026-02-28T09:33:21.185Z"
+        "artifactDirectoryName": "serverless/learning-tracker-api/dev/1772643527991-2026-03-04T16:58:47.991Z"
       }
     },
     "layers": {},
@@ -724,7 +724,7 @@
   },
   "package": {
     "individually": false,
-    "artifactDirectoryName": "serverless/learning-tracker-api/dev/1772271201185-2026-02-28T09:33:21.185Z",
+    "artifactDirectoryName": "serverless/learning-tracker-api/dev/1772643527991-2026-03-04T16:58:47.991Z",
     "artifact": "learning-tracker-api.zip"
   }
 }
