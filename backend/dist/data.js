@@ -36,12 +36,13 @@ const genaiPlan = [
                     t("Worker Threads for CPU tasks", "https://www.youtube.com/watch?v=mYP1ioHZDZ4", "https://nodejs.org/api/worker_threads.html"),
                     t("Streams: Readable, Writable, Transform", "https://www.youtube.com/watch?v=GlybFFMXXmQ", "https://nodejs.org/api/stream.html"),
                     t("Security: Helmet & Rate Limiting", "https://www.youtube.com/watch?v=0Hu27PoloYw", "https://helmetjs.github.io/"),
-                    t("Input Validation (Zod/Joi)", "https://www.youtube.com/watch?v=L6BE-U3oy80", "https://zod.dev/")
+                    t("Input Validation (Zod/Joi)", "https://www.youtube.com/watch?v=L6BE-U3oy80", "https://zod.dev/"),
+                    topic("DSA: Event Loop queues (Queues/Heaps)", [doc("Node.js Event Loop", "https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/")])
                 ],
                 project: {
                     title: "High-Performance File Processing Service",
                     description: ["Build a service that processes large files", "Implement streaming for memory efficiency", "Add worker threads for CPU-intensive operations"],
-                    outcomes: ["Master async patterns", "Understand Node.js internals"]
+                    outcomes: ["Understand Node.js internals (V8 engine semantics)", "Master Event Loop Task/Microtask mapping", "Scale single-threaded processes with clustering"]
                 }
             },
             {
@@ -54,12 +55,13 @@ const genaiPlan = [
                     t("Circuit Breaker (Resilience4j)", "https://www.youtube.com/watch?v=uRYe5zSfnkk"),
                     t("Inter-service Communication: gRPC", "https://www.youtube.com/watch?v=Yw4rkaTc0f8", "https://grpc.io/docs/"),
                     t("Distributed Tracing (Jaeger)", "https://www.youtube.com/watch?v=idDu_jXqf4E"),
-                    t("Saga Pattern for Transactions", "https://www.youtube.com/watch?v=xDuwrtwYHu8")
+                    t("Saga Pattern for Transactions", "https://www.youtube.com/watch?v=xDuwrtwYHu8"),
+                    topic("DSA: Consistent Hashing for Service Discovery", [doc("Wikipedia: Consistent Hashing", "https://en.wikipedia.org/wiki/Consistent_hashing")])
                 ],
                 project: {
                     title: "Multi-Service Authentication System",
                     description: ["Auth Service with JWT", "API Gateway with rate limiting", "Distributed tracing"],
-                    outcomes: ["Microservices architecture", "Distributed systems"]
+                    outcomes: ["Architect distributed Node microservices", "Implement gRPC multiplexed streams", "Design scalable ring-hashing topologies"]
                 }
             }
         ]
@@ -78,12 +80,13 @@ const genaiPlan = [
                     t("PgVector Extension Setup", "https://www.youtube.com/watch?v=d0KYv65geeY", "https://github.com/pgvector/pgvector"),
                     t("HNSW & IVFFlat Indexes", "https://www.youtube.com/watch?v=QvKMwLjdK-s"),
                     t("Hybrid Search Implementation", "https://www.youtube.com/watch?v=dRUIGgNBvVk"),
-                    t("Chunking Strategies", "https://www.youtube.com/watch?v=8OJC21T2SL4")
+                    t("Chunking Strategies", "https://www.youtube.com/watch?v=8OJC21T2SL4"),
+                    topic("DSA: K-D Trees & HNSW for Vector Search", [doc("Pinecone: HNSW", "https://www.pinecone.io/learn/series/faiss/hnsw/")])
                 ],
                 project: {
                     title: "Semantic Search Engine",
                     description: ["Document ingestion pipeline", "Embeddings with OpenAI", "Hybrid search"],
-                    outcomes: ["Vector embeddings mastery", "Production RAG systems"]
+                    outcomes: ["Implement Hierarchical Navigable Small World graphs", "Build high-speed cosine similarity searches", "Master cross-encoder reranking"]
                 }
             }
         ]
@@ -102,12 +105,13 @@ const genaiPlan = [
                     t("OpenAI/Anthropic APIs", "https://www.youtube.com/watch?v=uRQH2CFvedY", "https://platform.openai.com/docs/"),
                     t("Zero-shot vs Few-shot", "https://www.youtube.com/watch?v=v2gD8BHOaX4"),
                     t("Chain-of-Thought Prompting", "https://www.youtube.com/watch?v=Coj72EzmX20"),
-                    t("Function Calling / Tools", "https://www.youtube.com/watch?v=0-zlUy7VUjg")
+                    t("Function Calling / Tools", "https://www.youtube.com/watch?v=0-zlUy7VUjg"),
+                    topic("Whitepaper: Attention Is All You Need", [doc("Arxiv: Attention", "https://arxiv.org/abs/1706.03762")])
                 ],
                 project: {
                     title: "AI Content Assistant",
                     description: ["Multi-model LLM layer", "Streaming responses", "Function calling"],
-                    outcomes: ["Prompt engineering mastery"]
+                    outcomes: ["Build programmatic agentic tool invocations", "Minimize hallucinations via system prompts", "Understand Attention matrix maths"]
                 }
             },
             {
@@ -142,12 +146,13 @@ const genaiPlan = [
                     t("LangGraph State Management", "https://www.youtube.com/watch?v=Tdn9GZ4yF6g", "https://langchain-ai.github.io/langgraph/"),
                     t("Tool Definition & Schemas", "https://www.youtube.com/watch?v=TLf90ipMzfE"),
                     t("Multi-Agent Collaboration", "https://www.youtube.com/watch?v=MxRn2N2DXvs"),
-                    t("Human-in-the-loop", "https://www.youtube.com/watch?v=9BPCV5TYWnk")
+                    t("Human-in-the-loop", "https://www.youtube.com/watch?v=9BPCV5TYWnk"),
+                    topic("Whitepaper: ReAct Framework", [doc("Arxiv: ReAct", "https://arxiv.org/abs/2210.03629")])
                 ],
                 project: {
                     title: "AI Helpdesk Agent",
                     description: ["Multi-step ticket resolution", "Tool calling", "Workflow orchestration"],
-                    outcomes: ["Autonomous AI agents"]
+                    outcomes: ["Build cyclic graph execution engines", "Implement ReAct (Reasoning & Acting) loop", "Master stateful conversational memory"]
                 }
             }
         ]
@@ -233,12 +238,13 @@ const backendPlan = [
                     t("Database Sharding", "https://www.youtube.com/watch?v=5faMjKuq9Js"),
                     t("Replication & Failover", "https://www.youtube.com/watch?v=bI8Ry6GhMSE"),
                     t("Redis Caching Patterns", "https://www.youtube.com/watch?v=ONSD-tOpnp0", "https://redis.io/docs/"),
-                    t("MongoDB Aggregation", "https://www.youtube.com/watch?v=A3jvoE0jGdE", "https://www.mongodb.com/docs/")
+                    t("MongoDB Aggregation", "https://www.youtube.com/watch?v=A3jvoE0jGdE", "https://www.mongodb.com/docs/"),
+                    topic("DSA: B-Trees & GIN Indexes", [doc("Use The Index Luke", "https://use-the-index-luke.com/")])
                 ],
                 project: {
                     title: "E-Commerce Database Design",
                     description: ["Complex schema design", "Optimized queries", "Caching layer with Redis"],
-                    outcomes: ["Database optimization", "Scalable data layer"]
+                    outcomes: ["Design 3NF relational schemas", "Implement B-Tree query optimizers", "Master caching eviction algorithms (LRU/LFU)"]
                 }
             }
         ]
@@ -258,12 +264,14 @@ const backendPlan = [
                     t("Distributed Consensus (Raft/Paxos)", "https://www.youtube.com/watch?v=vYp4LYbnnW8"),
                     t("Distributed Transactions", "https://www.youtube.com/watch?v=S4FnmSeRpAY"),
                     t("Two-Phase Commit", "https://www.youtube.com/watch?v=-_rdWB9hN1c"),
-                    t("Saga Pattern", "https://www.youtube.com/watch?v=xDuwrtwYHu8")
+                    t("Saga Pattern", "https://www.youtube.com/watch?v=xDuwrtwYHu8"),
+                    topic("Whitepaper: Amazon Dynamo", [doc("AllThingsDistributed", "https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf")]),
+                    topic("Whitepaper: Raft Consensus", [doc("Raft Github", "https://raft.github.io/raft.pdf")])
                 ],
                 project: {
                     title: "Distributed Key-Value Store",
                     description: ["Simple distributed storage", "Replication", "Consistency guarantees"],
-                    outcomes: ["Distributed systems understanding"]
+                    outcomes: ["Architect split-brain tolerant clusters", "Enforce eventual vs strict consistency", "Implement leader election protocols"]
                 }
             },
             {
@@ -717,7 +725,8 @@ const apiGatewayPlan = [
                     ]),
                     topic("Request Router & Pattern Matching", [
                         vid("URL Routing Explained", "https://www.youtube.com/watch?v=SLwpqD8n3d0", "Traversy Media"),
-                        doc("Express Routing", "https://expressjs.com/en/guide/routing.html")
+                        doc("Express Routing", "https://expressjs.com/en/guide/routing.html"),
+                        topic("DSA: Tries for Fast Route Matching", [doc("Wikipedia: Trie", "https://en.wikipedia.org/wiki/Trie")])
                     ]),
                     topic("Middleware Pipeline (Chain of Responsibility)", [
                         vid("Middleware Explained", "https://www.youtube.com/watch?v=lY6icfhap2o", "Web Dev Simplified"),
@@ -735,7 +744,7 @@ const apiGatewayPlan = [
                 project: {
                     title: "Gateway Architecture Diagram",
                     description: ["Create architecture diagrams", "Document request flow", "Identify failure points"],
-                    outcomes: ["System design skills", "Architecture documentation"]
+                    outcomes: ["Design robust scalable API topologies", "Understand proxy connection pooling maths", "Visualize traffic routing paths"]
                 }
             }
         ]
@@ -778,7 +787,7 @@ const apiGatewayPlan = [
                 project: {
                     title: "Simple API Gateway v1",
                     description: ["HTTP server with routing", "Proxy to backend services", "Logging and auth middleware", "Basic rate limiting"],
-                    outcomes: ["Core gateway mechanics", "Middleware patterns"]
+                    outcomes: ["Implement Trie-based URL routers", "Build middleware interceptors", "Master rolling-window rate limiting algorithms"]
                 }
             },
             {
@@ -788,7 +797,8 @@ const apiGatewayPlan = [
                 topics: [
                     topic("Caching Layer (node-cache ΓåÆ Redis)", [
                         vid("Redis Caching", "https://www.youtube.com/watch?v=ONSD-tOpnp0", "Traversy Media"),
-                        doc("Redis Docs", "https://redis.io/docs/")
+                        doc("Redis Docs", "https://redis.io/docs/"),
+                        topic("DSA: LRU & LFU Cache Eviction", [doc("Wikipedia: Cache Replacement", "https://en.wikipedia.org/wiki/Cache_replacement_policies")])
                     ]),
                     topic("Circuit Breaker with Opossum", [
                         vid("Implementing Circuit Breaker", "https://www.youtube.com/watch?v=ADHcBxEXvFA", "DevOps Directive"),
@@ -1235,7 +1245,9 @@ const systemDesignStackPlan = [
                         vid("PostgreSQL Tutorial", "https://www.youtube.com/watch?v=qw--VYLpxG4", "freeCodeCamp"),
                         vid("SQL Indexing Deep Dive", "https://www.youtube.com/watch?v=clrtT_4WBAw", "Hussein Nasser"),
                         doc("PostgreSQL Documentation", "https://www.postgresql.org/docs/"),
-                        art("ACID Properties", "https://www.postgresql.org/docs/current/transaction-iso.html", "PostgreSQL")
+                        art("ACID Properties", "https://www.postgresql.org/docs/current/transaction-iso.html", "PostgreSQL"),
+                        topic("Whitepaper: Google Spanner", [doc("Google Research", "https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf")]),
+                        topic("DSA: LSM Trees & SSTables", [doc("TowardsDataScience", "https://towardsdatascience.com/log-structured-merge-trees-9c8e2bea89e8")])
                     ]),
                     topic("Database Sharding & Replication", [
                         vid("Database Sharding", "https://www.youtube.com/watch?v=5faMjKuq9Js", "Hussein Nasser"),
@@ -1246,7 +1258,7 @@ const systemDesignStackPlan = [
                 project: {
                     title: "Multi-Tier Data Architecture",
                     description: ["Design caching layer with Redis", "Implement SQL + NoSQL hybrid", "Setup S3 for file storage"],
-                    outcomes: ["Choose right storage for use cases", "Understand data trade-offs"]
+                    outcomes: ["Choose explicit storage models (Document vs Relational vs Wide-Column)", "Understand Spanner-level global distribution patterns", "Master B-Tree index optimization heuristics"]
                 }
             }
         ]
@@ -1559,6 +1571,8 @@ const aiEngineerRoadmapPlan = [
                 topics: [
                     topic("Pandas Core Operations", [
                         playlist("Pandas Complete Tutorial", "https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS", "Corey Schafer"),
+                        playlist("Pandas for Data Science", "https://www.youtube.com/watch?v=vmEHCJofslg", "CampusX"),
+                        vid("Pandas Crash Course", "https://www.youtube.com/watch?v=x9JiIFvlUjc", "Krish Naik"),
                         vid("Pandas in 1 Hour", "https://www.youtube.com/watch?v=vmEHCJofslg", "Programming with Mosh"),
                         doc("Pandas User Guide", "https://pandas.pydata.org/docs/user_guide/index.html")
                     ]),
@@ -1588,6 +1602,7 @@ const aiEngineerRoadmapPlan = [
                 topics: [
                     topic("FastAPI Fundamentals", [
                         playlist("FastAPI Full Course 2024", "https://www.youtube.com/playlist?list=PLqAmigZvYxIL9dnYeZEhMoHcoP4zop8-p", "Bitfumes"),
+                        vid("FastAPI crash course in Hindi", "https://www.youtube.com/watch?v=7t2alSnE2-I", "Chai aur Code"),
                         vid("FastAPI Complete Tutorial", "https://www.youtube.com/watch?v=7t2alSnE2-I", "Akamai Developer"),
                         doc("FastAPI Official Tutorial", "https://fastapi.tiangolo.com/tutorial/")
                     ]),
@@ -1633,6 +1648,7 @@ const aiEngineerRoadmapPlan = [
                     topic("Tensors & Autograd", [
                         playlist("Complete ML Playlist (Vijayraja)", "https://www.youtube.com/playlist?list=PLZru3N79Wp1B5_5eWd7yv28K6K0z0_U5x", "Vizuara AI"),
                         playlist("PyTorch for Deep Learning", "https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4", "Patrick Loeber"),
+                        vid("PyTorch for Beginners", "https://www.youtube.com/watch?v=ORMx45xqWkA", "CampusX"),
                         vid("PyTorch in 100 Seconds", "https://www.youtube.com/watch?v=ORMx45xqWkA", "Fireship"),
                         doc("PyTorch Tutorials", "https://pytorch.org/tutorials/")
                     ]),
@@ -1710,6 +1726,7 @@ const aiEngineerRoadmapPlan = [
                 weeks: "Month 4 (Week 1ΓÇô2)",
                 topics: [
                     topic("LangChain Core Concepts", [
+                        playlist("Complete Langchain Course", "https://www.youtube.com/watch?v=tcqEUSNCn8I", "Krish Naik"),
                         playlist("LangChain Full Course", "https://www.youtube.com/playlist?list=PLqAmigZvYxILVLf4e6r2dcq-S3WJ1mUfY", "Krish Naik"),
                         vid("LangChain Crash Course", "https://www.youtube.com/watch?v=lG7Uxts9SXs", "Tech With Tim"),
                         doc("LangChain Docs", "https://python.langchain.com/docs/get_started/introduction")
@@ -1830,6 +1847,7 @@ const aiEngineerRoadmapPlan = [
                     ]),
                     topic("MLflow Experiment Tracking", [
                         vid("MLflow Tutorial", "https://www.youtube.com/watch?v=ksYIVDue8ak", "Krish Naik"),
+                        vid("MLOps Zero to Hero", "https://www.youtube.com/watch?v=x3cxvsUFVZA", "Krish Naik"),
                         vid("MLflow Complete Guide", "https://www.youtube.com/watch?v=x3cxvsUFVZA", "freeCodeCamp"),
                         doc("MLflow Documentation", "https://mlflow.org/docs/latest/index.html")
                     ]),
@@ -2968,7 +2986,8 @@ const dsaProPlan = [
                         art("Python Custom Sort Guide", "https://docs.python.org/3/howto/sorting.html")
                     ]),
                     topic("Interview Sorting Problems: Sort Colors, Merge Intervals, Largest Number", [
-                        vid("Sorting Interview Questions", "https://www.youtube.com/watch?v=aw_08iTRl5k", "NeetCode")
+                        vid("Sorting Interview Questions", "https://www.youtube.com/watch?v=aw_08iTRl5k", "NeetCode"),
+                        topic("Whitepaper: TimSort Algorithm", [doc("Python TimSort spec", "https://hg.python.org/cpython/file/tip/Objects/listsort.txt")])
                     ])
                 ],
                 project: {

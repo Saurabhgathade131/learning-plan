@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import fs from 'fs';
-import path from 'path';
 import { learningPlan, allLearningPlans } from './data';
 import serverless from 'serverless-http';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocumentClient, PutCommand, ScanCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb';
 
 const app = express();
 const PORT = 5000;
@@ -11,46 +11,11 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-const IS_PRODUCTION = process.env.NODE_ENV === 'production';
-const IS_LAMBDA = !!process.env.LAMBDA_TASK_ROOT;
+const client = new DynamoDBClient({});
+const docClient = DynamoDBDocumentClient.from(client);
 
-const getStoragePath = (filename: string) => {
-    if (IS_LAMBDA) {
-        return path.join('/tmp', filename);
-    }
-    return path.join(__dirname, '..', filename);
-};
-
-const PROGRESS_FILE = getStoragePath('progress.json');
-const NOTES_FILE = getStoragePath('notes.json');
-
-// Helper to read progress
-const readProgress = () => {
-    if (!fs.existsSync(PROGRESS_FILE)) {
-        return {};
-    }
-    const data = fs.readFileSync(PROGRESS_FILE, 'utf-8');
-    return JSON.parse(data);
-};
-
-// Helper to write progress
-const writeProgress = (data: any) => {
-    fs.writeFileSync(PROGRESS_FILE, JSON.stringify(data, null, 2));
-};
-
-// Helper to read notes
-const readNotes = () => {
-    if (!fs.existsSync(NOTES_FILE)) {
-        return {};
-    }
-    const data = fs.readFileSync(NOTES_FILE, 'utf-8');
-    return JSON.parse(data);
-};
-
-// Helper to write notes
-const writeNotes = (data: any) => {
-    fs.writeFileSync(NOTES_FILE, JSON.stringify(data, null, 2));
-};
+const PROGRESS_TABLE = process.env.PROGRESS_TABLE || 'learning-tracker-api-dev-progress';
+const NOTES_TABLE = process.env.NOTES_TABLE || 'learning-tracker-api-dev-notes';
 
 // Get all learning plans (for tabs)
 app.get('/api/plans', (req, res) => {
@@ -62,56 +27,143 @@ app.get('/api/plan', (req, res) => {
     res.json(learningPlan);
 });
 
-app.get('/api/progress', (req, res) => {
-    const progress = readProgress();
-    res.json(progress);
+// GET Progress
+app.get('/api/progress', async (req, res) => {
+    try {
+        const { Items } = await docClient.send(new ScanCommand({ TableName: PROGRESS_TABLE }));
+        const progress: Record<string, any> = {};
+        if (Items) {
+            Items.forEach(item => {
+                progress[item.id] = { status: item.status, type: item.type, timestamp: item.timestamp };
+            });
+        }
+        res.json(progress);
+    } catch (error) {
+        console.error("Error fetching progress:", error);
+        res.status(500).json({ error: 'Failed to fetch progress' });
+    }
 });
 
-app.post('/api/progress', (req, res) => {
+// POST Progress
+app.post('/api/progress', async (req, res) => {
     const { id, status, type } = req.body;
     if (!id || !status) {
         return res.status(400).json({ error: 'Missing id or status' });
     }
 
-    const progress = readProgress();
-    progress[id] = { status, type, timestamp: new Date().toISOString() };
+    try {
+        await docClient.send(new PutCommand({
+            TableName: PROGRESS_TABLE,
+            Item: {
+                id,
+                status,
+                type,
+                timestamp: new Date().toISOString()
+            }
+        }));
 
-    writeProgress(progress);
-    res.json(progress);
+        // Scan and return all (to maintain frontend compatibility)
+        const { Items } = await docClient.send(new ScanCommand({ TableName: PROGRESS_TABLE }));
+        const progress: Record<string, any> = {};
+        if (Items) {
+            Items.forEach(item => {
+                progress[item.id] = { status: item.status, type: item.type, timestamp: item.timestamp };
+            });
+        }
+        res.json(progress);
+    } catch (error) {
+        console.error("Error updating progress:", error);
+        res.status(500).json({ error: 'Failed to update progress' });
+    }
 });
 
-// Get all notes
-app.get('/api/notes', (req, res) => {
-    const notes = readNotes();
-    res.json(notes);
+// GET Notes
+app.get('/api/notes', async (req, res) => {
+    try {
+        const { Items } = await docClient.send(new ScanCommand({ TableName: NOTES_TABLE }));
+        const notes: Record<string, any> = {};
+        if (Items) {
+            Items.forEach(item => {
+                notes[item.topicId] = {
+                    note: item.note,
+                    currentVideo: item.currentVideo,
+                    videoTimestamp: item.videoTimestamp,
+                    updatedAt: item.updatedAt
+                };
+            });
+        }
+        res.json(notes);
+    } catch (error) {
+        console.error("Error fetching notes:", error);
+        res.status(500).json({ error: 'Failed to fetch notes' });
+    }
 });
 
-// Save note for a specific topic
-app.post('/api/notes', (req, res) => {
+// POST Notes
+app.post('/api/notes', async (req, res) => {
     const { topicId, note, currentVideo, timestamp: videoTimestamp } = req.body;
     if (!topicId) {
         return res.status(400).json({ error: 'Missing topicId' });
     }
 
-    const notes = readNotes();
-    notes[topicId] = {
-        note: note || '',
-        currentVideo: currentVideo || '',
-        videoTimestamp: videoTimestamp || '',
-        updatedAt: new Date().toISOString()
-    };
+    try {
+        await docClient.send(new PutCommand({
+            TableName: NOTES_TABLE,
+            Item: {
+                topicId,
+                note: note || '',
+                currentVideo: currentVideo || '',
+                videoTimestamp: videoTimestamp || '',
+                updatedAt: new Date().toISOString()
+            }
+        }));
 
-    writeNotes(notes);
-    res.json(notes);
+        const { Items } = await docClient.send(new ScanCommand({ TableName: NOTES_TABLE }));
+        const notes: Record<string, any> = {};
+        if (Items) {
+            Items.forEach(item => {
+                notes[item.topicId] = {
+                    note: item.note,
+                    currentVideo: item.currentVideo,
+                    videoTimestamp: item.videoTimestamp,
+                    updatedAt: item.updatedAt
+                };
+            });
+        }
+        res.json(notes);
+    } catch (error) {
+        console.error("Error saving note:", error);
+        res.status(500).json({ error: 'Failed to save note' });
+    }
 });
 
-// Delete a note
-app.delete('/api/notes/:topicId', (req, res) => {
+// DELETE Note
+app.delete('/api/notes/:topicId', async (req, res) => {
     const { topicId } = req.params;
-    const notes = readNotes();
-    delete notes[topicId];
-    writeNotes(notes);
-    res.json(notes);
+
+    try {
+        await docClient.send(new DeleteCommand({
+            TableName: NOTES_TABLE,
+            Key: { topicId }
+        }));
+
+        const { Items } = await docClient.send(new ScanCommand({ TableName: NOTES_TABLE }));
+        const notes: Record<string, any> = {};
+        if (Items) {
+            Items.forEach(item => {
+                notes[item.topicId] = {
+                    note: item.note,
+                    currentVideo: item.currentVideo,
+                    videoTimestamp: item.videoTimestamp,
+                    updatedAt: item.updatedAt
+                };
+            });
+        }
+        res.json(notes);
+    } catch (error) {
+        console.error("Error deleting note:", error);
+        res.status(500).json({ error: 'Failed to delete note' });
+    }
 });
 
 // For local development

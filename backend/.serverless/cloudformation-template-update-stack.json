@@ -134,6 +134,21 @@
                       "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/learning-tracker-api-dev*:*:*"
                     }
                   ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:GetItem",
+                    "dynamodb:PutItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:DeleteItem"
+                  ],
+                  "Resource": [
+                    "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-progress",
+                    "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-notes"
+                  ]
                 }
               ]
             }
@@ -162,7 +177,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/learning-tracker-api/dev/1772769395512-2026-03-06T03:56:35.512Z/learning-tracker-api.zip"
+          "S3Key": "serverless/learning-tracker-api/dev/1773064651122-2026-03-09T13:57:31.122Z/learning-tracker-api.zip"
         },
         "Handler": "dist/index.handler",
         "Runtime": "nodejs18.x",
@@ -171,7 +186,9 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production"
+            "NODE_ENV": "production",
+            "PROGRESS_TABLE": "learning-tracker-api-dev-progress",
+            "NOTES_TABLE": "learning-tracker-api-dev-notes"
           }
         },
         "Role": {
@@ -185,14 +202,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionmGqQuZ9jWPuuVbxnfzrA9iRew6v6qEdOxbw4Gj7CU": {
+    "ApiLambdaVersion8awOGxa4UI9kkt3b5TvX7kQaHfufmX5Rj4fAaW7I4w": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "8MIGHzAyz25yzeeHgLuvxBTN1SAYQgVo453+UpnIp98="
+        "CodeSha256": "5WLobd9pCFErkJKzpv8rvI+7mSkjh49nPW7xSnJe1IU="
       }
     },
     "ApiGatewayRestApi": {
@@ -410,7 +427,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1772769380296": {
+    "ApiGatewayDeployment1773064640150": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -461,6 +478,44 @@
           ]
         }
       }
+    },
+    "ProgressTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "TableName": "learning-tracker-api-dev-progress",
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST"
+      }
+    },
+    "NotesTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "TableName": "learning-tracker-api-dev-notes",
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "topicId",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "topicId",
+            "KeyType": "HASH"
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST"
+      }
     }
   },
   "Outputs": {
@@ -475,7 +530,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionmGqQuZ9jWPuuVbxnfzrA9iRew6v6qEdOxbw4Gj7CU"
+        "Ref": "ApiLambdaVersion8awOGxa4UI9kkt3b5TvX7kQaHfufmX5Rj4fAaW7I4w"
       },
       "Export": {
         "Name": "sls-learning-tracker-api-dev-ApiLambdaFunctionQualifiedArn"
