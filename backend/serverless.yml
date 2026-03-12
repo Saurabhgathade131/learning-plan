@@ -11,6 +11,9 @@ provider:
     NODE_ENV: production
     PROGRESS_TABLE: ${self:service}-${opt:stage, 'dev'}-progress
     NOTES_TABLE: ${self:service}-${opt:stage, 'dev'}-notes
+    SKILLS_TABLE: ${self:service}-${opt:stage, 'dev'}-skills
+    STANDUPS_TABLE: ${self:service}-${opt:stage, 'dev'}-standups
+    GOALS_TABLE: ${self:service}-${opt:stage, 'dev'}-goals
 
   iamRoleStatements:
     - Effect: Allow
@@ -24,6 +27,9 @@ provider:
       Resource:
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.PROGRESS_TABLE}"
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.NOTES_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.STANDUPS_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.GOALS_TABLE}"
 
 functions:
   api:
@@ -85,4 +91,52 @@ resources:
         KeySchema:
           - AttributeName: topicId
             KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+
+    SkillsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.SKILLS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: skillName
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: skillName
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+
+    StandupsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.STANDUPS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: date
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: date
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+
+    GoalsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.GOALS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: goalId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: goalId
+            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST

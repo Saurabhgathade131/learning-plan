@@ -3,7 +3,7 @@ import cors from 'cors';
 import { learningPlan, allLearningPlans } from './data';
 import serverless from 'serverless-http';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, PutCommand, ScanCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient, PutCommand, ScanCommand, DeleteCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
 
 const app = express();
 const PORT = 5000;
@@ -16,6 +16,9 @@ const docClient = DynamoDBDocumentClient.from(client);
 
 const PROGRESS_TABLE = process.env.PROGRESS_TABLE || 'learning-tracker-api-dev-progress';
 const NOTES_TABLE = process.env.NOTES_TABLE || 'learning-tracker-api-dev-notes';
+const SKILLS_TABLE = process.env.SKILLS_TABLE || 'learning-tracker-api-dev-skills';
+const STANDUPS_TABLE = process.env.STANDUPS_TABLE || 'learning-tracker-api-dev-standups';
+const GOALS_TABLE = process.env.GOALS_TABLE || 'learning-tracker-api-dev-goals';
 
 // Get all learning plans (for tabs)
 app.get('/api/plans', (req, res) => {

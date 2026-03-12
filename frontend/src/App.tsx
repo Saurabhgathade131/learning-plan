@@ -229,6 +229,188 @@ const StatusSelect = ({ status, onChange, type }: { status: string; onChange: (v
   );
 };
 
+// Deep Dive Validator Modal
+const DeepDiveModal = ({ topic, onValidate, onCancel }: { topic: string, onValidate: () => void, onCancel: () => void }) => {
+  const questions = [
+    "What is the single most important concept here?",
+    "How would you explain this to a 5-year-old?",
+    "What is the primary trade-off of using this approach?"
+  ];
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
+      <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl p-6 max-w-md w-full">
+        <div className="flex items-center gap-3 mb-4 text-indigo-500">
+          <Brain className="w-6 h-6" />
+          <h3 className="text-xl font-bold">Validate Mastery</h3>
+        </div>
+        <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
+          Before marking <strong>{topic}</strong> as complete, answer these questions out loud to guarantee retention:
+        </p>
+        <ul className="space-y-3 mb-8">
+          {questions.map((q, i) => (
+            <li key={i} className="text-sm font-medium bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+              {q}
+            </li>
+          ))}
+        </ul>
+        <div className="flex gap-3 justify-end">
+          <button onClick={onCancel} className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">Not Ready</button>
+          <button onClick={onValidate} className="px-4 py-2 text-sm font-medium bg-indigo-500 text-white hover:bg-indigo-600 shadow-md rounded-lg transition-colors">I Conquered It</button>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+
+// Nightly Standup Modal
+const NightlyStandupModal = ({ onSave, onCancel }: { onSave: (data: any) => void; onCancel: () => void }) => {
+  const [accomplished, setAccomplished] = useState('');
+  const [focusLost, setFocusLost] = useState('');
+  const [planTomorrow, setPlanTomorrow] = useState('');
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
+      <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl p-6 max-w-lg w-full">
+        <div className="flex items-center gap-3 mb-4 text-emerald-500">
+          <BookMarked className="w-6 h-6" />
+          <h3 className="text-xl font-bold">Nightly Accountability Standup</h3>
+        </div>
+        <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
+          Reflect on today to win tomorrow. Be honest. What did you get done?
+        </p>
+
+        <div className="space-y-4 mb-6">
+          <div>
+            <label className="text-xs font-bold text-slate-500 uppercase">What did I accomplish today?</label>
+            <textarea value={accomplished} onChange={e => setAccomplished(e.target.value)} className="w-full mt-1 p-2 text-sm border bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Completed Python API chapter..."></textarea>
+          </div>
+          <div>
+            <label className="text-xs font-bold text-slate-500 uppercase">Where did I lose focus?</label>
+            <textarea value={focusLost} onChange={e => setFocusLost(e.target.value)} className="w-full mt-1 p-2 text-sm border bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Scrolled Twitter for 45 mins..."></textarea>
+          </div>
+          <div>
+            <label className="text-xs font-bold text-slate-500 uppercase">Exact plan for tomorrow:</label>
+            <textarea value={planTomorrow} onChange={e => setPlanTomorrow(e.target.value)} className="w-full mt-1 p-2 text-sm border bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="1. Watch PyTorch video. 2. Build model..."></textarea>
+          </div>
+        </div>
+
+        <div className="flex gap-3 justify-end">
+          <button onClick={onCancel} className="px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">Skip</button>
+          <button onClick={() => onSave({ accomplished, focusLost, planTomorrow })} className="px-4 py-2 text-sm font-medium bg-emerald-500 text-white hover:bg-emerald-600 shadow-md rounded-lg transition-colors">Save Standup</button>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+
+// Portfolio Dashboard
+const PortfolioDashboard = () => {
+  const [skills, setSkills] = useState<{ skillName: string, acquiredAt: string }[]>([]);
+
+  useEffect(() => {
+    fetch(`${API_URL}/skills/user-1`)
+      .then(res => res.json())
+      .then(data => setSkills(data || []));
+  }, []);
+
+  return (
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
+      <div className="flex items-center gap-3 mb-6 text-indigo-500">
+        <Trophy className="w-8 h-8" />
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">My Portfolio & Skills</h2>
+      </div>
+      <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+        A chronologically tracked list of your mastered skills. Ready to be copied straight into your resume.
+      </p>
+
+      {skills.length === 0 ? (
+        <div className="text-center p-12 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
+          <p className="text-slate-500 font-medium">No skills acquired yet. Start completing topics to build your portfolio!</p>
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-3">
+          {skills.map((skill, i) => (
+            <div key={i} className="flex items-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800 rounded-xl shadow-sm transition-all hover:scale-105">
+              <Sparkles className="w-4 h-4 text-indigo-400" />
+              <span className="text-sm font-bold text-indigo-700 dark:text-indigo-400">{skill.skillName}</span>
+              <span className="text-[10px] text-indigo-400 dark:text-indigo-500 font-medium tracking-wide">
+                {new Date(skill.acquiredAt).toLocaleDateString()}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Goals Dashboard
+const GoalsDashboard = () => {
+  const [goals, setGoals] = useState<any[]>([]);
+  const [newGoal, setNewGoal] = useState('');
+
+  useEffect(() => {
+    fetch(`${API_URL}/goals/user-1`)
+      .then(res => res.json())
+      .then(data => setGoals(data || []));
+  }, []);
+
+  const handleAddGoal = async () => {
+    if (!newGoal) return;
+    const goalId = Date.now().toString();
+    const payload = { userId: 'user-1', goalId, title: newGoal, deadline: '', microSteps: [] };
+    await fetch(`${API_URL}/goals`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    setGoals([...goals, payload]);
+    setNewGoal('');
+  };
+
+  return (
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
+      <div className="flex items-center gap-3 mb-6 text-rose-500">
+        <Rocket className="w-8 h-8" />
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Goals & Manifestation</h2>
+      </div>
+      <p className="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+        The ultimate Raj Shamani "All-In" dashboard. Set a massive goal, break it into micro-steps, and execute relentlessly.
+      </p>
+
+      <div className="flex gap-3 mb-8">
+        <input
+          type="text"
+          value={newGoal}
+          onChange={e => setNewGoal(e.target.value)}
+          placeholder="I will become a $200k AI Engineer..."
+          className="flex-1 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-rose-500"
+        />
+        <button onClick={handleAddGoal} className="px-6 py-3 font-bold bg-rose-500 text-white rounded-xl shadow-md hover:bg-rose-600 transition-colors">Manifest Goal</button>
+      </div>
+
+      <div className="grid gap-4">
+        {goals.map((g, i) => (
+          <div key={i} className="p-5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 flex justify-between items-center transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
+            <div>
+              <h4 className="font-bold text-slate-800 dark:text-slate-100">{g.title}</h4>
+              <p className="text-xs text-slate-500 mt-1">Pending micro-steps: {g.microSteps?.length || 0}</p>
+            </div>
+            <button className="text-xs font-semibold text-rose-500 hover:text-rose-600">Break Down Steps</button>
+          </div>
+        ))}
+        {goals.length === 0 && (
+          <div className="text-center p-12 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
+            <p className="text-slate-500 font-medium">No active goals. Time to dream big.</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 function App() {
   const [plans, setPlans] = useState<LearningPlan[]>([]);
   const [activePlanId, setActivePlanId] = useState<string>('');
@@ -237,8 +419,20 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set());
   const [expandedTopics, setExpandedTopics] = useState<Set<string>>(new Set());
+  const [validatingTopic, setValidatingTopic] = useState<{ id: string, name: string } | null>(null);
+
+  const [showStandup, setShowStandup] = useState(false);
 
   useEffect(() => {
+    // Check if we should pop up the nightly standup
+    const hour = new Date().getHours();
+    const lastStandup = localStorage.getItem('lastStandup');
+    const todayStr = new Date().toDateString();
+
+    if (hour >= 20 && lastStandup !== todayStr) {
+      setShowStandup(true);
+    }
+
     Promise.all([
       fetch(`${API_URL}/plans`).then(res => res.json()),
       fetch(`${API_URL}/progress`).then(res => res.json()),
@@ -280,11 +474,44 @@ function App() {
     });
   };
 
-  const toggleTopic = (id: string) => {
+  const toggleTopic = (id: string, name: string) => {
     const currentStatus = progress[id]?.status;
     const newStatus = currentStatus === 'completed' ? 'pending' : 'completed';
-    updateStatus(id, newStatus, 'topic');
+
+    if (newStatus === 'completed') {
+      setValidatingTopic({ id, name });
+    } else {
+      updateStatus(id, newStatus, 'topic');
+    }
   }
+
+  const confirmTopicMastery = async () => {
+    if (validatingTopic) {
+      await updateStatus(validatingTopic.id, 'completed', 'topic');
+
+      // Post skill to API
+      const userId = 'user-1'; // Mock user
+      await fetch(`${API_URL}/skills`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, skillName: validatingTopic.name })
+      });
+
+      setValidatingTopic(null);
+    }
+  };
+
+  const handleSaveStandup = async (data: any) => {
+    const userId = 'user-1';
+    const date = new Date().toISOString().split('T')[0];
+    await fetch(`${API_URL}/standups`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, date, ...data })
+    });
+    localStorage.setItem('lastStandup', new Date().toDateString());
+    setShowStandup(false);
+  };
 
   const toggleTopicExpand = (id: string) => {
     const newSet = new Set(expandedTopics);
@@ -365,10 +592,30 @@ function App() {
               </button>
             );
           })}
+
+          {/* Portfolio Tab */}
+          <button
+            onClick={() => setActivePlanId('portfolio')}
+            className={cn(
+              "flex items-center gap-3 px-5 py-3 rounded-xl font-semibold transition-all border-2",
+              activePlanId === 'portfolio'
+                ? "bg-indigo-500 text-white border-transparent shadow-lg"
+                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+            )}
+          >
+            <span className={cn(activePlanId === 'portfolio' ? "text-white" : "text-indigo-500")}><Trophy className="w-5 h-5" /></span>
+            <div className="text-left">
+              <div className="text-sm">My Portfolio</div>
+              <div className={cn("text-[10px] font-normal", activePlanId === 'portfolio' ? "text-white/80" : "text-slate-500")}>Verified acquired skills</div>
+            </div>
+          </button>
         </div>
 
-        {/* Active Plan Content */}
-        {activePlan && (
+        {/* Dynamic Content */}
+        {activePlanId === 'portfolio' && <PortfolioDashboard />}
+        {activePlanId === 'goals' && <GoalsDashboard />}
+
+        {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && (
           <div className="grid gap-6">
             {activePlan.phases.map((phase, i) => {
               const percent = calculatePhaseProgress(phase);
@@ -435,7 +682,7 @@ function App() {
                                       <div key={i} className={cn("border rounded-lg transition-all overflow-hidden", isCompleted ? "bg-emerald-50/30 dark:bg-emerald-900/5 border-emerald-100 dark:border-emerald-900/20" : "bg-white dark:bg-slate-800/20 border-slate-200 dark:border-slate-800")}>
                                         <div className="p-3">
                                           <div className="flex items-start gap-3">
-                                            <div onClick={() => toggleTopic(topicId)} className={cn("mt-0.5 w-5 h-5 rounded flex items-center justify-center transition-all cursor-pointer flex-shrink-0", isCompleted ? "bg-emerald-500 text-white shadow-sm" : "bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 hover:border-emerald-400")}>
+                                            <div onClick={() => toggleTopic(topicId, topic.name)} className={cn("mt-0.5 w-5 h-5 rounded flex items-center justify-center transition-all cursor-pointer flex-shrink-0", isCompleted ? "bg-emerald-500 text-white shadow-sm" : "bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-600 hover:border-emerald-400")}>
                                               {isCompleted && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                                             </div>
                                             <div className="flex-1 min-w-0">
@@ -505,6 +752,26 @@ function App() {
             })}
           </div>
         )}
+
+        <AnimatePresence>
+          {validatingTopic && (
+            <DeepDiveModal
+              topic={validatingTopic.name}
+              onValidate={confirmTopicMastery}
+              onCancel={() => setValidatingTopic(null)}
+            />
+          )}
+
+          {showStandup && (
+            <NightlyStandupModal
+              onSave={handleSaveStandup}
+              onCancel={() => {
+                localStorage.setItem('lastStandup', new Date().toDateString());
+                setShowStandup(false);
+              }}
+            />
+          )}
+        </AnimatePresence>
 
       </div>
     </div>

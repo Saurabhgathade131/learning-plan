@@ -28,6 +28,9 @@ const client = new client_dynamodb_1.DynamoDBClient({});
 const docClient = lib_dynamodb_1.DynamoDBDocumentClient.from(client);
 const PROGRESS_TABLE = process.env.PROGRESS_TABLE || 'learning-tracker-api-dev-progress';
 const NOTES_TABLE = process.env.NOTES_TABLE || 'learning-tracker-api-dev-notes';
+const SKILLS_TABLE = process.env.SKILLS_TABLE || 'learning-tracker-api-dev-skills';
+const STANDUPS_TABLE = process.env.STANDUPS_TABLE || 'learning-tracker-api-dev-standups';
+const GOALS_TABLE = process.env.GOALS_TABLE || 'learning-tracker-api-dev-goals';
 // Get all learning plans (for tabs)
 app.get('/api/plans', (req, res) => {
     res.json(data_1.allLearningPlans);
