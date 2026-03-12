@@ -3,7 +3,7 @@ import type { LearningPlan, Phase, Progress, Topic, TopicResource } from './type
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket, Cpu, Sparkles, Trophy } from 'lucide-react';
+import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket, Cpu, Sparkles, Trophy, BarChart3 } from 'lucide-react';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -370,6 +370,35 @@ const GoalsDashboard = () => {
     setNewGoal('');
   };
 
+  const toggleMicroStep = async (goalId: string, stepIndex: number) => {
+    const goal = goals.find(g => g.goalId === goalId);
+    if (!goal) return;
+    const microSteps = [...(goal.microSteps || [])];
+    microSteps[stepIndex] = { ...microSteps[stepIndex], completed: !microSteps[stepIndex].completed };
+
+    const updatedGoal = { ...goal, microSteps };
+    await fetch(`${API_URL}/goals`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedGoal)
+    });
+    setGoals(goals.map(g => g.goalId === goalId ? updatedGoal : g));
+  };
+
+  const addMicroStep = async (goalId: string, text: string) => {
+    const goal = goals.find(g => g.goalId === goalId);
+    if (!goal) return;
+    const microSteps = [...(goal.microSteps || []), { text, completed: false }];
+
+    const updatedGoal = { ...goal, microSteps };
+    await fetch(`${API_URL}/goals`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedGoal)
+    });
+    setGoals(goals.map(g => g.goalId === goalId ? updatedGoal : g));
+  };
+
   return (
     <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
       <div className="flex items-center gap-3 mb-6 text-rose-500">
@@ -391,14 +420,45 @@ const GoalsDashboard = () => {
         <button onClick={handleAddGoal} className="px-6 py-3 font-bold bg-rose-500 text-white rounded-xl shadow-md hover:bg-rose-600 transition-colors">Manifest Goal</button>
       </div>
 
-      <div className="grid gap-4">
-        {goals.map((g, i) => (
-          <div key={i} className="p-5 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 flex justify-between items-center transition-all hover:bg-slate-50 dark:hover:bg-slate-800">
-            <div>
-              <h4 className="font-bold text-slate-800 dark:text-slate-100">{g.title}</h4>
-              <p className="text-xs text-slate-500 mt-1">Pending micro-steps: {g.microSteps?.length || 0}</p>
+      <div className="grid gap-6">
+        {goals.map((g) => (
+          <div key={g.goalId} className="p-6 border border-slate-200 dark:border-slate-700 rounded-2xl bg-slate-50/50 dark:bg-slate-800/30 transition-all hover:shadow-md">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h4 className="text-lg font-bold text-slate-800 dark:text-white">{g.title}</h4>
+                <div className="flex gap-4 mt-1">
+                  <span className="text-[10px] uppercase font-bold text-rose-500">Target: $200K Goal</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400">Created: {new Date(g.createdAt).toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div className="bg-rose-500/10 text-rose-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Active</div>
             </div>
-            <button className="text-xs font-semibold text-rose-500 hover:text-rose-600">Break Down Steps</button>
+
+            <div className="space-y-2 mt-4">
+              {g.microSteps?.map((step: any, idx: number) => (
+                <div key={idx} onClick={() => toggleMicroStep(g.goalId, idx)} className="flex items-center gap-3 p-2 hover:bg-white dark:hover:bg-slate-800 rounded-lg cursor-pointer group transition-colors">
+                  <div className={cn("w-4 h-4 rounded border-2 transition-all flex items-center justify-center", step.completed ? "bg-emerald-500 border-emerald-500" : "border-slate-300 dark:border-slate-600")}>
+                    {step.completed && <Check className="w-3 h-3 text-white stroke-[4]" />}
+                  </div>
+                  <span className={cn("text-sm", step.completed ? "text-slate-400 line-through" : "text-slate-700 dark:text-slate-200")}>{step.text}</span>
+                </div>
+              ))}
+
+              <div className="flex gap-2 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700/50">
+                <input
+                  type="text"
+                  placeholder="Add small step..."
+                  className="flex-1 bg-transparent text-xs outline-none text-slate-600 dark:text-slate-400"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      addMicroStep(g.goalId, (e.target as HTMLInputElement).value);
+                      (e.target as HTMLInputElement).value = '';
+                    }
+                  }}
+                />
+                <span className="text-[10px] text-slate-400 italic">Press Enter to add</span>
+              </div>
+            </div>
           </div>
         ))}
         {goals.length === 0 && (
@@ -406,6 +466,109 @@ const GoalsDashboard = () => {
             <p className="text-slate-500 font-medium">No active goals. Time to dream big.</p>
           </div>
         )}
+      </div>
+    </div>
+  );
+};
+
+// Reports Dashboard
+const ReportsDashboard = () => {
+  const [standups, setStandups] = useState<any[]>([]);
+  const [skills, setSkills] = useState<any[]>([]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch(`${API_URL}/standups/user-1`).then(res => res.json()),
+      fetch(`${API_URL}/skills/user-1`).then(res => res.json())
+    ]).then(([sData, skData]) => {
+      setStandups(sData || []);
+      setSkills(skData || []);
+    });
+  }, []);
+
+  const consistencyScore = Math.min(100, Math.round((standups.length / 30) * 100)); // Monthly focus
+
+  return (
+    <div className="grid md:grid-cols-2 gap-6">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+        <div className="flex items-center gap-3 mb-6 text-emerald-500">
+          <Clock className="w-6 h-6" />
+          <h3 className="text-xl font-bold">Consistency Score</h3>
+        </div>
+        <div className="relative w-32 h-32 mx-auto mb-6">
+          <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
+            <path className="text-slate-100 dark:text-slate-800" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3" />
+            <path className="text-emerald-500" strokeDasharray={`${consistencyScore}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-2xl font-black text-slate-800 dark:text-white">{consistencyScore}%</span>
+            <span className="text-[10px] text-slate-500 uppercase font-bold">Reliability</span>
+          </div>
+        </div>
+        <p className="text-center text-sm text-slate-500">Based on your last 30 days of accountability standups.</p>
+      </div>
+
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+        <div className="flex items-center gap-3 mb-6 text-indigo-500">
+          <Sparkles className="w-6 h-6" />
+          <h3 className="text-xl font-bold">Velocity Metrics</h3>
+        </div>
+        <div className="space-y-4">
+          <div className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Total Skills Mastery</span>
+            <span className="text-lg font-bold text-indigo-500">{skills.length}</span>
+          </div>
+          <div className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">Standups Logged</span>
+            <span className="text-lg font-bold text-emerald-500">{standups.length}</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="md:col-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+        <h3 className="text-lg font-bold mb-4">Focus Friction Log</h3>
+        <div className="space-y-3">
+          {standups.slice(-5).reverse().map((s, i) => (
+            <div key={i} className="text-sm p-3 border-l-4 border-rose-500 bg-rose-50/30 dark:bg-rose-950/10">
+              <div className="font-bold text-rose-800 dark:text-rose-400 mb-1">{s.date} - Lost Focus on:</div>
+              <div className="italic text-slate-600 dark:text-slate-400">"{s.focusLost || 'Stayed focused all day!'}"</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Schedule Manager
+const ScheduleManager = () => {
+  const [schedule] = useState<{ time: string, activity: string }[]>([
+    { time: '05:00 AM', activity: 'Wake up & Manifestation' },
+    { time: '06:00 AM', activity: 'Deep Work (Slot 1)' },
+    { time: '09:00 AM', activity: 'Breakfast' },
+    { time: '10:00 AM', activity: 'Deep Work (Slot 2)' },
+    { time: '02:00 PM', activity: 'Learning / Project Build' },
+    { time: '06:00 PM', activity: 'Exercise & Networking' },
+    { time: '08:00 PM', activity: 'Daily Standup & Tomorrow Plan' },
+  ]);
+
+  return (
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
+      <div className="flex items-center gap-3 mb-6 text-orange-500">
+        <Layers className="w-8 h-8" />
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Relentless Schedule</h2>
+      </div>
+      <div className="space-y-3">
+        {schedule.map((item, i) => (
+          <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
+            <div className="w-24 text-xs font-black text-orange-500 uppercase tracking-tighter">{item.time}</div>
+            <div className="w-px h-8 bg-slate-200 dark:bg-slate-700"></div>
+            <div className="flex-1 font-bold text-slate-700 dark:text-slate-200">{item.activity}</div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-8 p-4 bg-orange-50 dark:bg-orange-950/10 border border-orange-100 dark:border-orange-900/30 rounded-xl">
+        <p className="text-xs text-orange-800 dark:text-orange-400 font-medium italic">"Discipline is doing what needs to be done, even when you don't want to do it." - Raj Shamani</p>
       </div>
     </div>
   );
@@ -609,13 +772,66 @@ function App() {
               <div className={cn("text-[10px] font-normal", activePlanId === 'portfolio' ? "text-white/80" : "text-slate-500")}>Verified acquired skills</div>
             </div>
           </button>
+
+          {/* Goals Tab */}
+          <button
+            onClick={() => setActivePlanId('goals')}
+            className={cn(
+              "flex items-center gap-3 px-5 py-3 rounded-xl font-semibold transition-all border-2",
+              activePlanId === 'goals'
+                ? "bg-rose-500 text-white border-transparent shadow-lg"
+                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+            )}
+          >
+            <span className={cn(activePlanId === 'goals' ? "text-white" : "text-rose-500")}><Rocket className="w-5 h-5" /></span>
+            <div className="text-left">
+              <div className="text-sm">Goals Engine</div>
+              <div className={cn("text-[10px] font-normal", activePlanId === 'goals' ? "text-white/80" : "text-slate-500")}>Manifest plan & tracking</div>
+            </div>
+          </button>
+
+          {/* Reports Tab */}
+          <button
+            onClick={() => setActivePlanId('reports')}
+            className={cn(
+              "flex items-center gap-3 px-5 py-3 rounded-xl font-semibold transition-all border-2",
+              activePlanId === 'reports'
+                ? "bg-emerald-500 text-white border-transparent shadow-lg"
+                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+            )}
+          >
+            <span className={cn(activePlanId === 'reports' ? "text-white" : "text-emerald-500")}><BarChart3 className="w-5 h-5" /></span>
+            <div className="text-left">
+              <div className="text-sm">Success Reports</div>
+              <div className={cn("text-[10px] font-normal", activePlanId === 'reports' ? "text-white/80" : "text-slate-500")}>Weekly consistency audit</div>
+            </div>
+          </button>
+
+          {/* Schedule Tab */}
+          <button
+            onClick={() => setActivePlanId('schedule')}
+            className={cn(
+              "flex items-center gap-3 px-5 py-3 rounded-xl font-semibold transition-all border-2",
+              activePlanId === 'schedule'
+                ? "bg-orange-500 text-white border-transparent shadow-lg"
+                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+            )}
+          >
+            <span className={cn(activePlanId === 'schedule' ? "text-white" : "text-orange-500")}><Layers className="w-5 h-5" /></span>
+            <div className="text-left">
+              <div className="text-sm">My Schedule</div>
+              <div className={cn("text-[10px] font-normal", activePlanId === 'schedule' ? "text-white/80" : "text-slate-500")}>Daily relentless routine</div>
+            </div>
+          </button>
         </div>
 
         {/* Dynamic Content */}
         {activePlanId === 'portfolio' && <PortfolioDashboard />}
         {activePlanId === 'goals' && <GoalsDashboard />}
+        {activePlanId === 'reports' && <ReportsDashboard />}
+        {activePlanId === 'schedule' && <ScheduleManager />}
 
-        {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && (
+        {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && activePlanId !== 'reports' && activePlanId !== 'schedule' && (
           <div className="grid gap-6">
             {activePlan.phases.map((phase, i) => {
               const percent = calculatePhaseProgress(phase);

@@ -169,6 +169,94 @@ app.delete('/api/notes/:topicId', async (req, res) => {
     }
 });
 
+// GET Skills
+app.get('/api/skills/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const { Items } = await docClient.send(new QueryCommand({
+            TableName: SKILLS_TABLE,
+            KeyConditionExpression: 'userId = :u',
+            ExpressionAttributeValues: { ':u': userId }
+        }));
+        res.json(Items || []);
+    } catch (error) {
+        console.error("Error fetching skills:", error);
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
+// POST Skill
+app.post('/api/skills', async (req, res) => {
+    const { userId, skillName } = req.body;
+    try {
+        await docClient.send(new PutCommand({
+            TableName: SKILLS_TABLE,
+            Item: { userId, skillName, acquiredAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
+// GET Standups
+app.get('/api/standups/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const { Items } = await docClient.send(new QueryCommand({
+            TableName: STANDUPS_TABLE,
+            KeyConditionExpression: 'userId = :u',
+            ExpressionAttributeValues: { ':u': userId }
+        }));
+        res.json(Items || []);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
+// POST Standup
+app.post('/api/standups', async (req, res) => {
+    const { userId, date, accomplished, focusLost, planTomorrow } = req.body;
+    try {
+        await docClient.send(new PutCommand({
+            TableName: STANDUPS_TABLE,
+            Item: { userId, date, accomplished, focusLost, planTomorrow, createdAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
+// GET Goals
+app.get('/api/goals/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const { Items } = await docClient.send(new QueryCommand({
+            TableName: GOALS_TABLE,
+            KeyConditionExpression: 'userId = :u',
+            ExpressionAttributeValues: { ':u': userId }
+        }));
+        res.json(Items || []);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
+// POST Goal
+app.post('/api/goals', async (req, res) => {
+    const { userId, goalId, title, deadline, microSteps } = req.body;
+    try {
+        await docClient.send(new PutCommand({
+            TableName: GOALS_TABLE,
+            Item: { userId, goalId, title, deadline, microSteps: microSteps || [], createdAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+});
+
 // For local development
 if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {

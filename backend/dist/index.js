@@ -172,6 +172,94 @@ app.delete('/api/notes/:topicId', (req, res) => __awaiter(void 0, void 0, void 0
         res.status(500).json({ error: 'Failed to delete note' });
     }
 }));
+// GET Skills
+app.get('/api/skills/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
+    try {
+        const { Items } = yield docClient.send(new lib_dynamodb_1.QueryCommand({
+            TableName: SKILLS_TABLE,
+            KeyConditionExpression: 'userId = :u',
+            ExpressionAttributeValues: { ':u': userId }
+        }));
+        res.json(Items || []);
+    }
+    catch (error) {
+        console.error("Error fetching skills:", error);
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
+// POST Skill
+app.post('/api/skills', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, skillName } = req.body;
+    try {
+        yield docClient.send(new lib_dynamodb_1.PutCommand({
+            TableName: SKILLS_TABLE,
+            Item: { userId, skillName, acquiredAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
+// GET Standups
+app.get('/api/standups/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
+    try {
+        const { Items } = yield docClient.send(new lib_dynamodb_1.QueryCommand({
+            TableName: STANDUPS_TABLE,
+            KeyConditionExpression: 'userId = :u',
+            ExpressionAttributeValues: { ':u': userId }
+        }));
+        res.json(Items || []);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
+// POST Standup
+app.post('/api/standups', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, date, accomplished, focusLost, planTomorrow } = req.body;
+    try {
+        yield docClient.send(new lib_dynamodb_1.PutCommand({
+            TableName: STANDUPS_TABLE,
+            Item: { userId, date, accomplished, focusLost, planTomorrow, createdAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
+// GET Goals
+app.get('/api/goals/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
+    try {
+        const { Items } = yield docClient.send(new lib_dynamodb_1.QueryCommand({
+            TableName: GOALS_TABLE,
+            KeyConditionExpression: 'userId = :u',
+            ExpressionAttributeValues: { ':u': userId }
+        }));
+        res.json(Items || []);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
+// POST Goal
+app.post('/api/goals', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, goalId, title, deadline, microSteps } = req.body;
+    try {
+        yield docClient.send(new lib_dynamodb_1.PutCommand({
+            TableName: GOALS_TABLE,
+            Item: { userId, goalId, title, deadline, microSteps: microSteps || [], createdAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
 // For local development
 if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
