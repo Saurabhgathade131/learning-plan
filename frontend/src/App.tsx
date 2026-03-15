@@ -542,33 +542,155 @@ const ReportsDashboard = () => {
 
 // Schedule Manager
 const ScheduleManager = () => {
-  const [schedule] = useState<{ time: string, activity: string }[]>([
-    { time: '05:00 AM', activity: 'Wake up & Manifestation' },
-    { time: '06:00 AM', activity: 'Deep Work (Slot 1)' },
-    { time: '09:00 AM', activity: 'Breakfast' },
-    { time: '10:00 AM', activity: 'Deep Work (Slot 2)' },
-    { time: '02:00 PM', activity: 'Learning / Project Build' },
-    { time: '06:00 PM', activity: 'Exercise & Networking' },
-    { time: '08:00 PM', activity: 'Daily Standup & Tomorrow Plan' },
-  ]);
+  const [scheduleData, setScheduleData] = useState<any>({ tasks: {} });
+  const [loading, setLoading] = useState(true);
+  const date = new Date().toISOString().split('T')[0];
+  const userId = 'user-1';
+
+  const defaultSchedule = [
+    { id: 'wake', time: '05:00 AM', activity: 'Wake up & Manifestation' },
+    { id: 'deep1', time: '06:00 AM', activity: 'Deep Work (Slot 1)' },
+    { id: 'breakfast', time: '09:00 AM', activity: 'Breakfast' },
+    { id: 'deep2', time: '10:00 AM', activity: 'Deep Work (Slot 2)' },
+    { id: 'learning', time: '02:00 PM', activity: 'Learning / Project Build' },
+    { id: 'exercise', time: '06:00 PM', activity: 'Exercise & Networking' },
+    { id: 'standup', time: '08:00 PM', activity: 'Daily Standup & Tomorrow Plan' },
+  ];
+
+  useEffect(() => {
+    fetch(`${API_URL}/schedule/${userId}/${date}`)
+      .then(res => res.json())
+      .then(data => {
+        setScheduleData(data || { tasks: {} });
+        setLoading(false);
+      });
+  }, [date]);
+
+  const toggleTask = async (taskId: string) => {
+    const updatedTasks = {
+      ...scheduleData.tasks,
+      [taskId]: {
+        ...scheduleData.tasks[taskId],
+        completed: !scheduleData.tasks[taskId]?.completed
+      }
+    };
+    const newData = { ...scheduleData, userId, date, tasks: updatedTasks };
+    setScheduleData(newData);
+
+    await fetch(`${API_URL}/schedule`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newData)
+    });
+  };
+
+  const updateComment = async (taskId: string, comment: string) => {
+    const updatedTasks = {
+      ...scheduleData.tasks,
+      [taskId]: {
+        ...scheduleData.tasks[taskId],
+        comment
+      }
+    };
+    const newData = { ...scheduleData, userId, date, tasks: updatedTasks };
+    setScheduleData(newData);
+
+    await fetch(`${API_URL}/schedule`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newData)
+    });
+  };
+
+  if (loading) return <div className="p-8 text-center text-slate-500 font-medium">Loading Routine...</div>;
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
-      <div className="flex items-center gap-3 mb-6 text-orange-500">
-        <Layers className="w-8 h-8" />
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Relentless Schedule</h2>
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-xl relative overflow-hidden">
+      <div className="absolute top-0 right-0 p-8 opacity-10">
+        <Clock className="w-32 h-32 text-orange-500" />
       </div>
-      <div className="space-y-3">
-        {schedule.map((item, i) => (
-          <div key={i} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800">
-            <div className="w-24 text-xs font-black text-orange-500 uppercase tracking-tighter">{item.time}</div>
-            <div className="w-px h-8 bg-slate-200 dark:bg-slate-700"></div>
-            <div className="flex-1 font-bold text-slate-700 dark:text-slate-200">{item.activity}</div>
+
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-orange-500/10 rounded-2xl">
+            <Layers className="w-8 h-8 text-orange-500" />
           </div>
-        ))}
+          <div>
+            <h2 className="text-3xl font-black text-slate-800 dark:text-white tracking-tight">Relentless Schedule</h2>
+            <p className="text-sm text-slate-500 font-medium">Today's Protocol: {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
+          </div>
+        </div>
+        <div className="text-right">
+          <div className="text-2xl font-black text-orange-500 italic">"Go Hard."</div>
+        </div>
       </div>
-      <div className="mt-8 p-4 bg-orange-50 dark:bg-orange-950/10 border border-orange-100 dark:border-orange-900/30 rounded-xl">
-        <p className="text-xs text-orange-800 dark:text-orange-400 font-medium italic">"Discipline is doing what needs to be done, even when you don't want to do it." - Raj Shamani</p>
+
+      <div className="space-y-4">
+        {defaultSchedule.map((item) => {
+          const taskState = scheduleData.tasks[item.id] || { completed: false, comment: '' };
+          return (
+            <div key={item.id} className={cn(
+              "group relative flex flex-col gap-3 p-5 rounded-2xl border transition-all duration-300",
+              taskState.completed
+                ? "bg-emerald-50/50 dark:bg-emerald-950/10 border-emerald-200/50 dark:border-emerald-800/30"
+                : "bg-slate-50 dark:bg-slate-800/50 border-slate-100 dark:border-slate-800 hover:border-orange-200 dark:hover:border-orange-900/30"
+            )}>
+              <div className="flex items-center gap-5">
+                <button
+                  onClick={() => toggleTask(item.id)}
+                  className={cn(
+                    "flex-shrink-0 w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-500",
+                    taskState.completed
+                      ? "bg-emerald-500 border-emerald-500 scale-110 shadow-lg shadow-emerald-500/20"
+                      : "border-slate-300 dark:border-slate-600 group-hover:border-orange-400"
+                  )}
+                >
+                  {taskState.completed && <Check className="w-5 h-5 text-white stroke-[4]" />}
+                </button>
+
+                <div className="w-24 text-[10px] font-black text-orange-500 uppercase tracking-widest leading-none">
+                  {item.time}
+                </div>
+
+                <div className="flex-1">
+                  <h3 className={cn(
+                    "font-bold text-lg transition-all",
+                    taskState.completed ? "text-slate-400 line-through decoration-emerald-500/50" : "text-slate-800 dark:text-slate-100"
+                  )}>
+                    {item.activity}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="ml-13 flex flex-col gap-2">
+                <div className="flex items-center gap-2 group/input">
+                  <NotebookPen className="w-3.5 h-3.5 text-slate-400 group-focus-within/input:text-orange-500 transition-colors" />
+                  <input
+                    type="text"
+                    value={taskState.comment || ''}
+                    onChange={(e) => updateComment(item.id, e.target.value)}
+                    placeholder="Briefly, what did you achieve?"
+                    className="flex-1 bg-transparent border-none text-sm text-slate-600 dark:text-slate-400 focus:ring-0 placeholder:text-slate-300 dark:placeholder:text-slate-600 font-medium"
+                  />
+                </div>
+              </div>
+
+              {taskState.completed && (
+                <div className="absolute top-4 right-4 animate-pulse">
+                  <Sparkles className="w-4 h-4 text-emerald-400" />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-8 p-6 bg-slate-900 dark:bg-black rounded-2xl border border-slate-800 relative overflow-hidden group">
+        <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl group-hover:bg-orange-500/20 transition-all duration-700"></div>
+        <p className="text-sm text-slate-400 font-medium italic relative z-10">
+          <span className="text-orange-500 font-black mr-2">PROTOCOL:</span>
+          "Discipline is doing what needs to be done, even when you don't want to do it. Execution is the only thing that matters."
+        </p>
       </div>
     </div>
   );
@@ -802,25 +924,25 @@ function App() {
           >
             <span className={cn(activePlanId === 'reports' ? "text-white" : "text-emerald-500")}><BarChart3 className="w-5 h-5" /></span>
             <div className="text-left">
-              <div className="text-sm">Success Reports</div>
-              <div className={cn("text-[10px] font-normal", activePlanId === 'reports' ? "text-white/80" : "text-slate-500")}>Weekly consistency audit</div>
+              <div className="text-sm">Reports</div>
+              <div className={cn("text-[10px] font-normal", activePlanId === 'reports' ? "text-white/80" : "text-slate-500")}>Consistency analytics</div>
             </div>
           </button>
 
-          {/* Schedule Tab */}
+          {/* Relentless Schedule Tab */}
           <button
-            onClick={() => setActivePlanId('schedule')}
+            onClick={() => setActivePlanId('relentless-schedule')}
             className={cn(
               "flex items-center gap-3 px-5 py-3 rounded-xl font-semibold transition-all border-2",
-              activePlanId === 'schedule'
+              activePlanId === 'relentless-schedule'
                 ? "bg-orange-500 text-white border-transparent shadow-lg"
                 : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
             )}
           >
-            <span className={cn(activePlanId === 'schedule' ? "text-white" : "text-orange-500")}><Layers className="w-5 h-5" /></span>
+            <span className={cn(activePlanId === 'relentless-schedule' ? "text-white" : "text-orange-500")}><Layers className="w-5 h-5" /></span>
             <div className="text-left">
-              <div className="text-sm">My Schedule</div>
-              <div className={cn("text-[10px] font-normal", activePlanId === 'schedule' ? "text-white/80" : "text-slate-500")}>Daily relentless routine</div>
+              <div className="text-sm">Relentless Schedule</div>
+              <div className={cn("text-[10px] font-normal", activePlanId === 'relentless-schedule' ? "text-white/80" : "text-slate-500")}>Daily routine & execution</div>
             </div>
           </button>
         </div>
@@ -829,9 +951,9 @@ function App() {
         {activePlanId === 'portfolio' && <PortfolioDashboard />}
         {activePlanId === 'goals' && <GoalsDashboard />}
         {activePlanId === 'reports' && <ReportsDashboard />}
-        {activePlanId === 'schedule' && <ScheduleManager />}
+        {activePlanId === 'relentless-schedule' && <ScheduleManager />}
 
-        {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && activePlanId !== 'reports' && activePlanId !== 'schedule' && (
+        {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && activePlanId !== 'reports' && activePlanId !== 'relentless-schedule' && (
           <div className="grid gap-6">
             {activePlan.phases.map((phase, i) => {
               const percent = calculatePhaseProgress(phase);

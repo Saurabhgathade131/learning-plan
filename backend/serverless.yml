@@ -14,6 +14,7 @@ provider:
     SKILLS_TABLE: ${self:service}-${opt:stage, 'dev'}-skills
     STANDUPS_TABLE: ${self:service}-${opt:stage, 'dev'}-standups
     GOALS_TABLE: ${self:service}-${opt:stage, 'dev'}-goals
+    SCHEDULE_TABLE: ${self:service}-${opt:stage, 'dev'}-schedule
 
   iamRoleStatements:
     - Effect: Allow
@@ -30,6 +31,7 @@ provider:
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.STANDUPS_TABLE}"
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.GOALS_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SCHEDULE_TABLE}"
 
 functions:
   api:
@@ -138,5 +140,21 @@ resources:
           - AttributeName: userId
             KeyType: HASH
           - AttributeName: goalId
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+
+    ScheduleTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.SCHEDULE_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: date
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: date
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST

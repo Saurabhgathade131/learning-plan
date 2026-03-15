@@ -4037,15 +4037,14 @@ const campusxAiPlan: Phase[] = [
     }
 ];
 
-
-const vizuaraMLPlan: Phase[] = [
+const vizuaraPlan: Phase[] = [
     {
-        id: "vzml-p1",
+        id: "vz-p1",
         title: "Phase 1: Math & Stats for ML Mastery",
         weeks: "Weeks 1-4",
         modules: [
             {
-                id: "vzml-m1.1",
+                id: "vz-m1.1",
                 title: "Mathematical Foundations",
                 weeks: "Week 1-2",
                 topics: [
@@ -4069,12 +4068,12 @@ const vizuaraMLPlan: Phase[] = [
         ]
     },
     {
-        id: "vzml-p2",
+        id: "vz-p2",
         title: "Phase 2: Advanced Machine Learning",
         weeks: "Weeks 5-8",
         modules: [
             {
-                id: "vzml-m2.1",
+                id: "vz-m2.1",
                 title: "Supervised Learning Mastery",
                 weeks: "Week 5-6",
                 topics: [
@@ -4096,19 +4095,16 @@ const vizuaraMLPlan: Phase[] = [
                 }
             }
         ]
-    }
-];
-
-const vizuaraDLPlan: Phase[] = [
+    },
     {
-        id: "vzdl-p1",
-        title: "Phase 1: Deep Learning Foundations",
-        weeks: "Weeks 1-4",
+        id: "vz-p3",
+        title: "Phase 3: Deep Learning Foundations",
+        weeks: "Weeks 9-12",
         modules: [
             {
-                id: "vzdl-m1.1",
+                id: "vz-m3.1",
                 title: "Neural Networks from Scratch",
-                weeks: "Week 1-2",
+                weeks: "Week 9-10",
                 topics: [
                     topic("ANN Architectures", [
                         vid("Deep Learning (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauAoOxyczvOAnAnT4Yx"),
@@ -4129,14 +4125,14 @@ const vizuaraDLPlan: Phase[] = [
         ]
     },
     {
-        id: "vzdl-p2",
-        title: "Phase 2: CV & NLP Architectures",
-        weeks: "Weeks 5-8",
+        id: "vz-p4",
+        title: "Phase 4: CV & NLP Architectures",
+        weeks: "Weeks 13-16",
         modules: [
             {
-                id: "vzdl-m2.1",
+                id: "vz-m4.1",
                 title: "Computer Vision & CNNs",
-                weeks: "Week 5-6",
+                weeks: "Week 13-14",
                 topics: [
                     topic("CNN Fundamentals", [
                         vid("Computer Vision (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVNn7G-Gsh386Vd_5E2-i0G0"),
@@ -4155,19 +4151,16 @@ const vizuaraDLPlan: Phase[] = [
                 }
             }
         ]
-    }
-];
-
-const vizuaraGenAIPlan: Phase[] = [
+    },
     {
-        id: "vzgen-p1",
-        title: "Phase 1: LLM Architecture & Build",
-        weeks: "Weeks 1-4",
+        id: "vz-p5",
+        title: "Phase 5: LLM Architecture & Build",
+        weeks: "Weeks 17-20",
         modules: [
             {
-                id: "vzgen-m1.1",
+                id: "vz-m5.1",
                 title: "Transformers & LLMs",
-                weeks: "Week 1-2",
+                weeks: "Week 17-18",
                 topics: [
                     topic("Transformer Internals", [
                         vid("Build LLM from Scratch (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
@@ -4188,14 +4181,14 @@ const vizuaraGenAIPlan: Phase[] = [
         ]
     },
     {
-        id: "vzgen-p2",
-        title: "Phase 2: RAG, Agents & Fine-tuning",
-        weeks: "Weeks 5-8",
+        id: "vz-p6",
+        title: "Phase 6: RAG, Agents & Fine-tuning",
+        weeks: "Weeks 21-24",
         modules: [
             {
-                id: "vzgen-m2.1",
+                id: "vz-m6.1",
                 title: "RAG & Agent Workflows",
-                weeks: "Week 5-6",
+                weeks: "Week 21-22",
                 topics: [
                     topic("Advanced RAG & Vector DBs", [
                         vid("RAG Playlist (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfB2tYdCOm9GInX8uCST1B"),
@@ -4219,30 +4212,13 @@ const vizuaraGenAIPlan: Phase[] = [
 
 export const allLearningPlans: LearningPlan[] = [
     {
-        id: "vizuara-ml",
-        name: "Vizuara ML Masterclass",
-        description: "Math Foundations ΓÇö Classical ML ΓÇö Industrial Data Science",
-        icon: "brain",
-        color: "blue",
-        phases: vizuaraMLPlan
-    },
-    {
-        id: "vizuara-dl",
-        name: "Vizuara Deep Learning",
-        description: "Neural Networks from Scratch ΓÇö CNNs ΓÇö RNNs ΓÇö CV mastery",
-        icon: "cpu",
-        color: "emerald",
-        phases: vizuaraDLPlan
-    },
-    {
-        id: "vizuara-genai",
-        name: "Vizuara Generative AI",
-        description: "Transformers ΓÇö LLM from Scratch ΓÇö RAG ΓÇö Agentic Workflows",
+        id: "vizuara-ai",
+        name: "Vizuara AI Masterclass",
+        description: "ML ΓÇö DL ΓÇö GenAI: Complete Industrial AI Pathway",
         icon: "sparkles",
-        color: "rose",
-        phases: vizuaraGenAIPlan
+        color: "blue",
+        phases: vizuaraPlan
     },
-
     {
         id: "genai",
         name: "GenAI Engineer",
@@ -4333,5 +4309,6 @@ export const allLearningPlans: LearningPlan[] = [
     }
 ];
 
+// Keep backward compatibility
 // Keep backward compatibility
 export const learningPlan = genaiPlan;

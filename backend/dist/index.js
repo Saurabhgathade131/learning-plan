@@ -31,6 +31,41 @@ const NOTES_TABLE = process.env.NOTES_TABLE || 'learning-tracker-api-dev-notes';
 const SKILLS_TABLE = process.env.SKILLS_TABLE || 'learning-tracker-api-dev-skills';
 const STANDUPS_TABLE = process.env.STANDUPS_TABLE || 'learning-tracker-api-dev-standups';
 const GOALS_TABLE = process.env.GOALS_TABLE || 'learning-tracker-api-dev-goals';
+const SCHEDULE_TABLE = process.env.SCHEDULE_TABLE || 'learning-tracker-api-dev-schedule';
+// Get all learning plans (for tabs)
+// ... (omitting irrelevant lines for brevity in instruction, will replace precisely)
+// GET Schedule
+app.get('/api/schedule/:userId/:date', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, date } = req.params;
+    try {
+        const { Items } = yield docClient.send(new lib_dynamodb_1.QueryCommand({
+            TableName: SCHEDULE_TABLE,
+            KeyConditionExpression: 'userId = :u AND #d = :date',
+            ExpressionAttributeValues: { ':u': userId, ':date': date },
+            ExpressionAttributeNames: { '#d': 'date' }
+        }));
+        res.json(Items && Items.length > 0 ? Items[0] : { userId, date, tasks: {} });
+    }
+    catch (error) {
+        console.error("Error fetching schedule:", error);
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
+// POST Schedule
+app.post('/api/schedule', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId, date, tasks } = req.body;
+    try {
+        yield docClient.send(new lib_dynamodb_1.PutCommand({
+            TableName: SCHEDULE_TABLE,
+            Item: { userId, date, tasks: tasks || {}, updatedAt: new Date().toISOString() }
+        }));
+        res.json({ success: true });
+    }
+    catch (error) {
+        console.error("Error saving schedule:", error);
+        res.status(500).json({ error: 'Failed' });
+    }
+}));
 // Get all learning plans (for tabs)
 app.get('/api/plans', (req, res) => {
     res.json(data_1.allLearningPlans);

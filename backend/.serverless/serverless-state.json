@@ -17,7 +17,8 @@
         "NOTES_TABLE": "learning-tracker-api-dev-notes",
         "SKILLS_TABLE": "learning-tracker-api-dev-skills",
         "STANDUPS_TABLE": "learning-tracker-api-dev-standups",
-        "GOALS_TABLE": "learning-tracker-api-dev-goals"
+        "GOALS_TABLE": "learning-tracker-api-dev-goals",
+        "SCHEDULE_TABLE": "learning-tracker-api-dev-schedule"
       },
       "iamRoleStatements": [
         {
@@ -35,7 +36,8 @@
             "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-notes",
             "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-skills",
             "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-standups",
-            "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-goals"
+            "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-goals",
+            "arn:aws:dynamodb:ap-south-1:*:table/learning-tracker-api-dev-schedule"
           ]
         }
       ],
@@ -207,7 +209,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/learning-tracker-api/dev/1773320907121-2026-03-12T13:08:27.121Z/learning-tracker-api.zip"
+                "S3Key": "serverless/learning-tracker-api/dev/1773555410695-2026-03-15T06:16:50.695Z/learning-tracker-api.zip"
               },
               "Handler": "dist/index.handler",
               "Runtime": "nodejs18.x",
@@ -221,7 +223,8 @@
                   "NOTES_TABLE": "learning-tracker-api-dev-notes",
                   "SKILLS_TABLE": "learning-tracker-api-dev-skills",
                   "STANDUPS_TABLE": "learning-tracker-api-dev-standups",
-                  "GOALS_TABLE": "learning-tracker-api-dev-goals"
+                  "GOALS_TABLE": "learning-tracker-api-dev-goals",
+                  "SCHEDULE_TABLE": "learning-tracker-api-dev-schedule"
                 }
               },
               "Role": {
@@ -235,14 +238,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersion2PyudfOQDRS73vLcVtT92NHdDVQLRIHyGpGvsmPLZes": {
+          "ApiLambdaVersiondXDNI9vHMPVbzBSEW5sTjgUCskg1pMc2ieVVjCJZoo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "O2oPSLjBaROUfthDA8oBeG+5kioNIKhJH4LQgHEb1EM="
+              "CodeSha256": "BNM+yxoZx9tYqjEO/YzesdHQ+30Hyb64S3j9jSk49p4="
             }
           },
           "ApiGatewayRestApi": {
@@ -460,7 +463,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1773320891021": {
+          "ApiGatewayDeployment1773555400873": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -630,6 +633,33 @@
               ],
               "BillingMode": "PAY_PER_REQUEST"
             }
+          },
+          "ScheduleTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "learning-tracker-api-dev-schedule",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "userId",
+                  "AttributeType": "S"
+                },
+                {
+                  "AttributeName": "date",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "userId",
+                  "KeyType": "HASH"
+                },
+                {
+                  "AttributeName": "date",
+                  "KeyType": "RANGE"
+                }
+              ],
+              "BillingMode": "PAY_PER_REQUEST"
+            }
           }
         },
         "Outputs": {
@@ -644,7 +674,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersion2PyudfOQDRS73vLcVtT92NHdDVQLRIHyGpGvsmPLZes"
+              "Ref": "ApiLambdaVersiondXDNI9vHMPVbzBSEW5sTjgUCskg1pMc2ieVVjCJZoo"
             },
             "Export": {
               "Name": "sls-learning-tracker-api-dev-ApiLambdaFunctionQualifiedArn"
@@ -830,7 +860,7 @@
         "timeout": 30,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersion2PyudfOQDRS73vLcVtT92NHdDVQLRIHyGpGvsmPLZes"
+        "versionLogicalId": "ApiLambdaVersiondXDNI9vHMPVbzBSEW5sTjgUCskg1pMc2ieVVjCJZoo"
       }
     },
     "resources": {
@@ -953,6 +983,33 @@
             ],
             "BillingMode": "PAY_PER_REQUEST"
           }
+        },
+        "ScheduleTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "learning-tracker-api-dev-schedule",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "userId",
+                "AttributeType": "S"
+              },
+              {
+                "AttributeName": "date",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "userId",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "date",
+                "KeyType": "RANGE"
+              }
+            ],
+            "BillingMode": "PAY_PER_REQUEST"
+          }
         }
       },
       "Outputs": {}
@@ -991,7 +1048,7 @@
         ],
         "artifactsS3KeyDirname": "serverless/learning-tracker-api/dev/code-artifacts",
         "artifact": "C:\\Users\\prach\\OneDrive\\Desktop\\Learning plan\\tracker\\backend\\.serverless\\learning-tracker-api.zip",
-        "artifactDirectoryName": "serverless/learning-tracker-api/dev/1773320907121-2026-03-12T13:08:27.121Z"
+        "artifactDirectoryName": "serverless/learning-tracker-api/dev/1773555410695-2026-03-15T06:16:50.695Z"
       },
       "resources": {
         "$ref": "$[\"service\"][\"resources\"]"
@@ -1003,7 +1060,7 @@
   },
   "package": {
     "individually": false,
-    "artifactDirectoryName": "serverless/learning-tracker-api/dev/1773320907121-2026-03-12T13:08:27.121Z",
+    "artifactDirectoryName": "serverless/learning-tracker-api/dev/1773555410695-2026-03-15T06:16:50.695Z",
     "artifact": "learning-tracker-api.zip"
   }
 }
