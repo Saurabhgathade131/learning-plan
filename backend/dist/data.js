@@ -3983,7 +3983,260 @@ const campusxAiPlan = [
         ]
     }
 ];
+const vizuaraPlan = [
+    {
+        id: "vz-p1",
+        title: "Phase 1: Mathematical & Neural Foundations",
+        weeks: "Weeks 1-4",
+        modules: [
+            {
+                id: "vz-m1.1",
+                title: "Mathematics for AI Mastery",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("Calculus & Optimization", [
+                        vid("Calculus for ML (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvbW-0X9IeR4pGgU2T8Zsc2Q"),
+                        vid("Optimization Foundations (Krish Naik)", "https://www.youtube.com/watch?v=A6FiCD0796E"),
+                        vid("Foundations for AI (Vizuara)", "https://www.youtube.com/@VizuaraAI")
+                    ]),
+                    topic("Linear Algebra & Probability", [
+                        vid("Linear Algebra (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYhp0_L3f_J4U4NfEtoV0Mh"),
+                        vid("Probability & Stats (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVN7QzC67Y_S_TaqCOuuvY97"),
+                        doc("Math for ML Book", "https://mml-book.github.io/")
+                    ])
+                ],
+                project: {
+                    title: "Math-Driven Gradient Descent",
+                    description: ["Implement multi-variable gradient descent", "Optimize local minima handling", "Visualize tensor operations"],
+                    outcomes: ["Strong mathematical intuition for DL"]
+                }
+            },
+            {
+                id: "vz-m1.2",
+                title: "Neural Networks from Scratch",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("Neuron & Backprop Internals", [
+                        vid("Neural Networks from Scratch (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauAoOxyczvOAnAnT4Yx"),
+                        vid("DL Masterclass (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU7TKgz8SAInSno_Y6G0z"),
+                        vid("Build NN from Scratch (Vizuara)", "https://www.youtube.com/@VizuaraAI")
+                    ]),
+                    topic("Training Loops & Optimizers", [
+                        vid("Deep Learning Architectures (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        art("The Bitter Lesson", "http://www.incompleteideas.net/IncIdeas/BitterLesson.html")
+                    ])
+                ],
+                project: {
+                    title: "DIY Neural Engine",
+                    description: ["Build MLP using NumPy", "MNIST Digit Classification", "Custom Optimizer Implementation"],
+                    outcomes: ["Mastered NN Architectures"]
+                }
+            }
+        ]
+    },
+    {
+        id: "vz-p2",
+        title: "Phase 2: Generative AI & LLM Foundations",
+        weeks: "Weeks 5-8",
+        modules: [
+            {
+                id: "vz-m2.1",
+                title: "Transformer Architecture & GenAI",
+                weeks: "Week 5-6",
+                topics: [
+                    topic("Attention Mechanisms", [
+                        vid("Transformers Explained (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        vid("Attention Mechanism (Krish Naik)", "https://www.youtube.com/watch?v=A1ELV6UoTzI"),
+                        doc("Whitepaper: Attention Is All You Need", "https://arxiv.org/abs/1706.03762")
+                    ]),
+                    topic("How ChatGPT Works", [
+                        vid("How LLMs Work (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        vid("Generative AI Crash Course (CampusX)", "https://www.youtube.com/watch?v=zduSFxRajkE")
+                    ])
+                ],
+                project: {
+                    title: "Attention Map Visualizer",
+                    description: ["Build a tool to visualize self-attention heads", "Implement Positional Encoding visually"],
+                    outcomes: ["Deep intuition of Self-Attention"]
+                }
+            },
+            {
+                id: "vz-m2.2",
+                title: "Build LLM from Scratch",
+                weeks: "Week 7-8",
+                topics: [
+                    topic("Tokenization & Vocabulary", [
+                        vid("BPE Tokenization (CampusX)", "https://www.youtube.com/watch?v=zduSFxRajkE"),
+                        vid("Vizuara's Build LLMs from Scratch", "https://www.youtube.com/@VizuaraAI")
+                    ]),
+                    topic("Pre-training Pipelines", [
+                        vid("LLM Pre-training (Krish Naik)", "https://www.youtube.com/watch?v=uRQH2CFvedY"),
+                        doc("Llama-3 Technical Report", "https://arxiv.org/abs/2407.21783")
+                    ])
+                ],
+                project: {
+                    title: "Small Scale Language Model",
+                    description: ["Pre-train a 10M parameter model", "Handle data tokenization flow", "Verify loss convergence"],
+                    outcomes: ["Understood LLM Lifecycle"]
+                }
+            }
+        ]
+    },
+    {
+        id: "vz-p3",
+        title: "Phase 3: RAG & Fine-Tuning Mastery",
+        weeks: "Weeks 9-12",
+        modules: [
+            {
+                id: "vz-m3.1",
+                title: "Advanced RAG Pipelines",
+                weeks: "Week 9-10",
+                topics: [
+                    topic("Vector DB & Hybrid Search", [
+                        vid("RAG Complete Playlist (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfB2tYdCOm9GInX8uCST1B"),
+                        vid("Generative AI using LangChain (CampusX)", "https://www.youtube.com/watch?v=idDu_jXqf4E"),
+                        vid("Vector Search (Vizuara)", "https://www.youtube.com/@VizuaraAI")
+                    ]),
+                    topic("RAG Evaluation (Ragas)", [
+                        vid("RAG Evaluation (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        doc("Ragas documentation", "https://docs.ragas.io/")
+                    ])
+                ],
+                project: {
+                    title: "Industry-Grade RAG Engine",
+                    description: ["Smart chunking & Reranking", "Citation Tracking", "Evaluation using Ragas"],
+                    outcomes: ["Production RAG Deployment"]
+                }
+            },
+            {
+                id: "vz-m3.2",
+                title: "Fine-Tuning (LoRA & QLoRA)",
+                weeks: "Week 11-12",
+                topics: [
+                    topic("LoRA & QLoRA Deep Dive", [
+                        vid("Finetuning LLM (Krish Naik)", "https://www.youtube.com/watch?v=hID-YpY2O68"),
+                        vid("LoRA in 5 Minutes (CampusX)", "https://www.youtube.com/watch?v=Vf8p_d086E4"),
+                        vid("PEFT Techniques (Vizuara)", "https://www.youtube.com/@VizuaraAI")
+                    ]),
+                    topic("Data Prep & Reward Modeling", [
+                        doc("Whitepaper: LoRA", "https://arxiv.org/abs/2106.09685"),
+                        art("HuggingFace Fine-tuning Guide", "https://huggingface.co/docs/transformers/training")
+                    ])
+                ],
+                project: {
+                    title: "Medical AI Assistant Fine-Tuning",
+                    description: ["Fine-tune Mistral-7B on Medical Data", "Compare Base vs FT results", "Quantize model (4-bit)"],
+                    outcomes: ["PEFT Efficiency Mastery"]
+                }
+            }
+        ]
+    },
+    {
+        id: "vz-p4",
+        title: "Phase 4: AI Agents & Reinforcement Learning",
+        weeks: "Weeks 13-16",
+        modules: [
+            {
+                id: "vz-m4.1",
+                title: "Agent Architecture & Multi-Agent",
+                weeks: "Week 13-14",
+                topics: [
+                    topic("AI Agentic Workflows", [
+                        vid("AI Agents Full Course (CampusX)", "https://www.youtube.com/watch?v=v2gD8BHOaX4"),
+                        vid("Multi-Agent Systems (Krish Naik)", "https://www.youtube.com/watch?v=B6FiCD0796E"),
+                        vid("Agent Planning & Memory (Vizuara)", "https://www.youtube.com/@VizuaraAI")
+                    ]),
+                    topic("Tool-Use & Function Calling", [
+                        vid("Function Calling (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        doc("LangGraph State Management", "https://langchain-ai.github.io/langgraph/")
+                    ])
+                ],
+                project: {
+                    title: "Autonomous Ticket Resolution Agent",
+                    description: ["Multi-step tool integration", "Self-correction logic", "Human-in-the-loop"],
+                    outcomes: ["Built Agentic Loops"]
+                }
+            },
+            {
+                id: "vz-m4.2",
+                title: "RL for Reasoning Models",
+                weeks: "Week 15-16",
+                topics: [
+                    topic("Policy Gradient & PPO", [
+                        vid("RL Full Course (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVN7QzC67Y_S_TaqCOuuvY97"),
+                        vid("Policy Optimization (CampusX)", "https://www.youtube.com/@campusx-official")
+                    ]),
+                    topic("Reasoning Models (o1 Style)", [
+                        vid("Chain-of-Thought RL (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        doc("Arxiv: Training Verifiers to Solve Math Problems", "https://arxiv.org/abs/2110.14168")
+                    ])
+                ],
+                project: {
+                    title: "Math-Solving Reasoning POC",
+                    description: ["Implement Process Reward Models", "Build a 'Think then Act' loop"],
+                    outcomes: ["Reasoning Algorithm Mastery"]
+                }
+            }
+        ]
+    },
+    {
+        id: "vz-p5",
+        title: "Phase 5: CV & Small Language Models (SLMs)",
+        weeks: "Weeks 17-20",
+        modules: [
+            {
+                id: "vz-m5.1",
+                title: "Computer Vision & Visual LLMs",
+                weeks: "Week 17-18",
+                topics: [
+                    topic("ViT & CNN Fundamentals", [
+                        vid("100 Days of DL: Vision (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauAoOxyczvOAnAnT4Yx"),
+                        vid("Transformers for Vision (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        vid("Object Detection (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfB2tYdCOm9GInX8uCST1B")
+                    ]),
+                    topic("Multimodal Transformers", [
+                        doc("Whitepaper: ViT", "https://arxiv.org/abs/2010.11929"),
+                        art("CLIP Architecture", "https://openai.com/research/clip")
+                    ])
+                ],
+                project: {
+                    title: "Visual-Reasoning Multimodal App",
+                    description: ["Combine CLIP + Llama-3 for image reasoning", "Real-time object description"],
+                    outcomes: ["Mastered Vision-Language Hub"]
+                }
+            },
+            {
+                id: "vz-m5.2",
+                title: "SLM Optimization & Deployment",
+                weeks: "Week 19-20",
+                topics: [
+                    topic("Small Language Models (SLM) Training", [
+                        vid("Mobile AI & SLMs (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        doc("Microsoft Phi-3 Technical Report", "https://arxiv.org/abs/2404.14219")
+                    ]),
+                    topic("Efficiency & Knowledge Distillation", [
+                        art("Distilling Large Models", "https://towardsdatascience.com/knowledge-distillation-for-llms-d0e513511eb3"),
+                        vid("Ollama Deployment (Krish Naik)", "https://www.youtube.com/watch?v=0-zlUy7VUjg")
+                    ])
+                ],
+                project: {
+                    title: "Edge-AI Mobile Assistant",
+                    description: ["Optimize Phi-3 for mobile", "Knowledge distillation from GPT-4 to SLM"],
+                    outcomes: ["High-Efficiency AI Architect"]
+                }
+            }
+        ]
+    }
+];
 exports.allLearningPlans = [
+    {
+        id: "vizuara-ai",
+        name: "Vizuara AI Complete Pathway",
+        description: "10-Course Elite Bundle: Foundations ΓÇö Applications ΓÇö Domain Specific AI Mastery",
+        icon: "sparkles",
+        color: "rose",
+        phases: vizuaraPlan
+    },
     {
         id: "genai",
         name: "GenAI Engineer",
