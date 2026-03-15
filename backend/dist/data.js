@@ -21,6 +21,62 @@ const t = (name, videoUrl, docUrl) => ({
 // ===== PLAN 1: GENAI ENGINEER PATH =====
 const genaiPlan = [
     {
+        id: "p0",
+        title: "Phase 0: Mathematical & Neural Foundations",
+        weeks: "Weeks 1-4",
+        modules: [
+            {
+                id: "m0.1",
+                title: "Mathematics for AI/ML Masterclass",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("Calculus & Optimization", [
+                        vid("Calculus for ML (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvbW-0X9IeR4pGgU2T8Zsc2Q", "CampusX"),
+                        vid("Optimization for Deep Learning (Krish Naik)", "https://www.youtube.com/watch?v=A6FiCD0796E", "Krish Naik"),
+                        vid("Math for ML Foundations (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        doc("Whitepaper: Matrix Calculus for DL", "https://arxiv.org/abs/1802.01528"),
+                        art("Mathematics for Machine Learning", "https://mml-book.github.io/")
+                    ]),
+                    topic("Linear Algebra & Probability", [
+                        vid("Linear Algebra for DS (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYhp0_L3f_J4U4NfEtoV0Mh", "CampusX"),
+                        vid("Probability & Statistics (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVN7QzC67Y_S_TaqCOuuvY97", "Krish Naik"),
+                        vid("Linear Algebra Foundations (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        art("Probability Theory for AI", "https://towardsdatascience.com/probability-theory-for-ai-and-ml-9c2b8c9c9c9c")
+                    ])
+                ],
+                project: {
+                    title: "Math-Focused ML Optimizer",
+                    description: ["Implement Gradient Descent from scratch", "Visualise loss landscapes", "Matrix multiplication library in Python"],
+                    outcomes: ["Master Calculus for Backpropagation", "Understand Linear Algebra for Tensors", "Probability for Generative Models"]
+                }
+            },
+            {
+                id: "m0.2",
+                title: "Neural Networks from Scratch",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("Neuron Architecture & Forward Prop", [
+                        vid("Neural Networks from Scratch (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauAoOxyczvOAnAnT4Yx", "CampusX"),
+                        vid("Deep Learning Full Course (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVPGU7TKgz8SAInSno_Y6G0z", "Krish Naik"),
+                        vid("Build NN from Scratch (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        doc("Paper: Perceptrons", "https://archive.org/details/perceptronsintrostem00minsky"),
+                        art("Visualizing Neural Networks", "https://distill.pub/2016/misread-tsne/")
+                    ]),
+                    topic("Backpropagation & Training Loops", [
+                        vid("Backpropagation Calculus (CampusX)", "https://www.youtube.com/watch?v=I67WInp6k-s", "CampusX"),
+                        vid("Optimizers in Deep Learning (Krish Naik)", "https://www.youtube.com/watch?v=mdKjMPmcWjY", "Krish Naik"),
+                        art("The Bitter Lesson (Rich Sutton)", "http://www.incompleteideas.net/IncIdeas/BitterLesson.html")
+                    ])
+                ],
+                project: {
+                    title: "DIY Neural Engine",
+                    description: ["Build a multi-layer perceptron using only NumPy", "Implement custom activation functions", "Train on MNIST dataset"],
+                    outcomes: ["Deep understanding of gradients", "Mastering weight updates", "Foundation for Transformers"]
+                }
+            }
+        ]
+    },
+    {
         id: "p1",
         title: "Phase 1: Backend Fundamentals & Microservices",
         weeks: "Weeks 1-4",
@@ -129,6 +185,51 @@ const genaiPlan = [
                     description: ["Smart chunking", "Retrieval with reranking", "Citation tracking"],
                     outcomes: ["Production RAG systems"]
                 }
+            },
+            {
+                id: "m3.3",
+                title: "Build an LLM from Scratch",
+                weeks: "Week 12-13",
+                topics: [
+                    topic("Tokenization & Vocabulary", [
+                        vid("BPE & Tokenization Masterclass (CampusX)", "https://www.youtube.com/watch?v=zduSFxRajkE", "CampusX"),
+                        vid("Tokenization (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        art("HuggingFace: Summary of the Tokenizers", "https://huggingface.co/docs/transformers/tokenizer_summary")
+                    ]),
+                    topic("Architecture & Pre-training", [
+                        vid("Build GPT from Scratch (Andrej Karpathy)", "https://www.youtube.com/watch?v=kCc8FmEb1nY"),
+                        vid("LLM Architecture Deep Dive (Krish Naik)", "https://www.youtube.com/watch?v=uRQH2CFvedY", "Krish Naik"),
+                        vid("Build LLM from Scratch (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        doc("Whitepaper: LLaMA - Open & Efficient Foundation Models", "https://arxiv.org/abs/2302.13971")
+                    ])
+                ],
+                project: {
+                    title: "Baby GPT",
+                    description: ["Train a small Transformer model on a local dataset", "Implement custom BPE tokenizer", "Measure perplexity"],
+                    outcomes: ["Understand Pre-training dynamics", "Master Transformer blocks", "Foundations for SLMs"]
+                }
+            },
+            {
+                id: "m3.4",
+                title: "Fine-Tuning LLMs (LoRA/QLoRA)",
+                weeks: "Week 14-15",
+                topics: [
+                    topic("Instruction Fine-tuning & PEFT", [
+                        vid("Finetuning LLMs (Krish Naik)", "https://www.youtube.com/watch?v=idDu_jXqf4E", "Krish Naik"),
+                        vid("LoRA & QLoRA Explained (CampusX)", "https://www.youtube.com/watch?v=Vf8p_d086E4", "CampusX"),
+                        vid("PEFT Techniques (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        doc("Whitepaper: LoRA - Low-Rank Adaptation", "https://arxiv.org/abs/2106.09685")
+                    ]),
+                    topic("Model Evaluation & Weights & Biases", [
+                        vid("Evaluate LLM Quality (Krish Naik)", "https://www.youtube.com/watch?v=9VgLi3wHNM0"),
+                        art("DeepLearning.ai: Fine-tuning LLMs", "https://www.deeplearning.ai/short-courses/finetuning-large-language-models/")
+                    ])
+                ],
+                project: {
+                    title: "Domain-Specific Assistant",
+                    description: ["Fine-tune Llama-3/Mistral on a custom PDF dataset", "Use Unsloth for 2x faster training", "Deploy using Ollama"],
+                    outcomes: ["Production model adapter management", "Efficient VRAM usage strategies", "Model Quantization mastery"]
+                }
             }
         ]
     },
@@ -153,6 +254,58 @@ const genaiPlan = [
                     title: "AI Helpdesk Agent",
                     description: ["Multi-step ticket resolution", "Tool calling", "Workflow orchestration"],
                     outcomes: ["Build cyclic graph execution engines", "Implement ReAct (Reasoning & Acting) loop", "Master stateful conversational memory"]
+                }
+            }
+        ]
+    },
+    {
+        id: "p5",
+        title: "Phase 5: Domain-Specific AI & Reasoning",
+        weeks: "Weeks 17-20",
+        modules: [
+            {
+                id: "m5.1",
+                title: "Computer Vision & Visual LLMs",
+                weeks: "Week 17-18",
+                topics: [
+                    topic("CNN Fundamentals to ViT", [
+                        vid("CNN Full Course (CampusX)", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYuZauAoOxyczvOAnAnT4Yx", "CampusX"),
+                        vid("Computer Vision (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVOfB2tYdCOm9GInX8uCST1B", "Krish Naik"),
+                        vid("Vision Transformers (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        doc("Whitepaper: Vision Transformer (ViT)", "https://arxiv.org/abs/2010.11929")
+                    ]),
+                    topic("Multi-modal Understanding", [
+                        vid("Multimodal LLMs Explained (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        art("CLIP: Connecting Text and Images", "https://openai.com/research/clip")
+                    ])
+                ],
+                project: {
+                    title: "Visual Question Answering App",
+                    description: ["Combine CLIP + Llama-3 for image reasoning", "Deploy as a Streamlit app", "Implement image-to-text retrieval"],
+                    outcomes: ["Master Vision-Language bridging", "Build multi-modal RAG systems", "Deploy CV models at scale"]
+                }
+            },
+            {
+                id: "m5.2",
+                title: "RL & Reasoning Models (Search/Reasoning)",
+                weeks: "Week 19-20",
+                topics: [
+                    topic("Reinforcement Learning Fundamentals", [
+                        vid("RL Full Course (Krish Naik)", "https://www.youtube.com/playlist?list=PLZoTAELRMXVN7QzC67Y_S_TaqCOuuvY97", "Krish Naik"),
+                        vid("Policy Optimization (CampusX)", "https://www.youtube.com/@campusx-official", "CampusX"),
+                        vid("Reasoning in LLMs (Vizuara)", "https://www.youtube.com/@VizuaraAI", "Vizuara"),
+                        doc("Paper: RLHF - Training language models to follow instructions", "https://arxiv.org/abs/2203.02155")
+                    ]),
+                    topic("Small Language Models (SLM) Optimization", [
+                        vid("Mobile AI & SLMs (Vizuara)", "https://www.youtube.com/@VizuaraAI"),
+                        doc("Microsoft: Phi-3 Technical Report", "https://arxiv.org/abs/2404.14219"),
+                        art("Knowledge Distillation for LLMs", "https://towardsdatascience.com/knowledge-distillation-for-llms-d0e513511eb3")
+                    ])
+                ],
+                project: {
+                    title: "Reasoning Agent POC",
+                    description: ["Implement Monte Carlo Tree Search for a simple task", "Apply DPO (Direct Preference Optimization) on a small model", "Optimize for mobile deployment"],
+                    outcomes: ["Understand O1-style reasoning semantics", "Deploy ultra-efficient SLMs", "Master alignment techniques (RLHF/DPO)"]
                 }
             }
         ]
