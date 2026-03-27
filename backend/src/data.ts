@@ -4210,6 +4210,567 @@ const vizuaraPlan: Phase[] = [
     }
 ];
 
+// ===== PLAN: RESUME SKILLS MASTERY =====
+const resumeSkillsPlan: Phase[] = [
+    {
+        id: "rs-p1",
+        title: "Phase 1: Backend Core",
+        weeks: "Weeks 1-3",
+        modules: [
+            {
+                id: "rs-m1.1",
+                title: "Node.js Deep Internals",
+                weeks: "Week 1",
+                topics: [
+                    topic("Event Loop Phases & Internals", [
+                        vid("Event Loop Visualized — Philip Roberts", "https://www.youtube.com/watch?v=8aGhZQkoFbQ", "Philip Roberts"),
+                        vid("Node.js Complete Course", "https://www.youtube.com/watch?v=f2EqECiTBL8", "Dave Gray"),
+                        doc("Official Node.js Docs", "https://nodejs.org/en/docs")
+                    ]),
+                    topic("Streams & Buffers", [
+                        vid("Node.js Streams Crash Course", "https://www.youtube.com/watch?v=GlybFFMXXmQ"),
+                        doc("Node.js Stream API", "https://nodejs.org/api/stream.html")
+                    ]),
+                    topic("Worker Threads & Clustering", [
+                        vid("Worker Threads in Node.js", "https://www.youtube.com/watch?v=_Im4_3Z1NxQ"),
+                        vid("Clustering in Node.js", "https://www.youtube.com/watch?v=9RLeLngtQ3A"),
+                        doc("Worker Threads API", "https://nodejs.org/api/worker_threads.html")
+                    ]),
+                    topic("process.nextTick vs setImmediate vs setTimeout", [
+                        doc("Event Loop Timers & nextTick", "https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/")
+                    ])
+                ],
+                project: {
+                    title: "High-Performance File Processing Service",
+                    description: ["Build streaming file processor", "Worker threads for CPU tasks", "PM2 production deployment"],
+                    outcomes: ["Master async patterns & Node.js internals", "Understand V8 engine semantics", "Confidently explain event loop in interviews"]
+                }
+            },
+            {
+                id: "rs-m1.2",
+                title: "Express.js Production Patterns",
+                weeks: "Week 1-2",
+                topics: [
+                    topic("Express Middleware Chain", [
+                        vid("Express.js Full Course", "https://www.youtube.com/watch?v=CnH3kAXSrmU", "Traversy Media"),
+                        vid("Express Middleware Deep Dive", "https://www.youtube.com/watch?v=lY6icfhap2o"),
+                        doc("Express Best Practices", "https://expressjs.com/en/advanced/best-practice-performance.html")
+                    ]),
+                    topic("Request Validation (Zod/Joi)", [
+                        doc("Zod Documentation", "https://zod.dev/")
+                    ]),
+                    topic("Rate Limiting & Security Headers", [
+                        doc("Helmet.js", "https://helmetjs.github.io/"),
+                        doc("Error Handling Guide", "https://expressjs.com/en/guide/error-handling.html")
+                    ])
+                ],
+                project: {
+                    title: "Production REST API with Auth",
+                    description: ["JWT authentication", "RBAC middleware", "Rate limiting & Helmet"],
+                    outcomes: ["Build secure production APIs", "Master middleware patterns"]
+                }
+            },
+            {
+                id: "rs-m1.3",
+                title: "FastAPI — Python Backend",
+                weeks: "Week 2-3",
+                topics: [
+                    topic("FastAPI Fundamentals & Pydantic", [
+                        vid("FastAPI Full Course", "https://www.youtube.com/watch?v=tLKKmouUams", "FreeCodeCamp"),
+                        doc("FastAPI Official Tutorial", "https://fastapi.tiangolo.com/tutorial/"),
+                        doc("Pydantic V2 Docs", "https://docs.pydantic.dev/latest/")
+                    ]),
+                    topic("Async/Await & Dependency Injection", [
+                        vid("FastAPI Async Deep Dive", "https://www.youtube.com/watch?v=0sOvCWFmrtA")
+                    ]),
+                    topic("StreamingResponse & Background Tasks", [
+                        doc("FastAPI Streaming", "https://fastapi.tiangolo.com/advanced/custom-response/#streamingresponse")
+                    ])
+                ],
+                project: {
+                    title: "Audio Streaming Microservice",
+                    description: ["FastAPI with StreamingResponse", "Background task processing", "OpenAPI auto-docs"],
+                    outcomes: ["Build FastAPI microservices", "Token/audio streaming", "Explain Pydantic validation in interviews"]
+                }
+            },
+            {
+                id: "rs-m1.4",
+                title: "REST API Design & GraphQL",
+                weeks: "Week 3",
+                topics: [
+                    topic("REST API Best Practices", [
+                        vid("RESTful API Design", "https://www.youtube.com/watch?v=DcQg-SnJl88"),
+                        doc("HTTP Status Codes", "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"),
+                        art("API Versioning Strategies", "https://restfulapi.net/versioning/")
+                    ]),
+                    topic("GraphQL — Queries, Mutations, Subscriptions", [
+                        vid("GraphQL Full Course", "https://www.youtube.com/watch?v=ed8SzALpx1Q", "FreeCodeCamp"),
+                        vid("GraphQL Subscriptions", "https://www.youtube.com/watch?v=x-usi-mwJKM"),
+                        doc("Apollo Server Docs", "https://www.apollographql.com/docs/apollo-server/"),
+                        doc("GraphQL Official", "https://graphql.org/learn/")
+                    ]),
+                    topic("N+1 Problem & DataLoader", [
+                        art("Solving N+1 in GraphQL", "https://graphql.org/learn/best-practices/")
+                    ])
+                ],
+                project: {
+                    title: "GraphQL Chat API",
+                    description: ["Queries + Mutations + Subscriptions", "DataLoader for N+1", "Apollo Server setup"],
+                    outcomes: ["Design clean REST APIs", "Build GraphQL schemas", "Explain GraphQL vs REST trade-offs"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p2",
+        title: "Phase 2: Databases",
+        weeks: "Weeks 3-5",
+        modules: [
+            {
+                id: "rs-m2.1",
+                title: "MongoDB Advanced",
+                weeks: "Week 3-4",
+                topics: [
+                    topic("Aggregation Pipeline ($match, $group, $lookup)", [
+                        vid("MongoDB Complete Course", "https://www.youtube.com/watch?v=ExcRbA7fy_A", "Net Ninja"),
+                        vid("Aggregation Pipeline Deep Dive", "https://www.youtube.com/watch?v=A3jvoE0jGdE"),
+                        doc("MongoDB Data Modeling", "https://www.mongodb.com/docs/manual/data-modeling/")
+                    ]),
+                    topic("Schema Design (Embed vs Reference)", [
+                        vid("Mongoose Advanced Patterns", "https://www.youtube.com/watch?v=DZBGEVgL2eE"),
+                        doc("Indexing Strategies", "https://www.mongodb.com/docs/manual/indexes/")
+                    ]),
+                    topic("Indexing, Transactions & Change Streams", [
+                        doc("MongoDB Transactions", "https://www.mongodb.com/docs/manual/core/transactions/")
+                    ])
+                ],
+                project: {
+                    title: "Agent Configuration Database",
+                    description: ["Design schemas for AI agents & execution traces", "Aggregation pipelines for analytics", "TTL indexes for auto-cleanup"],
+                    outcomes: ["Advanced MongoDB patterns", "Explain embed vs reference decisions", "Query optimization"]
+                }
+            },
+            {
+                id: "rs-m2.2",
+                title: "PostgreSQL & Redis",
+                weeks: "Week 4-5",
+                topics: [
+                    topic("PostgreSQL — JOINs, Window Functions, CTEs", [
+                        vid("PostgreSQL Full Course", "https://www.youtube.com/watch?v=qw--VYLpxG4", "FreeCodeCamp"),
+                        doc("PostgreSQL Docs", "https://www.postgresql.org/docs/current/")
+                    ]),
+                    topic("EXPLAIN ANALYZE & Indexing (B-tree, GIN)", [
+                        vid("PostgreSQL Advanced Queries", "https://www.youtube.com/watch?v=sEgMhR46EVk")
+                    ]),
+                    topic("Redis — Data Structures & Caching Strategies", [
+                        vid("Redis Crash Course", "https://www.youtube.com/watch?v=jgpVdJB2sKQ", "Traversy Media"),
+                        vid("Redis Deep Dive", "https://www.youtube.com/watch?v=sVCZo5B8ghE", "Hussein Nasser"),
+                        doc("Redis Official Docs", "https://redis.io/docs/")
+                    ]),
+                    topic("Redis Pub/Sub & Streams", [
+                        vid("Redis Pub/Sub Tutorial", "https://www.youtube.com/watch?v=NLe1yvvHbAI"),
+                        vid("Node.js + Redis", "https://www.youtube.com/watch?v=oaJq1mQ3dFI")
+                    ]),
+                    topic("Cache-aside, Write-through, TTL & Eviction (LRU/LFU)", [
+                        art("Caching Strategies Guide", "https://redis.io/docs/manual/eviction/")
+                    ])
+                ],
+                project: {
+                    title: "Redis-Cached API with PostgreSQL",
+                    description: ["PostgreSQL for relational data", "Redis cache layer with invalidation", "Pub/Sub for real-time events"],
+                    outcomes: ["Master SQL + NoSQL together", "Implement caching strategies", "Explain cache invalidation in interviews"]
+                }
+            },
+            {
+                id: "rs-m2.3",
+                title: "DynamoDB Basics",
+                weeks: "Week 5",
+                topics: [
+                    topic("Partition Key, Sort Key & Single Table Design", [
+                        vid("DynamoDB Crash Course", "https://www.youtube.com/watch?v=2k2GINpO308", "Be A Better Dev"),
+                        vid("Single Table Design", "https://www.youtube.com/watch?v=BnDKD_Zv0og"),
+                        doc("AWS DynamoDB Docs", "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/")
+                    ]),
+                    topic("GSI, LSI, Query vs Scan", [
+                        art("DynamoDB Best Practices", "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/best-practices.html")
+                    ])
+                ],
+                project: {
+                    title: "Learning Tracker DynamoDB Backend",
+                    description: ["Single table design for schedules", "GSI for user queries", "DynamoDB Streams for events"],
+                    outcomes: ["Understand DynamoDB data modeling", "Explain partition key choices"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p3",
+        title: "Phase 3: Real-Time & Communication",
+        weeks: "Weeks 5-6",
+        modules: [
+            {
+                id: "rs-m3.1",
+                title: "WebSockets & Socket.IO",
+                weeks: "Week 5-6",
+                topics: [
+                    topic("WebSocket Handshake & Connection Lifecycle", [
+                        vid("WebSockets Crash Course", "https://www.youtube.com/watch?v=2Nt-ZrNP22A"),
+                        vid("WebSocket Deep Dive", "https://www.youtube.com/watch?v=XgFzHXOk8IQ", "Hussein Nasser"),
+                        doc("WebSocket API — MDN", "https://developer.mozilla.org/en-US/docs/Web/API/WebSocket")
+                    ]),
+                    topic("Socket.IO — Events, Rooms, Namespaces", [
+                        vid("Socket.IO Complete Tutorial", "https://www.youtube.com/watch?v=ZKEqqIO7n-k"),
+                        vid("Socket.IO + React Chat App", "https://www.youtube.com/watch?v=djMy4QsPWiI"),
+                        doc("Socket.IO Docs", "https://socket.io/docs/v4/")
+                    ]),
+                    topic("Scaling WebSockets with Redis Adapter", [
+                        art("Socket.IO Redis Adapter", "https://socket.io/docs/v4/redis-adapter/")
+                    ]),
+                    topic("Heartbeat/Ping-Pong & Reconnection", [
+                        doc("ws Library Docs", "https://github.com/websockets/ws")
+                    ])
+                ],
+                project: {
+                    title: "Real-Time Chat with Streaming",
+                    description: ["WebSocket broadcasting", "Socket.IO rooms", "Redis adapter for scaling"],
+                    outcomes: ["Build real-time features confidently", "Explain WebSocket vs HTTP", "Scale real-time apps"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p4",
+        title: "Phase 4: Frontend",
+        weeks: "Weeks 6-8",
+        modules: [
+            {
+                id: "rs-m4.1",
+                title: "React.js Advanced Patterns",
+                weeks: "Week 6-7",
+                topics: [
+                    topic("Hooks Deep Dive (useState, useEffect, useRef, useMemo, useCallback)", [
+                        vid("React Full Course 2024", "https://www.youtube.com/watch?v=RVFAyFWO4go", "Dave Gray"),
+                        vid("React Hooks Deep Dive", "https://www.youtube.com/watch?v=TNhaISOUy6Q"),
+                        doc("React Official Docs", "https://react.dev/")
+                    ]),
+                    topic("Custom Hooks & Context API", [
+                        art("React Design Patterns", "https://www.patterns.dev/react")
+                    ]),
+                    topic("Performance — React.memo, Code Splitting, Suspense", [
+                        vid("React Performance Optimization", "https://www.youtube.com/watch?v=CaShN6mCJB0")
+                    ]),
+                    topic("Error Boundaries & Controlled Components", [
+                        doc("Error Boundaries", "https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary")
+                    ])
+                ],
+                project: {
+                    title: "Dashboard with Real-Time Updates",
+                    description: ["Custom hooks for data fetching", "WebSocket integration", "Code splitting & lazy loading"],
+                    outcomes: ["Advanced React patterns", "Performance optimization", "Explain React rendering in interviews"]
+                }
+            },
+            {
+                id: "rs-m4.2",
+                title: "Next.js & Redux Toolkit",
+                weeks: "Week 7-8",
+                topics: [
+                    topic("Next.js App Router & Server Components", [
+                        vid("Next.js Full Course", "https://www.youtube.com/watch?v=wm5gMKuwSYk", "JavaScript Mastery"),
+                        vid("Next.js App Router Deep Dive", "https://www.youtube.com/watch?v=gSSsZReIFRk"),
+                        doc("Next.js Official Tutorial", "https://nextjs.org/learn"),
+                        doc("Next.js Docs", "https://nextjs.org/docs")
+                    ]),
+                    topic("SSR, SSG, ISR & API Routes", [
+                        art("Rendering Strategies", "https://nextjs.org/docs/app/building-your-application/rendering")
+                    ]),
+                    topic("Redux Toolkit — createSlice, RTK Query, createAsyncThunk", [
+                        vid("Redux Toolkit Full Course", "https://www.youtube.com/watch?v=NqzdVN2tyvQ", "Dave Gray"),
+                        vid("RTK Query Tutorial", "https://www.youtube.com/watch?v=HyZzCHgG3AY"),
+                        doc("Redux Toolkit Docs", "https://redux-toolkit.js.org/")
+                    ])
+                ],
+                project: {
+                    title: "Micro-Frontend Dashboard",
+                    description: ["Next.js with App Router", "Redux Toolkit state management", "RTK Query for API calls"],
+                    outcomes: ["Build production Next.js apps", "Explain SSR vs SSG", "Master state management"]
+                }
+            },
+            {
+                id: "rs-m4.3",
+                title: "React Native & TailwindCSS",
+                weeks: "Week 8",
+                topics: [
+                    topic("React Native — Core Components & Navigation", [
+                        vid("React Native Full Course", "https://www.youtube.com/watch?v=ANdSdIlgsEw", "Hitesh Choudhary"),
+                        doc("React Native Docs", "https://reactnative.dev/docs/environment-setup")
+                    ]),
+                    topic("FlatList, AsyncStorage & Native Modules", [
+                        vid("React Navigation Tutorial", "https://www.youtube.com/watch?v=npe3Wf4t0SQ")
+                    ]),
+                    topic("TailwindCSS Utility-First Approach", [
+                        vid("TailwindCSS Crash Course", "https://www.youtube.com/watch?v=UBOj6rqRUME", "Traversy Media"),
+                        doc("TailwindCSS Docs", "https://tailwindcss.com/docs")
+                    ])
+                ],
+                project: {
+                    title: "Mobile App with React Native",
+                    description: ["Stack + Tab navigation", "AsyncStorage persistence", "TailwindCSS (NativeWind) styling"],
+                    outcomes: ["Build cross-platform mobile apps", "Explain React Native architecture"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p5",
+        title: "Phase 5: Cloud & DevOps",
+        weeks: "Weeks 8-10",
+        modules: [
+            {
+                id: "rs-m5.1",
+                title: "AWS Core Services",
+                weeks: "Week 8-9",
+                topics: [
+                    topic("AWS Lambda — Cold Starts, Layers, Triggers", [
+                        vid("AWS Full Course", "https://www.youtube.com/watch?v=ulprqHHWlng", "FreeCodeCamp"),
+                        vid("AWS Lambda Deep Dive", "https://www.youtube.com/watch?v=eOBq__h4OJ4"),
+                        doc("AWS Lambda Docs", "https://docs.aws.amazon.com/lambda/")
+                    ]),
+                    topic("EC2 — Instance Types, Security Groups, AMIs", [
+                        vid("AWS EC2 Tutorial", "https://www.youtube.com/watch?v=iHX-jtKIVNA"),
+                        doc("AWS EC2 Docs", "https://docs.aws.amazon.com/ec2/")
+                    ]),
+                    topic("S3 — Presigned URLs, Lifecycle, Static Hosting", [
+                        doc("AWS S3 Docs", "https://docs.aws.amazon.com/s3/")
+                    ]),
+                    topic("API Gateway — REST vs HTTP APIs, Authorizers", [
+                        doc("API Gateway Docs", "https://docs.aws.amazon.com/apigateway/")
+                    ]),
+                    topic("GCP Cloud Run & Pub/Sub", [
+                        vid("GCP Cloud Run Tutorial", "https://www.youtube.com/watch?v=nhwYc4StHIc"),
+                        vid("GCP Pub/Sub Explained", "https://www.youtube.com/watch?v=cvu53CnZmGI"),
+                        doc("Cloud Run Docs", "https://cloud.google.com/run/docs")
+                    ])
+                ],
+                project: {
+                    title: "Serverless API on AWS",
+                    description: ["Lambda + API Gateway", "S3 file uploads", "DynamoDB backend"],
+                    outcomes: ["Deploy serverless apps", "Explain Lambda cold starts", "AWS architecture decisions"]
+                }
+            },
+            {
+                id: "rs-m5.2",
+                title: "Docker, CI/CD & Nginx",
+                weeks: "Week 9-10",
+                topics: [
+                    topic("Docker — Dockerfile, Multi-stage Builds, Compose", [
+                        vid("Docker Full Course", "https://www.youtube.com/watch?v=3c-iBn73dDE", "TechWorld with Nana"),
+                        vid("Docker Multi-Stage Builds", "https://www.youtube.com/watch?v=zpkqNPwEzac"),
+                        doc("Docker Official Docs", "https://docs.docker.com/"),
+                        doc("Dockerfile Best Practices", "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/")
+                    ]),
+                    topic("GitHub Actions — Workflows, Secrets, Matrix Builds", [
+                        vid("GitHub Actions Full Course", "https://www.youtube.com/watch?v=R8_veQiYBjI"),
+                        doc("GitHub Actions Docs", "https://docs.github.com/en/actions")
+                    ]),
+                    topic("Nginx — Reverse Proxy, Load Balancing, SSL", [
+                        vid("Nginx Crash Course", "https://www.youtube.com/watch?v=7VAI73roXaY", "Traversy Media"),
+                        vid("Nginx as Reverse Proxy", "https://www.youtube.com/watch?v=WC2-hNNBWII"),
+                        doc("Nginx Docs", "https://nginx.org/en/docs/")
+                    ]),
+                    topic("Serverless Framework", [
+                        vid("Serverless Framework Full Course", "https://www.youtube.com/watch?v=71cd5XerKss"),
+                        doc("Serverless Framework Docs", "https://www.serverless.com/framework/docs")
+                    ])
+                ],
+                project: {
+                    title: "Dockerized App with CI/CD",
+                    description: ["Multi-stage Dockerfile", "GitHub Actions pipeline", "Nginx reverse proxy"],
+                    outcomes: ["Containerize any app", "Automate deployments", "Configure Nginx for production"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p6",
+        title: "Phase 6: AI, LLMs & Agentic AI",
+        weeks: "Weeks 10-14",
+        modules: [
+            {
+                id: "rs-m6.1",
+                title: "LLM Integration & Prompt Engineering",
+                weeks: "Week 10-11",
+                topics: [
+                    topic("Prompt Engineering — Zero-shot, Few-shot, CoT", [
+                        vid("Prompt Engineering Course — Andrew Ng", "https://www.youtube.com/watch?v=_ZvnD96BbKI", "Andrew Ng"),
+                        doc("Anthropic Prompt Engineering Guide", "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering")
+                    ]),
+                    topic("OpenAI API — Chat Completions & Function Calling", [
+                        vid("OpenAI API Full Tutorial", "https://www.youtube.com/watch?v=c-g6epk3fFE"),
+                        vid("OpenAI Function Calling", "https://www.youtube.com/watch?v=0lOSvOoF2to"),
+                        doc("OpenAI Docs", "https://platform.openai.com/docs/")
+                    ]),
+                    topic("Token Streaming (SSE / StreamingResponse)", [
+                        art("OpenAI Streaming Guide", "https://platform.openai.com/docs/guides/text-generation")
+                    ]),
+                    topic("LangChain Basics", [
+                        vid("LangChain Crash Course", "https://www.youtube.com/watch?v=LbT1yp6quS8")
+                    ])
+                ],
+                project: {
+                    title: "AI Content Assistant with Streaming",
+                    description: ["Multi-model LLM integration", "Token streaming via SSE", "Function calling for tools"],
+                    outcomes: ["Integrate LLMs into apps", "Explain prompt techniques", "Build streaming AI responses"]
+                }
+            },
+            {
+                id: "rs-m6.2",
+                title: "Multi-Agent Systems & Agentic Workflows",
+                weeks: "Week 11-13",
+                topics: [
+                    topic("Agent Architecture — ReAct, Plan-and-Execute, Tool-Use", [
+                        vid("AI Agents Explained", "https://www.youtube.com/watch?v=F8NKVhkZZWI"),
+                        vid("LangGraph Full Course", "https://www.youtube.com/watch?v=R8KB-Zcynxc"),
+                        doc("LangGraph Docs", "https://langchain-ai.github.io/langgraph/")
+                    ]),
+                    topic("Multi-Agent Communication & Orchestration", [
+                        vid("CrewAI Full Tutorial", "https://www.youtube.com/watch?v=tnejrr-0a94"),
+                        vid("AutoGen Multi-Agent", "https://www.youtube.com/watch?v=vU2S6dVf79M"),
+                        doc("CrewAI Docs", "https://docs.crewai.com/")
+                    ]),
+                    topic("Memory Management — Short-term, Long-term, Episodic", [
+                        art("Agent Memory Patterns", "https://langchain-ai.github.io/langgraph/concepts/memory/")
+                    ]),
+                    topic("Human-in-the-Loop & Error Recovery", [
+                        art("HITL in LangGraph", "https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/")
+                    ])
+                ],
+                project: {
+                    title: "4-Agent Test Automation System",
+                    description: ["UI Explorer Agent", "Code Generator Agent", "Code Analysis Agent", "Orchestrator Agent"],
+                    outcomes: ["Design multi-agent systems", "Explain agent communication patterns", "Build agentic workflows"]
+                }
+            },
+            {
+                id: "rs-m6.3",
+                title: "Rovo & Microsoft Agent Frameworks",
+                weeks: "Week 13-14",
+                topics: [
+                    topic("Rovo Agent Framework — Architecture & JIRA Integration", [
+                        doc("Atlassian Rovo Overview", "https://www.atlassian.com/software/rovo"),
+                        doc("Rovo Agents Docs", "https://developer.atlassian.com/platform/forge/manifest-reference/modules/rovo-agent/"),
+                        art("Build a Rovo Agent", "https://developer.atlassian.com/platform/forge/build-a-rovo-agent/")
+                    ]),
+                    topic("Microsoft Semantic Kernel & AutoGen", [
+                        vid("Semantic Kernel Full Course", "https://www.youtube.com/watch?v=mIINbfp1Czw"),
+                        doc("Semantic Kernel Docs", "https://learn.microsoft.com/en-us/semantic-kernel/"),
+                        doc("Microsoft AI Agent Framework", "https://learn.microsoft.com/en-us/dotnet/ai/")
+                    ]),
+                    topic("Agent Orchestration in .NET", [
+                        vid("AutoGen Tutorial", "https://www.youtube.com/watch?v=vU2S6dVf79M")
+                    ])
+                ],
+                project: {
+                    title: "Enterprise Rovo Agents Suite",
+                    description: ["8 Rovo agents for JIRA automation", "Agent Orchestrator", "Microsoft Agent workflow"],
+                    outcomes: ["Build enterprise AI agents", "Explain Rovo vs LangGraph", "Demonstrate agent orchestration"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p7",
+        title: "Phase 7: Architecture & Design Patterns",
+        weeks: "Weeks 14-16",
+        modules: [
+            {
+                id: "rs-m7.1",
+                title: "Microservices & Event-Driven Architecture",
+                weeks: "Week 14-15",
+                topics: [
+                    topic("Microservices Patterns — API Gateway, Service Discovery, Circuit Breaker", [
+                        vid("Microservices Explained", "https://www.youtube.com/watch?v=rv4LlmLmVWk", "TechWorld with Nana"),
+                        vid("Microservices Full Course", "https://www.youtube.com/watch?v=Cw2RzaKFiow", "FreeCodeCamp"),
+                        art("Martin Fowler: Microservices", "https://martinfowler.com/articles/microservices.html")
+                    ]),
+                    topic("Saga Pattern & Distributed Transactions", [
+                        art("Saga Pattern Explained", "https://microservices.io/patterns/data/saga.html")
+                    ]),
+                    topic("Event-Driven Architecture — Event Sourcing & CQRS", [
+                        vid("Event-Driven Architecture Guide", "https://www.youtube.com/watch?v=STKCRSUsyP0"),
+                        vid("Event Sourcing Explained", "https://www.youtube.com/watch?v=AUj4M-st3ic")
+                    ])
+                ],
+                project: {
+                    title: "Event-Driven Microservices Platform",
+                    description: ["3+ microservices with API Gateway", "Event sourcing for audit", "Circuit breaker for resilience"],
+                    outcomes: ["Design distributed systems", "Explain microservices trade-offs", "Event-driven thinking"]
+                }
+            },
+            {
+                id: "rs-m7.2",
+                title: "Design Patterns, SOLID & Observability",
+                weeks: "Week 15-16",
+                topics: [
+                    topic("SOLID Principles (S-O-L-I-D)", [
+                        vid("SOLID Principles Explained", "https://www.youtube.com/watch?v=_jDNAf3CzeY", "FreeCodeCamp"),
+                        doc("Refactoring Guru — All Patterns", "https://refactoring.guru/design-patterns")
+                    ]),
+                    topic("Decorator Pattern (Logging/Caching/Auth)", [
+                        vid("Decorator Pattern Explained", "https://www.youtube.com/watch?v=GCraGHx6gso"),
+                        vid("Design Patterns in JavaScript", "https://www.youtube.com/watch?v=kuirGzhGhR8")
+                    ]),
+                    topic("Canonical Logging & Structured JSON Logging", [
+                        art("Canonical Log Lines — Stripe", "https://stripe.com/blog/canonical-log-lines"),
+                        vid("Winston Logger in Node.js", "https://www.youtube.com/watch?v=A5YiqaQbsyI")
+                    ]),
+                    topic("API Security — JWT, OAuth 2.0, RBAC, OWASP", [
+                        vid("JWT Authentication Tutorial", "https://www.youtube.com/watch?v=mbsmsi7l3r4"),
+                        vid("OAuth 2.0 Explained", "https://www.youtube.com/watch?v=ZV5yTm4pT8g"),
+                        doc("OWASP API Security Top 10", "https://owasp.org/API-Security/")
+                    ])
+                ],
+                project: {
+                    title: "Observable Backend with Decorator Logging",
+                    description: ["Decorator pattern for logging", "Structured JSON logs", "JWT + RBAC security layer"],
+                    outcomes: ["Apply SOLID in real code", "Explain Decorator pattern in interviews", "Build observable systems"]
+                }
+            }
+        ]
+    },
+    {
+        id: "rs-p8",
+        title: "Phase 8: Tools & Production Skills",
+        weeks: "Weeks 16-17",
+        modules: [
+            {
+                id: "rs-m8.1",
+                title: "NPM Libraries & Production Tooling",
+                weeks: "Week 16-17",
+                topics: [
+                    topic("Building & Publishing NPM Packages", [
+                        vid("Build & Publish NPM Package", "https://www.youtube.com/watch?v=J4b_T-qH3BY"),
+                        doc("NPM Creating Packages", "https://docs.npmjs.com/creating-and-publishing-scoped-public-packages")
+                    ]),
+                    topic("Semantic Versioning & Scoped Packages", [
+                        art("Semver Explained", "https://semver.org/")
+                    ]),
+                    topic("Monorepos with npm Workspaces", [
+                        doc("npm Workspaces", "https://docs.npmjs.com/cli/using-npm/workspaces")
+                    ]),
+                    topic("TypeScript Support in Packages", [
+                        doc("TypeScript Handbook", "https://www.typescriptlang.org/docs/handbook/")
+                    ])
+                ],
+                project: {
+                    title: "Internal NPM Utility Library",
+                    description: ["Scoped NPM package", "TypeScript + types", "Unit tests + CI publish"],
+                    outcomes: ["Build reusable libraries", "Explain how you accelerated dev velocity by 40%"]
+                }
+            }
+        ]
+    }
+];
+
 export const allLearningPlans: LearningPlan[] = [
     {
         id: "vizuara-ai",
@@ -4306,6 +4867,14 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "brain",
         color: "teal",
         phases: campusxAiPlan
+    },
+    {
+        id: "resume-skills",
+        name: "Resume Skills Mastery",
+        description: "Master every technology on your resume — Backend, Frontend, Cloud, AI & Agentic with tutorials & projects",
+        icon: "target",
+        color: "rose",
+        phases: resumeSkillsPlan
     }
 ];
 
