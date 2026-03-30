@@ -2528,6 +2528,85 @@ const parallelism5DPlan: Phase[] = [
                 }
             }
         ]
+    },
+    {
+        id: "fde-p5",
+        title: "Phase 5: Forward Deployed ML Ops & Infra",
+        weeks: "2-4 Weeks",
+        modules: [
+            {
+                id: "fde-m5.1",
+                title: "Model Serving & Optimization",
+                weeks: "2 Weeks",
+                topics: [
+                    topic("High-Throughput Serving (vLLM, TensorRT-LLM)", [
+                        vid("vLLM Deep Dive", "https://www.youtube.com/watch?v=110", "Vizuara AI"),
+                        doc("TensorRT-LLM Quickstart", "https://github.com/NVIDIA/TensorRT-LLM")
+                    ]),
+                    topic("Docker & K8s for AI Models", [
+                        vid("Kubernetes for MLOps", "https://www.youtube.com/watch?v=220", "TechWorld with Nana")
+                    ])
+                ],
+                project: {
+                    title: "K8s High-Performance LLM Endpoint",
+                    description: ["Containerize a 7B model using vLLM", "Deploy to Minikube with autoscaling on GPU utilization"],
+                    outcomes: ["Enterprise Model Deployment", "High-throughput engineering"]
+                }
+            }
+        ]
+    },
+    {
+        id: "fde-p6",
+        title: "Phase 6: Enterprise Data Engineering",
+        weeks: "2-3 Weeks",
+        modules: [
+            {
+                id: "fde-m6.1",
+                title: "Data Pipelines & AI Integration",
+                weeks: "1.5 Weeks",
+                topics: [
+                    topic("Streaming Architectures (Kafka)", [
+                        vid("Apache Kafka Crash Course", "https://www.youtube.com/watch?v=330")
+                    ]),
+                    topic("Data Lakes & Processing (PySpark, Databricks)", [
+                        vid("PySpark Full Course", "https://www.youtube.com/watch?v=440")
+                    ]),
+                    topic("Security, RBAC & API Gateways", [
+                        doc("OWASP API Security", "https://owasp.org/API-Security/")
+                    ])
+                ],
+                project: {
+                    title: "Real-time AI Processing Pipeline",
+                    description: ["Ingest live data via Kafka", "Process with PySpark and route to Vector DB securely"],
+                    outcomes: ["Bridge Data Eng & AI", "Secure enterprise deployments"]
+                }
+            }
+        ]
+    },
+    {
+        id: "fde-p7",
+        title: "Phase 7: Applied AI Solutions & FDE Delivery",
+        weeks: "3-4 Weeks",
+        modules: [
+            {
+                id: "fde-m7.1",
+                title: "Advanced RAG & Agentic Delivery",
+                weeks: "2 Weeks",
+                topics: [
+                    topic("Production RAG (Hybrid, GraphRAG, Query Routing)", [
+                        vid("Advanced RAG Patterns", "https://www.youtube.com/watch?v=550", "LangChain")
+                    ]),
+                    topic("Client-Facing Engineering & Stakeholder Mgmt", [
+                        art("The Forward Deployed Engineer Role", "https://medium.com/@FDE")
+                    ])
+                ],
+                project: {
+                    title: "Enterprise Agentic Solution",
+                    description: ["Build a multi-agent system scoped to a mock client's messy enterprise data", "Deploy end-to-end with SLA metrics and trace observability"],
+                    outcomes: ["Full-stack FDE capability", "Consulting & execution mastery"]
+                }
+            }
+        ]
     }
 ];
 
@@ -4768,6 +4847,85 @@ const resumeSkillsPlan: Phase[] = [
                 }
             }
         ]
+    },
+    {
+        id: "fde-p5",
+        title: "Phase 5: Forward Deployed ML Ops & Infra",
+        weeks: "2-4 Weeks",
+        modules: [
+            {
+                id: "fde-m5.1",
+                title: "Model Serving & Optimization",
+                weeks: "2 Weeks",
+                topics: [
+                    topic("High-Throughput Serving (vLLM, TensorRT-LLM)", [
+                        vid("vLLM Deep Dive", "https://www.youtube.com/watch?v=110", "Vizuara AI"),
+                        doc("TensorRT-LLM Quickstart", "https://github.com/NVIDIA/TensorRT-LLM")
+                    ]),
+                    topic("Docker & K8s for AI Models", [
+                        vid("Kubernetes for MLOps", "https://www.youtube.com/watch?v=220", "TechWorld with Nana")
+                    ])
+                ],
+                project: {
+                    title: "K8s High-Performance LLM Endpoint",
+                    description: ["Containerize a 7B model using vLLM", "Deploy to Minikube with autoscaling on GPU utilization"],
+                    outcomes: ["Enterprise Model Deployment", "High-throughput engineering"]
+                }
+            }
+        ]
+    },
+    {
+        id: "fde-p6",
+        title: "Phase 6: Enterprise Data Engineering",
+        weeks: "2-3 Weeks",
+        modules: [
+            {
+                id: "fde-m6.1",
+                title: "Data Pipelines & AI Integration",
+                weeks: "1.5 Weeks",
+                topics: [
+                    topic("Streaming Architectures (Kafka)", [
+                        vid("Apache Kafka Crash Course", "https://www.youtube.com/watch?v=330")
+                    ]),
+                    topic("Data Lakes & Processing (PySpark, Databricks)", [
+                        vid("PySpark Full Course", "https://www.youtube.com/watch?v=440")
+                    ]),
+                    topic("Security, RBAC & API Gateways", [
+                        doc("OWASP API Security", "https://owasp.org/API-Security/")
+                    ])
+                ],
+                project: {
+                    title: "Real-time AI Processing Pipeline",
+                    description: ["Ingest live data via Kafka", "Process with PySpark and route to Vector DB securely"],
+                    outcomes: ["Bridge Data Eng & AI", "Secure enterprise deployments"]
+                }
+            }
+        ]
+    },
+    {
+        id: "fde-p7",
+        title: "Phase 7: Applied AI Solutions & FDE Delivery",
+        weeks: "3-4 Weeks",
+        modules: [
+            {
+                id: "fde-m7.1",
+                title: "Advanced RAG & Agentic Delivery",
+                weeks: "2 Weeks",
+                topics: [
+                    topic("Production RAG (Hybrid, GraphRAG, Query Routing)", [
+                        vid("Advanced RAG Patterns", "https://www.youtube.com/watch?v=550", "LangChain")
+                    ]),
+                    topic("Client-Facing Engineering & Stakeholder Mgmt", [
+                        art("The Forward Deployed Engineer Role", "https://medium.com/@FDE")
+                    ])
+                ],
+                project: {
+                    title: "Enterprise Agentic Solution",
+                    description: ["Build a multi-agent system scoped to a mock client's messy enterprise data", "Deploy end-to-end with SLA metrics and trace observability"],
+                    outcomes: ["Full-stack FDE capability", "Consulting & execution mastery"]
+                }
+            }
+        ]
     }
 ];
 
@@ -4830,8 +4988,8 @@ export const allLearningPlans: LearningPlan[] = [
     },
     {
         id: "parallelism-5d",
-        name: "Ultimate 5D Parallelism",
-        description: "Distributed LLM training from scratch: GPU Hardware ΓåÆ Data ΓåÆ Tensor ΓåÆ Pipeline ΓåÆ ZeRO ΓåÆ 5D",
+        name: "Ultimate 5D Parallelism + FDE",
+        description: "Distributed LLM training + Forward Deployed Engineering: GPU Hardware → 5D Parallelism → MLOps → Enterprise Data → Applied AI Solutions",
         icon: "cpu",
         color: "orange",
         phases: parallelism5DPlan
@@ -4870,8 +5028,8 @@ export const allLearningPlans: LearningPlan[] = [
     },
     {
         id: "resume-skills",
-        name: "Resume Skills Mastery",
-        description: "Master every technology on your resume — Backend, Frontend, Cloud, AI & Agentic with tutorials & projects",
+        name: "Resume Skills Mastery + FDE",
+        description: "Master every technology on your resume — Backend, Frontend, Cloud, AI & Agentic with a final Forward Deployed Engineering specialization",
         icon: "target",
         color: "rose",
         phases: resumeSkillsPlan

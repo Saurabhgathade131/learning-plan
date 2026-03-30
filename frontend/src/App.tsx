@@ -980,7 +980,14 @@ function App() {
                         <span className="text-xs font-extrabold text-slate-700 dark:text-white">{percent}%</span>
                       </div>
                       <div>
-                        <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white">{phase.title}</h3>
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white">{phase.title}</h3>
+                          {phase.id?.includes('fde') && (
+                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-500/30">
+                              FDE Integration
+                            </span>
+                          )}
+                        </div>
                         <p className="text-sm font-medium text-slate-400 mt-0.5">{phase.weeks}</p>
                       </div>
                     </div>
@@ -994,7 +1001,12 @@ function App() {
                       <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="bg-slate-50/80 dark:bg-slate-950/30 border-t border-slate-200 dark:border-slate-800">
                         <div className="p-5 md:p-6 grid gap-5">
                           {phase.modules.map(module => (
-                            <div key={module.id} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm p-5 md:p-6 flex flex-col xl:flex-row gap-6">
+                            <div key={module.id} className={cn("bg-white dark:bg-slate-900 border rounded-xl shadow-sm p-5 md:p-6 flex flex-col xl:flex-row gap-6 relative overflow-hidden transition-all", module.id?.includes('fde') ? "border-indigo-500 shadow-indigo-500/20 dark:shadow-indigo-500/20 shadow-lg ring-1 ring-indigo-500/50" : "border-slate-200 dark:border-slate-800")}>
+                              {module.id?.includes('fde') && (
+                                <div className="absolute top-0 right-0 px-3 py-1 bg-indigo-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-bl-xl z-0 shadow-sm">
+                                  Forward Deployed Specialization
+                                </div>
+                              )}
 
                               <div className="flex-1 space-y-5">
                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
