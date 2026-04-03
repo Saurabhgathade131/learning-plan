@@ -4289,6 +4289,63 @@ const vizuaraPlan: Phase[] = [
     }
 ];
 
+// ===== PLAN: GPU PROGRAMMING (CUDA) =====
+const gpuProgrammingPlan: Phase[] = [
+    {
+        id: "gpu-p1",
+        title: "Phase 1: GPU Architecture & CUDA C Basics",
+        weeks: "Weeks 1-2",
+        modules: [
+            {
+                id: "gpu-m1.1",
+                title: "CUDA Programming Model",
+                weeks: "Week 1",
+                topics: [
+                    topic("GPU Architecture: SMs, Warps, Threads", [
+                        vid("GPU Computing Architecture", "https://www.youtube.com/watch?v=kUkv3P_XByc"),
+                        doc("CUDA C Programming Guide", "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html")
+                    ]),
+                    topic("CUDA Kernels & Thread Indexing", [
+                        vid("CUDA Threading Model", "https://www.youtube.com/watch?v=2NgSpg3QkS0"),
+                        art("An Even Easier Introduction to CUDA", "https://developer.nvidia.com/blog/even-easier-introduction-cuda/")
+                    ])
+                ],
+                project: {
+                    title: "Vector Addition on GPU",
+                    description: ["Write a CUDA kernel for mass vector addition", "Compare CPU vs GPU latency", "Error handling in CUDA"],
+                    outcomes: ["Understand SIMT execution", "Master grid/block dimensions"]
+                }
+            }
+        ]
+    },
+    {
+        id: "gpu-p2",
+        title: "Phase 2: Memory Optimization & Throughput",
+        weeks: "Weeks 3-4",
+        modules: [
+            {
+                id: "gpu-m2.1",
+                title: "Tiled Matrix Multiplication",
+                weeks: "Week 1",
+                topics: [
+                    topic("Shared Memory & Tiling", [
+                        vid("CUDA Shared Memory", "https://www.youtube.com/watch?v=330"),
+                        art("Using Shared Memory in CUDA", "https://developer.nvidia.com/blog/using-shared-memory-cuda-cc/")
+                    ]),
+                    topic("Memory Coalescing & Bank Conflicts", [
+                        vid("Memory Access Patterns", "https://www.youtube.com/watch?v=440")
+                    ])
+                ],
+                project: {
+                    title: "Optimized GEMM Kernel",
+                    description: ["Implement matrix multiplication with tiling", "Profile memory throughput using NSight Compute"],
+                    outcomes: ["Maximize memory bandwidth", "Avoid bank conflicts"]
+                }
+            }
+        ]
+    }
+];
+
 // ===== PLAN: RESUME SKILLS MASTERY =====
 const resumeSkillsPlan: Phase[] = [
     {
@@ -4849,6 +4906,12 @@ const resumeSkillsPlan: Phase[] = [
         ]
     },
     {
+        id: "rs-p9",
+        title: "Phase 9: GPU Programming (FDE Specialization)",
+        weeks: "Weeks 17-18",
+        modules: gpuProgrammingPlan[0].modules.concat(gpuProgrammingPlan[1].modules)
+    },
+    {
         id: "fde-p5",
         title: "Phase 5: Forward Deployed ML Ops & Infra",
         weeks: "2-4 Weeks",
@@ -5033,6 +5096,14 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "target",
         color: "rose",
         phases: resumeSkillsPlan
+    },
+    {
+        id: "gpu-cuda",
+        name: "NVIDIA GPU Programming (CUDA)",
+        description: "Master CUDA kernels, memory optimization, and NVIDIA NSight profiling for high-performance AI compute.",
+        icon: "cpu",
+        color: "green",
+        phases: gpuProgrammingPlan
     }
 ];
 

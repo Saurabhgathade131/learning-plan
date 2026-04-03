@@ -987,6 +987,11 @@ function App() {
                               FDE Integration
                             </span>
                           )}
+                          {phase.id?.includes('gpu') && (
+                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
+                              Advanced CUDA
+                            </span>
+                          )}
                         </div>
                         <p className="text-sm font-medium text-slate-400 mt-0.5">{phase.weeks}</p>
                       </div>
@@ -1001,10 +1006,18 @@ function App() {
                       <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="bg-slate-50/80 dark:bg-slate-950/30 border-t border-slate-200 dark:border-slate-800">
                         <div className="p-5 md:p-6 grid gap-5">
                           {phase.modules.map(module => (
-                            <div key={module.id} className={cn("bg-white dark:bg-slate-900 border rounded-xl shadow-sm p-5 md:p-6 flex flex-col xl:flex-row gap-6 relative overflow-hidden transition-all", module.id?.includes('fde') ? "border-indigo-500 shadow-indigo-500/20 dark:shadow-indigo-500/20 shadow-lg ring-1 ring-indigo-500/50" : "border-slate-200 dark:border-slate-800")}>
+                            <div key={module.id} className={cn("bg-white dark:bg-slate-900 border rounded-xl shadow-sm p-5 md:p-6 flex flex-col xl:flex-row gap-6 relative overflow-hidden transition-all",
+                              module.id?.includes('fde') ? "border-indigo-500 shadow-indigo-500/20 dark:shadow-indigo-500/20 shadow-lg ring-1 ring-indigo-500/50" :
+                                module.id?.includes('gpu') ? "border-emerald-500 shadow-emerald-500/20 dark:shadow-emerald-500/20 shadow-lg ring-1 ring-emerald-500/50" :
+                                  "border-slate-200 dark:border-slate-800")}>
                               {module.id?.includes('fde') && (
                                 <div className="absolute top-0 right-0 px-3 py-1 bg-indigo-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-bl-xl z-0 shadow-sm">
                                   Forward Deployed Specialization
+                                </div>
+                              )}
+                              {module.id?.includes('gpu') && (
+                                <div className="absolute top-0 right-0 px-3 py-1 bg-emerald-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-bl-xl z-0 shadow-sm">
+                                  GPU Computing Specialization
                                 </div>
                               )}
 
