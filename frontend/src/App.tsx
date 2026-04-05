@@ -710,8 +710,8 @@ const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComple
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 p-4">
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center bg-slate-950 p-4 md:p-10 overflow-y-auto">
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3"></div>
       </div>
@@ -719,9 +719,9 @@ const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComple
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-8"
+        className="relative z-10 w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 md:p-8 my-auto"
       >
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <div className="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <Rocket className="w-8 h-8 text-indigo-500" />
           </div>
@@ -729,34 +729,34 @@ const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComple
           <p className="text-slate-500 font-medium mt-2">Identify yourself to start your journey.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+          <div className="space-y-1.5">
+            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
             <input
               required
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., John Doe"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
+              className="w-full px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
             />
           </div>
 
-          <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Access ID</label>
+          <div className="space-y-1.5">
+            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Access ID</label>
             <input
               required
               type="text"
               value={id}
               onChange={(e) => setId(e.target.value)}
               placeholder="e.g., user-123"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
+              className="w-full px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Select Course</label>
-            <div className="grid gap-2">
+            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Select Course</label>
+            <div className="grid gap-2 max-h-[240px] md:max-h-[300px] overflow-y-auto pr-1 custom-scrollbar">
               {plans.map((plan) => (
                 <button
                   key={plan.id}
@@ -785,7 +785,7 @@ const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComple
           <button
             type="submit"
             disabled={!name || !id || !selectedPlanId}
-            className="w-full py-4 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-black rounded-xl shadow-lg shadow-indigo-500/20 transition-all mt-4"
+            className="w-full py-3.5 md:py-4 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-black rounded-xl shadow-lg shadow-indigo-500/20 transition-all mt-2"
           >
             Start Learning
           </button>
