@@ -719,76 +719,89 @@ const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComple
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 md:p-8 my-auto"
+        className="relative z-10 w-full max-w-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 md:p-10 my-auto"
       >
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <div className="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <Rocket className="w-8 h-8 text-indigo-500" />
           </div>
-          <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Getting Started</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Getting Started</h2>
           <p className="text-slate-500 font-medium mt-2">Identify yourself to start your journey.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-          <div className="space-y-1.5">
-            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
-            <input
-              required
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., John Doe"
-              className="w-full px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
-            />
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-1.5">
+              <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
+              <input
+                required
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="e.g., John Doe"
+                className="w-full px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Access ID</label>
+              <input
+                required
+                type="text"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+                placeholder="e.g., user-123"
+                className="w-full px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
+              />
+            </div>
           </div>
 
-          <div className="space-y-1.5">
-            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Access ID</label>
-            <input
-              required
-              type="text"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-              placeholder="e.g., user-123"
-              className="w-full px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Select Course</label>
-            <div className="grid gap-2 max-h-[240px] md:max-h-[300px] overflow-y-auto pr-1 custom-scrollbar">
+          <div className="space-y-3">
+            <label className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Select Your Course Path</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
               {plans.map((plan) => (
                 <button
                   key={plan.id}
                   type="button"
                   onClick={() => setSelectedPlanId(plan.id)}
                   className={cn(
-                    "flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left",
+                    "group flex items-start gap-4 p-4 rounded-2xl border-2 transition-all text-left relative overflow-hidden",
                     selectedPlanId === plan.id
                       ? "border-indigo-500 bg-indigo-500/5 ring-1 ring-indigo-500"
-                      : "border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700"
+                      : "border-slate-100 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30"
                   )}
                 >
-                  <span className={cn(selectedPlanId === plan.id ? "text-indigo-500" : "text-slate-400")}>
+                  <div className={cn(
+                    "flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-colors",
+                    selectedPlanId === plan.id ? "bg-indigo-500 text-white" : "bg-white dark:bg-slate-800 text-slate-400 group-hover:text-indigo-500 shadow-sm"
+                  )}>
                     {planIcons[plan.icon]}
-                  </span>
-                  <div>
-                    <div className="text-sm font-bold text-slate-800 dark:text-white">{plan.name}</div>
-                    <div className="text-[10px] text-slate-500">{plan.description.slice(0, 50)}...</div>
                   </div>
-                  {selectedPlanId === plan.id && <Check className="w-4 h-4 text-indigo-500 ml-auto" />}
+                  <div className="flex-1 pr-6">
+                    <div className="text-base font-bold text-slate-800 dark:text-white mb-1">{plan.name}</div>
+                    <div className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">{plan.description}</div>
+                  </div>
+                  {selectedPlanId === plan.id && (
+                    <div className="absolute top-3 right-3">
+                      <div className="w-5 h-5 bg-indigo-500 rounded-full flex items-center justify-center shadow-md">
+                        <Check className="w-3 h-3 text-white stroke-[3px]" />
+                      </div>
+                    </div>
+                  )}
                 </button>
               ))}
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={!name || !id || !selectedPlanId}
-            className="w-full py-3.5 md:py-4 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-black rounded-xl shadow-lg shadow-indigo-500/20 transition-all mt-2"
-          >
-            Start Learning
-          </button>
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={!name || !id || !selectedPlanId}
+              className="w-full py-4 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white text-lg font-black rounded-2xl shadow-xl shadow-indigo-500/20 active:scale-[0.98] transition-all"
+            >
+              Initialize My Plan
+            </button>
+          </div>
         </form>
       </motion.div>
     </div>
