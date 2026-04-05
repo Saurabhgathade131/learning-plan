@@ -8,8 +8,20 @@ import { DynamoDBDocumentClient, PutCommand, ScanCommand, DeleteCommand, QueryCo
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+// 1. CORS MUST BE FIRST
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Amz-Date', 'X-Api-Key', 'X-Amz-Security-Token'],
+    credentials: true
+}));
+
 app.use(express.json());
+
+// 2. Health check (No DynamoDB dependency)
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
@@ -58,7 +70,13 @@ app.post('/api/schedule', async (req, res) => {
 
 // Get all learning plans (for tabs)
 app.get('/api/plans', (req, res) => {
-    res.json(allLearningPlans);
+    try {
+        if (!allLearningPlans) throw new Error("allLearningPlans is undefined");
+        res.json(allLearningPlans);
+    } catch (error: any) {
+        console.error("CRITICAL: Error in /api/plans:", error);
+        res.status(500).json({ error: error.message || 'Internal Server Error', stack: error.stack });
+    }
 });
 
 // Legacy: Get single plan (backward compatible)
@@ -319,6 +337,16 @@ app.post('/api/goals', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Failed' });
     }
+});
+
+// Global Error Handler
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error("UNHANDLED ERROR:", err);
+    res.status(500).json({
+        error: 'Global Unhandled Error',
+        message: err.message,
+        stack: process.env.NODE_ENV === 'production' ? null : err.stack
+    });
 });
 
 // For local development

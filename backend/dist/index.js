@@ -22,8 +22,18 @@ const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
 const app = (0, express_1.default)();
 exports.app = app;
 const PORT = 5000;
-app.use((0, cors_1.default)());
+// 1. CORS MUST BE FIRST
+app.use((0, cors_1.default)({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Amz-Date', 'X-Api-Key', 'X-Amz-Security-Token'],
+    credentials: true
+}));
 app.use(express_1.default.json());
+// 2. Health check (No DynamoDB dependency)
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 const client = new client_dynamodb_1.DynamoDBClient({});
 const docClient = lib_dynamodb_1.DynamoDBDocumentClient.from(client);
 const PROGRESS_TABLE = process.env.PROGRESS_TABLE || 'learning-tracker-api-dev-progress';
@@ -68,7 +78,15 @@ app.post('/api/schedule', (req, res) => __awaiter(void 0, void 0, void 0, functi
 }));
 // Get all learning plans (for tabs)
 app.get('/api/plans', (req, res) => {
-    res.json(data_1.allLearningPlans);
+    try {
+        if (!data_1.allLearningPlans)
+            throw new Error("allLearningPlans is undefined");
+        res.json(data_1.allLearningPlans);
+    }
+    catch (error) {
+        console.error("CRITICAL: Error in /api/plans:", error);
+        res.status(500).json({ error: error.message || 'Internal Server Error', stack: error.stack });
+    }
 });
 // Legacy: Get single plan (backward compatible)
 app.get('/api/plan', (req, res) => {
@@ -323,6 +341,15 @@ app.post('/api/goals', (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.status(500).json({ error: 'Failed' });
     }
 }));
+// Global Error Handler
+app.use((err, req, res, next) => {
+    console.error("UNHANDLED ERROR:", err);
+    res.status(500).json({
+        error: 'Global Unhandled Error',
+        message: err.message,
+        stack: process.env.NODE_ENV === 'production' ? null : err.stack
+    });
+});
 // For local development
 if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {

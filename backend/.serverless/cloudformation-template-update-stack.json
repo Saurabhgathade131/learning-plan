@@ -181,12 +181,12 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/learning-tracker-api/dev/1775370040256-2026-04-05T06:20:40.256Z/learning-tracker-api.zip"
+          "S3Key": "serverless/learning-tracker-api/dev/1775371346503-2026-04-05T06:42:26.503Z/learning-tracker-api.zip"
         },
         "Handler": "dist/index.handler",
         "Runtime": "nodejs18.x",
         "FunctionName": "learning-tracker-api-dev-api",
-        "MemorySize": 256,
+        "MemorySize": 1024,
         "Timeout": 30,
         "Environment": {
           "Variables": {
@@ -210,14 +210,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersion1njAXFsUzf4YLUDPcMVRr9ZLBHwrGiZLkwFWgxtWcwI": {
+    "ApiLambdaVersionAHK4rm1vOCGXmlqe9nrQ4ZMoQ6eUw2S7A3RzAGq5G48": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "VCngYrIwD2eB1pcjRg/fwOkxe5qxUwcNENDpPo5QGns="
+        "CodeSha256": "GZj4SeI5yXc/ofl8DziCP8CREb1sr4/YIikApVtjxJo="
       }
     },
     "ApiGatewayRestApi": {
@@ -435,7 +435,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1775370030299": {
+    "ApiGatewayDeployment1775371336126": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -646,7 +646,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersion1njAXFsUzf4YLUDPcMVRr9ZLBHwrGiZLkwFWgxtWcwI"
+        "Ref": "ApiLambdaVersionAHK4rm1vOCGXmlqe9nrQ4ZMoQ6eUw2S7A3RzAGq5G48"
       },
       "Export": {
         "Name": "sls-learning-tracker-api-dev-ApiLambdaFunctionQualifiedArn"

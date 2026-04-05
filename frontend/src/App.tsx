@@ -940,21 +940,34 @@ function App() {
     };
   }, []);
 
-  useLayoutEffect(() => {
-    if (!loading && activePlan) {
-      gsap.from(".phase-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".phases-container",
-          start: "top 80%",
+  useEffect(() => {
+    if (loading || !activePlanId || plans.length === 0) return;
+
+    const ctx = gsap.context(() => {
+      // Small delay to ensure DOM is ready for measurement
+      setTimeout(() => {
+        const cards = document.querySelectorAll(".phase-card");
+        const container = document.querySelector(".phases-container");
+
+        if (cards.length > 0 && container) {
+          gsap.from(".phase-card", {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".phases-container",
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          });
         }
-      });
-    }
-  }, [loading, activePlanId]);
+      }, 100);
+    });
+
+    return () => ctx.revert();
+  }, [loading, activePlanId, plans.length]);
 
   const activePlan = plans.find(p => p.id === activePlanId);
 
