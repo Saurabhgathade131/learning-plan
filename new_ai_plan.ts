@@ -1,3 +1,11 @@
+import { Phase, Topic, TopicResource } from './frontend/src/types';
+
+const topic = (name: string, resources: TopicResource[]): Topic => ({ name, resources });
+const playlist = (title: string, url: string, author?: string): TopicResource => ({ type: 'playlist', title, url, author });
+const vid = (title: string, url: string, author?: string): TopicResource => ({ type: 'video', title, url, author });
+const art = (title: string, url: string, author?: string): TopicResource => ({ type: 'article', title, url, author });
+const doc = (title: string, url: string, author?: string): TopicResource => ({ type: 'doc', title, url, author });
+
 const aiEngineerRoadmapPlan: Phase[] = [
     {
         id: "air-p1",
@@ -11,15 +19,19 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("Python Advanced & OOPs", [
                         playlist("CampusX Python Playlist", "https://www.youtube.com/playlist?list=PLKnIA16_Rmvb1REQSmERk4-Tq1iFjInT-", "CampusX"),
-                        vid("Decorators & Generators", "https://www.youtube.com/watch?v=FsAPt_9Bf3U", "Corey Schafer")
+                        vid("Decorators & Generators", "https://www.youtube.com/watch?v=FsAPt_9Bf3U", "Corey Schafer"),
+                        vid("Python OOP Masterclass", "https://www.youtube.com/watch?v=JeznW_7DlB0", "Corey Schafer")
                     ]),
                     topic("Math: Linear Algebra & Calculus", [
                         playlist("CampusX Math for ML", "https://www.youtube.com/playlist?list=PLKnIA16_RmvbTfJ_M1L1R7QxW7P0xY2a4", "CampusX"),
-                        art("Essence of Linear Algebra", "https://www.3blue1brown.com/topics/linear-algebra", "3Blue1Brown")
+                        art("Essence of Linear Algebra", "https://www.3blue1brown.com/topics/linear-algebra", "3Blue1Brown"),
+                        vid("Essence of Calculus", "https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr", "3Blue1Brown"),
+                        art("Mathematics for ML Book", "https://mml-book.github.io/book/mml-book.pdf", "Deisenroth & Faisal")
                     ]),
                     topic("Probability & Statistics for ML", [
                         playlist("CampusX Statistics for ML", "https://www.youtube.com/playlist?list=PLKnIA16_RmvbTfJ_M1L1R7QxW7P0xY2a4", "CampusX"),
-                        vid("Descriptive vs Inferential Stats", "https://www.youtube.com/watch?v=wXWz9BwTta8", "StatQuest")
+                        vid("Descriptive vs Inferential Stats", "https://www.youtube.com/watch?v=wXWz9BwTta8", "StatQuest"),
+                        vid("Statistics for Data Science", "https://www.youtube.com/watch?v=guXirfTk_qg", "Great Learning")
                     ])
                 ],
                 project: {
@@ -35,15 +47,18 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("Pandas & Numpy Masterclass", [
                         playlist("100 Days of ML (Pandas)", "https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcUaPtE", "CampusX"),
-                        doc("Pandas Official Docs", "https://pandas.pydata.org/docs/")
+                        doc("Pandas Official Docs", "https://pandas.pydata.org/docs/"),
+                        art("Python for Data Analysis", "https://wesmckinney.com/book/", "Wes McKinney")
                     ]),
                     topic("Data Visualization (Matplotlib/Seaborn)", [
                         vid("Matplotlib Crash Course", "https://www.youtube.com/watch?v=3Xc3CA655Ls", "Traversy Media"),
-                        vid("Seaborn Tutorial", "https://www.youtube.com/watch?v=6GUO8qrZEXQ", "Derek Banas")
+                        vid("Seaborn Tutorial", "https://www.youtube.com/watch?v=6GUO8qrZEXQ", "Derek Banas"),
+                        art("Storytelling with Data", "https://www.storytellingwithdata.com/blog", "Cole Knaflic")
                     ]),
                     topic("Feature Selection & Engineering", [
                         playlist("CampusX Feature Engineering", "https://www.youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcUaPtE", "CampusX"),
-                        art("Feature Engineering Best Practices", "https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/", "Machine Learning Mastery")
+                        art("Feature Engineering Best Practices", "https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/", "Machine Learning Mastery"),
+                        art("Feature Engineering for ML", "https://www.oreilly.com/library/view/feature-engineering-for/9781491953235/", "Alice Zheng")
                     ])
                 ],
                 project: {
@@ -59,11 +74,13 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("Supervised: Linear & Logistic Regression", [
                         vid("Linear Regression Intuition", "https://www.youtube.com/watch?v=nk2CQITm_eo", "StatQuest"),
+                        vid("Logistic Regression Explained", "https://www.youtube.com/watch?v=yIYKR4sgzI8", "StatQuest"),
                         vid("CampusX Linear Regression", "https://www.youtube.com/watch?v=VxzjcJ54XQc", "CampusX")
                     ]),
                     topic("Tree-Based Models: Decision Trees to XGBoost", [
                         vid("Decision Trees", "https://www.youtube.com/watch?v=7VeUPuVNHT8", "StatQuest"),
                         vid("Random Forests", "https://www.youtube.com/watch?v=J4Wdy0Wc_xQ", "StatQuest"),
+                        vid("XGBoost Part 1: Regression", "https://www.youtube.com/watch?v=OtD8wVaFm6E", "StatQuest"),
                         vid("CampusX XGBoost", "https://www.youtube.com/watch?v=0hX0C2d4-sU", "CampusX")
                     ]),
                     topic("Unsupervised: KMeans & PCA", [
@@ -91,15 +108,18 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("Perceptrons & Backpropagation", [
                         playlist("100 Days of DL", "https://www.youtube.com/playlist?list=PLKnIA16_RmvYu1zOANL8vAEZgZhQ3KjTz", "CampusX"),
-                        vid("Neural Networks from Scratch", "https://www.youtube.com/watch?v=VMj-3S1tku0", "Andrej Karpathy")
+                        vid("Neural Networks: Zero to Hero", "https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAWtfgr9", "Andrej Karpathy"),
+                        vid("But what is a neural network?", "https://www.youtube.com/watch?v=aircAruvnKk", "3Blue1Brown")
                     ]),
                     topic("PyTorch Fundamentals", [
                         playlist("PyTorch for Deep Learning", "https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4", "Patrick Loeber"),
-                        doc("PyTorch Official Tutorials", "https://pytorch.org/tutorials/")
+                        doc("PyTorch Official Tutorials", "https://pytorch.org/tutorials/"),
+                        vid("Deep Learning with PyTorch", "https://www.youtube.com/watch?v=V_xro1bcAuA", "freeCodeCamp")
                     ]),
                     topic("Optimizers & Loss Functions", [
                         vid("Optimizers Explained", "https://www.youtube.com/watch?v=mdKjMPmcWjY", "StatQuest"),
-                        vid("CampusX SGD/Adam", "https://www.youtube.com/watch?v=1b1fW_RIT2s", "CampusX")
+                        vid("CampusX SGD/Adam", "https://www.youtube.com/watch?v=1b1fW_RIT2s", "CampusX"),
+                        art("Visualizing Gradient Descent", "https://distill.pub/2017/momentum/", "Distill.pub")
                     ])
                 ],
                 project: {
@@ -116,16 +136,19 @@ const aiEngineerRoadmapPlan: Phase[] = [
                     topic("CNNs, ResNets & Transfer Learning", [
                         vid("CNNs Explained", "https://www.youtube.com/watch?v=YRhxdVk_sIs", "StatQuest"),
                         vid("CampusX CNN Tutorial", "https://www.youtube.com/watch?v=QzzRGGhP9P8", "CampusX"),
-                        art("Transfer Learning Guide", "https://cs231n.github.io/transfer-learning/", "Stanford CS231n")
+                        art("Transfer Learning Guide", "https://cs231n.github.io/transfer-learning/", "Stanford CS231n"),
+                        art("Visualizing CNNs", "https://poloclub.github.io/cnn-explainer/", "Polo Club")
                     ]),
                     topic("RNNs, LSTMs & GRUs", [
                         vid("RNNs Explained", "https://www.youtube.com/watch?v=AsNTP8Kwu80", "StatQuest"),
                         vid("LSTMs Explained", "https://www.youtube.com/watch?v=YCzL96nL7j0", "StatQuest"),
-                        vid("CampusX LSTMs", "https://www.youtube.com/watch?v=x-j2O_z2598", "CampusX")
+                        vid("CampusX LSTMs", "https://www.youtube.com/watch?v=x-j2O_z2598", "CampusX"),
+                        art("Understanding LSTMs", "https://colah.github.io/posts/2015-08-Understanding-LSTMs/", "Chris Olah")
                     ]),
                     topic("Word Embeddings (Word2Vec, GloVe)", [
                         vid("Word Embeddings", "https://www.youtube.com/watch?v=5MaWmXwxFNQ", "StatQuest"),
-                        vid("CampusX Word2Vec", "https://www.youtube.com/watch?v=ZMTzG1Yw_nI", "CampusX")
+                        vid("CampusX Word2Vec", "https://www.youtube.com/watch?v=ZMTzG1Yw_nI", "CampusX"),
+                        art("Illustrated Word2Vec", "https://jalammar.github.io/illustrated-word2vec/", "Jay Alammar")
                     ])
                 ],
                 project: {
@@ -148,15 +171,19 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("Self-Attention Mechanism", [
                         vid("Attention is All You Need", "https://www.youtube.com/watch?v=iDulhoQ2pro", "StatQuest"),
-                        vid("CampusX Transformers", "https://www.youtube.com/watch?v=5zCGnIfBmlM", "CampusX")
+                        vid("CampusX Transformers", "https://www.youtube.com/watch?v=5zCGnIfBmlM", "CampusX"),
+                        art("The Illustrated Transformer", "https://jalammar.github.io/illustrated-transformer/", "Jay Alammar"),
+                        vid("Let's build GPT", "https://www.youtube.com/watch?v=kCc8FmEb1nY", "Andrej Karpathy")
                     ]),
                     topic("Hugging Face Transformers Library", [
                         playlist("Complete NLP Playlist (Vijayraja)", "https://www.youtube.com/playlist?list=PLZru3N79Wp1AsG_S9ySjO2P8370uGv_L7", "Vizuara AI"),
-                        playlist("Hugging Face Course", "https://www.youtube.com/playlist?list=PLo2EIpI_JMQvWfQndUesu0nPBAtZ9gP1o", "Hugging Face")
+                        playlist("Hugging Face Course", "https://www.youtube.com/playlist?list=PLo2EIpI_JMQvWfQndUesu0nPBAtZ9gP1o", "Hugging Face"),
+                        doc("HuggingFace NLP Course", "https://huggingface.co/learn/nlp-course/")
                     ]),
                     topic("Fine-Tuning BERT / InstructGPT", [
                         vid("Fine-Tune BERT", "https://www.youtube.com/watch?v=GSt00_-0ncQ", "Venelin Valkov"),
-                        doc("HuggingFace Fine-Tuning", "https://huggingface.co/docs/transformers/training")
+                        doc("HuggingFace Fine-Tuning", "https://huggingface.co/docs/transformers/training"),
+                        art("State of GPT", "https://www.youtube.com/watch?v=bZQun8Y4L2A", "Andrej Karpathy")
                     ])
                 ],
                 project: {
@@ -172,15 +199,18 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("LangChain Core Concepts", [
                         playlist("LangChain Full Course", "https://www.youtube.com/playlist?list=PLqAmigZvYxILVLf4e6r2dcq-S3WJ1mUfY", "Krish Naik"),
-                        doc("LangChain Docs", "https://python.langchain.com/docs/get_started/introduction")
+                        doc("LangChain Docs", "https://python.langchain.com/docs/get_started/introduction"),
+                        vid("LangChain in 15 mins", "https://www.youtube.com/watch?v=aywZrzNaKjs", "Rabbitmetrics")
                     ]),
                     topic("Vector DBs (Chroma/Pinecone)", [
                         vid("Vector Databases Explained", "https://www.youtube.com/watch?v=klTvEwg3oJ4", "Fireship"),
-                        vid("ChromaDB Tutorial", "https://www.youtube.com/watch?v=3yPBVii7lzI", "pixegami")
+                        vid("ChromaDB Tutorial", "https://www.youtube.com/watch?v=3yPBVii7lzI", "pixegami"),
+                        art("Vector Search Explained", "https://www.pinecone.io/learn/vector-database/", "Pinecone")
                     ]),
                     topic("Building RAG Pipelines", [
                         vid("CampusX Complete RAG", "https://www.youtube.com/watch?v=wd7TZ4e1mN0", "CampusX"),
-                        vid("Advanced RAG", "https://www.youtube.com/watch?v=T-D1OfcDW1M", "LangChain")
+                        vid("Advanced RAG", "https://www.youtube.com/watch?v=T-D1OfcDW1M", "LangChain"),
+                        art("RAG Best Practices", "https://www.anyscale.com/blog/a-comprehensive-guide-for-building-rag-based-llm-applications-part-1", "Anyscale")
                     ])
                 ],
                 project: {
@@ -196,15 +226,18 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("LoRA & QLoRA Fine-Tuning", [
                         vid("LoRA Explained", "https://www.youtube.com/watch?v=YVU5wAA6Txo", "Weights & Biases"),
-                        vid("QLoRA Llama-3 Fine-tuning", "https://www.youtube.com/watch?v=XpoKB3usmKc", "Trelis Research")
+                        vid("QLoRA Llama-3 Fine-tuning", "https://www.youtube.com/watch?v=XpoKB3usmKc", "Trelis Research"),
+                        art("LoRA: Low-Rank Adaptation", "https://huggingface.co/docs/peft/conceptual_guides/lora", "Hugging Face")
                     ]),
                     topic("Building AI Agents with LangGraph", [
                         vid("LangGraph Full Course", "https://www.youtube.com/watch?v=Tdn9GZ4yF6g", "LangChain"),
-                        doc("LangGraph Documentation", "https://langchain-ai.github.io/langgraph/")
+                        doc("LangGraph Documentation", "https://langchain-ai.github.io/langgraph/"),
+                        art("LLM Powered Autonomous Agents", "https://lilianweng.github.io/posts/2023-06-23-agent/", "Lilian Weng")
                     ]),
                     topic("Multi-Agent Frameworks (CrewAI)", [
                         vid("CrewAI Tutorial", "https://www.youtube.com/watch?v=sPzc6hMg7So", "Matt Williams"),
-                        doc("CrewAI Docs", "https://docs.crewai.com/")
+                        doc("CrewAI Docs", "https://docs.crewai.com/"),
+                        vid("Building CrewAI agents", "https://www.youtube.com/watch?v=nZ_G_Vp8y8k", "Brandon Hancock")
                     ])
                 ],
                 project: {
@@ -227,7 +260,8 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("Docker Compose for ML Services", [
                         vid("Docker in 100 Seconds", "https://www.youtube.com/watch?v=Gjnup-PuquQ", "Fireship"),
-                        vid("Deploy ML Models Docker", "https://www.youtube.com/watch?v=h5wLuVDr0oc", "Patrick Loeber")
+                        vid("Deploy ML Models Docker", "https://www.youtube.com/watch?v=h5wLuVDr0oc", "Patrick Loeber"),
+                        doc("MLOps Roadmaps", "https://github.com/GokuMohandas/Made-With-ML", "Goku Mohandas")
                     ]),
                     topic("MLflow Experiment Tracking", [
                         vid("MLflow Tutorial", "https://www.youtube.com/watch?v=ksYIVDue8ak", "Krish Naik"),
@@ -235,7 +269,8 @@ const aiEngineerRoadmapPlan: Phase[] = [
                     ]),
                     topic("AWS Deployment & GitHub Actions", [
                         vid("AWS EC2 Deploy CI/CD", "https://www.youtube.com/watch?v=8TlukLu11Yo", "TechWorld with Nana"),
-                        doc("GitHub Actions Docs", "https://docs.github.com/en/actions")
+                        doc("GitHub Actions Docs", "https://docs.github.com/en/actions"),
+                        art("The MLOps Stack", "https://huyenchip.com/2020/12/22/mlops-stack.html", "Chip Huyen")
                     ])
                 ],
                 project: {
@@ -258,7 +293,8 @@ const aiEngineerRoadmapPlan: Phase[] = [
                 topics: [
                     topic("LeetCode & ML System Design", [
                         playlist("NeetCode 150", "https://www.youtube.com/playlist?list=PLot-Xpze53ldVwtstag2TL4HQhAnC8ATf", "NeetCode"),
-                        vid("ML System Design Interview", "https://www.youtube.com/watch?v=pYs1lNd-XbI", "Stanford MLSys")
+                        vid("ML System Design Interview", "https://www.youtube.com/watch?v=pYs1lNd-XbI", "Stanford MLSys"),
+                        art("Machine Learning System Design", "https://github.com/chiphuyen/machine-learning-systems-design", "Chip Huyen")
                     ]),
                     topic("ATS Resume Optimization", [
                         vid("Tech Resume Tips", "https://www.youtube.com/watch?v=J-4Fv8nq1iA", "Jeff Su"),

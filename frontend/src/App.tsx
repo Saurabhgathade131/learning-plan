@@ -1,9 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef, Suspense } from 'react';
 import type { LearningPlan, Phase, Progress, Topic, TopicResource, User } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, NotebookPen, Play, Clock, Save, X, Network, Layers, Rocket, Cpu, Sparkles, Trophy, BarChart3 } from 'lucide-react';
+import { ChevronDown, BookOpen, Code, Check, ExternalLink, Youtube, FileText, BookMarked, Brain, Server, Bot, Network, Layers, Rocket, Cpu, Sparkles, Trophy, BarChart3, NotebookPen, Play, Clock, Save, X } from 'lucide-react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, MeshDistortMaterial, Sphere, PerspectiveCamera } from '@react-three/drei';
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -49,6 +56,47 @@ const colorClasses: Record<string, { bg: string; border: string; text: string; r
   yellow: { bg: 'bg-yellow-500', border: 'border-yellow-500', text: 'text-yellow-600 dark:text-yellow-500', ring: 'ring-yellow-500/30' },
   indigo: { bg: 'bg-indigo-500', border: 'border-indigo-500', text: 'text-indigo-500', ring: 'ring-indigo-500/30' },
   teal: { bg: 'bg-teal-500', border: 'border-teal-500', text: 'text-teal-500', ring: 'ring-teal-500/30' }
+};
+
+const AnimatedSphere = () => {
+  const meshRef = useRef<any>(null);
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.2;
+      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+    }
+  });
+
+  return (
+    <Float speed={1.4} rotationIntensity={1} floatIntensity={2}>
+      <Sphere ref={meshRef} args={[1, 100, 200]} scale={2.4}>
+        <MeshDistortMaterial
+          color="#6366f1"
+          attach="material"
+          distort={0.4}
+          speed={2}
+          roughness={0.2}
+          metalness={0.8}
+        />
+      </Sphere>
+    </Float>
+  );
+};
+
+const Scene3D = () => {
+  return (
+    <div className="absolute inset-0 w-full h-full opacity-30 dark:opacity-40">
+      <Canvas>
+        <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+        <pointLight position={[-10, -10, -10]} />
+        <Suspense fallback={null}>
+          <AnimatedSphere />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
 };
 
 const ResourceBadge = ({ resource }: { resource: TopicResource }) => {
@@ -716,7 +764,7 @@ const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComple
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3"></div>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="relative z-10 w-full max-w-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-6 md:p-10 my-auto"
@@ -872,6 +920,41 @@ function App() {
     fetchData();
   }, [user, activePlanId]);
 
+  useLayoutEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!loading && activePlan) {
+      gsap.from(".phase-card", {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".phases-container",
+          start: "top 80%",
+        }
+      });
+    }
+  }, [loading, activePlanId]);
+
   const activePlan = plans.find(p => p.id === activePlanId);
 
   const updateStatus = async (id: string, status: string, type: 'module' | 'project' | 'topic') => {
@@ -988,10 +1071,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-900 dark:text-slate-100">
-      
+
       {/* Logout Overlay (Simple) */}
       <div className="fixed bottom-4 right-4 z-50">
-        <button 
+        <button
           onClick={handleLogout}
           className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-400 hover:text-rose-500 transition-colors shadow-lg"
           title="Exit current user session"
@@ -1003,6 +1086,7 @@ function App() {
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
+        <Scene3D />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
@@ -1120,19 +1204,16 @@ function App() {
         {activePlanId === 'relentless-schedule' && <ScheduleManager />}
 
         {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && activePlanId !== 'reports' && activePlanId !== 'relentless-schedule' && (
-          <div className="grid gap-6">
-            {activePlan.phases.map((phase, i) => {
+          <div className="grid gap-6 phases-container">
+            {activePlan.phases.map((phase) => {
               const percent = calculatePhaseProgress(phase);
               const isOpen = expandedPhases.has(phase.id);
 
               return (
                 <motion.div
                   key={phase.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
                   className={cn(
-                    "group relative bg-white dark:bg-slate-900/50 backdrop-blur-xl border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg",
+                    "phase-card group relative bg-white dark:bg-slate-900/50 backdrop-blur-xl border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg",
                     isOpen ? `${activeColor.border}/30 ring-1 ${activeColor.ring}` : "border-slate-200 dark:border-slate-800"
                   )}
                 >

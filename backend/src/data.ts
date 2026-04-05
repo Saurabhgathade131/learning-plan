@@ -650,7 +650,9 @@ const agenticAIPlan: Phase[] = [
                     t("Chain-of-Thought Prompting", "https://www.youtube.com/watch?v=Coj72EzmX20"),
                     t("Self-Consistency Prompting", "https://www.youtube.com/watch?v=0XHkWxPAeHw"),
                     t("Tree-of-Thoughts", "https://www.youtube.com/watch?v=ut5kp56wW_4"),
-                    t("Prompt Injection & Safety", "https://www.youtube.com/watch?v=P2ElwzQMR-c")
+                    t("Prompt Injection & Safety", "https://www.youtube.com/watch?v=P2ElwzQMR-c"),
+                    topic("Whitepaper: Tree of Thoughts", [doc("Arxiv: ToT", "https://arxiv.org/abs/2305.10601")]),
+                    topic("Whitepaper: Chain of Thought", [doc("Google Research", "https://arxiv.org/abs/2201.11903")])
                 ],
                 project: {
                     title: "Advanced Prompt Library",
@@ -692,7 +694,10 @@ const agenticAIPlan: Phase[] = [
                     t("Reflexion Pattern", "https://www.youtube.com/watch?v=5SxFx5P6DEs"),
                     t("LATS (Language Agent Tree Search)", "https://www.youtube.com/watch?v=xQBNnWmA4-U"),
                     t("Self-Ask Pattern", "https://www.youtube.com/watch?v=Tx_kV3Yv7Lg"),
-                    t("Agent Loop Architecture", "https://www.youtube.com/watch?v=DjuXACWYkkU")
+                    t("Agent Loop Architecture", "https://www.youtube.com/watch?v=DjuXACWYkkU"),
+                    topic("Whitepaper: Reflexion", [doc("Arxiv: Reflexion", "https://arxiv.org/abs/2303.11366")]),
+                    topic("Whitepaper: ReAct", [doc("Google: ReAct", "https://arxiv.org/abs/2210.03629")]),
+                    topic("Whitepaper: LATS", [doc("Arxiv: LATS", "https://arxiv.org/abs/2310.04406")])
                 ],
                 project: {
                     title: "Multi-Pattern Agent",
@@ -1344,7 +1349,8 @@ const apiGatewayPlan: Phase[] = [
                         doc("AWS Well-Architected", "https://aws.amazon.com/architecture/well-architected/")
                     ]),
                     topic("Video Walkthrough & Documentation", [
-                        art("Technical Writing", "https://developers.google.com/tech-writing", "Google")
+                        art("Technical Writing", "https://developers.google.com/tech-writing", "Google"),
+                        art("Digital Ocean: Writing Technical Tutorials", "https://www.digitalocean.com/community/tutorials/how-to-write-technical-tutorials")
                     ])
                 ],
                 project: {
@@ -1384,6 +1390,7 @@ const systemDesignStackPlan: Phase[] = [
                     topic("Load Balancers & Traffic Direction", [
                         vid("Load Balancing Algorithms", "https://www.youtube.com/watch?v=sCR3SAVdyCc", "Hussein Nasser"),
                         vid("Layer 4 vs Layer 7 Load Balancers", "https://www.youtube.com/watch?v=aKMLgFVxZYk", "Hussein Nasser"),
+                        vid("Consistent Hashing Deep Dive", "https://www.youtube.com/watch?v=fMZMm_0ZhK4", "ByteByteGo"),
                         doc("NGINX Load Balancing", "https://docs.nginx.com/nginx/admin-guide/load-balancer/"),
                         art("Load Balancing Concepts", "https://www.nginx.com/resources/glossary/load-balancing/", "NGINX")
                     ]),
