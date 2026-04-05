@@ -41,10 +41,16 @@ export interface LearningPlan {
     phases: Phase[];
 }
 
+
 export interface Progress {
     [key: string]: {
         status: string;
         type: 'module' | 'project' | 'topic';
         timestamp: string;
     };
+}
+
+export interface User {
+    name: string;
+    id: string;
 }

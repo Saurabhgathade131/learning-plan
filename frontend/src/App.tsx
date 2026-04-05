@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { LearningPlan, Phase, Progress, Topic, TopicResource } from './types';
+import type { LearningPlan, Phase, Progress, Topic, TopicResource, User } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -696,9 +696,114 @@ const ScheduleManager = () => {
   );
 };
 
+// User Onboarding Component
+const UserOnboarding = ({ plans, onComplete }: { plans: LearningPlan[], onComplete: (user: User, planId: string) => void }) => {
+  const [name, setName] = useState('');
+  const [id, setId] = useState('');
+  const [selectedPlanId, setSelectedPlanId] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name && id && selectedPlanId) {
+      onComplete({ name, id }, selectedPlanId);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 p-4">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] translate-y-1/3 -translate-x-1/3"></div>
+      </div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative z-10 w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-8"
+      >
+        <div className="text-center mb-8">
+          <div className="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Rocket className="w-8 h-8 text-indigo-500" />
+          </div>
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Getting Started</h2>
+          <p className="text-slate-500 font-medium mt-2">Identify yourself to start your journey.</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Full Name</label>
+            <input
+              required
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="e.g., John Doe"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Access ID</label>
+            <input
+              required
+              type="text"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              placeholder="e.g., user-123"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500/40 outline-none transition-all"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">Select Course</label>
+            <div className="grid gap-2">
+              {plans.map((plan) => (
+                <button
+                  key={plan.id}
+                  type="button"
+                  onClick={() => setSelectedPlanId(plan.id)}
+                  className={cn(
+                    "flex items-center gap-3 p-3 rounded-xl border-2 transition-all text-left",
+                    selectedPlanId === plan.id
+                      ? "border-indigo-500 bg-indigo-500/5 ring-1 ring-indigo-500"
+                      : "border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700"
+                  )}
+                >
+                  <span className={cn(selectedPlanId === plan.id ? "text-indigo-500" : "text-slate-400")}>
+                    {planIcons[plan.icon]}
+                  </span>
+                  <div>
+                    <div className="text-sm font-bold text-slate-800 dark:text-white">{plan.name}</div>
+                    <div className="text-[10px] text-slate-500">{plan.description.slice(0, 50)}...</div>
+                  </div>
+                  {selectedPlanId === plan.id && <Check className="w-4 h-4 text-indigo-500 ml-auto" />}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={!name || !id || !selectedPlanId}
+            className="w-full py-4 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-black rounded-xl shadow-lg shadow-indigo-500/20 transition-all mt-4"
+          >
+            Start Learning
+          </button>
+        </form>
+      </motion.div>
+    </div>
+  );
+};
+
 function App() {
   const [plans, setPlans] = useState<LearningPlan[]>([]);
-  const [activePlanId, setActivePlanId] = useState<string>('');
+  const [user, setUser] = useState<User | null>(() => {
+    const saved = localStorage.getItem('learning_user');
+    return saved ? JSON.parse(saved) : null;
+  });
+  const [activePlanId, setActivePlanId] = useState<string>(() => {
+    return localStorage.getItem('active_plan_id') || '';
+  });
   const [progress, setProgress] = useState<Progress>({});
   const [notes, setNotes] = useState<Notes>({});
   const [loading, setLoading] = useState(true);
@@ -718,21 +823,41 @@ function App() {
       setShowStandup(true);
     }
 
-    Promise.all([
-      fetch(`${API_URL}/plans`).then(res => res.json()),
-      fetch(`${API_URL}/progress`).then(res => res.json()),
-      fetch(`${API_URL}/notes`).then(res => res.json())
-    ]).then(([plansData, progressData, notesData]) => {
-      setPlans(plansData);
-      if (plansData.length > 0) {
-        setActivePlanId(plansData[0].id);
-        setExpandedPhases(new Set([plansData[0].phases[0]?.id]));
+    const fetchData = async () => {
+      try {
+        const plansResponse = await fetch(`${API_URL}/plans`);
+        const plansData = await plansResponse.json();
+        setPlans(plansData);
+
+        if (plansData.length > 0 && !activePlanId) {
+          setActivePlanId(plansData[0].id);
+          setExpandedPhases(new Set([plansData[0].phases[0]?.id]));
+        }
+
+        if (!user) {
+          setLoading(false);
+          return;
+        }
+
+        const [progressRes, notesRes] = await Promise.all([
+          fetch(`${API_URL}/progress/${user.id}`),
+          fetch(`${API_URL}/notes/${user.id}`)
+        ]);
+
+        const progressData = await progressRes.json();
+        const notesData = await notesRes.json();
+
+        setProgress(progressData || {});
+        setNotes(notesData || {});
+        setLoading(false);
+      } catch (err) {
+        console.error("Failed to fetch initial data:", err);
+        setLoading(false);
       }
-      setProgress(progressData);
-      setNotes(notesData);
-      setLoading(false);
-    });
-  }, []);
+    };
+
+    fetchData();
+  }, [user, activePlanId]);
 
   const activePlan = plans.find(p => p.id === activePlanId);
 
@@ -742,7 +867,7 @@ function App() {
     await fetch(`${API_URL}/progress`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, status, type })
+      body: JSON.stringify({ userId: user?.id, id, status, type })
     });
   };
 
@@ -755,7 +880,7 @@ function App() {
     await fetch(`${API_URL}/notes`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topicId, ...data })
+      body: JSON.stringify({ userId: user?.id, topicId, ...data })
     });
   };
 
@@ -771,15 +896,14 @@ function App() {
   }
 
   const confirmTopicMastery = async () => {
-    if (validatingTopic) {
+    if (validatingTopic && user) {
       await updateStatus(validatingTopic.id, 'completed', 'topic');
 
       // Post skill to API
-      const userId = 'user-1'; // Mock user
       await fetch(`${API_URL}/skills`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId, skillName: validatingTopic.name })
+        body: JSON.stringify({ userId: user.id, skillName: validatingTopic.name })
       });
 
       setValidatingTopic(null);
@@ -787,12 +911,12 @@ function App() {
   };
 
   const handleSaveStandup = async (data: any) => {
-    const userId = 'user-1';
+    if (!user) return;
     const date = new Date().toISOString().split('T')[0];
     await fetch(`${API_URL}/standups`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, date, ...data })
+      body: JSON.stringify({ userId: user.id, date, ...data })
     });
     localStorage.setItem('lastStandup', new Date().toDateString());
     setShowStandup(false);
@@ -831,8 +955,37 @@ function App() {
 
   const activeColor = activePlan ? colorClasses[activePlan.color] : colorClasses.purple;
 
+
+  const handleOnboardingComplete = (newUser: User, planId: string) => {
+    setUser(newUser);
+    setActivePlanId(planId);
+    localStorage.setItem('learning_user', JSON.stringify(newUser));
+    localStorage.setItem('active_plan_id', planId);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('learning_user');
+    localStorage.removeItem('active_plan_id');
+  };
+
+  if (!user) {
+    return <UserOnboarding plans={plans} onComplete={handleOnboardingComplete} />;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans text-slate-900 dark:text-slate-100">
+      
+      {/* Logout Overlay (Simple) */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <button 
+          onClick={handleLogout}
+          className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-400 hover:text-rose-500 transition-colors shadow-lg"
+          title="Exit current user session"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
