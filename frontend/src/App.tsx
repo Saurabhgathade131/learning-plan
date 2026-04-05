@@ -940,34 +940,7 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (loading || !activePlanId || plans.length === 0) return;
 
-    const ctx = gsap.context(() => {
-      // Small delay to ensure DOM is ready for measurement
-      setTimeout(() => {
-        const cards = document.querySelectorAll(".phase-card");
-        const container = document.querySelector(".phases-container");
-
-        if (cards.length > 0 && container) {
-          gsap.from(".phase-card", {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ".phases-container",
-              start: "top 85%",
-              toggleActions: "play none none none"
-            }
-          });
-        }
-      }, 100);
-    });
-
-    return () => ctx.revert();
-  }, [loading, activePlanId, plans.length]);
 
   const activePlan = plans.find(p => p.id === activePlanId);
 
@@ -1219,15 +1192,19 @@ function App() {
 
         {activePlan && activePlanId !== 'portfolio' && activePlanId !== 'goals' && activePlanId !== 'reports' && activePlanId !== 'relentless-schedule' && (
           <div className="grid gap-6 phases-container">
-            {activePlan.phases.map((phase) => {
+            {activePlan.phases.map((phase, idx) => {
               const percent = calculatePhaseProgress(phase);
               const isOpen = expandedPhases.has(phase.id);
 
               return (
                 <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1, ease: 'easeOut' }}
                   key={phase.id}
                   className={cn(
-                    "phase-card group relative bg-white dark:bg-slate-900/50 backdrop-blur-xl border rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg",
+                    "phase-card group relative bg-white dark:bg-slate-900/50 backdrop-blur-xl border rounded-2xl overflow-hidden transition-colors transition-shadow duration-300 shadow-sm hover:shadow-lg",
                     isOpen ? `${activeColor.border}/30 ring-1 ${activeColor.ring}` : "border-slate-200 dark:border-slate-800"
                   )}
                 >
