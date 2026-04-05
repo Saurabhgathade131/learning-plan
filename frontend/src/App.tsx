@@ -887,6 +887,7 @@ function App() {
     const fetchData = async () => {
       try {
         const plansResponse = await fetch(`${API_URL}/plans`);
+        if (!plansResponse.ok) throw new Error('Plans not found');
         const plansData = await plansResponse.json();
         setPlans(plansData);
 
@@ -905,8 +906,8 @@ function App() {
           fetch(`${API_URL}/notes/${user.id}`)
         ]);
 
-        const progressData = await progressRes.json();
-        const notesData = await notesRes.json();
+        const progressData = progressRes.ok ? await progressRes.json() : {};
+        const notesData = notesRes.ok ? await notesRes.json() : {};
 
         setProgress(progressData || {});
         setNotes(notesData || {});
@@ -1049,7 +1050,7 @@ function App() {
 
   if (loading) return <div className="flex h-screen items-center justify-center bg-slate-50 dark:bg-slate-950">Loading...</div>;
 
-  const activeColor = activePlan ? colorClasses[activePlan.color] : colorClasses.purple;
+  const activeColor = (activePlan && colorClasses[activePlan.color]) ? colorClasses[activePlan.color] : colorClasses.purple;
 
 
   const handleOnboardingComplete = (newUser: User, planId: string) => {
@@ -1104,7 +1105,7 @@ function App() {
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {plans.map((plan) => {
             const isActive = plan.id === activePlanId;
-            const colors = colorClasses[plan.color];
+            const colors = colorClasses[plan.color] || colorClasses.indigo;
             return (
               <button
                 key={plan.id}
@@ -1119,7 +1120,7 @@ function App() {
                     : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                 )}
               >
-                <span className={cn(isActive ? "text-white" : colors.text)}>{planIcons[plan.icon]}</span>
+                <span className={cn(isActive ? "text-white" : colors.text)}>{planIcons[plan.icon] || <BookOpen className="w-5 h-5" />}</span>
                 <div className="text-left">
                   <div className="text-sm">{plan.name}</div>
                   <div className={cn("text-[10px] font-normal", isActive ? "text-white/80" : "text-slate-500")}>{plan.description.slice(0, 40)}...</div>

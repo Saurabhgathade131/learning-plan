@@ -605,7 +605,9 @@ const agenticAIPlan = [
                     t("Chain-of-Thought Prompting", "https://www.youtube.com/watch?v=Coj72EzmX20"),
                     t("Self-Consistency Prompting", "https://www.youtube.com/watch?v=0XHkWxPAeHw"),
                     t("Tree-of-Thoughts", "https://www.youtube.com/watch?v=ut5kp56wW_4"),
-                    t("Prompt Injection & Safety", "https://www.youtube.com/watch?v=P2ElwzQMR-c")
+                    t("Prompt Injection & Safety", "https://www.youtube.com/watch?v=P2ElwzQMR-c"),
+                    topic("Whitepaper: Tree of Thoughts", [doc("Arxiv: ToT", "https://arxiv.org/abs/2305.10601")]),
+                    topic("Whitepaper: Chain of Thought", [doc("Google Research", "https://arxiv.org/abs/2201.11903")])
                 ],
                 project: {
                     title: "Advanced Prompt Library",
@@ -647,7 +649,10 @@ const agenticAIPlan = [
                     t("Reflexion Pattern", "https://www.youtube.com/watch?v=5SxFx5P6DEs"),
                     t("LATS (Language Agent Tree Search)", "https://www.youtube.com/watch?v=xQBNnWmA4-U"),
                     t("Self-Ask Pattern", "https://www.youtube.com/watch?v=Tx_kV3Yv7Lg"),
-                    t("Agent Loop Architecture", "https://www.youtube.com/watch?v=DjuXACWYkkU")
+                    t("Agent Loop Architecture", "https://www.youtube.com/watch?v=DjuXACWYkkU"),
+                    topic("Whitepaper: Reflexion", [doc("Arxiv: Reflexion", "https://arxiv.org/abs/2303.11366")]),
+                    topic("Whitepaper: ReAct", [doc("Google: ReAct", "https://arxiv.org/abs/2210.03629")]),
+                    topic("Whitepaper: LATS", [doc("Arxiv: LATS", "https://arxiv.org/abs/2310.04406")])
                 ],
                 project: {
                     title: "Multi-Pattern Agent",
@@ -1298,7 +1303,8 @@ const apiGatewayPlan = [
                         doc("AWS Well-Architected", "https://aws.amazon.com/architecture/well-architected/")
                     ]),
                     topic("Video Walkthrough & Documentation", [
-                        art("Technical Writing", "https://developers.google.com/tech-writing", "Google")
+                        art("Technical Writing", "https://developers.google.com/tech-writing", "Google"),
+                        art("Digital Ocean: Writing Technical Tutorials", "https://www.digitalocean.com/community/tutorials/how-to-write-technical-tutorials")
                     ])
                 ],
                 project: {
@@ -1337,6 +1343,7 @@ const systemDesignStackPlan = [
                     topic("Load Balancers & Traffic Direction", [
                         vid("Load Balancing Algorithms", "https://www.youtube.com/watch?v=sCR3SAVdyCc", "Hussein Nasser"),
                         vid("Layer 4 vs Layer 7 Load Balancers", "https://www.youtube.com/watch?v=aKMLgFVxZYk", "Hussein Nasser"),
+                        vid("Consistent Hashing Deep Dive", "https://www.youtube.com/watch?v=fMZMm_0ZhK4", "ByteByteGo"),
                         doc("NGINX Load Balancing", "https://docs.nginx.com/nginx/admin-guide/load-balancer/"),
                         art("Load Balancing Concepts", "https://www.nginx.com/resources/glossary/load-balancing/", "NGINX")
                     ]),
@@ -4234,6 +4241,62 @@ const vizuaraPlan = [
         ]
     }
 ];
+// ===== PLAN: GPU PROGRAMMING (CUDA) =====
+const gpuProgrammingPlan = [
+    {
+        id: "gpu-p1",
+        title: "Phase 1: GPU Architecture & CUDA C Basics",
+        weeks: "Weeks 1-2",
+        modules: [
+            {
+                id: "gpu-m1.1",
+                title: "CUDA Programming Model",
+                weeks: "Week 1",
+                topics: [
+                    topic("GPU Architecture: SMs, Warps, Threads", [
+                        vid("GPU Computing Architecture", "https://www.youtube.com/watch?v=kUkv3P_XByc"),
+                        doc("CUDA C Programming Guide", "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html")
+                    ]),
+                    topic("CUDA Kernels & Thread Indexing", [
+                        vid("CUDA Threading Model", "https://www.youtube.com/watch?v=2NgSpg3QkS0"),
+                        art("An Even Easier Introduction to CUDA", "https://developer.nvidia.com/blog/even-easier-introduction-cuda/")
+                    ])
+                ],
+                project: {
+                    title: "Vector Addition on GPU",
+                    description: ["Write a CUDA kernel for mass vector addition", "Compare CPU vs GPU latency", "Error handling in CUDA"],
+                    outcomes: ["Understand SIMT execution", "Master grid/block dimensions"]
+                }
+            }
+        ]
+    },
+    {
+        id: "gpu-p2",
+        title: "Phase 2: Memory Optimization & Throughput",
+        weeks: "Weeks 3-4",
+        modules: [
+            {
+                id: "gpu-m2.1",
+                title: "Tiled Matrix Multiplication",
+                weeks: "Week 1",
+                topics: [
+                    topic("Shared Memory & Tiling", [
+                        vid("CUDA Shared Memory", "https://www.youtube.com/watch?v=330"),
+                        art("Using Shared Memory in CUDA", "https://developer.nvidia.com/blog/using-shared-memory-cuda-cc/")
+                    ]),
+                    topic("Memory Coalescing & Bank Conflicts", [
+                        vid("Memory Access Patterns", "https://www.youtube.com/watch?v=440")
+                    ])
+                ],
+                project: {
+                    title: "Optimized GEMM Kernel",
+                    description: ["Implement matrix multiplication with tiling", "Profile memory throughput using NSight Compute"],
+                    outcomes: ["Maximize memory bandwidth", "Avoid bank conflicts"]
+                }
+            }
+        ]
+    }
+];
 // ===== PLAN: RESUME SKILLS MASTERY =====
 const resumeSkillsPlan = [
     {
@@ -4794,6 +4857,12 @@ const resumeSkillsPlan = [
         ]
     },
     {
+        id: "rs-p9",
+        title: "Phase 9: GPU Programming (FDE Specialization)",
+        weeks: "Weeks 17-18",
+        modules: gpuProgrammingPlan[0].modules.concat(gpuProgrammingPlan[1].modules)
+    },
+    {
         id: "fde-p5",
         title: "Phase 5: Forward Deployed ML Ops & Infra",
         weeks: "2-4 Weeks",
@@ -4977,6 +5046,14 @@ exports.allLearningPlans = [
         icon: "target",
         color: "rose",
         phases: resumeSkillsPlan
+    },
+    {
+        id: "gpu-cuda",
+        name: "NVIDIA GPU Programming (CUDA)",
+        description: "Master CUDA kernels, memory optimization, and NVIDIA NSight profiling for high-performance AI compute.",
+        icon: "cpu",
+        color: "green",
+        phases: gpuProgrammingPlan
     }
 ];
 // Keep backward compatibility

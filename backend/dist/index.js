@@ -74,10 +74,23 @@ app.get('/api/plans', (req, res) => {
 app.get('/api/plan', (req, res) => {
     res.json(data_1.learningPlan);
 });
-// GET Progress
-app.get('/api/progress', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// GET Progress (All or User-specific)
+app.get('/api/progress/:userId?', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
     try {
-        const { Items } = yield docClient.send(new lib_dynamodb_1.ScanCommand({ TableName: PROGRESS_TABLE }));
+        let Items;
+        if (userId) {
+            const result = yield docClient.send(new lib_dynamodb_1.ScanCommand({
+                TableName: PROGRESS_TABLE,
+                FilterExpression: 'userId = :u',
+                ExpressionAttributeValues: { ':u': userId }
+            }));
+            Items = result.Items;
+        }
+        else {
+            const result = yield docClient.send(new lib_dynamodb_1.ScanCommand({ TableName: PROGRESS_TABLE }));
+            Items = result.Items;
+        }
         const progress = {};
         if (Items) {
             Items.forEach(item => {
@@ -102,6 +115,7 @@ app.post('/api/progress', (req, res) => __awaiter(void 0, void 0, void 0, functi
             TableName: PROGRESS_TABLE,
             Item: {
                 id,
+                userId: req.body.userId || 'legacy',
                 status,
                 type,
                 timestamp: new Date().toISOString()
@@ -122,10 +136,23 @@ app.post('/api/progress', (req, res) => __awaiter(void 0, void 0, void 0, functi
         res.status(500).json({ error: 'Failed to update progress' });
     }
 }));
-// GET Notes
-app.get('/api/notes', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// GET Notes (All or User-specific)
+app.get('/api/notes/:userId?', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
     try {
-        const { Items } = yield docClient.send(new lib_dynamodb_1.ScanCommand({ TableName: NOTES_TABLE }));
+        let Items;
+        if (userId) {
+            const result = yield docClient.send(new lib_dynamodb_1.ScanCommand({
+                TableName: NOTES_TABLE,
+                FilterExpression: 'userId = :u',
+                ExpressionAttributeValues: { ':u': userId }
+            }));
+            Items = result.Items;
+        }
+        else {
+            const result = yield docClient.send(new lib_dynamodb_1.ScanCommand({ TableName: NOTES_TABLE }));
+            Items = result.Items;
+        }
         const notes = {};
         if (Items) {
             Items.forEach(item => {
@@ -155,6 +182,7 @@ app.post('/api/notes', (req, res) => __awaiter(void 0, void 0, void 0, function*
             TableName: NOTES_TABLE,
             Item: {
                 topicId,
+                userId: req.body.userId || 'legacy',
                 note: note || '',
                 currentVideo: currentVideo || '',
                 videoTimestamp: videoTimestamp || '',

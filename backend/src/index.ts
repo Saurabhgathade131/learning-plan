@@ -66,10 +66,23 @@ app.get('/api/plan', (req, res) => {
     res.json(learningPlan);
 });
 
-// GET Progress
-app.get('/api/progress', async (req, res) => {
+// GET Progress (All or User-specific)
+app.get('/api/progress/:userId?', async (req, res) => {
+    const { userId } = req.params;
     try {
-        const { Items } = await docClient.send(new ScanCommand({ TableName: PROGRESS_TABLE }));
+        let Items;
+        if (userId) {
+            const result = await docClient.send(new ScanCommand({
+                TableName: PROGRESS_TABLE,
+                FilterExpression: 'userId = :u',
+                ExpressionAttributeValues: { ':u': userId }
+            }));
+            Items = result.Items;
+        } else {
+            const result = await docClient.send(new ScanCommand({ TableName: PROGRESS_TABLE }));
+            Items = result.Items;
+        }
+
         const progress: Record<string, any> = {};
         if (Items) {
             Items.forEach(item => {
@@ -95,6 +108,7 @@ app.post('/api/progress', async (req, res) => {
             TableName: PROGRESS_TABLE,
             Item: {
                 id,
+                userId: req.body.userId || 'legacy',
                 status,
                 type,
                 timestamp: new Date().toISOString()
@@ -116,10 +130,23 @@ app.post('/api/progress', async (req, res) => {
     }
 });
 
-// GET Notes
-app.get('/api/notes', async (req, res) => {
+// GET Notes (All or User-specific)
+app.get('/api/notes/:userId?', async (req, res) => {
+    const { userId } = req.params;
     try {
-        const { Items } = await docClient.send(new ScanCommand({ TableName: NOTES_TABLE }));
+        let Items;
+        if (userId) {
+            const result = await docClient.send(new ScanCommand({
+                TableName: NOTES_TABLE,
+                FilterExpression: 'userId = :u',
+                ExpressionAttributeValues: { ':u': userId }
+            }));
+            Items = result.Items;
+        } else {
+            const result = await docClient.send(new ScanCommand({ TableName: NOTES_TABLE }));
+            Items = result.Items;
+        }
+
         const notes: Record<string, any> = {};
         if (Items) {
             Items.forEach(item => {
@@ -150,6 +177,7 @@ app.post('/api/notes', async (req, res) => {
             TableName: NOTES_TABLE,
             Item: {
                 topicId,
+                userId: req.body.userId || 'legacy',
                 note: note || '',
                 currentVideo: currentVideo || '',
                 videoTimestamp: videoTimestamp || '',
