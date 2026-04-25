@@ -1,6 +1,4 @@
-import { LearningPlan } from './types';
-
-export const anternSprintPlan: LearningPlan = {
+export const anternSprintPlan = {
   id: 'antern-sprint',
   title: 'AI Placement Sprint (Antern)',
   description: '18-week intensive placement curriculum focused on Foundations, Portfolio Building, MLOps, and Career Launch.',
