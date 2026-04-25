@@ -15,7 +15,7 @@ export const anternSprintPlan = {
           title: 'Module 10.1: Python + ML Fundamentals',
           weeks: 'Week 1',
           topics: [
-            { name: 'Advanced Python (Decorators, Generators, Concurrency)', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 10 - AI Placement Sprint Foundations/Module 10.1 - Python + ML Fundamentals/GUIDE.md' }] },
+            { name: 'Advanced Python (Decorators, Generators, Concurrency)', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 10 - AI Placement Sprint Foundations/Module 10.1 - Python + ML Fundamentals/GUIDE.md' }] },
             { name: 'NumPy & Pandas for Production ML', resources: [] },
             { name: 'Scikit-Learn Pipelines & ColumnTransformers', resources: [] },
             { name: 'Evaluation Metrics: Precision, Recall, F1, ROC-AUC', resources: [] }
@@ -27,7 +27,7 @@ export const anternSprintPlan = {
           title: 'Module 10.2: Deep Learning + NLP Foundations',
           weeks: 'Week 2',
           topics: [
-            { name: 'Neural Network Architectures (CNN, RNN, LSTM)', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 10 - AI Placement Sprint Foundations/Module 10.2 - Deep Learning + NLP Foundations/GUIDE.md' }] },
+            { name: 'Neural Network Architectures (CNN, RNN, LSTM)', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 10 - AI Placement Sprint Foundations/Module 10.2 - Deep Learning + NLP Foundations/GUIDE.md' }] },
             { name: 'Transformers from Scratch (Attention, Positional Encoding)', resources: [] },
             { name: 'PyTorch for Deep Learning Projects', resources: [] }
           ],
@@ -38,7 +38,7 @@ export const anternSprintPlan = {
           title: 'Module 10.3: GenAI Stack + First RAG',
           weeks: 'Weeks 3-4',
           topics: [
-            { name: 'LLM APIs (OpenAI, Anthropic, Gemini)', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 10 - AI Placement Sprint Foundations/Module 10.3 - GenAI Stack + First RAG/GUIDE.md' }] },
+            { name: 'LLM APIs (OpenAI, Anthropic, Gemini)', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 10 - AI Placement Sprint Foundations/Module 10.3 - GenAI Stack + First RAG/GUIDE.md' }] },
             { name: 'Vector DBs (Pinecone, Chroma) & Embeddings', resources: [] },
             { name: 'LangChain & LlamaIndex Architecture', resources: [] }
           ],
@@ -56,7 +56,7 @@ export const anternSprintPlan = {
           title: 'Module 11.1: End-to-End ML Pipeline',
           weeks: 'Week 5',
           topics: [
-            { name: 'Data Ingestion & Versioning (DVC)', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 11 - AI Placement Sprint Portfolio/Module 11.1 - End-to-End ML Pipeline/GUIDE.md' }] },
+            { name: 'Data Ingestion & Versioning (DVC)', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 11 - AI Placement Sprint Portfolio/Module 11.1 - End-to-End ML Pipeline/GUIDE.md' }] },
             { name: 'Experiment Tracking with MLflow', resources: [] },
             { name: 'Model Serving with FastAPI & Docker', resources: [] }
           ],
@@ -84,7 +84,7 @@ export const anternSprintPlan = {
           title: 'Module 12.1: MLOps — Kaggle to Production',
           weeks: 'Week 11',
           topics: [
-            { name: 'Refactoring Notebooks to Production Code', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 12 - AI Placement Sprint MLOps & Agents/Module 12.1 - MLOps — Kaggle to Production/GUIDE.md' }] },
+            { name: 'Refactoring Notebooks to Production Code', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 12 - AI Placement Sprint MLOps & Agents/Module 12.1 - MLOps — Kaggle to Production/GUIDE.md' }] },
             { name: 'CI/CD Pipelines for ML (GitHub Actions)', resources: [] }
           ],
           project: { title: 'MLOps Pipeline', description: ['Refactor Kaggle to Prod'], outcomes: ['CI/CD for ML'] }
@@ -94,7 +94,7 @@ export const anternSprintPlan = {
           title: 'Module 12.3: Technical Interview Prep',
           weeks: 'Week 13',
           topics: [
-            { name: 'ML System Design Framework', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 12 - AI Placement Sprint MLOps & Agents/Module 12.3 - Technical Interview Prep/GUIDE.md' }] },
+            { name: 'ML System Design Framework', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 12 - AI Placement Sprint MLOps & Agents/Module 12.3 - Technical Interview Prep/GUIDE.md' }] },
             { name: 'Coding for ML Interviews', resources: [] }
           ],
           project: { title: 'Interview Preparation Kit', description: ['Theory & Coding'], outcomes: ['Interview readiness'] }
@@ -111,7 +111,7 @@ export const anternSprintPlan = {
           title: 'Module 13.1: Job Search Execution',
           weeks: 'Weeks 15-17',
           topics: [
-            { name: 'High-Volume Application Strategy', resources: [{ type: 'article', title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 13 - AI Placement Sprint Job Launch/Module 13.1 - Job Search Execution/GUIDE.md' }] },
+            { name: 'High-Volume Application Strategy', resources: [{ type: 'article' as const, title: 'Antern Guide', url: 'file:///c:/Users/prach/OneDrive/Desktop/Learning plan/learning-modules/Phase 13 - AI Placement Sprint Job Launch/Module 13.1 - Job Search Execution/GUIDE.md' }] },
             { name: 'Interview Performance Optimization', resources: [] }
           ],
           project: { title: 'Job Search Campaign', description: ['Daily applications'], outcomes: ['Offer acquisition'] }
