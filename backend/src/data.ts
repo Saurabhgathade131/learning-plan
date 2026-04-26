@@ -42,24 +42,26 @@ export interface LearningPlan {
 }
 
 // Enhanced helper - supports video, doc, article, playlist, channel
-const topic = (name: string, resources: TopicResource[]): Topic => ({ name, resources });
+export const topic = (name: string, resources: TopicResource[]): Topic => ({ name, resources });
 
 // Quick helpers
-const vid = (title: string, url: string, author?: string): TopicResource => ({ type: 'video', title, url, author });
-const doc = (title: string, url: string): TopicResource => ({ type: 'doc', title, url });
-const art = (title: string, url: string, author?: string): TopicResource => ({ type: 'article', title, url, author });
-const playlist = (title: string, url: string, author: string): TopicResource => ({ type: 'playlist', title, url, author });
-const channel = (name: string, url: string): TopicResource => ({ type: 'channel', title: name, url });
-const course = (title: string, url: string, author?: string): TopicResource => ({ type: 'course', title, url, author });
+export const vid = (title: string, url: string, author?: string): TopicResource => ({ type: 'video', title, url, author });
+export const doc = (title: string, url: string): TopicResource => ({ type: 'doc', title, url });
+export const art = (title: string, url: string, author?: string): TopicResource => ({ type: 'article', title, url, author });
+export const playlist = (title: string, url: string, author: string): TopicResource => ({ type: 'playlist', title, url, author });
+export const channel = (name: string, url: string): TopicResource => ({ type: 'channel', title: name, url });
+export const course = (title: string, url: string, author?: string): TopicResource => ({ type: 'course', title, url, author });
 
 // Backward compatible helper
-const t = (name: string, videoUrl?: string, docUrl?: string): Topic => ({
+export const t = (name: string, videoUrl?: string, docUrl?: string): Topic => ({
     name,
     resources: [
         ...(videoUrl ? [{ type: 'video' as const, title: 'Watch Tutorial', url: videoUrl, duration: '20min' }] : []),
         ...(docUrl ? [{ type: 'doc' as const, title: 'Documentation', url: docUrl }] : []),
     ]
 });
+
+import { anternSprintPlan } from './antern-sprint-plan';
 
 // ===== PLAN 1: GENAI ENGINEER PATH =====
 const genaiPlan: Phase[] = [
@@ -5111,7 +5113,8 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "cpu",
         color: "green",
         phases: gpuProgrammingPlan
-    }
+    },
+    anternSprintPlan
 ];
 
 // Keep backward compatibility
