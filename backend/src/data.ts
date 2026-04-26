@@ -41,8 +41,6 @@ export interface LearningPlan {
     phases: Phase[];
 }
 
-import { anternSprintPlan } from './antern-sprint-plan';
-
 // Enhanced helper - supports video, doc, article, playlist, channel
 const topic = (name: string, resources: TopicResource[]): Topic => ({ name, resources });
 
@@ -5009,14 +5007,6 @@ export const allLearningPlans: LearningPlan[] = [
         icon: "sparkles",
         color: "blue",
         phases: vizuaraPlan
-    },
-    {
-        id: "antern-sprint",
-        name: anternSprintPlan.title,
-        description: anternSprintPlan.description,
-        icon: anternSprintPlan.icon,
-        color: anternSprintPlan.color,
-        phases: anternSprintPlan.phases
     },
     {
         id: "genai",

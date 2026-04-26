@@ -18,7 +18,7 @@ function cn(...inputs: ClassValue[]) {
 
 const API_URL = import.meta.env.DEV
   ? 'http://localhost:5000/api'
-  : '/api';
+  : 'https://fhlu3kouw5.execute-api.ap-south-1.amazonaws.com/dev/api';
 
 interface NoteData {
   note: string;
@@ -55,9 +55,7 @@ const colorClasses: Record<string, { bg: string; border: string; text: string; r
   lime: { bg: 'bg-lime-500', border: 'border-lime-500', text: 'text-lime-500', ring: 'ring-lime-500/30' },
   yellow: { bg: 'bg-yellow-500', border: 'border-yellow-500', text: 'text-yellow-600 dark:text-yellow-500', ring: 'ring-yellow-500/30' },
   indigo: { bg: 'bg-indigo-500', border: 'border-indigo-500', text: 'text-indigo-500', ring: 'ring-indigo-500/30' },
-  teal: { bg: 'bg-teal-500', border: 'border-teal-500', text: 'text-teal-500', ring: 'ring-teal-500/30' },
-  fuchsia: { bg: 'bg-fuchsia-500', border: 'border-fuchsia-500', text: 'text-fuchsia-500', ring: 'ring-fuchsia-500/30' },
-  green: { bg: 'bg-green-500', border: 'border-green-500', text: 'text-green-500', ring: 'ring-green-500/30' }
+  teal: { bg: 'bg-teal-500', border: 'border-teal-500', text: 'text-teal-500', ring: 'ring-teal-500/30' }
 };
 
 const AnimatedSphere = () => {
