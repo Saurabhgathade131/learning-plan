@@ -17,12 +17,20 @@ export interface Topic {
     resources: TopicResource[];
 }
 
+export interface SprintMetrics {
+    outreachActions: string[];
+    cumulativeMessages: number;
+    hireProbability: number;
+    keyDriver: string;
+}
+
 export interface Module {
     id: string;
     title: string;
     weeks: string;
     topics: Topic[];
-    project: Project;
+    project?: Project;
+    metrics?: SprintMetrics;
 }
 
 export interface Phase {

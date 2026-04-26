@@ -596,13 +596,18 @@ const ScheduleManager = () => {
   const userId = 'user-1';
 
   const defaultSchedule = [
-    { id: 'wake', time: '05:00 AM', activity: 'Wake up & Manifestation' },
-    { id: 'deep1', time: '06:00 AM', activity: 'Deep Work (Slot 1)' },
-    { id: 'breakfast', time: '09:00 AM', activity: 'Breakfast' },
-    { id: 'deep2', time: '10:00 AM', activity: 'Deep Work (Slot 2)' },
-    { id: 'learning', time: '02:00 PM', activity: 'Learning / Project Build' },
-    { id: 'exercise', time: '06:00 PM', activity: 'Exercise & Networking' },
-    { id: 'standup', time: '08:00 PM', activity: 'Daily Standup & Tomorrow Plan' },
+    { id: '1-connect', time: '08:00 AM', activity: 'Send 25 LinkedIn connection requests' },
+    { id: '2-comment', time: '08:30 AM', activity: 'Comment on 10 targeted posts' },
+    { id: '3-dm', time: '09:00 AM', activity: 'Send 5 personalized DMs' },
+    { id: '4-sbl', time: '09:30 AM', activity: 'Check SBL automation dashboard' },
+    { id: '5-reply', time: '10:00 AM', activity: 'Respond to ALL messages (<4 hr SLA)' },
+    { id: '6-project', time: '11:00 AM', activity: 'Deep Work: Weekly Project (90 mins)' },
+    { id: '7-content', time: '02:00 PM', activity: 'Publish/draft LinkedIn content' },
+    { id: '8-followup', time: '02:30 PM', activity: 'Follow up on active conversations' },
+    { id: '9-crm', time: '03:00 PM', activity: 'Update Notion CRM (Lead Statuses)' },
+    { id: '10-email', time: '03:30 PM', activity: 'Cold emails dispatch (If Week 8+)' },
+    { id: '11-research', time: '04:00 PM', activity: 'Consulting prospect research (If Week 5+)' },
+    { id: '12-agent', time: '04:30 PM', activity: 'Check OpenClaw agent health (If Week 11+)' },
   ];
 
   useEffect(() => {
@@ -1319,26 +1324,65 @@ function App() {
                                 </div>
                               </div>
 
-                              {/* Project Card */}
-                              <div className="xl:w-72 flex-shrink-0">
-                                <div className="h-full bg-slate-50/50 dark:bg-slate-800/20 border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col">
-                                  <div className="flex items-center gap-2 mb-3">
-                                    <Code className={cn("w-4 h-4", activeColor.text)} />
-                                    <span className={cn("text-xs font-extrabold uppercase tracking-widest", activeColor.text)}>Project</span>
+                              {/* Project & Metrics Card */}
+                              <div className="xl:w-80 flex-shrink-0 flex flex-col gap-4">
+                                {module.project && (
+                                  <div className="flex-1 bg-slate-50/50 dark:bg-slate-800/20 border border-slate-200 dark:border-slate-800 rounded-xl p-5 flex flex-col">
+                                    <div className="flex items-center gap-2 mb-3">
+                                      <Code className={cn("w-4 h-4", activeColor.text)} />
+                                      <span className={cn("text-xs font-extrabold uppercase tracking-widest", activeColor.text)}>Weekly Deliverables</span>
+                                    </div>
+                                    <h5 className="text-base font-bold text-slate-800 dark:text-slate-100 mb-3 leading-snug">{module.project.title}</h5>
+                                    <ul className="space-y-2 mb-5 flex-1">
+                                      {module.project.description.map((d, i) => (
+                                        <li key={i} className="flex gap-2 items-start text-xs text-slate-500 dark:text-slate-400">
+                                          <span className={cn("mt-1.5 w-1 h-1 rounded-full flex-shrink-0", activeColor.bg)}></span>
+                                          <span className="leading-relaxed font-medium">{d}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                    <div className="pt-4 border-t border-slate-200 dark:border-slate-700/50">
+                                      <StatusSelect type="small" status={progress[module.id + '_project']?.status || 'pending'} onChange={(val) => updateStatus(module.id + '_project', val, 'project')} />
+                                    </div>
                                   </div>
-                                  <h5 className="text-base font-bold text-slate-800 dark:text-slate-100 mb-3 leading-snug">{module.project.title}</h5>
-                                  <ul className="space-y-2 mb-5 flex-1">
-                                    {module.project.description.map((d, i) => (
-                                      <li key={i} className="flex gap-2 items-start text-xs text-slate-500 dark:text-slate-400">
-                                        <span className={cn("mt-1.5 w-1 h-1 rounded-full flex-shrink-0", activeColor.bg)}></span>
-                                        <span className="leading-relaxed">{d}</span>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                  <div className="pt-4 border-t border-slate-200 dark:border-slate-700/50">
-                                    <StatusSelect type="small" status={progress[module.id + '_project']?.status || 'pending'} onChange={(val) => updateStatus(module.id + '_project', val, 'project')} />
+                                )}
+
+                                {module.metrics && (
+                                  <div className="bg-slate-900 dark:bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col shadow-inner relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-24 h-24 bg-rose-500/10 blur-[30px] -mr-10 -mt-10 rounded-full"></div>
+                                    
+                                    <div className="flex items-center gap-2 mb-3">
+                                      <Trophy className="w-4 h-4 text-rose-500" />
+                                      <span className="text-xs font-extrabold uppercase tracking-widest text-rose-500">Outreach & Income Actions</span>
+                                    </div>
+                                    
+                                    <ul className="space-y-2 mb-4 relative z-10">
+                                      {module.metrics.outreachActions.map((d, i) => (
+                                        <li key={i} className="flex gap-2 items-start text-xs text-slate-300">
+                                          <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0 bg-rose-500"></span>
+                                          <span className="leading-relaxed font-semibold">{d}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+
+                                    <div className="grid grid-cols-2 gap-3 mt-auto relative z-10">
+                                      <div className="bg-slate-800/50 rounded-lg p-2.5 border border-slate-700/50">
+                                        <div className="text-[9px] uppercase tracking-widest font-bold text-slate-400 mb-0.5">Cum. Messages</div>
+                                        <div className="text-lg font-black text-white">{module.metrics.cumulativeMessages.toLocaleString()}</div>
+                                      </div>
+                                      <div className="bg-slate-800/50 rounded-lg p-2.5 border border-slate-700/50">
+                                        <div className="text-[9px] uppercase tracking-widest font-bold text-slate-400 mb-0.5">Hire Prob.</div>
+                                        <div className="text-lg font-black text-emerald-400">{module.metrics.hireProbability}%</div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div className="mt-3 pt-3 border-t border-slate-800/50 relative z-10">
+                                      <div className="text-[10px] italic font-medium text-slate-400">
+                                        <span className="text-rose-400 not-italic font-bold">Driver:</span> {module.metrics.keyDriver}
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
+                                )}
                               </div>
 
                             </div>

@@ -33,12 +33,26 @@ export const anternSprintPlan: LearningPlan = {
                     project: {
                         title: "Weekly Deliverables",
                         description: [
-                            "Build a Linear regression notebook from scratch",
-                            "Implement K-Means clustering algorithm",
-                            "Complete customer segmentation mini-project",
-                            "Set up LinkedIn profile and structured learning environment"
+                            "Linear regression from-scratch notebook",
+                            "Supervised ML pipeline notebook",
+                            "Evaluation metrics cheat sheet",
+                            "K-Means from-scratch notebook",
+                            "Customer segmentation mini-project",
+                            "Clustering evaluation guide"
                         ],
                         outcomes: ["Machine Learning Basics", "Supervised and Unsupervised Models"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Set up LinkedIn Premium",
+                            "Install SBL automation tool",
+                            "Import first lead list (200 leads)",
+                            "Begin 25 manual connection requests/day",
+                            "Start commenting on 10 posts/day"
+                        ],
+                        cumulativeMessages: 0,
+                        hireProbability: 2,
+                        keyDriver: "Foundations start — building fundamentals, no outreach traction yet"
                     }
                 }
             ]
@@ -68,11 +82,27 @@ export const anternSprintPlan: LearningPlan = {
                     project: {
                         title: "Weekly Deliverables",
                         description: [
-                            "Build a basic LlamaIndex implementation",
-                            "Create a Streamlit application for EDA",
-                            "Document a business case for your chosen niche"
+                            "GenAI concepts cheat sheet",
+                            "API calling notebook (working examples)",
+                            "GenAI vs ML decision framework",
+                            "Simple GenAI tool built",
+                            "EDA mini-report with recommendations",
+                            "GitHub repo set up",
+                            "All sprint tools installed"
                         ],
                         outcomes: ["Local LLM Setup", "Exploratory Data Analysis"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "SBL automation running (40/day)",
+                            "New lead list loaded (200)",
+                            "25 manual messages sent",
+                            "Comment on 10 posts daily",
+                            "Sprint orientation: Week 3–18 plan clear"
+                        ],
+                        cumulativeMessages: 200,
+                        hireProbability: 5,
+                        keyDriver: "Foundations complete. GenAI vocab, EDA skills, all tools installed. Outreach pipeline warming."
                     }
                 }
             ]
@@ -101,11 +131,25 @@ export const anternSprintPlan: LearningPlan = {
                     project: {
                         title: "Weekly Deliverables",
                         description: [
-                            "Finalize Niche selection document",
-                            "Establish Authority bridge on LinkedIn/Resume",
-                            "Publish 3 technical/authority posts"
+                            "LinkedIn profile \"Creator Mode\" on",
+                            "Banner + Headline updated (V1)",
+                            "5 \"Proof of Work\" posts scheduled",
+                            "3 outreach scripts drafted",
+                            "3 system designs practiced"
                         ],
                         outcomes: ["Niche Identification", "ML System Design Basics"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "SBL automation continues",
+                            "25 manual messages/week",
+                            "Comment on 10 posts daily",
+                            "Weekly reflection on \"Offer Strength\""
+                        ],
+                        cumulativeMessages: 480,
+                        hireProbability: 8,
+                        keyDriver: "Positioning clear (jobs + consulting). System design vocabulary. Target markets identified."
                     }
                 }
             ]
@@ -134,11 +178,24 @@ export const anternSprintPlan: LearningPlan = {
                     project: {
                         title: "Weekly Deliverables",
                         description: [
-                            "Complete the 'Big Domino' Offer document",
-                            "Draft initial outreach scripts",
-                            "Reach 7 published posts"
+                            "Complete value stack (employment + consulting)",
+                            "Bonuses list & scarcity plan",
+                            "MLOps checklist completed",
+                            "Deployment runbook template"
                         ],
                         outcomes: ["Offer Packaging", "MLOps Introduction"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "SBL automation continues",
+                            "25 manual messages/week",
+                            "Comment on 10 posts daily",
+                            "First outreach to potential consulting clients"
+                        ],
+                        cumulativeMessages: 760,
+                        hireProbability: 10,
+                        keyDriver: "Value stack built. MLOps vocabulary = speak production. Dual offer (employer + client)."
                     }
                 }
             ]
@@ -165,14 +222,27 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 1: OpenClaw AI Agent",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Build an autonomous system for LinkedIn automation",
-                            "Finalize high-converting offer name",
-                            "Define a concrete guarantee structure",
-                            "Reach 11 published posts"
+                            "LinkedIn profile fully optimized",
+                            "Notion CRM tracking active",
+                            "Content calendar created",
+                            "Project 1 deployed (FastAPI + monitoring)",
+                            "Rapid prototype demo ready"
                         ],
                         outcomes: ["Agentic AI Implementation", "Offer Guarantee Setup"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "LinkedIn profile now optimized (higher reply rates)",
+                            "40 automated/day + 25 manual/week",
+                            "First LinkedIn post published",
+                            "First 3 consulting prospects identified"
+                        ],
+                        cumulativeMessages: 1040,
+                        hireProbability: 15,
+                        keyDriver: "Pitch sharp. OpenClaw agent running = unfair advantage. Consulting niches identified."
                     }
                 }
             ]
@@ -199,15 +269,27 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 2: Predictive Model",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Build a Supervised learning model (Churn/Demand forecasting)",
-                            "Launch LinkedIn Profile 2.0",
-                            "Draft Content calendar (30 days)",
-                            "Submit Project 2 notebook & report",
-                            "Reach 13 published posts"
+                            "LinkedIn profile fully optimized",
+                            "Notion CRM tracking active",
+                            "Content calendar created",
+                            "Project 2 notebook & report deployed",
+                            "Rapid prototype demo ready"
                         ],
                         outcomes: ["Inbound Lead Gen Mastery", "Supervised ML Application"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "LinkedIn profile now optimized (higher reply rates)",
+                            "40 automated/day + 25 manual/week",
+                            "First LinkedIn post published",
+                            "First 3 consulting prospects identified"
+                        ],
+                        cumulativeMessages: 1400,
+                        hireProbability: 20,
+                        keyDriver: "LinkedIn optimized -> 2–3x reply rates. First deployed project. Content started."
                     }
                 }
             ]
@@ -234,15 +316,27 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 3: Customer Segmentation",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Implement an unsupervised learning clustering pipeline",
-                            "Maintain an outreach tracker (50+ leads)",
-                            "Record and send 3 Loom videos to prospects",
-                            "Build a Project 3 visualization dashboard",
-                            "Reach 15 published posts"
+                            "SBL automation upgraded (30% formula)",
+                            "800+ leads imported to date",
+                            "Message sequences A/B tested",
+                            "Project 3 deployed + dashboard live",
+                            "Separate outreach for consulting running"
                         ],
                         outcomes: ["Outreach Execution", "Unsupervised ML Pipelines"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "SBL sequences upgraded (30% formula)",
+                            "A/B testing message variants",
+                            "Outreach now includes consulting prospects",
+                            "2 LinkedIn posts published"
+                        ],
+                        cumulativeMessages: 1800,
+                        hireProbability: 27,
+                        keyDriver: "SBL formula = quality messages. 2 projects. Consulting outreach started."
                     }
                 }
             ]
@@ -269,15 +363,27 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 4: EDA Mastery",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Perform hypothesis-driven analysis on complex datasets",
-                            "Launch cold email campaign live",
-                            "Scrape and verify an Apollo list (200+ leads)",
-                            "Publish Project 4 technical blog post",
-                            "Reach 17 published posts"
+                            "LinkedIn posts (3/week) consistent",
+                            "1,000+ leads in CRM",
+                            "Lead magnet V1 ready (PDF/Cheatsheet)",
+                            "First 2 \"Coffee Chats\" or discovery calls",
+                            "Project 4 technical blog post"
                         ],
                         outcomes: ["Multi-Channel Campaigns Setup", "Advanced Data Analysis"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "LinkedIn posts (3/week) consistent",
+                            "1,000+ leads in CRM",
+                            "Lead magnet V1 ready (PDF/Cheatsheet)",
+                            "First 2 \"Coffee Chats\" or discovery calls"
+                        ],
+                        cumulativeMessages: 2200,
+                        hireProbability: 33,
+                        keyDriver: "3 channels active. 3 projects incl. EDA report. Consulting pipeline warming."
                     }
                 }
             ]
@@ -304,15 +410,27 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 5: GenAI Hybrid System",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Build an LLM + Classical ML 3-tier classifier",
-                            "Customize your personal sales script",
-                            "Book at least 2 discovery calls",
-                            "Submit Project 5 code & documentation",
-                            "Reach 19 published posts"
+                            "STAR answers for 10 questions",
+                            "1 system design solved (video)",
+                            "Objection scripts (jobs + consulting)",
+                            "Project 4 deployed: GenAI hybrid system",
+                            "Cost analysis document"
                         ],
                         outcomes: ["Sales Conversion Ability", "Hybrid GenAI Architectures"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "New lead list loaded (200)",
+                            "All channels running at full capacity",
+                            "Follow-up sequences on all prior contacts",
+                            "Consulting discovery calls scheduled",
+                            "6 LinkedIn posts published"
+                        ],
+                        cumulativeMessages: 2600,
+                        hireProbability: 40,
+                        keyDriver: "Outreach volume hits 2,500. Interview skills sharp. Consulting discovery calls starting."
                     }
                 }
             ]
@@ -339,15 +457,28 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 6: RAG System",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Build a RAG system with Vector DB integration and Q&A",
-                            "Prepare a reusable Pitch deck",
-                            "Draft a standard SOW template",
-                            "Deploy a Project 6 live demo",
-                            "Reach 21 published posts"
+                            "Mock interview recorded & reviewed",
+                            "Persuasion scripts written",
+                            "Consulting pricing sheet created",
+                            "Discovery call script ready",
+                            "Project 5 deployed: RAG system",
+                            "8 LinkedIn posts published"
                         ],
                         outcomes: ["Proposal & Contract Creation", "Production RAG Implementation"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Final lead list loaded (200)",
+                            "1,600 total leads contacted via lists",
+                            "All automation sequences completing",
+                            "First consulting proposals sent",
+                            "Interview requests coming in"
+                        ],
+                        cumulativeMessages: 3000,
+                        hireProbability: 50,
+                        keyDriver: "First consulting proposals. Interview volume increasing. Outreach at peak efficiency."
                     }
                 }
             ]
@@ -374,14 +505,29 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Project 7: MLOps System",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Deploy a full ML pipeline to cloud (Docker/CI/CD)",
-                            "Activate the OpenClaw content automation bot",
-                            "Ensure cloud endpoints are stable",
-                            "Reach 23 published posts"
+                            "Project 6 deployed: Full CI/CD system",
+                            "ALL 7 projects complete",
+                            "Content engine running on OpenClaw",
+                            "Connected to LinkedIn, Analytics dashboard live",
+                            "Weekly auto-reports configured",
+                            "10 LinkedIn posts published"
                         ],
                         outcomes: ["End-to-End MLOps", "Workflow Automation Mastery"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "SBL automation continues",
+                            "Ayush's 10K/month outreach begins",
+                            "Follow-up all warm leads",
+                            "First consulting clients being pitched",
+                            "OpenClaw content engine live",
+                            "Portfolio fully complete"
+                        ],
+                        cumulativeMessages: 3200,
+                        hireProbability: 58,
+                        keyDriver: "OpenClaw content engine live. 7 projects complete. Outreach now hyper-targeted."
                     }
                 }
             ]
@@ -407,14 +553,28 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Fine-Tuning Deliverables",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Export fine-tuned model weights to HuggingFace",
-                            "Write a model evaluation report",
-                            "Conduct personal sprint metrics review",
-                            "Reach 25 published posts"
+                            "3 case studies written",
+                            "All GitHub repos polished",
+                            "Architecture diagrams complete",
+                            "2 mock interviews completed",
+                            "12 LinkedIn posts (content engine assisting)",
+                            "First consulting proposal responses"
                         ],
                         outcomes: ["Model Fine-Tuning Capability", "Sprint Analytics & Pivoting"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "SBL automation + Ayush's outreach",
+                            "Follow-up all warm leads",
+                            "Schedule pending interviews",
+                            "Send consulting proposals",
+                            "Content engine auto-posting (with approval)"
+                        ],
+                        cumulativeMessages: 3400,
+                        hireProbability: 65,
+                        keyDriver: "Content compounding. Follow-up sequences closing leads. First consulting wins."
                     }
                 }
             ]
@@ -441,14 +601,26 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Agentic Demo & Prep",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Build and record a multi-agent workflow demo",
-                            "Complete a mock take-home assignment",
-                            "Practice live coding (DSA/ML)",
-                            "Reach 27 published posts"
+                            "1 central LinkedIn post pinned",
+                            "2 more mock interviews done",
+                            "Negotiation scripts refined",
+                            "15 LinkedIn posts total",
+                            "First consulting income or freelance win"
                         ],
                         outcomes: ["Multi-Agent Architecture Skills", "Technical Interview Readiness"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Ayush's warm intros/outreach ongoing",
+                            "Re-engage all 'viewed but no reply'",
+                            "Convert warm leads to calls",
+                            "Consulting: follow up proposals"
+                        ],
+                        cumulativeMessages: 3600,
+                        hireProbability: 72,
+                        keyDriver: "Ayush's intros hit. Referrals from network. Momentum in both tracks."
                     }
                 }
             ]
@@ -475,14 +647,28 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Deployment & Storytelling",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Push production API live on AWS",
-                            "Draft 5 comprehensive Behavioral interview STAR stories",
-                            "Set up basic Grafana monitoring",
-                            "Reach 29 published posts"
+                            "2–4 interviews completed",
+                            "Interview debrief notes",
+                            "3 new system designs practiced",
+                            "Company-specific prep docs",
+                            "17 LinkedIn posts total",
+                            "Consulting discovery calls completed"
                         ],
                         outcomes: ["Cloud Production Deployment", "Behavioral Preparation"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Pause cold outreach on companies in loops",
+                            "Double down on warm leads",
+                            "Ayush warm intros for targets",
+                            "Consulting: demo OpenClaw wrappers",
+                            "Content engine running on autopilot"
+                        ],
+                        cumulativeMessages: 3750,
+                        hireProbability: 78,
+                        keyDriver: "Active interviews + consulting calls. Multiple income paths converging. Ayush's intros."
                     }
                 }
             ]
@@ -509,14 +695,28 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Scaling Preparations",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Create personalized Salary research doc",
-                            "Draft a robust Negotiation script",
-                            "Write SOPs for repetitive technical tasks",
-                            "Reach 31 published posts"
+                            "Salary research document",
+                            "Negotiation strategy per company",
+                            "Thank-you messages sent",
+                            "Mini-demo for top company",
+                            "19 LinkedIn posts total",
+                            "OpenClaw service packaged for clients"
                         ],
                         outcomes: ["Offer Negotiation Expertise", "Service Scaling Foundations"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Focus shifts to conversion",
+                            "Ayush personal outreach for top 3 targets",
+                            "SBL automation maintaining pipeline",
+                            "Consulting: close first client",
+                            "Content engine self-improving weekly"
+                        ],
+                        cumulativeMessages: 3850,
+                        hireProbability: 83,
+                        keyDriver: "Multiple offers/loops. OpenClaw service packaged. Content engine autonomous."
                     }
                 }
             ]
@@ -542,13 +742,27 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Rapid Demo Execution",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Build a 90-min interactive demo for a prospective client",
-                            "Finalize Contract template to 'live' status",
-                            "Reach 33 published posts"
+                            "2–3 final interviews",
+                            "Offer negotiation prep",
+                            "20 LinkedIn posts total",
+                            "Consulting: upsell/retainer calls",
+                            "First full-time offer potentially"
                         ],
                         outcomes: ["Income Path Management", "Rapid Interactive Demos"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Pause cold outreach",
+                            "Focus entirely on 'In Loops' companies",
+                            "Network referral acceleration",
+                            "Consulting: deliver first results",
+                            "Content engine at peak output"
+                        ],
+                        cumulativeMessages: 3950,
+                        hireProbability: 87,
+                        keyDriver: "Full-time + contracts + freelance + productized service all running."
                     }
                 }
             ]
@@ -574,13 +788,28 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Portfolio Perfection",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Send 10+ referral requests",
-                            "Polish all 7 projects (READMEs, architecture diagrams, live links)",
-                            "Reach 35 published posts"
+                            "10+ referral requests sent",
+                            "Ayush warm intros received",
+                            "All 7 projects walkthrough-ready",
+                            "Final round prep complete",
+                            "25 LinkedIn posts total",
+                            "Income from consulting/freelance tracked"
                         ],
                         outcomes: ["Network Activation", "Portfolio Completion"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Ayush activates personal network (10 companies)",
+                            "SBL client warm introductions",
+                            "All automation at peak",
+                            "Referrals from alumni network",
+                            "Consulting revenue being generated"
+                        ],
+                        cumulativeMessages: 4050,
+                        hireProbability: 92,
+                        keyDriver: "Ayush's personal intros + full network + 7 projects + AI agent + consulting income."
                     }
                 }
             ]
@@ -605,14 +834,28 @@ export const anternSprintPlan: LearningPlan = {
                         ])
                     ],
                     project: {
-                        title: "Final Outcomes",
+                        title: "Weekly Deliverables",
                         description: [
-                            "Offer accepted OR 5+ active strong conversations",
-                            "Draft 90-day onboarding plan document",
-                            "Final portfolio live & circulated",
-                            "Reach 37+ posts published"
+                            "Final \"Antern Approved\" status",
+                            "Sprint completion certificate",
+                            "28 LinkedIn posts total",
+                            "7 projects live & public",
+                            "Personal CRM with 4,000+ leads",
+                            "Career-long networking system"
                         ],
                         outcomes: ["Graduation", "Career Placement"]
+                    },
+                    metrics: {
+                        outreachActions: [
+                            "Final offer negotiation/signing",
+                            "SBL alumni network referral loop",
+                            "Content engine on full autopilot",
+                            "Freelance/consulting leads on inbound",
+                            "Maintenance mode: 3 posts/week"
+                        ],
+                        cumulativeMessages: 4200,
+                        hireProbability: 98,
+                        keyDriver: "4,200 msgs + 7 projects + AI agent + 28 posts + network + income streams."
                     }
                 }
             ]
